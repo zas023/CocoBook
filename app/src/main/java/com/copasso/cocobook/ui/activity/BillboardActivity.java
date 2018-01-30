@@ -64,14 +64,9 @@ public class BillboardActivity extends BaseMVPActivity<BillboardContract.Present
     @Override
     protected void initClick() {
         super.initClick();
-        mRlRefresh.setOnReloadingListener(
-                new RefreshLayout.OnReloadingListener() {
-                    @Override
-                    public void onReload() {
-                        mPresenter.loadBillboardList();
-                    }
-                }
-        );
+        mRlRefresh.setOnReloadingListener(()->{
+            mPresenter.loadBillboardList();
+        });
         mElvBoy.setOnGroupClickListener(this);
         mElvBoy.setOnChildClickListener(this);
 

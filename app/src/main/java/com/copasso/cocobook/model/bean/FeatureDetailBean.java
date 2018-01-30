@@ -134,7 +134,7 @@ public class FeatureDetailBean {
         private String contentType;
         private int latelyFollower;
         private int wordCount;
-        private int retentionRatio;
+        private String retentionRatio;
         private boolean isSerial;
         private int chaptersCount;
 
@@ -242,11 +242,11 @@ public class FeatureDetailBean {
             this.wordCount = wordCount;
         }
 
-        public int getRetentionRatio() {
+        public String getRetentionRatio() {
             return retentionRatio;
         }
 
-        public void setRetentionRatio(int retentionRatio) {
+        public void setRetentionRatio(String retentionRatio) {
             this.retentionRatio = retentionRatio;
         }
 
