@@ -1,7 +1,7 @@
 package com.copasso.cocobook.model.flag;
 
 /**
- * Created by zhouas666 on 17-5-3.
+ * Created by zhouas666 on 18-1-23.
  */
 
 public enum BookSortListType {

@@ -60,6 +60,13 @@ public interface BookApi {
     @GET("/recommendPage/node/spread/575f74f27a4a60dc78a435a3?pl=ios")
     Single<SwipePicturePackage> getSwipePicturePackage();
 
+    @GET("/recommendPage/nodes/5910018c8094b1e228e5868f")
+    Single<FeaturePackage> getFeaturePackage();
+
+    @GET("/recommendPage/node/books/all/{nodeId}")
+    Single<FeatureDetailPackage> getFeatureDetailPackage(@Path("nodeId")String nodeId);
+
+
     /*******************************社区*******************************************************/
     /**
      * 获取综合讨论区、原创区，女生区帖子列表

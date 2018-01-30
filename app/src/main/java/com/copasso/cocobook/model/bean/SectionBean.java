@@ -6,7 +6,7 @@ import android.support.annotation.StringRes;
 import com.copasso.cocobook.App;
 
 /**
- * Created by zhouas666 on 17-4-16.
+ * Created by zhouas666 on 18-1-23.
  */
 
 public class SectionBean {

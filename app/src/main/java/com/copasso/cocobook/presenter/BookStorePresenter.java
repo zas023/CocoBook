@@ -34,7 +34,7 @@ public class BookStorePresenter extends RxPresenter<BookStoreContract.View>
                 .compose(RxUtils::toSimpleSingle)
                 .subscribe(
                         beans -> {
-                            mView.finishRefresh(beans);
+                            mView.finishRefreshSwipePictures(beans);
                             mView.complete();
                         },
                         (e) -> {
@@ -45,5 +45,21 @@ public class BookStorePresenter extends RxPresenter<BookStoreContract.View>
                         }
                 );
         addDisposable(disposable);
+    }
+
+    @Override
+    public void refreshFeatures() {
+        addDisposable(RemoteRepository.getInstance()
+        .getFeature()
+        .compose(RxUtils::toSimpleSingle)
+        .subscribe(
+                featureBeans ->
+                        mView.finishRefreshFeatures(featureBeans)
+                ,throwable -> {
+                    //提示没有网络
+                    LogUtils.e(throwable);
+                    mView.showErrorTip(throwable.toString());
+                }
+        ));
     }
 }

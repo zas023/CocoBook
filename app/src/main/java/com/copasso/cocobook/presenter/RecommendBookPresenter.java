@@ -10,7 +10,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by zhouas666 on 17-5-3.
+ * Created by zhouas666 on 18-1-23.
  */
 
 public class RecommendBookPresenter extends RxPresenter<RecommendBookContract.View>

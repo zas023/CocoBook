@@ -1,7 +1,7 @@
 package com.copasso.cocobook.model.bean;
 
 /**
- * Created by zhouas666 on 17-5-3.
+ * Created by zhouas666 on 18-1-23.
  * 排行榜的书籍 (不被公用的直接作为内部类)
  */
 

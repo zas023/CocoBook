@@ -22,8 +22,7 @@
         <activity android:name=".ui.activity.SplashActivity"
                   android:theme="@style/SplashTheme">
         </activity>
-        <activity android:name=".ui.activity.MainActivity"
-                  android:launchMode="singleTop">
+        <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

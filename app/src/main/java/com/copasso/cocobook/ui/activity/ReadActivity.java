@@ -442,17 +442,6 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         mSettingDialog.setOnDismissListener(
                 dialog -> hideSystemBar()
         );
-
-        Disposable donwloadDisp = RxBus.getInstance()
-                .toObservable(DownloadMessage.class)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        event -> {
-                            //使用Toast提示
-                            ToastUtils.show(event.message);
-                        }
-                );
-        addDisposable(donwloadDisp);
     }
 
     @OnClick({R.id.read_tv_category, R.id.read_tv_setting, R.id.read_tv_pre_chapter
@@ -469,7 +458,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                 mDlSlide.openDrawer(Gravity.START);
                 break;
             case R.id.read_tv_download:  //下载
-                downloadBook(mCollBook);
+                //downloadBook(mCollBook);
                 break;
             case R.id.read_tv_setting:  //设置
                 toggleMenu(false);

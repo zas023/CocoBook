@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Created by zhouas666 on 17-5-3.
+ * Created by zhouas666 on 18-1-23.
  * BillboardBookPackage
  */
 

@@ -1,6 +1,8 @@
 package com.copasso.cocobook.ui.adapter;
 
+import com.copasso.cocobook.model.bean.FeatureBean;
 import com.copasso.cocobook.model.bean.SectionBean;
+import com.copasso.cocobook.ui.adapter.view.FeatureHolder;
 import com.copasso.cocobook.ui.adapter.view.SectionHolder;
 import com.copasso.cocobook.ui.base.adapter.BaseListAdapter;
 import com.copasso.cocobook.ui.base.adapter.IViewHolder;
@@ -9,9 +11,9 @@ import com.copasso.cocobook.ui.base.adapter.IViewHolder;
  * Created by zhouas666 on 18-1-23.
  */
 
-public class SectionAdapter extends BaseListAdapter<SectionBean> {
+public class FeatureAdapter extends BaseListAdapter<FeatureBean> {
     @Override
-    protected IViewHolder<SectionBean> createViewHolder(int viewType) {
-        return new SectionHolder();
+    protected IViewHolder<FeatureBean> createViewHolder(int viewType) {
+        return new FeatureHolder();
     }
 }

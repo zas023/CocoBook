@@ -1,9 +1,10 @@
 package com.copasso.cocobook.ui.adapter.view;
 
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.copasso.cocobook.R;
+import com.copasso.cocobook.model.bean.FeatureBean;
 import com.copasso.cocobook.model.bean.SectionBean;
 import com.copasso.cocobook.ui.base.adapter.ViewHolderImpl;
 
@@ -11,7 +12,7 @@ import com.copasso.cocobook.ui.base.adapter.ViewHolderImpl;
  * Created by zhouas666 on 18-1-23.
  */
 
-public class SectionHolder extends ViewHolderImpl<SectionBean>{
+public class FeatureHolder extends ViewHolderImpl<FeatureBean>{
 
     private ImageView mIvIcon;
     private TextView mTvName;
@@ -23,9 +24,9 @@ public class SectionHolder extends ViewHolderImpl<SectionBean>{
     }
 
     @Override
-    public void onBind(SectionBean value, int pos) {
-        mIvIcon.setImageResource(value.getDrawableId());
-        mTvName.setText(value.getName());
+    public void onBind(FeatureBean value, int pos) {
+        mIvIcon.setVisibility(View.GONE);
+        mTvName.setText(value.getTitle());
     }
 
     @Override

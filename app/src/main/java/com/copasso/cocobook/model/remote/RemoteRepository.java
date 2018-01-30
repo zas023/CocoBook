@@ -50,6 +50,26 @@ public class RemoteRepository {
     }
 
     /**
+     * 精选分类
+     *
+     * @return
+     */
+    public Single<List<FeatureBean>> getFeature() {
+        return mBookApi.getFeaturePackage()
+                .map(bean -> bean.getData());
+    }
+
+    /**
+     * 精选分类图书
+     * @param nodeId
+     * @return
+     */
+    public Single<List<FeatureDetailBean>> getFeatureDetail(String nodeId) {
+        return mBookApi.getFeatureDetailPackage(nodeId)
+                .map(bean -> bean.getData());
+    }
+
+    /**
      * 由性别推荐图书
      *
      * @param gender

@@ -48,8 +48,8 @@ public class FindFragment extends BaseFragment {
 
         mAdapter = new SectionAdapter();
         mRvContent.setHasFixedSize(true);
-        mRvContent.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRvContent.addItemDecoration(new DividerItemDecoration(getContext()));
+        mRvContent.setLayoutManager(new LinearLayoutManager(mContext));
+        mRvContent.addItemDecoration(new DividerItemDecoration(mContext));
         mRvContent.setAdapter(mAdapter);
         mAdapter.addItems(sections);
     }

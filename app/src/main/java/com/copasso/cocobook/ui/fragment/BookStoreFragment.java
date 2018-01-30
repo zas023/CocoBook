@@ -2,32 +2,24 @@ package com.copasso.cocobook.ui.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import com.bumptech.glide.Glide;
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.model.bean.SectionBean;
+import com.copasso.cocobook.model.bean.FeatureBean;
 import com.copasso.cocobook.model.bean.SwipePictureBean;
-import com.copasso.cocobook.model.flag.CommunityType;
 import com.copasso.cocobook.presenter.BookStorePresenter;
 import com.copasso.cocobook.presenter.contract.BookStoreContract;
 import com.copasso.cocobook.ui.activity.BookDetailActivity;
-import com.copasso.cocobook.ui.activity.BookListActivity;
 import com.copasso.cocobook.ui.activity.BookListDetailActivity;
-import com.copasso.cocobook.ui.adapter.SectionAdapter;
+import com.copasso.cocobook.ui.adapter.FeatureAdapter;
 import com.copasso.cocobook.ui.base.BaseMVPFragment;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
-import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.loader.ImageLoader;
 
 import java.util.ArrayList;
@@ -42,8 +34,13 @@ public class BookStoreFragment extends BaseMVPFragment<BookStoreContract.Present
     /***************view******************/
     @BindView(R.id.banner)
     Banner banner;
+    @BindView(R.id.store_rv_content)
+    RecyclerView storeRvContent;
 
-    List<SwipePictureBean> mDatas;
+    private FeatureAdapter mAdapter;
+
+    List<SwipePictureBean> mSwipePictures;
+    List<FeatureBean> mFeatures;
     private List<String> mImages = new ArrayList<>();
     private List<String> mTitles = new ArrayList<>();
 
@@ -56,6 +53,7 @@ public class BookStoreFragment extends BaseMVPFragment<BookStoreContract.Present
 
     @Override
     protected void initWidget(Bundle savedInstanceState) {
+
         //设置banner样式
         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
         //设置图片加载器
@@ -76,24 +74,44 @@ public class BookStoreFragment extends BaseMVPFragment<BookStoreContract.Present
         banner.setIndicatorGravity(BannerConfig.CENTER);
     }
 
+    private void setUpAdapter() {
+        if (mFeatures == null)
+            return;
+        List<FeatureBean> mTemp=new ArrayList<>();
+        mTemp.add(mFeatures.get(0));
+        mTemp.add(mFeatures.get(2));
+        mTemp.addAll(mFeatures.subList(4,10));
+        mAdapter = new FeatureAdapter();
+        storeRvContent.setHasFixedSize(true);
+        storeRvContent.setLayoutManager(new GridLayoutManager(mContext,2));
+        storeRvContent.addItemDecoration(new DividerItemDecoration(mContext));
+        storeRvContent.setAdapter(mAdapter);
+        mAdapter.addItems(mTemp);
+
+        mAdapter.setOnItemClickListener((view, pos) -> {
+            BookListDetailActivity.startActivity(mContext, mAdapter.getItem(pos).get_id());
+        });
+    }
+
+
     /****************************click method********************************/
 
     @Override
     protected void initClick() {
         banner.setOnBannerListener(
                 (pos) -> {
-                    SwipePictureBean bean=mDatas.get(pos);
-                    if(bean.getType().equals("c-bookdetail"))
-                        BookDetailActivity.startActivity(mContext,bean.getLink());
-                    if(bean.getType().equals("c-booklist"))
-                        BookListDetailActivity.startActivity(mContext,bean.getLink());
+                    SwipePictureBean bean = mSwipePictures.get(pos);
+                    if (bean.getType().equals("c-bookdetail"))
+                        BookDetailActivity.startActivity(mContext, bean.getLink());
+                    if (bean.getType().equals("c-booklist"))
+                        BookListDetailActivity.startActivity(mContext, bean.getLink());
                 });
     }
 
     @Override
-    public void finishRefresh(List<SwipePictureBean> swipePictureBeans) {
+    public void finishRefreshSwipePictures(List<SwipePictureBean> swipePictureBeans) {
 
-        mDatas=swipePictureBeans;
+        mSwipePictures = swipePictureBeans;
 
         for (SwipePictureBean bean : swipePictureBeans) {
             mImages.add(bean.getImg());
@@ -105,6 +123,12 @@ public class BookStoreFragment extends BaseMVPFragment<BookStoreContract.Present
         banner.setBannerTitles(mTitles);
 
         banner.start();
+    }
+
+    @Override
+    public void finishRefreshFeatures(List<FeatureBean> featureBeans) {
+        mFeatures = featureBeans;
+        setUpAdapter();
     }
 
     @Override
@@ -121,6 +145,7 @@ public class BookStoreFragment extends BaseMVPFragment<BookStoreContract.Present
     protected void processLogic() {
         super.processLogic();
         mPresenter.refreshSwipePictures();
+        mPresenter.refreshFeatures();
     }
 
     @Override
