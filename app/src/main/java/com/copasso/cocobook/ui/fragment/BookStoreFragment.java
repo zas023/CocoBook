@@ -14,6 +14,7 @@ import com.copasso.cocobook.presenter.BookStorePresenter;
 import com.copasso.cocobook.presenter.contract.BookStoreContract;
 import com.copasso.cocobook.ui.activity.BookDetailActivity;
 import com.copasso.cocobook.ui.activity.BookListDetailActivity;
+import com.copasso.cocobook.ui.activity.FeatureBookActivity;
 import com.copasso.cocobook.ui.adapter.FeatureAdapter;
 import com.copasso.cocobook.ui.base.BaseMVPFragment;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
@@ -89,7 +90,8 @@ public class BookStoreFragment extends BaseMVPFragment<BookStoreContract.Present
         mAdapter.addItems(mTemp);
 
         mAdapter.setOnItemClickListener((view, pos) -> {
-            BookListDetailActivity.startActivity(mContext, mAdapter.getItem(pos).get_id());
+            FeatureBean bean=mAdapter.getItem(pos);
+            FeatureBookActivity.startActivity(mContext,bean.getTitle(),bean.get_id());
         });
     }
 

@@ -7,15 +7,13 @@ import android.os.PersistableBundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import butterknife.BindView;
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.model.bean.BillBookBean;
-import com.copasso.cocobook.presenter.BillBookPresenter;
-import com.copasso.cocobook.presenter.contract.BillBookContract;
-import com.copasso.cocobook.ui.adapter.BillBookAdapter;
+import com.copasso.cocobook.model.bean.FeatureDetailBean;
+import com.copasso.cocobook.presenter.FeatureDetailPresenter;
+import com.copasso.cocobook.presenter.contract.FeatureDetailContract;
+import com.copasso.cocobook.ui.adapter.FeatureDetailAdapter;
 import com.copasso.cocobook.ui.base.BaseMVPActivity;
-import com.copasso.cocobook.ui.base.adapter.BaseListAdapter;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
 
@@ -25,8 +23,8 @@ import java.util.List;
  * Created by zhouas666 on 18-1-23.
  */
 
-public class FeatureBookActivity extends BaseMVPActivity<BillBookContract.Presenter>
-        implements BillBookContract.View{
+public class FeatureBookActivity extends BaseMVPActivity<FeatureDetailContract.Presenter>
+        implements FeatureDetailContract.View{
     private static final String EXTRA_FEATURE_ID = "extra_feature_id";
     private static final String EXTRA_FEATURE_NAME = "extra_feature_name";
     /********************/
@@ -35,7 +33,7 @@ public class FeatureBookActivity extends BaseMVPActivity<BillBookContract.Presen
     @BindView(R.id.refresh_rv_content)
     RecyclerView mRvContent;
     /*******************/
-    private BillBookAdapter mBillBookAdapter;
+    private FeatureDetailAdapter mAdapter;
     /*****************/
     private String mFeatureId;
     private String mFeatureName;
@@ -53,8 +51,8 @@ public class FeatureBookActivity extends BaseMVPActivity<BillBookContract.Presen
     }
 
     @Override
-    protected BillBookContract.Presenter bindPresenter() {
-        return new BillBookPresenter();
+    protected FeatureDetailContract.Presenter bindPresenter() {
+        return new FeatureDetailPresenter();
     }
 
     @Override
@@ -86,26 +84,23 @@ public class FeatureBookActivity extends BaseMVPActivity<BillBookContract.Presen
     protected void processLogic() {
         super.processLogic();
         mRefreshLayout.showLoading();
-        mPresenter.refreshBookBrief(mFeatureId);
+        mPresenter.refreshFeatureDetail(mFeatureId);
     }
 
     private void setUpAdapter(){
         mRvContent.setLayoutManager(new LinearLayoutManager(this));
         mRvContent.addItemDecoration(new DividerItemDecoration(this));
-        mBillBookAdapter = new BillBookAdapter();
-        mRvContent.setAdapter(mBillBookAdapter);
+        mAdapter = new FeatureDetailAdapter();
+        mRvContent.setAdapter(mAdapter);
 
-        mBillBookAdapter.setOnItemClickListener(new BaseListAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int pos) {
-                BookDetailActivity.startActivity(mContext,mBillBookAdapter.getItem(pos).get_id());
-            }
+        mAdapter.setOnItemClickListener((view, pos) -> {
+            BookDetailActivity.startActivity(mContext,mAdapter.getItem(pos).getBook().get_id());
         });
     }
 
     @Override
-    public void finishRefresh(List<BillBookBean> beans) {
-        mBillBookAdapter.refreshItems(beans);
+    public void finishRefresh(List<FeatureDetailBean> beans) {
+        mAdapter.addItems(beans);
     }
 
     @Override
@@ -124,4 +119,5 @@ public class FeatureBookActivity extends BaseMVPActivity<BillBookContract.Presen
         outState.putString(EXTRA_FEATURE_ID,mFeatureId);
         outState.putString(EXTRA_FEATURE_NAME,mFeatureName);
     }
+
 }
