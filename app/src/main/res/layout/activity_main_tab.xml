@@ -6,7 +6,9 @@
         android:id="@+id/drawer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:openDrawer="start">
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start"
+        tools:context=".ui.activity.MainActivity">
 
     <android.support.design.widget.CoordinatorLayout
             xmlns:android="http://schemas.android.com/apk/res/android"

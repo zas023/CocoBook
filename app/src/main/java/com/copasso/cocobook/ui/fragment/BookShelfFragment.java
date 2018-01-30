@@ -41,7 +41,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 
 /**
- * Created by zhouas666 on 17-4-15.
+ * Created by zhouas666 on 18-1-23.
  */
 
 public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Presenter>

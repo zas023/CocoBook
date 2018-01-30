@@ -54,6 +54,12 @@ public interface BookApi {
     @GET("http://chapter2.zhuishushenqi.com/chapter/{url}")
     Single<ChapterInfoPackage> getChapterInfoPackage(@Path("url") String url);
 
+
+    /*******************************精选*******************************************************/
+
+    @GET("/recommendPage/node/spread/575f74f27a4a60dc78a435a3?pl=ios")
+    Single<SwipePicturePackage> getSwipePicturePackage();
+
     /*******************************社区*******************************************************/
     /**
      * 获取综合讨论区、原创区，女生区帖子列表

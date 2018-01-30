@@ -20,7 +20,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
- * Created by zhouas666 on 17-4-15.
+ * Created by zhouas666 on 18-1-23.
  */
 
 public class SexChooseDialog extends Dialog {

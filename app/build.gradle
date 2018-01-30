@@ -59,6 +59,8 @@ dependencies {
     compile 'me.imid.swipebacklayout.lib:library:1.1.0'
     //AndroidTagGroup
     compile 'me.gujun.android.taggroup:library:1.4@aar'
+    //Banner
+    compile 'com.youth.banner:banner:1.4.10'
 
     compile 'org.glassfish:javax.annotation:10.0-b28'
 

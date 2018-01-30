@@ -13,7 +13,7 @@ import android.view.WindowManager;
 import com.copasso.cocobook.R;
 
 /**
- * Created by zhouas666 on 17-4-15.
+ * Created by zhouas666 on 18-1-23.
  */
 
 public class StatusBarCompat

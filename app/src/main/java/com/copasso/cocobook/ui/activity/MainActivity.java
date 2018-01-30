@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -27,6 +28,7 @@ import butterknife.BindView;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.ui.base.BaseTabActivity;
 import com.copasso.cocobook.ui.fragment.BookShelfFragment;
+import com.copasso.cocobook.ui.fragment.BookStoreFragment;
 import com.copasso.cocobook.ui.fragment.CommunityFragment;
 import com.copasso.cocobook.ui.fragment.FindFragment;
 import com.copasso.cocobook.utils.*;
@@ -96,7 +98,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
 
     private void initFragment() {
         Fragment bookShelfFragment = new BookShelfFragment();
-        Fragment communityFragment = new CommunityFragment();
+        Fragment communityFragment = new BookStoreFragment();
         Fragment discoveryFragment = new FindFragment();
         mFragmentList.add(bookShelfFragment);
         mFragmentList.add(communityFragment);
@@ -112,6 +114,10 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     @Override
     protected void initWidget() {
         super.initWidget();
+        //实现侧滑菜单状态栏透明
+        getWindow().setStatusBarColor(Color.TRANSPARENT);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+
         //性别选择框
         showSexChooseDialog();
 

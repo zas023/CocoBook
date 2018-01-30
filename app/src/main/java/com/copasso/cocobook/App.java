@@ -7,7 +7,7 @@ import android.content.Intent;
 import com.copasso.cocobook.service.DownloadService;
 
 /**
- * Created by zhouas666 on 17-4-15.
+ * Created by zhouas666 on 18-1-23.
  */
 
 public class App extends Application {

@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-
+import butterknife.BindView;
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.model.flag.CommunityType;
 import com.copasso.cocobook.model.bean.SectionBean;
+import com.copasso.cocobook.model.flag.CommunityType;
 import com.copasso.cocobook.ui.activity.BookDiscussionActivity;
 import com.copasso.cocobook.ui.adapter.SectionAdapter;
 import com.copasso.cocobook.ui.base.BaseFragment;
@@ -16,10 +16,9 @@ import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
 
 /**
- * Created by zhouas666 on 17-4-15.
+ * Created by zhouas666 on 18-1-23.
  * 讨论区
  */
 
