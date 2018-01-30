@@ -1,5 +1,6 @@
 package com.copasso.cocobook.presenter.contract;
 
+import com.copasso.cocobook.model.bean.BookSearchBean;
 import com.copasso.cocobook.model.bean.packages.SearchBookPackage;
 import com.copasso.cocobook.ui.base.BaseContract;
 
@@ -15,6 +16,8 @@ public interface SearchContract extends BaseContract {
         void finishHotWords(List<String> hotWords);
         void finishKeyWords(List<String> keyWords);
         void finishBooks(List<SearchBookPackage.BooksBean> books);
+        void finishRecord(List<BookSearchBean> records);
+        void finishAddRecord(BookSearchBean bean);
 
         void errorBooks();
     }
@@ -25,5 +28,9 @@ public interface SearchContract extends BaseContract {
         void searchKeyWord(String query);
         //搜索书籍
         void searchBook(String query);
+        //搜索记录
+        void searchRecord();
+        //添加搜索记录
+        void addSearchRecord(BookSearchBean bean);
     }
 }

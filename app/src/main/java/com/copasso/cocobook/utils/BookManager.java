@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by zhouas666 on 17-5-20.
+ * Created by zhouas666 on 18-1-23.
  * 处理书籍的工具类，配合PageFactory使用
  * 已弃用，
  */

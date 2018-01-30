@@ -1,6 +1,7 @@
 package com.copasso.cocobook.ui.activity;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -11,9 +12,12 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.copasso.cocobook.R;
+import com.copasso.cocobook.model.bean.BookSearchBean;
 import com.copasso.cocobook.model.bean.packages.SearchBookPackage;
+import com.copasso.cocobook.model.local.BookRepository;
 import com.copasso.cocobook.presenter.SearchPresenter;
 import com.copasso.cocobook.presenter.contract.SearchContract;
 import com.copasso.cocobook.ui.adapter.KeyWordAdapter;
@@ -21,18 +25,18 @@ import com.copasso.cocobook.ui.adapter.SearchBookAdapter;
 import com.copasso.cocobook.ui.base.BaseMVPActivity;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
-
-import java.util.List;
-
-import butterknife.BindView;
 import me.gujun.android.taggroup.TagGroup;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by zhouas666 on 17-4-24.
  */
 
 public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
-        implements SearchContract.View{
+        implements SearchContract.View {
     private static final int TAG_LIMIT = 8;
 
     @BindView(R.id.search_iv_back)
@@ -47,18 +51,23 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
     TextView mTvRefreshHot;
     @BindView(R.id.search_tg_hot)
     TagGroup mTgHot;
-/*    @BindView(R.id.search_rv_history)
-    RecyclerView mRvHistory;*/
+    @BindView(R.id.search_tg_record)
+    TagGroup mTgRecord;
+    /*    @BindView(R.id.search_rv_history)
+        RecyclerView mRvHistory;*/
     @BindView(R.id.refresh_layout)
     RefreshLayout mRlRefresh;
     @BindView(R.id.refresh_rv_content)
     RecyclerView mRvSearch;
+    @BindView(R.id.search_book_tv_refresh_record)
+    TextView searchBookTvRefreshRecord;
 
     private KeyWordAdapter mKeyWordAdapter;
     private SearchBookAdapter mSearchAdapter;
 
     private boolean isTag;
     private List<String> mHotTagList;
+    private List<String> mRecordTagList;
     private int mTagStart = 0;
 
     @Override
@@ -78,7 +87,7 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
         mRlRefresh.setBackground(getDrawable(R.color.white));
     }
 
-    private void setUpAdapter(){
+    private void setUpAdapter() {
         mKeyWordAdapter = new KeyWordAdapter();
         mSearchAdapter = new SearchBookAdapter();
 
@@ -104,9 +113,9 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.toString().trim().equals("")){
+                if (s.toString().trim().equals("")) {
                     //隐藏delete按钮和关键字显示内容
-                    if (mIvDelete.getVisibility() == View.VISIBLE){
+                    if (mIvDelete.getVisibility() == View.VISIBLE) {
                         mIvDelete.setVisibility(View.INVISIBLE);
                         mRlRefresh.setVisibility(View.INVISIBLE);
                         //删除全部视图
@@ -117,7 +126,7 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
                     return;
                 }
                 //显示delete按钮
-                if (mIvDelete.getVisibility() == View.INVISIBLE){
+                if (mIvDelete.getVisibility() == View.INVISIBLE) {
                     mIvDelete.setVisibility(View.VISIBLE);
                     mRlRefresh.setVisibility(View.VISIBLE);
                     //默认是显示完成状态
@@ -125,12 +134,12 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
                 }
                 //搜索
                 String query = s.toString().trim();
-                if (isTag){
+                if (isTag) {
                     mRlRefresh.showLoading();
                     mPresenter.searchBook(query);
+                    addRecord(query);
                     isTag = false;
-                }
-                else {
+                } else {
                     //传递
                     mPresenter.searchKeyWord(query);
                 }
@@ -147,7 +156,7 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 //修改回车键功能
-                if(keyCode==KeyEvent.KEYCODE_ENTER) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
                     searchBook();
                     return true;
                 }
@@ -162,7 +171,7 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
 
         //删除字
         mIvDelete.setOnClickListener(
-                (v) ->  {
+                (v) -> {
                     mEtInput.setText("");
                     toggleKeyboard();
                 }
@@ -175,12 +184,21 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
                     mRlRefresh.showLoading();
                     String book = mKeyWordAdapter.getItem(pos);
                     mPresenter.searchBook(book);
+                    addRecord(mEtInput.getText().toString().trim());
                     toggleKeyboard();
                 }
         );
 
-        //Tag的点击事件
+        //热搜 Tag的点击事件
         mTgHot.setOnTagClickListener(
+                tag -> {
+                    isTag = true;
+                    mEtInput.setText(tag);
+                }
+        );
+
+        //历史记录Tag的点击事件
+        mTgRecord.setOnTagClickListener(
                 tag -> {
                     isTag = true;
                     mEtInput.setText(tag);
@@ -196,14 +214,23 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
         mSearchAdapter.setOnItemClickListener(
                 (view, pos) -> {
                     String bookId = mSearchAdapter.getItem(pos).get_id();
-                    BookDetailActivity.startActivity(this,bookId);
+                    BookDetailActivity.startActivity(this, bookId);
+                }
+        );
+        //清空历史
+        searchBookTvRefreshRecord.setOnClickListener(
+                view -> {
+                    BookRepository.getInstance().deleteSearchRecords();
+                    mRecordTagList.clear();
+                    mTgRecord.setTags(mRecordTagList);
                 }
         );
     }
 
-    private void searchBook(){
+    private void searchBook() {
         String query = mEtInput.getText().toString().trim();
-        if(!query.equals("")){
+        if (!query.equals("")) {
+            addRecord(query);
             mRlRefresh.setVisibility(View.VISIBLE);
             mRlRefresh.showLoading();
             mPresenter.searchBook(query);
@@ -213,7 +240,11 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
         }
     }
 
-    private void toggleKeyboard(){
+    private void addRecord(String query) {
+        mPresenter.addSearchRecord(new BookSearchBean(query));
+    }
+
+    private void toggleKeyboard() {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
     }
@@ -225,6 +256,8 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
         mRlRefresh.setVisibility(View.GONE);
         //获取热词
         mPresenter.searchHotWord();
+        //获取搜索记录
+        mPresenter.searchRecord();
     }
 
     @Override
@@ -242,9 +275,9 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
         refreshTag();
     }
 
-    private void refreshTag(){
+    private void refreshTag() {
         int last = mTagStart + TAG_LIMIT;
-        if (mHotTagList.size() <= last){
+        if (mHotTagList.size() <= last) {
             mTagStart = 0;
             last = TAG_LIMIT;
         }
@@ -257,7 +290,7 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
     public void finishKeyWords(List<String> keyWords) {
         if (keyWords.size() == 0) mRlRefresh.setVisibility(View.INVISIBLE);
         mKeyWordAdapter.refreshItems(keyWords);
-        if (!(mRvSearch.getAdapter() instanceof KeyWordAdapter)){
+        if (!(mRvSearch.getAdapter() instanceof KeyWordAdapter)) {
             mRvSearch.setAdapter(mKeyWordAdapter);
         }
     }
@@ -265,17 +298,33 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
     @Override
     public void finishBooks(List<SearchBookPackage.BooksBean> books) {
         mSearchAdapter.refreshItems(books);
-        if (books.size() == 0){
+        if (books.size() == 0) {
             mRlRefresh.showEmpty();
-        }
-        else {
+        } else {
             //显示完成
             mRlRefresh.showFinish();
         }
         //加载
-        if (!(mRvSearch.getAdapter() instanceof SearchBookAdapter)){
+        if (!(mRvSearch.getAdapter() instanceof SearchBookAdapter)) {
             mRvSearch.setAdapter(mSearchAdapter);
         }
+    }
+
+    @Override
+    public void finishRecord(List<BookSearchBean> records) {
+        if (records == null)
+            return;
+        mRecordTagList = new ArrayList<>();
+        for (BookSearchBean bean : records)
+            mRecordTagList.add(bean.getKeyword());
+
+        Collections.reverse(mRecordTagList);
+        mTgRecord.setTags(mRecordTagList);
+    }
+
+    @Override
+    public void finishAddRecord(BookSearchBean bean) {
+        mPresenter.searchRecord();
     }
 
     @Override
@@ -285,11 +334,17 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
 
     @Override
     public void onBackPressed() {
-        if (mRlRefresh.getVisibility() == View.VISIBLE){
+        if (mRlRefresh.getVisibility() == View.VISIBLE) {
             mEtInput.setText("");
-        }
-        else {
+        } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

@@ -4,7 +4,7 @@ import io.reactivex.Observable;
 import io.reactivex.subjects.PublishSubject;
 
 /**
- * Created by zhouas666 on 17-4-18.
+ * Created by zhouas666 on 18-1-23.
  * 原理:PublishSubject本身作为观察者和被观察者。
  */
 

@@ -5,7 +5,7 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
 
 /**
- * Created by zhouas666 on 17-5-20.
+ * Created by zhouas666 on 18-1-23.
  */
 @Entity
 public class BookRecordBean{

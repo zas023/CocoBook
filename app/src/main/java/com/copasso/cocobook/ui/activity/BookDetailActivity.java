@@ -40,7 +40,7 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * Created by zhouas666 on 17-5-4.
+ * Created by zhouas666 on 18-1-23.
  * 书籍详情activity
  */
 
@@ -96,7 +96,6 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
     TextView mTvRecommendBookList;
     @BindView(R.id.book_detail_rv_recommend_book_list)
     RecyclerView mRvRecommendBookList;
-
     /**视图*/
     private HotCommentAdapter mHotCommentAdapter;
     private RecommendBookAdapter mBooksAdapter;

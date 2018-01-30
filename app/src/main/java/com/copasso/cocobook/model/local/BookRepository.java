@@ -3,15 +3,8 @@ package com.copasso.cocobook.model.local;
 import android.app.PendingIntent;
 import android.util.Log;
 
-import com.copasso.cocobook.model.bean.BookChapterBean;
-import com.copasso.cocobook.model.bean.BookRecordBean;
-import com.copasso.cocobook.model.bean.ChapterInfoBean;
-import com.copasso.cocobook.model.bean.CollBookBean;
-import com.copasso.cocobook.model.gen.BookChapterBeanDao;
-import com.copasso.cocobook.model.gen.BookRecordBeanDao;
-import com.copasso.cocobook.model.gen.CollBookBeanDao;
-import com.copasso.cocobook.model.gen.DaoSession;
-import com.copasso.cocobook.model.gen.DownloadTaskBeanDao;
+import com.copasso.cocobook.model.bean.*;
+import com.copasso.cocobook.model.gen.*;
 import com.copasso.cocobook.utils.BookManager;
 import com.copasso.cocobook.utils.Constant;
 import com.copasso.cocobook.utils.FileUtils;
@@ -38,7 +31,7 @@ import io.reactivex.SingleEmitter;
 import io.reactivex.SingleOnSubscribe;
 
 /**
- * Created by zhouas666 on 17-5-8.
+ * Created by zhouas666 on 18-1-23.
  * 存储关于书籍内容的信息(CollBook(收藏书籍),BookChapter(书籍列表),ChapterInfo(书籍章节),BookRecord(记录))
  */
 
@@ -64,7 +57,10 @@ public class BookRepository {
         return sInstance;
     }
 
-    //存储已收藏书籍
+    /**
+     * 存储已收藏书籍
+     * @param bean
+     */
     public void saveCollBookWithAsync(CollBookBean bean){
         //启动异步存储
         mSession.startAsyncSession()
@@ -146,12 +142,25 @@ public class BookRepository {
         }
     }
 
+    /**
+     * 存储阅读记录
+     * @param bean
+     */
     public void saveBookRecord(BookRecordBean bean){
         mSession.getBookRecordBeanDao()
                 .insertOrReplace(bean);
     }
 
-    /*****************************get************************************************/
+    /**
+     * 存储搜索记录
+     * @param bean
+     */
+    public void saveBookSearchRecord(BookSearchBean bean){
+        mSession.getBookSearchBeanDao()
+                .insertOrReplace(bean);
+    }
+
+    /**====================get====================**/
     public CollBookBean getCollBook(String bookId){
         CollBookBean bean = mCollBookDao.queryBuilder()
                 .where(CollBookBeanDao.Properties._id.eq(bookId))
@@ -159,7 +168,10 @@ public class BookRepository {
         return bean;
     }
 
-
+    /**
+     * 获取所有本地图书
+     * @return
+     */
     public  List<CollBookBean> getCollBooks(){
         return mCollBookDao
                 .queryBuilder()
@@ -167,9 +179,44 @@ public class BookRepository {
                 .list();
     }
 
+    /**
+     * 获取搜索历史
+     * @return
+     */
+    public  List<BookSearchBean> getSearchRecord(){
+        return mSession.getBookSearchBeanDao()
+                .queryBuilder()
+                .list();
+    }
+
+    /**
+     * 删除搜索记录
+     * @param keyword
+     */
+    public  void deleteSearchRecord(String keyword){
+        mSession.getBookSearchBeanDao()
+                .queryBuilder()
+                .where(BookSearchBeanDao.Properties.Keyword.eq(keyword))
+                .buildDelete()
+                .executeDeleteWithoutDetachingEntities();
+    }
+
+    /**
+     * 清空搜索记录
+     */
+    public  void deleteSearchRecords(){
+        mSession.getBookSearchBeanDao()
+                .queryBuilder()
+                .buildDelete()
+                .executeDeleteWithoutDetachingEntities();
+    }
 
 
-    //获取书籍列表
+    /**
+     * 获取书籍列表
+     * @param bookId
+     * @return
+     */
     public Single<List<BookChapterBean>> getBookChaptersInRx(String bookId){
         return Single.create(new SingleOnSubscribe<List<BookChapterBean>>() {
             @Override
@@ -184,7 +231,11 @@ public class BookRepository {
         });
     }
 
-    //获取阅读记录
+    /**
+     * 获取阅读记录
+     * @param bookId
+     * @return
+     */
     public BookRecordBean getBookRecord(String bookId){
         return mSession.getBookRecordBeanDao()
                 .queryBuilder()
@@ -219,8 +270,6 @@ public class BookRepository {
         bean.setBody(sb.toString());
         return bean;
     }
-
-    /************************************************************/
 
     /************************************************************/
     public Single<java.lang.Void> deleteCollBookInRx(CollBookBean bean) {

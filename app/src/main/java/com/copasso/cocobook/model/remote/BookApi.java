@@ -13,13 +13,12 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
- * Created by zhouas666 on 17-4-20.
+ * Created by zhouas666 on 18-1-23.
  */
 
 public interface BookApi {
 
-
-    /*******************************书籍*******************************************************/
+    /**====================书籍====================**/
     /**
      * 由性别推荐书籍
      * @param gender

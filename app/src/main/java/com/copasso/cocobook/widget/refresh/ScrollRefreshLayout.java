@@ -20,7 +20,7 @@ import com.copasso.cocobook.R;
 import butterknife.ButterKnife;
 
 /**
- * Created by zhouas666 on 17-4-18.
+ * Created by zhouas666 on 18-1-23.
  * 自带错误提示、数据为空、下拉刷新的控件
  */
 

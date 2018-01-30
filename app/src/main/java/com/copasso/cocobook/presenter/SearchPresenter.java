@@ -1,5 +1,7 @@
 package com.copasso.cocobook.presenter;
 
+import com.copasso.cocobook.model.bean.BookSearchBean;
+import com.copasso.cocobook.model.local.BookRepository;
 import com.copasso.cocobook.model.remote.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.SearchContract;
 import com.copasso.cocobook.ui.base.RxPresenter;
@@ -62,5 +64,16 @@ public class SearchPresenter extends RxPresenter<SearchContract.View>
                         }
                 );
         addDisposable(disp);
+    }
+
+    @Override
+    public void searchRecord() {
+        mView.finishRecord(BookRepository.getInstance().getSearchRecord());
+    }
+
+    @Override
+    public void addSearchRecord(BookSearchBean bean) {
+        BookRepository.getInstance().saveBookSearchRecord(bean);
+        mView.finishAddRecord(bean);
     }
 }

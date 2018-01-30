@@ -27,7 +27,7 @@ import com.copasso.cocobook.widget.SelectorView;
 import butterknife.BindView;
 
 /**
- * Created by zhouas666 on 17-4-17.
+ * Created by zhouas666 on 18-1-23.
  * 书籍讨论
  */
 

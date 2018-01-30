@@ -15,6 +15,7 @@ import com.copasso.cocobook.model.bean.BookHelpfulBean;
 import com.copasso.cocobook.model.bean.BookHelpsBean;
 import com.copasso.cocobook.model.bean.BookRecordBean;
 import com.copasso.cocobook.model.bean.BookReviewBean;
+import com.copasso.cocobook.model.bean.BookSearchBean;
 import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.bean.DownloadTaskBean;
 import com.copasso.cocobook.model.bean.ReviewBookBean;
@@ -26,6 +27,7 @@ import com.copasso.cocobook.model.gen.BookHelpfulBeanDao;
 import com.copasso.cocobook.model.gen.BookHelpsBeanDao;
 import com.copasso.cocobook.model.gen.BookRecordBeanDao;
 import com.copasso.cocobook.model.gen.BookReviewBeanDao;
+import com.copasso.cocobook.model.gen.BookSearchBeanDao;
 import com.copasso.cocobook.model.gen.CollBookBeanDao;
 import com.copasso.cocobook.model.gen.DownloadTaskBeanDao;
 import com.copasso.cocobook.model.gen.ReviewBookBeanDao;
@@ -46,6 +48,7 @@ public class DaoSession extends AbstractDaoSession {
     private final DaoConfig bookHelpsBeanDaoConfig;
     private final DaoConfig bookRecordBeanDaoConfig;
     private final DaoConfig bookReviewBeanDaoConfig;
+    private final DaoConfig bookSearchBeanDaoConfig;
     private final DaoConfig collBookBeanDaoConfig;
     private final DaoConfig downloadTaskBeanDaoConfig;
     private final DaoConfig reviewBookBeanDaoConfig;
@@ -57,6 +60,7 @@ public class DaoSession extends AbstractDaoSession {
     private final BookHelpsBeanDao bookHelpsBeanDao;
     private final BookRecordBeanDao bookRecordBeanDao;
     private final BookReviewBeanDao bookReviewBeanDao;
+    private final BookSearchBeanDao bookSearchBeanDao;
     private final CollBookBeanDao collBookBeanDao;
     private final DownloadTaskBeanDao downloadTaskBeanDao;
     private final ReviewBookBeanDao reviewBookBeanDao;
@@ -86,6 +90,9 @@ public class DaoSession extends AbstractDaoSession {
         bookReviewBeanDaoConfig = daoConfigMap.get(BookReviewBeanDao.class).clone();
         bookReviewBeanDaoConfig.initIdentityScope(type);
 
+        bookSearchBeanDaoConfig = daoConfigMap.get(BookSearchBeanDao.class).clone();
+        bookSearchBeanDaoConfig.initIdentityScope(type);
+
         collBookBeanDaoConfig = daoConfigMap.get(CollBookBeanDao.class).clone();
         collBookBeanDaoConfig.initIdentityScope(type);
 
@@ -102,6 +109,7 @@ public class DaoSession extends AbstractDaoSession {
         bookHelpsBeanDao = new BookHelpsBeanDao(bookHelpsBeanDaoConfig, this);
         bookRecordBeanDao = new BookRecordBeanDao(bookRecordBeanDaoConfig, this);
         bookReviewBeanDao = new BookReviewBeanDao(bookReviewBeanDaoConfig, this);
+        bookSearchBeanDao = new BookSearchBeanDao(bookSearchBeanDaoConfig, this);
         collBookBeanDao = new CollBookBeanDao(collBookBeanDaoConfig, this);
         downloadTaskBeanDao = new DownloadTaskBeanDao(downloadTaskBeanDaoConfig, this);
         reviewBookBeanDao = new ReviewBookBeanDao(reviewBookBeanDaoConfig, this);
@@ -113,6 +121,7 @@ public class DaoSession extends AbstractDaoSession {
         registerDao(BookHelpsBean.class, bookHelpsBeanDao);
         registerDao(BookRecordBean.class, bookRecordBeanDao);
         registerDao(BookReviewBean.class, bookReviewBeanDao);
+        registerDao(BookSearchBean.class, bookSearchBeanDao);
         registerDao(CollBookBean.class, collBookBeanDao);
         registerDao(DownloadTaskBean.class, downloadTaskBeanDao);
         registerDao(ReviewBookBean.class, reviewBookBeanDao);
@@ -126,6 +135,7 @@ public class DaoSession extends AbstractDaoSession {
         bookHelpsBeanDaoConfig.clearIdentityScope();
         bookRecordBeanDaoConfig.clearIdentityScope();
         bookReviewBeanDaoConfig.clearIdentityScope();
+        bookSearchBeanDaoConfig.clearIdentityScope();
         collBookBeanDaoConfig.clearIdentityScope();
         downloadTaskBeanDaoConfig.clearIdentityScope();
         reviewBookBeanDaoConfig.clearIdentityScope();
@@ -157,6 +167,10 @@ public class DaoSession extends AbstractDaoSession {
 
     public BookReviewBeanDao getBookReviewBeanDao() {
         return bookReviewBeanDao;
+    }
+
+    public BookSearchBeanDao getBookSearchBeanDao() {
+        return bookSearchBeanDao;
     }
 
     public CollBookBeanDao getCollBookBeanDao() {

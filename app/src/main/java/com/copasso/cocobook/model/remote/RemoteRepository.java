@@ -4,15 +4,13 @@ import com.copasso.cocobook.model.bean.BookChapterBean;
 import com.copasso.cocobook.model.bean.BookDetailBean;
 import com.copasso.cocobook.model.bean.ChapterInfoBean;
 import com.copasso.cocobook.model.bean.CollBookBean;
-import com.copasso.cocobook.model.bean.packages.BillboardPackage;
+import com.copasso.cocobook.model.bean.packages.*;
 import com.copasso.cocobook.model.bean.BillBookBean;
 import com.copasso.cocobook.model.bean.BookHelpsBean;
 import com.copasso.cocobook.model.bean.BookListBean;
 import com.copasso.cocobook.model.bean.BookListDetailBean;
 import com.copasso.cocobook.model.bean.BookReviewBean;
 import com.copasso.cocobook.model.bean.BookCommentBean;
-import com.copasso.cocobook.model.bean.packages.BookSortPackage;
-import com.copasso.cocobook.model.bean.packages.BookSubSortPackage;
 import com.copasso.cocobook.model.bean.BookTagBean;
 import com.copasso.cocobook.model.bean.CommentBean;
 import com.copasso.cocobook.model.bean.CommentDetailBean;
@@ -20,13 +18,12 @@ import com.copasso.cocobook.model.bean.HelpsDetailBean;
 import com.copasso.cocobook.model.bean.HotCommentBean;
 import com.copasso.cocobook.model.bean.ReviewDetailBean;
 import com.copasso.cocobook.model.bean.SortBookBean;
-import com.copasso.cocobook.model.bean.packages.ChapterInfoPackage;
-import com.copasso.cocobook.model.bean.packages.SearchBookPackage;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Single;
+import io.reactivex.functions.Function;
 import retrofit2.Retrofit;
 
 /**
