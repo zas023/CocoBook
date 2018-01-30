@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <include layout="@layout/toolbar"/>
+    
+    <com.copasso.cocobook.widget.RefreshLayout
+        android:id="@+id/billboard_rl_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    style="@style/NB.Theme.TextAppearance.Billboard.Title"
+                    android:text="男生" />
+        
+                <com.copasso.cocobook.widget.CustomExpandableListView
+                    android:id="@+id/billboard_elv_boy"
+                    style="@style/NB.Theme.Widget.DefaultExpandListView">
+                </com.copasso.cocobook.widget.CustomExpandableListView>
+        
+                <TextView
+                    style="@style/NB.Theme.TextAppearance.Billboard.Title"
+                    android:text="女生" />
+        
+                <com.copasso.cocobook.widget.CustomExpandableListView
+                    android:id="@+id/billboard_elv_girl"
+                    style="@style/NB.Theme.Widget.DefaultExpandListView">
+                </com.copasso.cocobook.widget.CustomExpandableListView>
+            </LinearLayout>
+        </ScrollView>
+    </com.copasso.cocobook.widget.RefreshLayout>
+</LinearLayout>
