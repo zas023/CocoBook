@@ -1,4 +1,4 @@
-package com.copasso.cocobook.model.flag;
+package com.copasso.cocobook.model.type;
 
 import android.support.annotation.StringRes;
 

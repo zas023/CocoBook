@@ -2,13 +2,12 @@ package com.copasso.cocobook.presenter.contract;
 
 import com.copasso.cocobook.model.bean.CommentBean;
 import com.copasso.cocobook.model.bean.CommentDetailBean;
-import com.copasso.cocobook.model.flag.CommunityType;
 import com.copasso.cocobook.ui.base.BaseContract;
 
 import java.util.List;
 
 /**
- * Created by zhouas666 on 17-4-29.
+ * Created by zhouas666 on 18-1-23.
  */
 
 public interface CommentDetailContract {

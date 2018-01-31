@@ -1,6 +1,6 @@
 package com.copasso.cocobook.presenter;
 
-import com.copasso.cocobook.model.flag.BookSortListType;
+import com.copasso.cocobook.model.type.BookSortListType;
 import com.copasso.cocobook.model.remote.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.BookSortListContract;
 import com.copasso.cocobook.ui.base.RxPresenter;

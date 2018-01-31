@@ -25,6 +25,7 @@ import com.copasso.cocobook.widget.animation.SlidePageAnim;
  */
 public class PageView extends View {
 
+    /******************************常量************************/
     public final static int PAGE_MODE_SIMULATION = 0;
     public final static int PAGE_MODE_COVER = 1;
     public final static int PAGE_MODE_SLIDE = 2;
@@ -32,8 +33,7 @@ public class PageView extends View {
     //滚动效果
     public final static int PAGE_MODE_SCROLL = 4;
 
-    private final static String TAG = "BookPageWidget";
-
+    /******************************参数************************/
     private int mViewWidth = 0; // 当前View的宽
     private int mViewHeight = 0; // 当前View的高
 

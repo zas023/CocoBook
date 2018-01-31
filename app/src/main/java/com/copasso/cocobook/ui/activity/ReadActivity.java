@@ -33,12 +33,10 @@ import android.widget.TextView;
 
 import butterknife.OnClick;
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.RxBus;
-import com.copasso.cocobook.event.DownloadMessage;
 import com.copasso.cocobook.model.bean.BookChapterBean;
 import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.local.BookRepository;
-import com.copasso.cocobook.model.local.ReadSettingManager;
+import com.copasso.cocobook.utils.ReadSettingManager;
 import com.copasso.cocobook.presenter.ReadPresenter;
 import com.copasso.cocobook.presenter.contract.ReadContract;
 import com.copasso.cocobook.ui.adapter.CategoryAdapter;
@@ -53,7 +51,6 @@ import com.copasso.cocobook.widget.page.TxtChapter;
 import java.util.List;
 
 import butterknife.BindView;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 
 import static android.view.View.GONE;
@@ -65,6 +62,8 @@ import static android.view.View.VISIBLE;
 
 public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         implements ReadContract.View {
+
+    /***********************常量*************************/
     public static final int REQUEST_MORE_SETTING = 1;
     public static final String EXTRA_COLL_BOOK = "extra_coll_book";
     public static final String EXTRA_IS_COLLECTED = "extra_is_collected";
@@ -81,17 +80,17 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
 
     @BindView(R.id.read_dl_slide)
     DrawerLayout mDlSlide;
-    /*************top_menu_view*******************/
+    //顶部菜单
     @BindView(R.id.read_abl_top_menu)
     AppBarLayout mAblTopMenu;
     @BindView(R.id.read_tv_community)
     TextView mTvCommunity;
     @BindView(R.id.read_tv_brief)
     TextView mTvBrief;
-    /***************content_view******************/
+    //章节内容
     @BindView(R.id.read_pv_page)
     PageView mPvPage;
-    /***************bottom_menu_view***************************/
+    //底部菜单
     @BindView(R.id.read_tv_page_tip)
     TextView mTvPageTip;
 
@@ -112,10 +111,10 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     @BindView(R.id.read_tv_setting)
     TextView mTvSetting;
 
-    /***************left slide*******************************/
+    //章节目录
     @BindView(R.id.read_iv_category)
     ListView mLvCategory;
-    /*****************view******************/
+    /**********************************视图***********************************/
     private ReadSettingDialog mSettingDialog;
     private PageLoader mPageLoader;
     private Animation mTopInAnim;
@@ -158,32 +157,32 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
             if (selfChange || !mSettingDialog.isBrightFollowSystem()) return;
 
             //如果系统亮度改变，则修改当前 Activity 亮度
-            if (BRIGHTNESS_MODE_URI.equals(uri)) {
-                Log.d(TAG, "亮度模式改变");
-            } else if (BRIGHTNESS_URI.equals(uri) && !BrightnessUtils.isAutoBrightness(ReadActivity.this)) {
-                Log.d(TAG, "亮度模式为手动模式 值改变");
-                BrightnessUtils.setBrightness(ReadActivity.this, BrightnessUtils.getScreenBrightness(ReadActivity.this));
-            } else if (BRIGHTNESS_ADJ_URI.equals(uri) && BrightnessUtils.isAutoBrightness(ReadActivity.this)) {
-                Log.d(TAG, "亮度模式为自动模式 值改变");
-                BrightnessUtils.setBrightness(ReadActivity.this, BrightnessUtils.getScreenBrightness(ReadActivity.this));
+           if (BRIGHTNESS_URI.equals(uri) && !UiUtils.isAutoBrightness(mContext)) {
+                //亮度模式为手动模式 值改变
+               UiUtils.setBrightness(mContext, UiUtils.getScreenBrightness(mContext));
+            } else if (BRIGHTNESS_ADJ_URI.equals(uri) && UiUtils.isAutoBrightness(mContext)) {
+                //亮度模式为自动模式 值改变
+               UiUtils.setBrightness(mContext, UiUtils.getScreenBrightness(mContext));
             } else {
                 Log.d(TAG, "亮度调整 其他");
             }
         }
     };
 
-    /***************params*****************/
+    /********************************参数**********************************/
     private boolean isCollected = false; //isFromSDCard
     private boolean isNightMode = false;
     private boolean isFullScreen = false;
     private String mBookId;
 
+    /*******************************公共方法**********************************/
     public static void startActivity(Context context, CollBookBean collBook, boolean isCollected) {
         context.startActivity(new Intent(context, ReadActivity.class)
                 .putExtra(EXTRA_IS_COLLECTED, isCollected)
                 .putExtra(EXTRA_COLL_BOOK, collBook));
     }
 
+    /********************************初始化**********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_read;
@@ -237,9 +236,9 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
 
         //设置当前Activity的Brightness
         if (ReadSettingManager.getInstance().isBrightnessAuto()) {
-            BrightnessUtils.setBrightness(this, BrightnessUtils.getScreenBrightness(this));
+            UiUtils.setBrightness(this, UiUtils.getScreenBrightness(this));
         } else {
-            BrightnessUtils.setBrightness(this, ReadSettingManager.getInstance().getBrightness());
+            UiUtils.setBrightness(this, ReadSettingManager.getInstance().getBrightness());
         }
 
         //初始化屏幕常亮类
@@ -311,7 +310,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                 }
             }
         } catch (Throwable throwable) {
-            Log.e(TAG, "[ouyangyj] register mBrightObserver error! " + throwable);
+            Log.e(TAG, "register mBrightObserver error! " + throwable);
         }
     }
 
@@ -563,6 +562,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         mBottomOutAnim.setDuration(200);
     }
 
+    /***************************数据处理************************************/
     @Override
     protected void processLogic() {
         super.processLogic();
@@ -589,7 +589,6 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         }
     }
 
-    /***************************view************************************/
     @Override
     public void showError() {
 
@@ -674,6 +673,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         }
     }
 
+
     //退出
     private void exit() {
         //返回给BookDetail。
@@ -684,6 +684,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         super.onBackPressed();
     }
 
+    /********************************状态处理**********************************/
     @Override
     protected void onStart() {
         super.onStart();
@@ -718,6 +719,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         mPageLoader.closeBook();
     }
 
+    /********************************事件处理**********************************/
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         boolean isVolumeTurnPage = ReadSettingManager

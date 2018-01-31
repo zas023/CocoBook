@@ -1,6 +1,6 @@
 package com.copasso.cocobook.ui.activity;
 
-import static com.copasso.cocobook.model.flag.BookSelection.*;
+import static com.copasso.cocobook.model.type.BookSelection.*;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,11 +12,10 @@ import com.copasso.cocobook.R;
 import com.copasso.cocobook.RxBus;
 import com.copasso.cocobook.event.SelectorEvent;
 
-import com.copasso.cocobook.model.flag.BookDistillate;
-import com.copasso.cocobook.model.flag.BookSort;
-import com.copasso.cocobook.model.flag.BookType;
-import com.copasso.cocobook.model.flag.CommunityType;
-import com.copasso.cocobook.ui.base.BaseActivity;
+import com.copasso.cocobook.model.type.BookDistillate;
+import com.copasso.cocobook.model.type.BookSort;
+import com.copasso.cocobook.model.type.BookType;
+import com.copasso.cocobook.model.type.CommunityType;
 import com.copasso.cocobook.ui.base.BaseBackActivity;
 import com.copasso.cocobook.ui.fragment.DiscCommentFragment;
 import com.copasso.cocobook.ui.fragment.DiscHelpsFragment;

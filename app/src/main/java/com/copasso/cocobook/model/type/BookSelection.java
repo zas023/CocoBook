@@ -1,7 +1,6 @@
-package com.copasso.cocobook.model.flag;
+package com.copasso.cocobook.model.type;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 

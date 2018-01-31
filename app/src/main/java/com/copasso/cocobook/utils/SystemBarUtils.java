@@ -5,10 +5,7 @@ import android.os.Build;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.copasso.cocobook.R;
-
 /**
- * Created by zhouas666 on 17-5-16.
  * 基于 Android 4.4
  *
  * 主要参数说明:

@@ -1,8 +1,8 @@
 package com.copasso.cocobook.presenter;
 
 import com.copasso.cocobook.model.bean.BookHelpsBean;
-import com.copasso.cocobook.model.flag.BookDistillate;
-import com.copasso.cocobook.model.flag.BookSort;
+import com.copasso.cocobook.model.type.BookDistillate;
+import com.copasso.cocobook.model.type.BookSort;
 import com.copasso.cocobook.model.local.LocalRepository;
 import com.copasso.cocobook.model.remote.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.DiscHelpsContract;

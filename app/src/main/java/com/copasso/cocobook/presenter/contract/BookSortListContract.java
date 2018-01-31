@@ -1,7 +1,7 @@
 package com.copasso.cocobook.presenter.contract;
 
 import com.copasso.cocobook.model.bean.SortBookBean;
-import com.copasso.cocobook.model.flag.BookSortListType;
+import com.copasso.cocobook.model.type.BookSortListType;
 import com.copasso.cocobook.ui.base.BaseContract;
 
 import java.util.List;

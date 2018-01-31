@@ -1,4 +1,4 @@
-package com.copasso.cocobook.model.flag;
+package com.copasso.cocobook.model.type;
 
 /**
  * Created by zhouas666 on 2018/1/14.

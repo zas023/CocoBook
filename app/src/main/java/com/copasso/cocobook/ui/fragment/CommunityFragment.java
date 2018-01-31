@@ -7,7 +7,7 @@ import android.view.View;
 import butterknife.BindView;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.bean.SectionBean;
-import com.copasso.cocobook.model.flag.CommunityType;
+import com.copasso.cocobook.model.type.CommunityType;
 import com.copasso.cocobook.ui.activity.BookDiscussionActivity;
 import com.copasso.cocobook.ui.adapter.SectionAdapter;
 import com.copasso.cocobook.ui.base.BaseFragment;

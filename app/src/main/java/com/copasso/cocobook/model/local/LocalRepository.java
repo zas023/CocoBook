@@ -9,7 +9,7 @@ import com.copasso.cocobook.model.bean.BookHelpfulBean;
 import com.copasso.cocobook.model.bean.BookHelpsBean;
 import com.copasso.cocobook.model.bean.BookReviewBean;
 import com.copasso.cocobook.model.bean.packages.BookSortPackage;
-import com.copasso.cocobook.model.flag.BookSort;
+import com.copasso.cocobook.model.type.BookSort;
 import com.copasso.cocobook.model.gen.AuthorBeanDao;
 
 import com.copasso.cocobook.model.gen.BookCommentBeanDao;

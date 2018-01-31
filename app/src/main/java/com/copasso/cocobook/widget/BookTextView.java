@@ -21,7 +21,7 @@ import android.widget.TextView;
 import com.copasso.cocobook.R;
 
 /**
- * Created by zhouas666 on 17-4-29.
+ * Created by zhouas666 on 18-1-23.
  * 1. 找到改写TextView内容的方法:是哪个 0 0，个人猜测是setText()
  * 2. 找到文章中存在《》的位置:
  * 3. 设置ForeSpan

@@ -1,7 +1,5 @@
-package com.copasso.cocobook.model.local;
+package com.copasso.cocobook.utils;
 
-import com.copasso.cocobook.utils.ScreenUtils;
-import com.copasso.cocobook.utils.SharedPreUtils;
 import com.copasso.cocobook.widget.page.PageView;
 
 /**
@@ -10,7 +8,7 @@ import com.copasso.cocobook.widget.page.PageView;
  */
 
 public class ReadSettingManager {
-    /*************实在想不出什么好记的命名方式。。******************/
+    /**************************常量***********************/
     public static final int READ_BG_DEFAULT = 0;
     public static final int READ_BG_1 = 1;
     public static final int READ_BG_2 = 2;

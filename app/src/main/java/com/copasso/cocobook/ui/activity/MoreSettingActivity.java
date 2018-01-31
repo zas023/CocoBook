@@ -6,8 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.RelativeLayout;
 
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.model.local.ReadSettingManager;
-import com.copasso.cocobook.ui.base.BaseActivity;
+import com.copasso.cocobook.utils.ReadSettingManager;
 
 import butterknife.BindView;
 import com.copasso.cocobook.ui.base.BaseBackActivity;

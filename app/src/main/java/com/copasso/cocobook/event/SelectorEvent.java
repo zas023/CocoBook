@@ -1,9 +1,8 @@
 package com.copasso.cocobook.event;
 
-import com.copasso.cocobook.model.flag.BookDistillate;
-import com.copasso.cocobook.model.flag.BookSort;
-import com.copasso.cocobook.model.flag.BookType;
-import com.copasso.cocobook.utils.Constant;
+import com.copasso.cocobook.model.type.BookDistillate;
+import com.copasso.cocobook.model.type.BookSort;
+import com.copasso.cocobook.model.type.BookType;
 
 /**
  * Created by zhouas666 on 17-4-21.

@@ -1,9 +1,9 @@
 package com.copasso.cocobook.presenter.contract;
 
 import com.copasso.cocobook.model.bean.BookCommentBean;
-import com.copasso.cocobook.model.flag.BookDistillate;
-import com.copasso.cocobook.model.flag.BookSort;
-import com.copasso.cocobook.model.flag.CommunityType;
+import com.copasso.cocobook.model.type.BookDistillate;
+import com.copasso.cocobook.model.type.BookSort;
+import com.copasso.cocobook.model.type.CommunityType;
 import com.copasso.cocobook.ui.base.BaseContract;
 
 import java.util.List;

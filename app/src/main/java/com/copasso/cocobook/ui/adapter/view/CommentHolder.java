@@ -14,7 +14,7 @@ import com.copasso.cocobook.utils.StringUtils;
 import com.copasso.cocobook.widget.transform.CircleTransform;
 
 /**
- * Created by zhouas666 on 17-4-29.
+ * Created by zhouas666 on 18-1-23.
  */
 
 public class CommentHolder extends ViewHolderImpl<CommentBean>{

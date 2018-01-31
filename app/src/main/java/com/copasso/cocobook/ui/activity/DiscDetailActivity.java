@@ -7,8 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.model.flag.CommunityType;
-import com.copasso.cocobook.ui.base.BaseActivity;
+import com.copasso.cocobook.model.type.CommunityType;
 import com.copasso.cocobook.ui.base.BaseBackActivity;
 import com.copasso.cocobook.ui.fragment.CommentDetailFragment;
 import com.copasso.cocobook.ui.fragment.HelpsDetailFragment;

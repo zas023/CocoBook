@@ -1,7 +1,7 @@
 package com.copasso.cocobook.model.bean;
 
 /**
- * Created by zhouas666 on 17-4-29.
+ * Created by zhouas666 on 18-1-23.
  */
 
 public class ReplyToBean {

@@ -18,7 +18,7 @@ import com.copasso.cocobook.model.bean.BookChapterBean;
 import com.copasso.cocobook.model.bean.BookRecordBean;
 import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.local.BookRepository;
-import com.copasso.cocobook.model.local.ReadSettingManager;
+import com.copasso.cocobook.utils.ReadSettingManager;
 import com.copasso.cocobook.utils.Constant;
 import com.copasso.cocobook.utils.IOUtils;
 import com.copasso.cocobook.utils.RxUtils;

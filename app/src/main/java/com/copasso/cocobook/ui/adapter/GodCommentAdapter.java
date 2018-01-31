@@ -6,7 +6,7 @@ import com.copasso.cocobook.ui.base.adapter.BaseListAdapter;
 import com.copasso.cocobook.ui.base.adapter.IViewHolder;
 
 /**
- * Created by zhouas666 on 17-4-29.
+ * Created by zhouas666 on 18-1-23.
  */
 
 public class GodCommentAdapter extends BaseListAdapter<CommentBean>{

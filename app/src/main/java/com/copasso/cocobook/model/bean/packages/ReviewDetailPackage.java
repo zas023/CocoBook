@@ -4,7 +4,7 @@ import com.copasso.cocobook.model.bean.BaseBean;
 import com.copasso.cocobook.model.bean.ReviewDetailBean;
 
 /**
- * Created by zhouas666 on 17-4-29.
+ * Created by zhouas666 on 18-1-23.
  */
 
 public class ReviewDetailPackage extends BaseBean {

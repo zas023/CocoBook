@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.copasso.cocobook.model.gen.DaoMaster;
-import com.copasso.cocobook.model.local.update.MigrationHelper;
 import com.copasso.cocobook.model.local.update.Update2Helper;
 
 import org.greenrobot.greendao.database.Database;

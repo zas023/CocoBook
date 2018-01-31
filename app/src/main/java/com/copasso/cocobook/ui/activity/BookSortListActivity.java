@@ -12,10 +12,9 @@ import com.copasso.cocobook.R;
 import com.copasso.cocobook.RxBus;
 import com.copasso.cocobook.event.BookSubSortEvent;
 import com.copasso.cocobook.model.bean.BookSubSortBean;
-import com.copasso.cocobook.model.flag.BookSortListType;
+import com.copasso.cocobook.model.type.BookSortListType;
 import com.copasso.cocobook.ui.adapter.HorizonTagAdapter;
 import com.copasso.cocobook.ui.base.BaseBackTabActivity;
-import com.copasso.cocobook.ui.base.BaseTabActivity;
 import com.copasso.cocobook.ui.fragment.BookSortListFragment;
 
 import java.util.ArrayList;

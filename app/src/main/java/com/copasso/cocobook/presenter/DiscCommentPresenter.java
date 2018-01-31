@@ -3,9 +3,9 @@ package com.copasso.cocobook.presenter;
 import static com.copasso.cocobook.utils.LogUtils.*;
 
 import com.copasso.cocobook.model.bean.BookCommentBean;
-import com.copasso.cocobook.model.flag.BookDistillate;
-import com.copasso.cocobook.model.flag.BookSort;
-import com.copasso.cocobook.model.flag.CommunityType;
+import com.copasso.cocobook.model.type.BookDistillate;
+import com.copasso.cocobook.model.type.BookSort;
+import com.copasso.cocobook.model.type.CommunityType;
 import com.copasso.cocobook.model.local.LocalRepository;
 import com.copasso.cocobook.model.remote.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.DiscCommentContact;

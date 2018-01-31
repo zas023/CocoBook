@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.bean.SectionBean;
-import com.copasso.cocobook.model.flag.FindType;
+import com.copasso.cocobook.model.type.FindType;
 import com.copasso.cocobook.ui.activity.BillboardActivity;
 import com.copasso.cocobook.ui.activity.BookListActivity;
 import com.copasso.cocobook.ui.activity.BookSortActivity;

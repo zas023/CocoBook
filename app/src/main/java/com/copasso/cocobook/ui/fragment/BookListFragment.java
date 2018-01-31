@@ -9,7 +9,7 @@ import com.copasso.cocobook.R;
 import com.copasso.cocobook.RxBus;
 import com.copasso.cocobook.event.BookSubSortEvent;
 import com.copasso.cocobook.model.bean.BookListBean;
-import com.copasso.cocobook.model.flag.BookListType;
+import com.copasso.cocobook.model.type.BookListType;
 import com.copasso.cocobook.presenter.BookListPresenter;
 import com.copasso.cocobook.presenter.contract.BookListContract;
 import com.copasso.cocobook.ui.activity.BookListDetailActivity;

@@ -1,18 +1,20 @@
-package com.copasso.cocobook.model.flag;
+package com.copasso.cocobook.model.type;
 
 /**
  * Created by zhouas666 on 18-1-23.
- *
+ * ("默认排序","最新发布","最多评论"),
  */
 
-public enum BookDistillate implements BookConvert{
-    ALL("全部","","normal"),
-    BOUTIQUES("精品","true","distillate");
+public enum BookSort implements BookConvert{
+    DEFAULT("默认排序","updated","Updated"),
+    CREATED("最新发布","created","Created"),
+    HELPFUL("最多推荐","helpful","LikeCount"),
+    COMMENT_COUNT("最多评论","comment-count","CommentCount");
 
     String typeName;
     String netName;
     String dbName;
-    BookDistillate(String typeName, String netName, String dbName){
+    BookSort(String typeName, String netName,String dbName){
         this.typeName = typeName;
         this.netName = netName;
         this.dbName = dbName;

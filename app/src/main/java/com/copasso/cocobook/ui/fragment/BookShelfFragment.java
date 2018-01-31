@@ -112,7 +112,7 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
                 .subscribe(
                         event -> {
                             if (event.isDelete) {
-                                ProgressUtils.show("正在删除中");
+                                ProgressUtils.show(mContext,"正在删除中");
                                 addDisposable(BookRepository.getInstance().deleteCollBookInRx(event.collBook)
                                         .compose(RxUtils::toSimpleSingle)
                                         .subscribe(
@@ -244,7 +244,7 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
                     .setPositiveButton(UiUtils.getString(R.string.nb_common_sure), ((dialogInterface, i) -> {
                         boolean isSelected = cb.isSelected();
                         if (isSelected) {
-                            ProgressUtils.show("删除中...");
+                            ProgressUtils.show(mContext,"删除中...");
                             //删除
                             File file = new File(collBook.getCover());
                             if (file.exists()) file.delete();

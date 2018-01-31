@@ -14,7 +14,7 @@ import com.copasso.cocobook.R;
 import com.copasso.cocobook.RxBus;
 import com.copasso.cocobook.event.BookSubSortEvent;
 import com.copasso.cocobook.model.bean.BookTagBean;
-import com.copasso.cocobook.model.flag.BookListType;
+import com.copasso.cocobook.model.type.BookListType;
 import com.copasso.cocobook.model.remote.RemoteRepository;
 import com.copasso.cocobook.ui.adapter.HorizonTagAdapter;
 import com.copasso.cocobook.ui.adapter.TagGroupAdapter;

@@ -20,11 +20,10 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.model.local.ReadSettingManager;
+import com.copasso.cocobook.utils.ReadSettingManager;
 import com.copasso.cocobook.ui.activity.MoreSettingActivity;
 import com.copasso.cocobook.ui.activity.ReadActivity;
 import com.copasso.cocobook.ui.adapter.ReadBgAdapter;
-import com.copasso.cocobook.utils.BrightnessUtils;
 import com.copasso.cocobook.utils.ScreenUtils;
 import com.copasso.cocobook.widget.page.PageLoader;
 import com.copasso.cocobook.widget.page.PageView;

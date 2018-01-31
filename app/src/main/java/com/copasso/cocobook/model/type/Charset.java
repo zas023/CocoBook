@@ -1,4 +1,4 @@
-package com.copasso.cocobook.utils;
+package com.copasso.cocobook.model.type;
 
 /**
  * 编码类型
