@@ -271,22 +271,33 @@ public class BookRepository {
         return bean;
     }
 
-    /************************************************************/
-    public Single<java.lang.Void> deleteCollBookInRx(CollBookBean bean) {
-        return Single.create(new SingleOnSubscribe<java.lang.Void>() {
-            @Override
-            public void subscribe(SingleEmitter<java.lang.Void> e) throws Exception {
-                //查看文本中是否存在删除的数据
-                deleteBook(bean.get_id());
-                //删除任务
-                deleteDownloadTask(bean.get_id());
-                //删除目录
-                deleteBookChapter(bean.get_id());
-                //删除CollBook
-                mCollBookDao.delete(bean);
-                //e.onSuccess(new Void());
-            }
+    /***************************删除*********************************/
+    public Single<Integer> deleteCollBookInRx(CollBookBean bean) {
+        return Single.create(e -> {
+            //查看文本中是否存在删除的数据
+            deleteBook(bean.get_id());
+            //删除任务
+            deleteDownloadTask(bean.get_id());
+            //删除目录
+            deleteBookChapter(bean.get_id());
+            //删除CollBook
+            mCollBookDao.delete(bean);
+            e.onSuccess(1);
         });
+    }
+
+    //删除书籍
+    public void deleteBook(String bookId){
+        FileUtils.deleteFile(Constant.BOOK_CACHE_PATH+bookId);
+    }
+
+    //删除任务
+    public void deleteDownloadTask(String bookId){
+        mSession.getDownloadTaskBeanDao()
+                .queryBuilder()
+                .where(DownloadTaskBeanDao.Properties.BookId.eq(bookId))
+                .buildDelete()
+                .executeDeleteWithoutDetachingEntities();
     }
 
     //这个需要用rx，进行删除
@@ -302,11 +313,6 @@ public class BookRepository {
         mCollBookDao.delete(collBook);
     }
 
-    //删除书籍
-    public void deleteBook(String bookId){
-        FileUtils.deleteFile(Constant.BOOK_CACHE_PATH+bookId);
-    }
-
     public void deleteBookRecord(String id){
         mSession.getBookRecordBeanDao()
                 .queryBuilder()
@@ -315,14 +321,6 @@ public class BookRepository {
                 .executeDeleteWithoutDetachingEntities();
     }
 
-    //删除任务
-    public void deleteDownloadTask(String bookId){
-        mSession.getDownloadTaskBeanDao()
-                .queryBuilder()
-                .where(DownloadTaskBeanDao.Properties.BookId.eq(bookId))
-                .buildDelete()
-                .executeDeleteWithoutDetachingEntities();
-    }
 
     public DaoSession getSession(){
         return mSession;

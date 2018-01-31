@@ -32,16 +32,16 @@ import butterknife.BindView;
  */
 
 public class BookDiscussionActivity extends BaseBackActivity implements SelectorView.OnItemSelectedListener {
-    /**常量**/
+    /*******************************常量********************************/
     private static final String EXTRA_COMMUNITY = "extra_community";
     private static final int TYPE_FIRST = 0;
     private static final int TYPE_SECOND= 1;
 
-    /**视图*/
+    /*******************************视图*******************************/
     @BindView(R.id.book_discussion_sv_selector)
     SelectorView mSvSelector;
 
-    /**参数**/
+    /********************************参数******************************/
     //当前的讨论组
     private CommunityType mType;
     //每个讨论组中的选择分类
@@ -49,14 +49,14 @@ public class BookDiscussionActivity extends BaseBackActivity implements Selector
     private BookDistillate mDistillate = BookDistillate.ALL;
     private BookType mBookType = BookType.ALL;
 
-    /**公开方法**/
+    /******************************公开方法*****************************/
     public static void startActivity(Context context, CommunityType type){
         Intent intent = new Intent(context,BookDiscussionActivity.class);
         intent.putExtra(EXTRA_COMMUNITY,type);
         context.startActivity(intent);
     }
 
-    /**初始化方法**/
+    /******************************初始化方法******************************/
     @Override
     protected int getLayoutId(){
         return R.layout.activity_book_discussion;
@@ -83,32 +83,7 @@ public class BookDiscussionActivity extends BaseBackActivity implements Selector
         mSvSelector.setOnItemSelectedListener(this);
     }
 
-    @Override
-    public void onItemSelected(int type, int pos) {
-        //转换器
-        switch (type) {
-            case 0:
-                mDistillate = BookDistillate.values()[pos];
-                break;
-            case 1:
-                if (mSvSelector.getChildCount() == 2) {
-                    //当size = 2的时候，就会到Sort这里。
-                    mBookSort = BookSort.values()[pos];
-                } else if (mSvSelector.getChildCount() == 3) {
-                    mBookType = BookType.values()[pos];
-                }
-                break;
-            case 2:
-                mBookSort = BookSort.values()[pos];
-                break;
-            default:
-                break;
-        }
-
-        RxBus.getInstance()
-                .post(Constant.MSG_SELECTOR, new SelectorEvent(mDistillate, mBookType, mBookSort));
-    }
-
+    /*******************************数据请求************************************/
     /**
      * 逻辑处理
      */
@@ -148,10 +123,36 @@ public class BookDiscussionActivity extends BaseBackActivity implements Selector
         }
     }
 
-    /**********************************************************************/
+    /*******************************事件处理************************************/
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putSerializable(EXTRA_COMMUNITY,mType);
+    }
+
+    @Override
+    public void onItemSelected(int type, int pos) {
+        //转换器
+        switch (type) {
+            case 0:
+                mDistillate = BookDistillate.values()[pos];
+                break;
+            case 1:
+                if (mSvSelector.getChildCount() == 2) {
+                    //当size = 2的时候，就会到Sort这里。
+                    mBookSort = BookSort.values()[pos];
+                } else if (mSvSelector.getChildCount() == 3) {
+                    mBookType = BookType.values()[pos];
+                }
+                break;
+            case 2:
+                mBookSort = BookSort.values()[pos];
+                break;
+            default:
+                break;
+        }
+
+        RxBus.getInstance()
+                .post(Constant.MSG_SELECTOR, new SelectorEvent(mDistillate, mBookType, mBookSort));
     }
 }

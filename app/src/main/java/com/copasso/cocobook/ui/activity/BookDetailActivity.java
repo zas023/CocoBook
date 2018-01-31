@@ -31,6 +31,7 @@ import com.copasso.cocobook.ui.base.adapter.BaseListAdapter;
 import com.copasso.cocobook.utils.Constant;
 import com.copasso.cocobook.utils.StringUtils;
 import com.copasso.cocobook.utils.ToastUtils;
+import com.copasso.cocobook.utils.UiUtils;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.itemdecoration.DividerGridItemDecoration;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
@@ -46,10 +47,9 @@ import butterknife.BindView;
 
 public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Presenter>
         implements BookDetailContract.View {
-    /**常量**/
+    /************************************常量************************************/
     public static final String RESULT_IS_COLLECTED = "result_is_collected";
     private static final String EXTRA_BOOK_ID = "extra_book_id";
-
     private static final int REQUEST_READ = 1;
 
     @BindView(R.id.refresh_layout)
@@ -96,31 +96,50 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
     TextView mTvRecommendBookList;
     @BindView(R.id.book_detail_rv_recommend_book_list)
     RecyclerView mRvRecommendBookList;
-    /**视图*/
+    /************************************视图***********************************/
     private HotCommentAdapter mHotCommentAdapter;
     private RecommendBookAdapter mBooksAdapter;
     private BookListAdapter mBookListAdapter;
     private CollBookBean mCollBookBean;
     private ProgressDialog mProgressDialog;
-    /**参数**/
+    /************************************参数************************************/
     private String mBookId;
     private boolean isBriefOpen = false;
     private boolean isCollected = false;
 
+    /**********************************公共方法**********************************/
     public static void startActivity(Context context, String bookId) {
         Intent intent = new Intent(context, BookDetailActivity.class);
         intent.putExtra(EXTRA_BOOK_ID, bookId);
         context.startActivity(intent);
     }
-
+    /************************************初始化***********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_book_detail;
     }
 
     @Override
-    protected BookDetailContract.Presenter bindPresenter() {
-        return new BookDetailPresenter();
+    protected void initWidget() {
+        super.initWidget();
+        //热门评论列表
+        mHotCommentAdapter = new HotCommentAdapter();
+        mRvHotComment.setLayoutManager(new LinearLayoutManager(mContext));
+        mRvHotComment.addItemDecoration(new DividerItemDecoration(mContext));
+        mRvHotComment.setAdapter(mHotCommentAdapter);
+
+        //推荐如图书列表
+        mBooksAdapter = new RecommendBookAdapter();
+        mRvRecommendBooks.setLayoutManager(new GridLayoutManager(mContext, 3));
+        mRvRecommendBooks.addItemDecoration(new DividerGridItemDecoration(mContext
+                , R.drawable.shape_divider_row, R.drawable.shape_divider_col));
+        mRvRecommendBooks.setAdapter(mBooksAdapter);
+
+        //推荐书单列表
+        mBookListAdapter = new BookListAdapter();
+        mRvRecommendBookList.setLayoutManager(new LinearLayoutManager(mContext));
+        mRvRecommendBookList.addItemDecoration(new DividerItemDecoration(mContext));
+        mRvRecommendBookList.setAdapter(mBookListAdapter);
     }
 
     @Override
@@ -142,6 +161,20 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
     @Override
     protected void initClick() {
         super.initClick();
+        //监听推荐图书
+        mBooksAdapter.setOnItemClickListener((view, pos) -> {
+            BookDetailActivity.startActivity(mContext, mBooksAdapter.getItem(pos).get_id());
+        });
+        //监听推荐书单
+        mBookListAdapter.setOnItemClickListener((view, pos) -> {
+            BookListDetailActivity.startActivity(mContext, mBookListAdapter.getItem(pos).get_id());
+        });
+    }
+
+    /************************************数据请求************************************/
+    @Override
+    protected BookDetailContract.Presenter bindPresenter() {
+        return new BookDetailPresenter();
     }
 
     @Override
@@ -194,14 +227,8 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
         if (mCollBookBean != null) {
             isCollected = true;
 
-            mTvChase.setText(getResources().getString(R.string.nb_book_detail_give_up));
-            //修改背景
-            Drawable drawable = getResources().getDrawable(R.drawable.shape_common_gray_corner);
-            mTvChase.setBackground(drawable);
-            //设置图片
-            mTvChase.setCompoundDrawables(ContextCompat.getDrawable(this, R.drawable.ic_book_list_delete), null,
-                    null, null);
-            mTvRead.setText("继续阅读");
+            mTvChase.setText(UiUtils.getString(R.string.nb_book_detail_give_up));
+            mTvRead.setText(UiUtils.getString(R.string.nb_book_detail_go_on_read));
         } else {
             mCollBookBean = bean.getCollBookBean();
         }
@@ -215,10 +242,6 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
     @Override
     public void finishHotComment(List<HotCommentBean> beans) {
         if (beans.isEmpty()) return;
-        mHotCommentAdapter = new HotCommentAdapter();
-        mRvHotComment.setLayoutManager(new LinearLayoutManager(this));
-        mRvHotComment.addItemDecoration(new DividerItemDecoration(this));
-        mRvHotComment.setAdapter(mHotCommentAdapter);
         mHotCommentAdapter.addItems(beans);
     }
 
@@ -230,22 +253,8 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
      */
     @Override
     public void finishRecommendBooks(List<BillBookBean> beans) {
-        if (beans.isEmpty())
-            return;
-        //推荐如图书列表
-        mBooksAdapter = new RecommendBookAdapter();
-        mRvRecommendBooks.setLayoutManager(new GridLayoutManager(mContext, 3));
-        RecyclerView.ItemDecoration itemDecoration = new DividerGridItemDecoration(this, R.drawable.shape_divider_row, R.drawable.shape_divider_col);
-        mRvRecommendBooks.addItemDecoration(itemDecoration);
-        mRvRecommendBooks.setAdapter(mBooksAdapter);
+        if (beans.isEmpty()) return;
         mBooksAdapter.addItems(beans.subList(0, 6));
-        //监听
-        mBooksAdapter.setOnItemClickListener(new BaseListAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int pos) {
-                BookDetailActivity.startActivity(mContext, mBooksAdapter.getItem(pos).get_id());
-            }
-        });
     }
 
     /**
@@ -259,19 +268,7 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
             mTvRecommendBookList.setVisibility(View.GONE);
             return;
         }
-        //推荐书单列表
-        mBookListAdapter = new BookListAdapter();
-        mRvRecommendBookList.setLayoutManager(new LinearLayoutManager(this));
-        mRvRecommendBookList.addItemDecoration(new DividerItemDecoration(this));
-        mRvRecommendBookList.setAdapter(mBookListAdapter);
         mBookListAdapter.addItems(beans);
-        //监听
-        mBookListAdapter.setOnItemClickListener(new BaseListAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int pos) {
-                BookListDetailActivity.startActivity(mContext, mBookListAdapter.getItem(pos).get_id());
-            }
-        });
     }
 
     @Override
@@ -309,7 +306,7 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
         mRefreshLayout.showFinish();
     }
 
-    /*******************************************************/
+    /**************************事件处理*****************************/
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -325,21 +322,17 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        //如果进入阅读页面收藏了，页面结束的时候，就需要返回改变收藏按钮
+        //如果进入阅读页面收藏了，就需要返回改变收藏按钮
         if (requestCode == REQUEST_READ) {
             if (data == null) return;
 
             isCollected = data.getBooleanExtra(RESULT_IS_COLLECTED, false);
 
             if (isCollected) {
-                mTvChase.setText(getResources().getString(R.string.nb_book_detail_give_up));
+                mTvChase.setText(UiUtils.getString(R.string.nb_book_detail_give_up));
                 //修改背景
-                Drawable drawable = getResources().getDrawable(R.drawable.shape_common_gray_corner);
-                mTvChase.setBackground(drawable);
-                //设置图片
-                mTvChase.setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(this, R.drawable.ic_book_list_delete), null,
-                        null, null);
-                mTvRead.setText("继续阅读");
+                mTvChase.setBackground(UiUtils.getDrawable(R.drawable.shape_common_gray_corner));
+                mTvRead.setText(UiUtils.getString(R.string.nb_book_detail_go_on_read));
             }
         }
     }
@@ -382,22 +375,16 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
     private void addShelf() {
         if (isCollected) {
             //放弃点击
-            BookRepository.getInstance()
-                    .deleteCollBookInRx(mCollBookBean);
-
-            mTvChase.setText(getResources().getString(R.string.nb_book_detail_chase_update));
-
+            BookRepository.getInstance().deleteCollBookInRx(mCollBookBean);
+            mTvChase.setText(UiUtils.getString(R.string.nb_book_detail_chase_update));
             //修改背景
-            Drawable drawable = getResources().getDrawable(R.drawable.selector_btn_book_list);
-            mTvChase.setBackground(drawable);
+            mTvChase.setBackground(UiUtils.getDrawable(R.drawable.selector_btn_book_list));
             isCollected = false;
         } else {
             mPresenter.addToBookShelf(mCollBookBean);
-            mTvChase.setText(getResources().getString(R.string.nb_book_detail_give_up));
-
+            mTvChase.setText(UiUtils.getString(R.string.nb_book_detail_give_up));
             //修改背景
-            Drawable drawable = getResources().getDrawable(R.drawable.shape_common_gray_corner);
-            mTvChase.setBackground(drawable);
+            mTvChase.setBackground(UiUtils.getDrawable(R.drawable.shape_common_gray_corner));
             isCollected = true;
         }
     }

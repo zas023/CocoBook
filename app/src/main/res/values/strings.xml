@@ -135,8 +135,8 @@
     <string name="nb.tag.boy">男生</string>
     <string name="nb.tag.girl">女生</string>
 
-    <!--加载-->
-    <string name="nb_load_msg">正在加载</string>
+    <!--load:加载-->
+    <string name="nb.load.msg">正在加载</string>
 
     <!--book_detail : -->
     <string name="nb.book_detail.hot_comment">热门书评</string>
@@ -147,7 +147,8 @@
     <string name="nb.book_detail.chase_update">追更</string>
     <string name="nb.book_detail.give_up">放弃</string>
     <string name="nb.book_detail.start_read">开始阅读</string>
-    
+    <string name="nb.book_detail.go_on_read">继续阅读</string>
+
     <!--DownloadTask:书籍下载-->
     <string name="nb.download.add_succeed">成功添加到下载列表</string>
     <string name="nb.download.exist">该任务已存在</string>

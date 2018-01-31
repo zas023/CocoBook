@@ -81,7 +81,7 @@ public class DownloadService extends BaseService {
     public int onStartCommand(Intent intent, int flags, int startId){
 
         //接受创建的DownloadTask
-        Disposable disposable = RxBus.getInstance()
+        addDisposable(RxBus.getInstance()
                 .toObservable(DownloadTaskBean.class)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -89,15 +89,14 @@ public class DownloadService extends BaseService {
                             //判断任务是否为轮询标志
                             //判断任务是否存在，并修改任务
                             if (TextUtils.isEmpty(event.getBookId())
-                              || !checkAndAlterDownloadTask(event)){
+                                    || !checkAndAlterDownloadTask(event)){
                                 addToExecutor(event);
                             }
                         }
-                );
-        addDisposable(disposable);
+                ));
 
         //是否删除数据的问题
-        Disposable deleteDisp = RxBus.getInstance()
+        addDisposable(RxBus.getInstance()
                 .toObservable(DeleteTaskEvent.class)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -124,8 +123,7 @@ public class DownloadService extends BaseService {
                             //返回状态
                             RxBus.getInstance().post(new DeleteResponseEvent(isDelete,event.collBook));
                         }
-                );
-        addDisposable(deleteDisp);
+                ));
         return super.onStartCommand(intent, flags, startId);
     }
 

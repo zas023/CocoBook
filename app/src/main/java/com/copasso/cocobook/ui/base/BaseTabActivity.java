@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.Unbinder;
 
 /**
- * Created by zhouas666 on 17-4-24.
+ * Created by zhouas666 on 18-1-23.
  */
 
 public abstract class BaseTabActivity extends BaseActivity {

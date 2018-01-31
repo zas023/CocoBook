@@ -79,6 +79,7 @@ public class BillboardActivity extends BaseMVPActivity<BillboardContract.Present
         return new BillboardPresenter();
     }
 
+    /**逻辑区**/
     @Override
     protected void processLogic() {
         super.processLogic();

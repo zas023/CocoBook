@@ -17,6 +17,10 @@ public class ProgressUtils {
         show(context, null);
     }
 
+    public static void show(String msg){
+        show(App.getContext(), msg);
+    }
+
     public static void show(Context context, String msg){
         dialog = new ProgressDialog(context);
         dialog.setMessage(msg == null ? App.getContext().getString(R.string.nb_load_msg) : msg);
