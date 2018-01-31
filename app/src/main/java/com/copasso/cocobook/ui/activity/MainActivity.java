@@ -2,7 +2,6 @@ package com.copasso.cocobook.ui.activity;
 
 import android.Manifest;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -28,9 +27,8 @@ import butterknife.BindView;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.ui.base.BaseTabActivity;
 import com.copasso.cocobook.ui.fragment.BookShelfFragment;
-import com.copasso.cocobook.ui.fragment.BookStoreFragment;
+import com.copasso.cocobook.ui.fragment.BookDiscoverFragment;
 import com.copasso.cocobook.ui.fragment.CommunityFragment;
-import com.copasso.cocobook.ui.fragment.FindFragment;
 import com.copasso.cocobook.utils.*;
 import com.copasso.cocobook.ui.dialog.SexChooseDialog;
 
@@ -97,12 +95,9 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     }
 
     private void initFragment() {
-        Fragment bookShelfFragment = new BookShelfFragment();
-        Fragment communityFragment = new BookStoreFragment();
-        Fragment discoveryFragment = new FindFragment();
-        mFragmentList.add(bookShelfFragment);
-        mFragmentList.add(communityFragment);
-        mFragmentList.add(discoveryFragment);
+        mFragmentList.add(new BookShelfFragment());
+        mFragmentList.add(new BookDiscoverFragment());
+        mFragmentList.add(new CommunityFragment());
     }
 
     @Override
@@ -116,7 +111,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
         super.initWidget();
         //实现侧滑菜单状态栏透明
         getWindow().setStatusBarColor(Color.TRANSPARENT);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
 
         //性别选择框
         showSexChooseDialog();
@@ -160,6 +155,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
 
     /**
      * 请求权限
+     *
      * @param requestCode
      * @param permissions
      * @param grantResults
@@ -202,6 +198,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
 
     /**
      * 标题栏点击事件
+     *
      * @param item
      * @return
      */
@@ -214,7 +211,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
                 activityCls = SearchActivity.class;
                 break;
         }
-        if (activityCls != null){
+        if (activityCls != null) {
             Intent intent = new Intent(this, activityCls);
             startActivity(intent);
         }
@@ -223,6 +220,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
 
     /**
      * 侧滑菜单点击事件
+     *
      * @param item
      * @return
      */
@@ -287,11 +285,8 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
         final String[] themes = ThemeManager.getInstance().getThemes();
         new AlertDialog.Builder(mContext)
                 .setTitle("选择主题")
-                .setItems(themes, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        ThemeManager.getInstance().setTheme(mContext, themes[which]);
-                    }
+                .setItems(themes, (dialog, which) -> {
+                    ThemeManager.getInstance().setTheme(mContext, themes[which]);
                 }).create().show();
     }
 

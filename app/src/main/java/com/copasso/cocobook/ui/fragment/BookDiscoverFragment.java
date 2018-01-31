@@ -1,23 +1,26 @@
 package com.copasso.cocobook.ui.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 import butterknife.BindView;
 import com.bumptech.glide.Glide;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.bean.FeatureBean;
+import com.copasso.cocobook.model.bean.SectionBean;
 import com.copasso.cocobook.model.bean.SwipePictureBean;
+import com.copasso.cocobook.model.flag.FeatureType;
+import com.copasso.cocobook.model.flag.FindType;
 import com.copasso.cocobook.presenter.BookStorePresenter;
 import com.copasso.cocobook.presenter.contract.BookStoreContract;
-import com.copasso.cocobook.ui.activity.BookDetailActivity;
-import com.copasso.cocobook.ui.activity.BookListDetailActivity;
-import com.copasso.cocobook.ui.activity.FeatureBookActivity;
+import com.copasso.cocobook.ui.activity.*;
 import com.copasso.cocobook.ui.adapter.FeatureAdapter;
+import com.copasso.cocobook.ui.adapter.SquareAdapter;
 import com.copasso.cocobook.ui.base.BaseMVPFragment;
-import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -31,23 +34,26 @@ import java.util.List;
  * 讨论区
  */
 
-public class BookStoreFragment extends BaseMVPFragment<BookStoreContract.Presenter> implements BookStoreContract.View {
+public class BookDiscoverFragment extends BaseMVPFragment<BookStoreContract.Presenter> implements BookStoreContract.View {
     /***************view******************/
     @BindView(R.id.banner)
     Banner banner;
+    @BindView(R.id.store_rv_find)
+    RecyclerView storeRvFind;
     @BindView(R.id.store_rv_content)
     RecyclerView storeRvContent;
 
-    private FeatureAdapter mAdapter;
+    private SquareAdapter mSquareAdapter;
+    private FeatureAdapter mFeatureAdapter;
 
     List<SwipePictureBean> mSwipePictures;
-    List<FeatureBean> mFeatures;
+    List<FeatureBean> mFeatures=new ArrayList<>();
     private List<String> mImages = new ArrayList<>();
     private List<String> mTitles = new ArrayList<>();
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_store;
+        return R.layout.fragment_discover;
     }
 
     /***********************************init method*************************************************/
@@ -56,7 +62,7 @@ public class BookStoreFragment extends BaseMVPFragment<BookStoreContract.Present
     protected void initWidget(Bundle savedInstanceState) {
 
         //设置banner样式
-        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
+        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
         //设置图片加载器
         banner.setImageLoader(new ImageLoader() {
             @Override
@@ -73,26 +79,33 @@ public class BookStoreFragment extends BaseMVPFragment<BookStoreContract.Present
         banner.setDelayTime(5000);
         //设置指示器位置（当banner模式中有指示器时）
         banner.setIndicatorGravity(BannerConfig.CENTER);
+
+        mSquareAdapter = new SquareAdapter();
+        storeRvFind.setHasFixedSize(true);
+        storeRvFind.setLayoutManager(new GridLayoutManager(mContext,4));
+        storeRvFind.setAdapter(mSquareAdapter);
+
+        mFeatureAdapter = new FeatureAdapter();
+        storeRvContent.setHasFixedSize(true);
+        storeRvContent.setLayoutManager(new LinearLayoutManager(mContext));
+        storeRvContent.setAdapter(mFeatureAdapter);
+
+        setUpAdapter();
     }
 
     private void setUpAdapter() {
-        if (mFeatures == null)
-            return;
-        List<FeatureBean> mTemp=new ArrayList<>();
-        mTemp.add(mFeatures.get(0));
-        mTemp.add(mFeatures.get(2));
-        mTemp.addAll(mFeatures.subList(4,10));
-        mAdapter = new FeatureAdapter();
-        storeRvContent.setHasFixedSize(true);
-        storeRvContent.setLayoutManager(new GridLayoutManager(mContext,2));
-        storeRvContent.addItemDecoration(new DividerItemDecoration(mContext));
-        storeRvContent.setAdapter(mAdapter);
-        mAdapter.addItems(mTemp);
 
-        mAdapter.setOnItemClickListener((view, pos) -> {
-            FeatureBean bean=mAdapter.getItem(pos);
-            FeatureBookActivity.startActivity(mContext,bean.getTitle(),bean.get_id());
-        });
+        ArrayList<SectionBean> finds = new ArrayList<>();
+        for (FindType type : FindType.values()){
+            finds.add(new SectionBean(type.getTypeName(),type.getIconId()));
+        }
+        mSquareAdapter.addItems(finds);
+
+        for (FeatureType type : FeatureType.values()){
+            mFeatures.add(new FeatureBean(type.getTypeId(),type.getTypeName()));
+        }
+        mFeatureAdapter.addItems(mFeatures);
+
     }
 
 
@@ -108,6 +121,26 @@ public class BookStoreFragment extends BaseMVPFragment<BookStoreContract.Present
                     if (bean.getType().equals("c-booklist"))
                         BookListDetailActivity.startActivity(mContext, bean.getLink());
                 });
+
+        mSquareAdapter.setOnItemClickListener((view, pos) -> {
+            //跳转
+            switch (FindType.values()[pos]){
+                case TOP:
+                    startActivity(new Intent(getContext(),BillboardActivity.class));
+                    break;
+                case SORT:
+                    startActivity(new Intent(getContext(), BookSortActivity.class));
+                    break;
+                case TOPIC:
+                    startActivity(new Intent(getContext(), BookListActivity.class));
+                    break;
+            }
+        });
+
+        mFeatureAdapter.setOnItemClickListener((view, pos) -> {
+            FeatureBean bean=mFeatureAdapter.getItem(pos);
+            FeatureBookActivity.startActivity(mContext,bean.getTitle(),bean.get_id());
+        });
     }
 
     @Override
@@ -147,7 +180,7 @@ public class BookStoreFragment extends BaseMVPFragment<BookStoreContract.Present
     protected void processLogic() {
         super.processLogic();
         mPresenter.refreshSwipePictures();
-        mPresenter.refreshFeatures();
+        //mPresenter.refreshFeatures();
     }
 
     @Override

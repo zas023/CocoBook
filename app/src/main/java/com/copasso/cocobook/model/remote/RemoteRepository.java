@@ -61,6 +61,18 @@ public class RemoteRepository {
 
     /**
      * 精选分类图书
+     *
+     * @param nodeId
+     * @return
+     */
+    public Single<List<FeatureBookBean>> getFeatureBooks(String nodeId) {
+        return mBookApi.getFeatureBookPackage(nodeId)
+                .map(bean -> bean.getData());
+    }
+
+    /**
+     * 精选分类图书
+     *
      * @param nodeId
      * @return
      */

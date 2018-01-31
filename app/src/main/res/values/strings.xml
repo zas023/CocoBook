@@ -8,8 +8,8 @@
     <!--string_array-->
     <string-array name="nb_fragment_title">
         <item>@string/nb.fragment.title.bookshelf</item>
-        <item>@string/nb.fragment.title.community</item>
         <item>@string/nb.fragment.title.find</item>
+        <item>@string/nb.fragment.title.community</item>
     </string-array>
 
     <string-array name="nb_fragment_section">
@@ -52,8 +52,8 @@
     
     <!--fragment_title:主页的名字-->
     <string name="nb.fragment.title.bookshelf">书架</string>
-    <string name="nb.fragment.title.community">社区</string>
     <string name="nb.fragment.title.find">发现</string>
+    <string name="nb.fragment.title.community">社区</string>
 
     <!--fragment-->
     <string name="nb.fragment.community.comment">综合讨论区</string>
@@ -85,8 +85,15 @@
     <string name="nb.review.unhelpful">无用</string>
     <string name="nb.review.book_score">给书评打分</string>
     <string name="nb.review.master_score">楼主打分：</string>
-    
-    
+
+    <!--node-->
+    <string name="nb.fragment.node.nsrm">男生热门</string>
+    <string name="nb.fragment.node.nsza">女生最爱</string>
+    <string name="nb.fragment.node.nswb">男生完本</string>
+    <string name="nb.fragment.node.nswj">女生完结</string>
+    <string name="nb.fragment.node.nsdsq">男生大神区</string>
+    <string name="nb.fragment.node.nshwq">女生红文区</string>
+
     <!--find-->
     <string name="nb.fragment.find.top">排行榜</string>
     <string name="nb.fragment.find.topic">主题书单</string>
@@ -139,6 +146,7 @@
     <string name="nb.load.msg">正在加载</string>
 
     <!--book_detail : -->
+    <string name="nb.book_detail.last_chapter">最新章</string>
     <string name="nb.book_detail.hot_comment">热门书评</string>
     <string name="nb.book_detail.community">%1$s的社区</string>
     <string name="nb.book_detail.posts_count">共有%1$d个帖子</string>

@@ -26,6 +26,7 @@ import com.copasso.cocobook.presenter.contract.BookDetailContract;
 import com.copasso.cocobook.ui.adapter.BookListAdapter;
 import com.copasso.cocobook.ui.adapter.HotCommentAdapter;
 import com.copasso.cocobook.ui.adapter.RecommendBookAdapter;
+import com.copasso.cocobook.ui.adapter.TagGroupAdapter;
 import com.copasso.cocobook.ui.base.BaseMVPActivity;
 import com.copasso.cocobook.ui.base.adapter.BaseListAdapter;
 import com.copasso.cocobook.utils.Constant;
@@ -39,6 +40,7 @@ import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
 import java.util.List;
 
 import butterknife.BindView;
+import me.gujun.android.taggroup.TagGroup;
 
 /**
  * Created by zhouas666 on 18-1-23.
@@ -76,6 +78,10 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
     TextView mTvRetention;
     @BindView(R.id.book_detail_tv_day_word_count)
     TextView mTvDayWordCount;
+    @BindView(R.id.book_detail_tg)
+    TagGroup mTg;
+    @BindView(R.id.book_detail_tv_last_chapter)
+    TextView mTvLastChapter;
     @BindView(R.id.book_detail_tv_brief)
     TextView mTvBrief;
     @BindView(R.id.book_detail_tv_more_comment)
@@ -155,7 +161,7 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
     @Override
     protected void setUpToolbar(Toolbar toolbar) {
         super.setUpToolbar(toolbar);
-        getSupportActionBar().setTitle("书籍详情");
+        getSupportActionBar().setTitle("图书详情");
     }
 
     @Override
@@ -215,6 +221,10 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
         mTvRetention.setText(bean.getRetentionRatio() + "%");
         //日更字数
         mTvDayWordCount.setText(bean.getSerializeWordCount() + "");
+        //最新章节
+        mTvLastChapter.setText(bean.getLastChapter());
+        //Tags
+        mTg.setTags(bean.getTags());
         //简介
         mTvBrief.setText(bean.getLongIntro());
         //社区

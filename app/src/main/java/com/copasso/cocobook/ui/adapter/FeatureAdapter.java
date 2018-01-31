@@ -1,9 +1,7 @@
 package com.copasso.cocobook.ui.adapter;
 
 import com.copasso.cocobook.model.bean.FeatureBean;
-import com.copasso.cocobook.model.bean.SectionBean;
 import com.copasso.cocobook.ui.adapter.view.FeatureHolder;
-import com.copasso.cocobook.ui.adapter.view.SectionHolder;
 import com.copasso.cocobook.ui.base.adapter.BaseListAdapter;
 import com.copasso.cocobook.ui.base.adapter.IViewHolder;
 

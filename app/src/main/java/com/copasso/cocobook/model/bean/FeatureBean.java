@@ -33,6 +33,11 @@ public class FeatureBean {
     private String sex;
     private String secondTitle;
 
+    public FeatureBean(String _id, String title) {
+        this._id = _id;
+        this.title = title;
+    }
+
     public String get_id() {
         return _id;
     }
