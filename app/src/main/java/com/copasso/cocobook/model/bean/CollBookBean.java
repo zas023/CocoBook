@@ -1,20 +1,13 @@
 package com.copasso.cocobook.model.bean;
 
-import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
-
-import com.google.gson.annotations.SerializedName;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
-import org.greenrobot.greendao.annotation.OrderBy;
 import org.greenrobot.greendao.annotation.ToMany;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import org.greenrobot.greendao.DaoException;
 import com.copasso.cocobook.model.gen.DaoSession;
@@ -62,7 +55,7 @@ public class CollBookBean implements Parcelable{
     private String lastChapter;
     //是否更新或未阅读
     private boolean isUpdate = true;
-    //是否是本地文件
+    //是否是本地文件,打开的本地文件，而非指缓存文件
     private boolean isLocal = false;
 
     @ToMany(referencedJoinProperty = "bookId")

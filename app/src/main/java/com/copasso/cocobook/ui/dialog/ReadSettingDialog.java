@@ -24,7 +24,7 @@ import com.copasso.cocobook.utils.ReadSettingManager;
 import com.copasso.cocobook.ui.activity.MoreSettingActivity;
 import com.copasso.cocobook.ui.activity.ReadActivity;
 import com.copasso.cocobook.ui.adapter.ReadBgAdapter;
-import com.copasso.cocobook.utils.ScreenUtils;
+import com.copasso.cocobook.utils.UiUtils;
 import com.copasso.cocobook.widget.page.PageLoader;
 import com.copasso.cocobook.widget.page.PageView;
 
@@ -34,12 +34,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by zhouas666 on 17-5-18.
+ * Created by zhouas666 on 18-1-23.
  */
 
 public class ReadSettingDialog extends Dialog{
     private static final String TAG = "ReadSettingDialog";
-    private static final int DEFAULT_TEXT_SIZE = 16;
+    private static final int DEFAULT_TEXT_SIZE = 17;
 
     @BindView(R.id.read_setting_iv_brightness_minus)
     ImageView mIvBrightnessMinus;
@@ -142,10 +142,11 @@ public class ReadSettingDialog extends Dialog{
                 ,getDrawable(R.color.nb_read_bg_2)
                 ,getDrawable(R.color.nb_read_bg_3)
                 ,getDrawable(R.color.nb_read_bg_4)
-                ,getDrawable(R.color.nb_read_bg_5)};
+                ,getDrawable(R.color.nb_read_bg_5)
+                ,getDrawable(R.color.nb_read_bg_6)};
 
         mReadBgAdapter = new ReadBgAdapter();
-        mRvBg.setLayoutManager(new GridLayoutManager(getContext(),5));
+        mRvBg.setLayoutManager(new GridLayoutManager(getContext(),6));
         mRvBg.setAdapter(mReadBgAdapter);
         mReadBgAdapter.refreshItems(Arrays.asList(drawables));
 
@@ -188,7 +189,7 @@ public class ReadSettingDialog extends Dialog{
                     int progress = mSbBrightness.getProgress()-1;
                     if (progress < 0) return;
                     mSbBrightness.setProgress(progress);
-                    BrightnessUtils.setBrightness(mActivity,progress);
+                    UiUtils.setBrightness(mActivity,progress);
                 }
         );
         mIvBrightnessPlus.setOnClickListener(
@@ -199,7 +200,7 @@ public class ReadSettingDialog extends Dialog{
                     int progress = mSbBrightness.getProgress()+1;
                     if (progress > mSbBrightness.getMax()) return;
                     mSbBrightness.setProgress(progress);
-                    BrightnessUtils.setBrightness(mActivity,progress);
+                    UiUtils.setBrightness(mActivity,progress);
                     //设置进度
                     ReadSettingManager.getInstance().setBrightness(progress);
                 }
@@ -223,7 +224,7 @@ public class ReadSettingDialog extends Dialog{
                     mCbBrightnessAuto.setChecked(false);
                 }
                 //设置当前 Activity 的亮度
-                BrightnessUtils.setBrightness(mActivity,progress);
+                UiUtils.setBrightness(mActivity,progress);
                 //存储亮度的进度条
                 ReadSettingManager.getInstance().setBrightness(progress);
             }
@@ -233,11 +234,11 @@ public class ReadSettingDialog extends Dialog{
                 (buttonView, isChecked) -> {
                     if (isChecked){
                         //获取屏幕的亮度
-                        BrightnessUtils.setBrightness(mActivity,BrightnessUtils.getScreenBrightness(mActivity));
+                        UiUtils.setBrightness(mActivity,UiUtils.getScreenBrightness(mActivity));
                     }
                     else {
                         //获取进度条的亮度
-                        BrightnessUtils.setBrightness(mActivity,mSbBrightness.getProgress());
+                        UiUtils.setBrightness(mActivity,mSbBrightness.getProgress());
                     }
                     ReadSettingManager.getInstance().setAutoBrightness(isChecked);
                 }
@@ -270,7 +271,7 @@ public class ReadSettingDialog extends Dialog{
         mCbFontDefault.setOnCheckedChangeListener(
                 (buttonView, isChecked) -> {
                     if (isChecked){
-                        int fontSize = ScreenUtils.dpToPx(DEFAULT_TEXT_SIZE);
+                        int fontSize = UiUtils.dpToPx(DEFAULT_TEXT_SIZE);
                         mTvFont.setText(fontSize+"");
                         mPageLoader.setTextSize(fontSize);
                     }

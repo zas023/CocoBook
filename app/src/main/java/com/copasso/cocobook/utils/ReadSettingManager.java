@@ -14,7 +14,8 @@ public class ReadSettingManager {
     public static final int READ_BG_2 = 2;
     public static final int READ_BG_3 = 3;
     public static final int READ_BG_4 = 4;
-    public static final int NIGHT_MODE = 5;
+    public static final int READ_BG_5 = 5;
+    public static final int NIGHT_MODE = 6;
 
     public static final String SHARED_READ_BG = "shared_read_bg";
     public static final String SHARED_READ_BRIGHTNESS = "shared_read_brightness";
@@ -81,7 +82,7 @@ public class ReadSettingManager {
     }
 
     public int getTextSize(){
-        return sharedPreUtils.getInt(SHARED_READ_TEXT_SIZE, ScreenUtils.spToPx(28));
+        return sharedPreUtils.getInt(SHARED_READ_TEXT_SIZE, UiUtils.spToPx(28));
     }
     public boolean isDefaultTextSize(){
         return sharedPreUtils.getBoolean(SHARED_READ_IS_TEXT_DEFAULT, false);

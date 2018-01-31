@@ -22,7 +22,7 @@ import com.copasso.cocobook.utils.ReadSettingManager;
 import com.copasso.cocobook.utils.Constant;
 import com.copasso.cocobook.utils.IOUtils;
 import com.copasso.cocobook.utils.RxUtils;
-import com.copasso.cocobook.utils.ScreenUtils;
+import com.copasso.cocobook.utils.UiUtils;
 import com.copasso.cocobook.utils.StringUtils;
 import com.copasso.cocobook.utils.ToastUtils;
 
@@ -40,7 +40,7 @@ import io.reactivex.SingleOnSubscribe;
 import io.reactivex.disposables.Disposable;
 
 /**
- * Created by zhouas666 on 17-7-1.
+ * Created by zhouas666 on 18-1-23.
  */
 
 public abstract class PageLoader{
@@ -156,7 +156,7 @@ public abstract class PageLoader{
     private void initData(){
         mSettingManager = ReadSettingManager.getInstance();
         mTextSize = mSettingManager.getTextSize();
-        mTitleSize = mTextSize + ScreenUtils.spToPx(EXTRA_TITLE_SIZE);
+        mTitleSize = mTextSize + UiUtils.spToPx(EXTRA_TITLE_SIZE);
         mPageMode = mSettingManager.getPageMode();
         isNightMode = mSettingManager.isNightMode();
         mBgTheme = mSettingManager.getReadBgTheme();
@@ -169,8 +169,8 @@ public abstract class PageLoader{
         }
 
         //初始化参数
-        mMarginWidth = ScreenUtils.dpToPx(DEFAULT_MARGIN_WIDTH);
-        mMarginHeight = ScreenUtils.dpToPx(DEFAULT_MARGIN_HEIGHT);
+        mMarginWidth = UiUtils.dpToPx(DEFAULT_MARGIN_WIDTH);
+        mMarginHeight = UiUtils.dpToPx(DEFAULT_MARGIN_HEIGHT);
         mTextInterval = mTextSize/2;
         mTitleInterval = mTitleSize/2;
         mTextPara = mTextSize; //段落间距由 text 的高度决定。
@@ -182,7 +182,7 @@ public abstract class PageLoader{
         mTipPaint = new Paint();
         mTipPaint.setColor(mTextColor);
         mTipPaint.setTextAlign(Paint.Align.LEFT);//绘制的起始点
-        mTipPaint.setTextSize(ScreenUtils.spToPx(DEFAULT_TIP_SIZE));//Tip默认的字体大小
+        mTipPaint.setTextSize(UiUtils.spToPx(DEFAULT_TIP_SIZE));//Tip默认的字体大小
         mTipPaint.setAntiAlias(true);
         mTipPaint.setSubpixelText(true);
 
@@ -318,7 +318,7 @@ public abstract class PageLoader{
         mTextInterval = mTextSize/2;
         mTextPara = mTextSize;
 
-        mTitleSize = mTextSize + ScreenUtils.spToPx(EXTRA_TITLE_SIZE);
+        mTitleSize = mTextSize + UiUtils.spToPx(EXTRA_TITLE_SIZE);
         mTitleInterval = mTitleInterval / 2;
         mTitlePara = mTitleSize;
 
@@ -393,6 +393,10 @@ public abstract class PageLoader{
                 case ReadSettingManager.READ_BG_4:
                     mTextColor = ContextCompat.getColor(App.getContext(),R.color.nb_read_font_5);
                     mPageBg = ContextCompat.getColor(App.getContext(), R.color.nb_read_bg_5);
+                    break;
+                case ReadSettingManager.READ_BG_5:
+                    mTextColor = ContextCompat.getColor(App.getContext(),R.color.nb_read_font_6);
+                    mPageBg = ContextCompat.getColor(App.getContext(), R.color.nb_read_bg_6);
                     break;
             }
         }
@@ -659,7 +663,7 @@ public abstract class PageLoader{
 
     void drawBackground(Bitmap bitmap,boolean isUpdate){
         Canvas canvas = new Canvas(bitmap);
-        int tipMarginHeight = ScreenUtils.dpToPx(3);
+        int tipMarginHeight = UiUtils.dpToPx(3);
         if (!isUpdate){
             /****绘制背景****/
             canvas.drawColor(mPageBg);
@@ -690,7 +694,7 @@ public abstract class PageLoader{
         else {
             //擦除区域
             mBgPaint.setColor(mPageBg);
-            canvas.drawRect(mDisplayWidth/2,mDisplayHeight - mMarginHeight + ScreenUtils.dpToPx(2),mDisplayWidth,mDisplayHeight,mBgPaint);
+            canvas.drawRect(mDisplayWidth/2,mDisplayHeight - mMarginHeight + UiUtils.dpToPx(2),mDisplayWidth,mDisplayHeight,mBgPaint);
         }
         /******绘制电池********/
 
@@ -700,8 +704,8 @@ public abstract class PageLoader{
         int outFrameWidth = (int) mTipPaint.measureText("xxx");
         int outFrameHeight = (int) mTipPaint.getTextSize();
 
-        int polarHeight = ScreenUtils.dpToPx(6);
-        int polarWidth = ScreenUtils.dpToPx(2);
+        int polarHeight = UiUtils.dpToPx(6);
+        int polarWidth = UiUtils.dpToPx(2);
         int border = 1;
         int innerMargin = 1;
 
@@ -709,7 +713,7 @@ public abstract class PageLoader{
         int polarLeft = visibleRight - polarWidth;
         int polarTop = visibleBottom - (outFrameHeight + polarHeight)/2;
         Rect polar = new Rect(polarLeft, polarTop, visibleRight,
-                polarTop + polarHeight - ScreenUtils.dpToPx(2));
+                polarTop + polarHeight - UiUtils.dpToPx(2));
 
         mBatteryPaint.setStyle(Paint.Style.FILL);
         canvas.drawRect(polar,mBatteryPaint);
@@ -717,7 +721,7 @@ public abstract class PageLoader{
         //外框的制作
         int outFrameLeft = polarLeft - outFrameWidth;
         int outFrameTop = visibleBottom - outFrameHeight;
-        int outFrameBottom = visibleBottom - ScreenUtils.dpToPx(2);
+        int outFrameBottom = visibleBottom - UiUtils.dpToPx(2);
         Rect outFrame = new Rect(outFrameLeft, outFrameTop, polarLeft, outFrameBottom);
 
         mBatteryPaint.setStyle(Paint.Style.STROKE);
@@ -736,7 +740,7 @@ public abstract class PageLoader{
         //底部的字显示的位置Y
         float y = mDisplayHeight - mTipPaint.getFontMetrics().bottom - tipMarginHeight;
         String time = StringUtils.dateConvert(System.currentTimeMillis(), Constant.FORMAT_TIME);
-        float x = outFrameLeft - mTipPaint.measureText(time) - ScreenUtils.dpToPx(4);
+        float x = outFrameLeft - mTipPaint.measureText(time) - UiUtils.dpToPx(4);
         canvas.drawText(time,x,y,mTipPaint);
     }
 

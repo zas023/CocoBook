@@ -6,14 +6,15 @@ import android.widget.ImageView;
 
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.ui.base.adapter.ViewHolderImpl;
+import com.copasso.cocobook.widget.CircleImageView;
 
 /**
- * Created by zhouas666 on 17-5-19.
+ * Created by zhouas666 on 18-1-23.
  */
 
 public class ReadBgHolder extends ViewHolderImpl<Drawable> {
 
-    private View mReadBg;
+    private CircleImageView mReadBg;
     private ImageView mIvChecked;
 
     @Override

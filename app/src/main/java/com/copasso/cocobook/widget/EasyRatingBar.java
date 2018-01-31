@@ -14,7 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.utils.ScreenUtils;
+import com.copasso.cocobook.utils.UiUtils;
 
 import java.lang.ref.WeakReference;
 
@@ -66,7 +66,7 @@ public class EasyRatingBar extends View {
         mRateCount = a.getInteger(R.styleable.EasyRatingBar_rateNum,5);
         mNormalRes = a.getResourceId(R.styleable.EasyRatingBar_rateNormal,R.drawable.rating_star_nor);
         mSelectRes = a.getResourceId(R.styleable.EasyRatingBar_rateSelect,R.drawable.rating_star_sel);
-        mInterval = (int) a.getDimension(R.styleable.EasyRatingBar_rateInterval,ScreenUtils.dpToPx(4));
+        mInterval = (int) a.getDimension(R.styleable.EasyRatingBar_rateInterval,UiUtils.dpToPx(4));
         isIndicator = a.getBoolean(R.styleable.EasyRatingBar_isIndicator,true);
 
         int currentRate =a.getInteger(R.styleable.EasyRatingBar_rating,0);
@@ -122,7 +122,7 @@ public class EasyRatingBar extends View {
         int normalMin = Math.min(normal.getIntrinsicWidth(),normal.getIntrinsicHeight());
         int selectMin = Math.min(select.getIntrinsicWidth(),select.getIntrinsicHeight());
         int drawableMin = Math.min(normalMin,selectMin);
-        return Math.min(ScreenUtils.dpToPx(DEFAULT_MAX_HEIGHT),drawableMin);
+        return Math.min(UiUtils.dpToPx(DEFAULT_MAX_HEIGHT),drawableMin);
     }
 
     @Override

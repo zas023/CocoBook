@@ -9,7 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 
-import com.copasso.cocobook.utils.ScreenUtils;
+import com.copasso.cocobook.utils.UiUtils;
 import com.copasso.cocobook.widget.animation.CoverPageAnim;
 import com.copasso.cocobook.widget.animation.HorizonPageAnim;
 import com.copasso.cocobook.widget.animation.NonePageAnim;
@@ -126,7 +126,7 @@ public class PageView extends View {
                 break;
             case PAGE_MODE_SCROLL:
                 mPageAnim = new ScrollPageAnim(mViewWidth, mViewHeight, 0,
-                        ScreenUtils.dpToPx(PageLoader.DEFAULT_MARGIN_HEIGHT),this,mPageAnimListener);
+                        UiUtils.dpToPx(PageLoader.DEFAULT_MARGIN_HEIGHT),this,mPageAnimListener);
                 break;
             default:
                 mPageAnim = new SimulationPageAnim(mViewWidth, mViewHeight,this,mPageAnimListener);

@@ -51,7 +51,6 @@ import com.copasso.cocobook.widget.page.TxtChapter;
 import java.util.List;
 
 import butterknife.BindView;
-import io.reactivex.disposables.Disposable;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -79,7 +78,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     private boolean isRegistered = false;
 
     @BindView(R.id.read_dl_slide)
-    DrawerLayout mDlSlide;
+    DrawerLayout mDlCatalog;
     //顶部菜单
     @BindView(R.id.read_abl_top_menu)
     AppBarLayout mAblTopMenu;
@@ -112,7 +111,11 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     TextView mTvSetting;
 
     //章节目录
-    @BindView(R.id.read_iv_category)
+    @BindView(R.id.read_tv_category_title)
+    TextView mTvCatalogTitle;
+    @BindView(R.id.read_tv_category_size)
+    TextView mTvCatalogSize;
+    @BindView(R.id.read_lv_category)
     ListView mLvCategory;
     /**********************************视图***********************************/
     private ReadSettingDialog mSettingDialog;
@@ -157,12 +160,12 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
             if (selfChange || !mSettingDialog.isBrightFollowSystem()) return;
 
             //如果系统亮度改变，则修改当前 Activity 亮度
-           if (BRIGHTNESS_URI.equals(uri) && !UiUtils.isAutoBrightness(mContext)) {
+            if (BRIGHTNESS_URI.equals(uri) && !UiUtils.isAutoBrightness(mContext)) {
                 //亮度模式为手动模式 值改变
-               UiUtils.setBrightness(mContext, UiUtils.getScreenBrightness(mContext));
+                UiUtils.setBrightness(mContext, UiUtils.getScreenBrightness(mContext));
             } else if (BRIGHTNESS_ADJ_URI.equals(uri) && UiUtils.isAutoBrightness(mContext)) {
                 //亮度模式为自动模式 值改变
-               UiUtils.setBrightness(mContext, UiUtils.getScreenBrightness(mContext));
+                UiUtils.setBrightness(mContext, UiUtils.getScreenBrightness(mContext));
             } else {
                 Log.d(TAG, "亮度调整 其他");
             }
@@ -210,7 +213,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         //设置标题
         getSupportActionBar().setTitle(mCollBook.getTitle());
         //半透明化StatusBar
-        SystemBarUtils.transparentStatusBar(this);
+        SystemBarUtils.transparentStatusBar(mContext);
     }
 
     @Override
@@ -220,7 +223,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         //获取页面加载器
         mPageLoader = mPvPage.getPageLoader(mCollBook.isLocal());
         //禁止滑动展示DrawerLayout
-        mDlSlide.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        mDlCatalog.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         mSettingDialog = new ReadSettingDialog(this, mPageLoader);
 
         setUpAdapter();
@@ -252,14 +255,13 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
 
         //初始化TopMenu
         initTopMenu();
-
         //初始化BottomMenu
         initBottomMenu();
     }
 
     private void initTopMenu() {
         if (Build.VERSION.SDK_INT >= 19) {
-            mAblTopMenu.setPadding(0, ScreenUtils.getStatusBarHeight(), 0, 0);
+            mAblTopMenu.setPadding(0, UiUtils.getStatusBarHeight(), 0, 0);
         }
     }
 
@@ -268,7 +270,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         if (ReadSettingManager.getInstance().isFullScreen()) {
             //还需要设置mBottomMenu的底部高度
             ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) mLlBottomMenu.getLayoutParams();
-            params.bottomMargin = ScreenUtils.getNavigationBarHeight();
+            params.bottomMargin = UiUtils.getNavigationBarHeight();
             mLlBottomMenu.setLayoutParams(params);
         } else {
             //设置mBottomMenu的底部距离
@@ -278,6 +280,9 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         }
     }
 
+    /**
+     * 夜间模式
+     */
     private void toggleNightMode() {
         if (isNightMode) {
             mTvNightMode.setText(StringUtils.getString(R.string.nb_mode_morning));
@@ -290,13 +295,18 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         }
     }
 
+    /**
+     * 初始化目录
+     */
     private void setUpAdapter() {
         mCategoryAdapter = new CategoryAdapter();
         mLvCategory.setAdapter(mCategoryAdapter);
         mLvCategory.setFastScrollEnabled(true);
     }
 
-    //注册亮度观察者
+    /**
+     * 注册亮度观察者
+     */
     private void registerBrightObserver() {
         try {
             if (mBrightObserver != null) {
@@ -314,7 +324,9 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         }
     }
 
-    //解注册
+    /**
+     * 解除亮度观察者注册
+     */
     private void unregisterBrightObserver() {
         try {
             if (mBrightObserver != null) {
@@ -332,6 +344,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     protected void initClick() {
         super.initClick();
 
+        //换页
         mPageLoader.setOnPageChangeListener(
                 new PageLoader.OnPageChangeListener() {
 
@@ -358,6 +371,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
 
                     @Override
                     public void onCategoryFinish(List<TxtChapter> chapters) {
+                        mTvCatalogSize.setText("共 "+chapters.size()+" 章");
                         mCategoryAdapter.refreshItems(chapters);
                     }
 
@@ -377,6 +391,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                 }
         );
 
+        //底部菜单进度条
         mSbChapterProgress.setOnSeekBarChangeListener(
                 new SeekBar.OnSeekBarChangeListener() {
                     @Override
@@ -405,6 +420,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                 }
         );
 
+        //监听阅读页面点击事件
         mPvPage.setTouchListener(new PageView.TouchListener() {
             @Override
             public void center() {
@@ -431,21 +447,24 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
             }
         });
 
+        //监听菜单选择
         mLvCategory.setOnItemClickListener(
                 (parent, view, position, id) -> {
-                    mDlSlide.closeDrawer(Gravity.START);
+                    mDlCatalog.closeDrawer(Gravity.START);
                     mPageLoader.skipToChapter(position);
                 }
         );
 
+        //监听底部设置菜单
         mSettingDialog.setOnDismissListener(
                 dialog -> hideSystemBar()
         );
     }
 
+    /******************************事件处理*********************************/
     @OnClick({R.id.read_tv_category, R.id.read_tv_setting, R.id.read_tv_pre_chapter
             , R.id.read_tv_next_chapter, R.id.read_tv_night_mode, R.id.read_tv_brief
-            , R.id.read_tv_community,R.id.read_tv_download})
+            , R.id.read_tv_community, R.id.read_tv_download})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.read_tv_category: //目录
@@ -454,7 +473,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                 //切换菜单
                 toggleMenu(true);
                 //打开侧滑动栏
-                mDlSlide.openDrawer(Gravity.START);
+                mDlCatalog.openDrawer(Gravity.START);
                 break;
             case R.id.read_tv_download:  //下载
                 //downloadBook(mCollBook);
@@ -470,7 +489,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                 mCategoryAdapter.setChapter(mPageLoader.skipNextChapter());
                 break;
             case R.id.read_tv_night_mode:  //夜间模式
-                isNightMode=!isNightMode;
+                isNightMode = !isNightMode;
                 mPageLoader.setNightMode(isNightMode);
                 toggleNightMode();
                 break;
@@ -483,7 +502,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         }
     }
 
-    private void downloadBook(CollBookBean collBook){
+    private void downloadBook(CollBookBean collBook) {
         //创建任务
         mPresenter.createDownloadTask(collBook);
     }
@@ -557,9 +576,6 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         mTopOutAnim = AnimationUtils.loadAnimation(this, R.anim.slide_top_out);
         mBottomInAnim = AnimationUtils.loadAnimation(this, R.anim.slide_bottom_in);
         mBottomOutAnim = AnimationUtils.loadAnimation(this, R.anim.slide_bottom_out);
-        //退出的速度要快
-        mTopOutAnim.setDuration(200);
-        mBottomOutAnim.setDuration(200);
     }
 
     /***************************数据处理************************************/
@@ -568,21 +584,18 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         super.processLogic();
         //如果是已经收藏的，那么就从数据库中获取目录
         if (isCollected) {
-            Disposable disposable = BookRepository.getInstance()
+            addDisposable(BookRepository.getInstance()
                     .getBookChaptersInRx(mBookId)
                     .compose(RxUtils::toSimpleSingle)
-                    .subscribe(
-                            (bookChapterBeen, throwable) -> {
+                    .subscribe((bookChapterBeen, throwable) -> {
                                 mCollBook.setBookChapters(bookChapterBeen);
                                 mPageLoader.openBook(mCollBook);
                                 //如果是网络小说并被标记更新的，则从网络下载目录
-                                if (mCollBook.isUpdate() && !mCollBook.isLocal()) {
+                                if (!mCollBook.isLocal() && mCollBook.isUpdate()) {
                                     mPresenter.loadCategory(mBookId);
                                 }
-                                LogUtils.e(throwable);
                             }
-                    );
-            addDisposable(disposable);
+                    ));
         } else {
             //从网络中获取目录
             mPresenter.loadCategory(mBookId);
@@ -641,8 +654,8 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         } else if (mSettingDialog.isShowing()) {
             mSettingDialog.dismiss();
             return;
-        } else if (mDlSlide.isDrawerOpen(Gravity.START)) {
-            mDlSlide.closeDrawer(Gravity.START);
+        } else if (mDlCatalog.isDrawerOpen(Gravity.START)) {
+            mDlCatalog.closeDrawer(Gravity.START);
             return;
         }
 
@@ -677,9 +690,8 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     //退出
     private void exit() {
         //返回给BookDetail。
-        Intent result = new Intent();
-        result.putExtra(BookDetailActivity.RESULT_IS_COLLECTED, isCollected);
-        setResult(Activity.RESULT_OK, result);
+        setResult(Activity.RESULT_OK
+                ,new Intent().putExtra(BookDetailActivity.RESULT_IS_COLLECTED, isCollected));
         //退出
         super.onBackPressed();
     }

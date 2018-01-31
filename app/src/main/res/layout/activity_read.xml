@@ -155,37 +155,6 @@
         </LinearLayout>
     </RelativeLayout>
     
-    <!--侧滑栏-->
-    <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:clickable="true"
-        android:layout_gravity="start"
-        android:paddingTop="@dimen/nb.padding.large"
-        android:paddingBottom="@dimen/nb.padding.large"
-        android:background="@drawable/theme_leather_bg">
-    
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="目录"
-            android:textColor="@color/nb.text.default"
-            android:textSize="20sp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginBottom="8dp"/>
-        
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-    
-            <ListView
-                android:id="@+id/read_iv_category"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="vertical">
-            </ListView>
-        </RelativeLayout>
-    </LinearLayout>
+    <!--目录栏-->
+    <include layout="@layout/layout_catalog"/>
 </android.support.v4.widget.DrawerLayout>

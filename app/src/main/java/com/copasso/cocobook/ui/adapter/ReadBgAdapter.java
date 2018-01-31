@@ -10,7 +10,7 @@ import com.copasso.cocobook.ui.base.adapter.BaseViewHolder;
 import com.copasso.cocobook.ui.base.adapter.IViewHolder;
 
 /**
- * Created by zhouas666 on 17-5-19.
+ * Created by zhouas666 on 18-1-23.
  */
 
 public class ReadBgAdapter extends BaseListAdapter<Drawable> {
