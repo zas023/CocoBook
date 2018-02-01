@@ -13,6 +13,8 @@ import com.copasso.cocobook.ui.base.adapter.ViewHolderImpl;
 import com.copasso.cocobook.utils.Constant;
 import com.copasso.cocobook.utils.StringUtils;
 
+import java.util.HashMap;
+
 /**
  * Created by zhouas666 on 18-2-8.
  * CollectionBookView
@@ -29,6 +31,24 @@ public class CollBookHolder extends ViewHolderImpl<CollBookBean>{
     private ImageView mIvRedDot;
     private ImageView mIvTop;
 
+    private OnChickListener listener;
+
+    //判断是否显示CheckBox
+    private boolean showCheckBox;
+    private HashMap<CollBookBean,Boolean> mSelectedMap;
+
+
+
+    public CollBookHolder(HashMap<CollBookBean,Boolean> selectedMap, boolean showCheckBox){
+        this.mSelectedMap = selectedMap;
+        this.showCheckBox = showCheckBox;
+    }
+
+
+    public CollBookHolder setListener(OnChickListener listener) {
+        this.listener = listener;
+        return this;
+    }
 
     @Override
     public void initView() {
@@ -72,7 +92,19 @@ public class CollBookHolder extends ViewHolderImpl<CollBookBean>{
         }
         //章节
         mTvChapter.setText(value.getLastChapter());
-        //我的想法是，在Collection中加一个字段，当追更的时候设置为true。当点击的时候设置为false。
+        //选择
+        //防止复用导致的checkbox显示错乱
+        mCbSelected.setTag(pos);
+        mCbSelected.setOnCheckedChangeListener((compoundButton, b) -> {
+
+        });
+        if (showCheckBox){
+            mCbSelected.setVisibility(View.VISIBLE);
+            mCbSelected.setSelected(mSelectedMap.get(value));
+        }else {
+            mCbSelected.setVisibility(View.GONE);
+        }
+
         //当更新的时候，最新数据跟旧数据进行比较，如果更新的话，设置为true。
         if (value.isUpdate()){
             mIvRedDot.setVisibility(View.VISIBLE);
@@ -85,5 +117,9 @@ public class CollBookHolder extends ViewHolderImpl<CollBookBean>{
     @Override
     protected int getItemLayoutId() {
         return R.layout.item_coll_book;
+    }
+
+    public interface OnChickListener{
+        void onCheckedChanged(CollBookBean bean, boolean b);
     }
 }

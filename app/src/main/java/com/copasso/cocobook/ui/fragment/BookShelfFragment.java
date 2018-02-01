@@ -4,19 +4,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
-
+import android.widget.RelativeLayout;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.RxBus;
-import com.copasso.cocobook.event.DeleteResponseEvent;
-import com.copasso.cocobook.event.DeleteTaskEvent;
-import com.copasso.cocobook.event.DownloadMessage;
-import com.copasso.cocobook.event.RecommendBookEvent;
 import com.copasso.cocobook.model.bean.CollBookBean;
+import com.copasso.cocobook.model.event.DeleteResponseEvent;
+import com.copasso.cocobook.model.event.DeleteTaskEvent;
+import com.copasso.cocobook.model.event.DownloadMessage;
+import com.copasso.cocobook.model.event.RecommendBookEvent;
 import com.copasso.cocobook.model.local.BookRepository;
 import com.copasso.cocobook.presenter.BookShelfPresenter;
 import com.copasso.cocobook.presenter.contract.BookShelfContract;
@@ -31,12 +36,10 @@ import com.copasso.cocobook.utils.UiUtils;
 import com.copasso.cocobook.widget.adapter.WholeAdapter;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
 import com.copasso.cocobook.widget.refresh.ScrollRefreshRecyclerView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 import java.io.File;
 import java.util.List;
-
-import butterknife.BindView;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
  * Created by zhouas666 on 18-1-23.
@@ -48,6 +51,16 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
 
     @BindView(R.id.book_shelf_rv_content)
     ScrollRefreshRecyclerView mRvContent;
+    //全选
+    @BindView(R.id.multi_select_rl_root)
+    RelativeLayout multiSelectRlRoot;
+    @BindView(R.id.multi_select_cb_all)
+    CheckBox multiSelectCbAll;
+    @BindView(R.id.multi_select_btn_add)
+    Button multiSelectBtnAdd;
+    @BindView(R.id.multi_select_btn_delete)
+    Button multiSelectBtnDelete;
+
     /***************************视图********************************/
     private CollBookAdapter mCollBookAdapter;
     private FooterItemView mFooterItem;
@@ -55,7 +68,21 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
     /***************************参数********************************/
     //是否是第一次进入
     private boolean isInit = true;
+    //是否是多选模式
+    private  boolean isMultiSelectMode = false;
 
+    public boolean isMultiSelectMode(){
+        return isMultiSelectMode;
+    }
+
+    /**
+     * 退出多选
+     */
+    public void cancelMultiSelectMode(){
+        isMultiSelectMode=false;
+        mCollBookAdapter.setShowCheckBox(isMultiSelectMode);
+        multiSelectRlRoot.setVisibility(View.GONE);
+    }
     /***************************初始化********************************/
     @Override
     protected int getLayoutId() {
@@ -70,6 +97,8 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
     @Override
     protected void initWidget(Bundle savedInstanceState) {
         super.initWidget(savedInstanceState);
+        multiSelectRlRoot.setVisibility(View.GONE);
+        multiSelectBtnAdd.setText("缓存");
         initAdapter();
         initEvent();
     }
@@ -112,7 +141,7 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
                 .subscribe(
                         event -> {
                             if (event.isDelete) {
-                                ProgressUtils.show(mContext,"正在删除中");
+                                ProgressUtils.show(mContext, "正在删除中");
                                 addDisposable(BookRepository.getInstance().deleteCollBookInRx(event.collBook)
                                         .compose(RxUtils::toSimpleSingle)
                                         .subscribe(
@@ -140,6 +169,19 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
     @Override
     protected void initClick() {
         super.initClick();
+
+        multiSelectBtnAdd.setOnClickListener(view -> {
+            isMultiSelectMode=false;
+            mCollBookAdapter.setShowCheckBox(isMultiSelectMode);
+            multiSelectRlRoot.setVisibility(View.GONE);
+            ToastUtils.show(""+mCollBookAdapter.getCheckedCount());
+        });
+
+        multiSelectBtnDelete.setOnClickListener(view -> {
+            isMultiSelectMode=false;
+            mCollBookAdapter.setShowCheckBox(isMultiSelectMode);
+            multiSelectRlRoot.setVisibility(View.GONE);
+        });
 
         mRvContent.setOnRefreshListener(
                 () -> mPresenter.updateCollBooks(mCollBookAdapter.getItems())
@@ -260,11 +302,15 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
                 deleteBook(collBook);
                 break;
             case "批量管理":
+                isMultiSelectMode=true;
+                mCollBookAdapter.setShowCheckBox(isMultiSelectMode);
+                multiSelectRlRoot.setVisibility(View.VISIBLE);
                 break;
             default:
                 break;
         }
     }
+
 
     private void downloadBook(CollBookBean collBook) {
         //创建任务
@@ -287,7 +333,7 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
                     .setPositiveButton(UiUtils.getString(R.string.nb_common_sure), ((dialogInterface, i) -> {
                         boolean isSelected = cb.isSelected();
                         if (isSelected) {
-                            ProgressUtils.show(mContext,"删除中...");
+                            ProgressUtils.show(mContext, "删除中...");
                             //删除
                             File file = new File(collBook.getCover());
                             if (file.exists()) file.delete();

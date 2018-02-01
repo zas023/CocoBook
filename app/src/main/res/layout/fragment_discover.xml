@@ -12,19 +12,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
             <com.youth.banner.Banner
                     android:id="@+id/banner"
                     android:layout_width="match_parent"
                     android:layout_height="160dp"
                     app:title_height="20dp"/>
 
-             <View
-                     android:layout_width="match_parent"
-                     android:layout_height="1px"
-                     android:layout_marginBottom="10dp"
-                     android:layout_marginLeft="10dp"
-                     android:layout_marginRight="10dp"
-                     android:background="@color/nb.divider.narrow" />
 
             <android.support.v7.widget.RecyclerView
                     android:id="@+id/store_rv_find"
@@ -32,13 +26,11 @@
                     android:layout_height="match_parent">
             </android.support.v7.widget.RecyclerView>
 
+
              <View
                      android:layout_width="match_parent"
-                     android:layout_height="1px"
-                     android:layout_marginBottom="10dp"
-                     android:layout_marginLeft="10dp"
-                     android:layout_marginRight="10dp"
-                     android:background="@color/nb.divider.narrow" />
+                     android:layout_height="10dp"
+                     android:background="@color/nb.divider.wide"/>
 
             <android.support.v7.widget.RecyclerView
                     android:id="@+id/store_rv_content"

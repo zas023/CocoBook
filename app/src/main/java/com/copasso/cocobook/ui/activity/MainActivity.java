@@ -24,6 +24,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import butterknife.BindView;
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.ui.base.BaseTabActivity;
 import com.copasso.cocobook.ui.fragment.BookShelfFragment;
@@ -51,6 +53,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     private ImageView drawerIv;
     private TextView drawerTvAccount, drawerTvMail;
 
+    private BookShelfFragment bookShelfFragment;
     /*************Constant**********/
     private static final int WAIT_INTERVAL = 2000;
     private static final int PERMISSIONS_REQUEST_STORAGE = 1;
@@ -60,6 +63,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
     /***************Object*********************/
+
     private final ArrayList<Fragment> mFragmentList = new ArrayList<>();
     private PermissionsChecker mPermissionsChecker;
     /*****************Params*********************/
@@ -74,7 +78,6 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     @Override
     protected void setUpToolbar(Toolbar toolbar) {
         super.setUpToolbar(toolbar);
-        //toolbar.setLogo(R.mipmap.logo);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setTitle("CocoBook");
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -95,7 +98,8 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     }
 
     private void initFragment() {
-        mFragmentList.add(new BookShelfFragment());
+        bookShelfFragment=new BookShelfFragment();
+        mFragmentList.add(bookShelfFragment);
         mFragmentList.add(new BookDiscoverFragment());
         mFragmentList.add(new CommunityFragment());
     }
@@ -109,6 +113,8 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     @Override
     protected void initWidget() {
         super.initWidget();
+        //第一：默认初始化
+        Bmob.initialize(this, "3f3b7628bf00914940a6919da16b33bf");
         //实现侧滑菜单状态栏透明
         getWindow().setStatusBarColor(Color.TRANSPARENT);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
@@ -116,7 +122,21 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
         //性别选择框
         showSexChooseDialog();
 
+        setUpDrawerHeader();
+
+        drawerHeader.setOnClickListener(view -> {
+            if (BmobUser.getCurrentUser()==null)
+                startActivity(new Intent(mContext,LandActivity.class));
+        });
+
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void setUpDrawerHeader() {
+        if (BmobUser.getCurrentUser()!=null){
+            drawerTvAccount.setText(BmobUser.getCurrentUser().getUsername());
+            drawerTvMail.setText(BmobUser.getCurrentUser().getEmail());
+        }
     }
 
     private void showSexChooseDialog() {
@@ -168,8 +188,8 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
                 // 如果取消权限，则返回的值为0
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    //跳转到 FileSystemActivity
-                    Intent intent = new Intent(this, FileSystemActivity.class);
+                    //跳转到 LocalBookActivity
+                    Intent intent = new Intent(this, LocalBookActivity.class);
                     startActivity(intent);
 
                 } else {
@@ -185,6 +205,10 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
      */
     @Override
     public void onBackPressed() {
+        if (bookShelfFragment.isMultiSelectMode()){
+            bookShelfFragment.cancelMultiSelectMode();
+            return;
+        }
         if (!isPrepareFinish) {
             mVp.postDelayed(
                     () -> isPrepareFinish = false, WAIT_INTERVAL
@@ -232,8 +256,9 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
             case R.id.action_search:
                 activityCls = SearchActivity.class;
                 break;
-            case R.id.action_login:
-                break;
+//            case R.id.action_login:
+//                startActivity(new Intent(mContext,LandActivity.class));
+//                break;
             case R.id.action_my_message:
                 break;
             case R.id.action_download:
@@ -257,15 +282,17 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
                     }
                 }
 
-                activityCls = FileSystemActivity.class;
+                activityCls = LocalBookActivity.class;
                 break;
-            case R.id.action_wifi_book:
-                break;
+//            case R.id.action_wifi_book:
+//                break;
             case R.id.action_feedback:
                 break;
-            case R.id.action_night_mode:
-                showUpdateThemeDialog();
-                break;
+//            case R.id.action_night_mode:
+//                showUpdateThemeDialog();
+//                getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);//切换夜间模式
+//                recreate();//重新启动当前activity
+//                break;
             case R.id.action_settings:
                 break;
             default:

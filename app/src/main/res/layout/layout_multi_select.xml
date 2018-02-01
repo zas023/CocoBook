@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/multi_select_rl_root"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@color/colorForeground"
+                android:paddingRight="10dp"
+                android:gravity="center_vertical">
+
+    <CheckBox
+            android:id="@+id/multi_select_cb_all"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:button="@drawable/selector_cb_file"
+            android:text="全选"
+            android:textColor="@color/selector_cb_file"/>
+
+    <Button
+            android:id="@+id/multi_select_btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:minWidth="110dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selector_btn_add"
+            android:textColor="@color/selector_btn_file_add"
+            android:text="加入书架"/>
+
+    <Button
+            android:id="@+id/multi_select_btn_delete"
+            android:layout_width="70dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/selector_btn_delete"
+            android:textColor="@color/selector_btn_file_delete"
+            android:layout_toLeftOf="@id/multi_select_btn_add"
+            android:text="删除"/>
+</RelativeLayout>

@@ -1,6 +1,5 @@
 package com.copasso.cocobook.ui.adapter;
 
-import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.local.BookRepository;
 import com.copasso.cocobook.ui.adapter.view.FileHolder;
 import com.copasso.cocobook.ui.base.adapter.BaseListAdapter;
@@ -15,6 +14,7 @@ import java.util.Set;
 
 /**
  * Created by zhouas666 on 18-2-27.
+ * 智能扫描
  */
 
 public class FileSystemAdapter extends BaseListAdapter<File>{

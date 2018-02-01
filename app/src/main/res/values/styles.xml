@@ -6,6 +6,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!--<item name="android:windowBackground">@color/colorGrounding</item>-->
+        <!--<item name="android:textColor">@color/textPrimary</item>-->
+        <!--<item name="android:textColorSecondary">@color/textSecondary</item>-->
         <item name="android:listDivider">@drawable/shape_divider_dash</item>
         <item name="android:actionOverflowMenuStyle">@style/ActionButton.Overflow.Menu</item>
         <!--<item name="android:windowTranslucentStatus">false</item>-->
@@ -175,6 +178,22 @@
         <item name="android:childDivider">@drawable/shape_divider_dash</item>
         <item name="android:groupIndicator">@null</item>
         <item name="android:listSelector">@drawable/selector_common_bg</item>
+    </style>
+    <!--按钮样式-->
+    <style name="NB.Theme.Widget.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="NB.Theme.Widget.Button.Default">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/bg_button_default</item>
+        <!--<item name="com.github.airsaid.accountbook:backgroundTint">?attr/colorAccent</item>-->
+    </style>
+
+    <style name="NB.Theme.Widget.Button.Default.Margin">
+        <item name="android:layout_margin">@dimen/nb.padding.large</item>
     </style>
     
     <!--图片-->

@@ -5,7 +5,7 @@ import io.reactivex.subjects.PublishSubject;
 
 /**
  * Created by zhouas666 on 18-1-23.
- * 原理:PublishSubject本身作为观察者和被观察者。
+ * PublishSubject本身作为观察者和被观察者。
  */
 
 public class RxBus{

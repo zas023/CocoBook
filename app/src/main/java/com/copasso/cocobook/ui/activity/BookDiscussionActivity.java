@@ -10,7 +10,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.RxBus;
-import com.copasso.cocobook.event.SelectorEvent;
+import com.copasso.cocobook.model.event.SelectorEvent;
 
 import com.copasso.cocobook.model.type.BookDistillate;
 import com.copasso.cocobook.model.type.BookSort;

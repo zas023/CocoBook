@@ -1,4 +1,4 @@
-package com.copasso.cocobook.event;
+package com.copasso.cocobook.model.event;
 
 import com.copasso.cocobook.model.type.BookDistillate;
 import com.copasso.cocobook.model.type.BookSort;

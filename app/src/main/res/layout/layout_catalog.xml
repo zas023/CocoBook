@@ -31,6 +31,7 @@
                 android:id="@+id/read_tv_category_size"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:gravity="right"
                 android:ellipsize="end"
                 android:maxLines="1"

@@ -57,6 +57,7 @@ import static android.view.View.VISIBLE;
 
 /**
  * Created by zhouas666 on 18-2-16.
+ * 阅读activity
  */
 
 public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
@@ -476,7 +477,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                 mDlCatalog.openDrawer(Gravity.START);
                 break;
             case R.id.read_tv_download:  //下载
-                //downloadBook(mCollBook);
+                downloadBook(mCollBook);
                 break;
             case R.id.read_tv_setting:  //设置
                 toggleMenu(false);
@@ -505,6 +506,17 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     private void downloadBook(CollBookBean collBook) {
         //创建任务
         mPresenter.createDownloadTask(collBook);
+        /******下载后加入书架********/
+        //设置为已收藏
+        isCollected = true;
+        //设置BookChapter
+        mCollBook.setBookChapters(mCollBook.getBookChapters());
+        //设置阅读时间
+        mCollBook.setLastRead(StringUtils.
+                dateConvert(System.currentTimeMillis(), Constant.FORMAT_BOOK_DATE));
+
+        BookRepository.getInstance()
+                .saveCollBookWithAsync(mCollBook);
     }
 
     /**

@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.RxBus;
-import com.copasso.cocobook.event.BookSubSortEvent;
+import com.copasso.cocobook.model.event.BookSubSortEvent;
 import com.copasso.cocobook.model.bean.SortBookBean;
 import com.copasso.cocobook.model.type.BookSortListType;
 import com.copasso.cocobook.presenter.BookSortListPresenter;

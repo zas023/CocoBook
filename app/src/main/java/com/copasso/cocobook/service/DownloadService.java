@@ -9,9 +9,9 @@ import android.text.TextUtils;
 
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.RxBus;
-import com.copasso.cocobook.event.DeleteResponseEvent;
-import com.copasso.cocobook.event.DeleteTaskEvent;
-import com.copasso.cocobook.event.DownloadMessage;
+import com.copasso.cocobook.model.event.DeleteResponseEvent;
+import com.copasso.cocobook.model.event.DeleteTaskEvent;
+import com.copasso.cocobook.model.event.DownloadMessage;
 import com.copasso.cocobook.model.bean.BookChapterBean;
 import com.copasso.cocobook.model.bean.DownloadTaskBean;
 import com.copasso.cocobook.utils.BookManager;

@@ -10,11 +10,11 @@
         android:icon="@drawable/ic_menu_search"
         app:showAsAction="ifRoom"/>
 
-    <item
-        android:id="@+id/action_login"
-        android:title="@string/nb.menu.action.login"
-        android:icon="@drawable/ic_menu_login"
-        app:showAsAction="never" />
+    <!--<item-->
+        <!--android:id="@+id/action_login"-->
+        <!--android:title="@string/nb.menu.action.login"-->
+        <!--android:icon="@drawable/ic_menu_login"-->
+        <!--app:showAsAction="never" />-->
 
     <item
         android:id="@+id/action_my_message"
@@ -39,11 +39,11 @@
         android:icon="@drawable/ic_menu_scan"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/action_wifi_book"
-        android:title="@string/nb.menu.action.transfer"
-        android:icon="@drawable/ic_menu_transfer"
-        app:showAsAction="never" />
+    <!--<item-->
+        <!--android:id="@+id/action_wifi_book"-->
+        <!--android:title="@string/nb.menu.action.transfer"-->
+        <!--android:icon="@drawable/ic_menu_transfer"-->
+        <!--app:showAsAction="never" />-->
 
     <item
         android:id="@+id/action_feedback"
@@ -51,11 +51,11 @@
         android:icon="@drawable/ic_menu_feedback"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/action_night_mode"
-        android:title="@string/nb.menu.action.night_mode"
-        android:icon="@drawable/ic_read_menu_night"
-        app:showAsAction="never" />
+    <!--<item-->
+        <!--android:id="@+id/action_night_mode"-->
+        <!--android:title="@string/nb.menu.action.night_mode"-->
+        <!--android:icon="@drawable/ic_read_menu_night"-->
+        <!--app:showAsAction="never" />-->
 
     <item
         android:id="@+id/action_settings"

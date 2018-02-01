@@ -1,4 +1,4 @@
-package com.copasso.cocobook.event;
+package com.copasso.cocobook.model.event;
 
 /**
  * Created by zhouas666 on 18-2-8.

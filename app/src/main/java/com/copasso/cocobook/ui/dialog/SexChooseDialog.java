@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.RxBus;
-import com.copasso.cocobook.event.RecommendBookEvent;
+import com.copasso.cocobook.model.event.RecommendBookEvent;
 import com.copasso.cocobook.utils.Constant;
 import com.copasso.cocobook.utils.SharedPreUtils;
 

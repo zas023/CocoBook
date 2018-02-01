@@ -12,7 +12,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.RxBus;
-import com.copasso.cocobook.event.BookSubSortEvent;
+import com.copasso.cocobook.model.event.BookSubSortEvent;
 import com.copasso.cocobook.model.bean.BookTagBean;
 import com.copasso.cocobook.model.type.BookListType;
 import com.copasso.cocobook.model.remote.RemoteRepository;
