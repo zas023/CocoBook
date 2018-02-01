@@ -78,7 +78,7 @@ public class RecommendBookActivity extends BaseMVPActivity<RecommendBookContract
     @Override
     protected void initWidget() {
         super.initWidget();
-        setUpAdapter();
+        initAdapter();
     }
 
     @Override
@@ -88,7 +88,7 @@ public class RecommendBookActivity extends BaseMVPActivity<RecommendBookContract
         mPresenter.refreshBookBrief(mBookId);
     }
 
-    private void setUpAdapter(){
+    private void initAdapter(){
         mRvContent.setLayoutManager(new LinearLayoutManager(this));
         mRvContent.addItemDecoration(new DividerItemDecoration(this));
         mBooksAdapter = new BillBookAdapter();

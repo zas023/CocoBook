@@ -8,7 +8,7 @@ import com.copasso.cocobook.widget.page.TxtChapter;
 import java.util.List;
 
 /**
- * Created by zhouas666 on 17-5-16.
+ * Created by zhouas666 on 18-2-16.
  */
 
 public interface ReadContract extends BaseContract{

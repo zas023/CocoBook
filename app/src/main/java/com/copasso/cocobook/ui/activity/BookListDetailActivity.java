@@ -35,7 +35,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * Created by zhouas666 on 17-5-1.
+ * Created by zhouas666 on 18-2-1.
  */
 
 public class BookListDetailActivity extends BaseMVPActivity<BookListDetailContract.Presenter> implements BookListDetailContract.View {
@@ -89,10 +89,10 @@ public class BookListDetailActivity extends BaseMVPActivity<BookListDetailContra
     @Override
     protected void initWidget() {
         super.initWidget();
-        setUpAdapter();
+        initAdapter();
     }
 
-    private void setUpAdapter(){
+    private void initAdapter(){
         mDetailAdapter = new BookListDetailAdapter(this,new WholeAdapter.Options());
         mDetailHeader = new DetailHeader();
         mDetailAdapter.addHeaderView(mDetailHeader);

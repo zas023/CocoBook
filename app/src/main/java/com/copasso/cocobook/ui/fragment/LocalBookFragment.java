@@ -17,15 +17,18 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * Created by zhouas666 on 17-5-27.
- * 本地书籍
+ * Created by zhouas666 on 18-2-27.
+ * 本地书籍fragment
  */
 
 public class LocalBookFragment extends BaseFileFragment{
+    /***************************视图********************************/
     @BindView(R.id.refresh_layout)
     RefreshLayout mRlRefresh;
     @BindView(R.id.local_book_rv_content)
     RecyclerView mRvContent;
+
+    /***************************初始化********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_local_book;
@@ -34,10 +37,10 @@ public class LocalBookFragment extends BaseFileFragment{
     @Override
     protected void initWidget(Bundle savedInstanceState) {
         super.initWidget(savedInstanceState);
-        setUpAdapter();
+        initAdapter();
     }
 
-    private void setUpAdapter(){
+    private void initAdapter(){
         mAdapter = new FileSystemAdapter();
         mRvContent.setLayoutManager(new LinearLayoutManager(getContext()));
         mRvContent.addItemDecoration(new DividerItemDecoration(getContext()));
@@ -66,6 +69,7 @@ public class LocalBookFragment extends BaseFileFragment{
         );
     }
 
+    /***************************业务逻辑********************************/
     @Override
     protected void processLogic() {
         super.processLogic();

@@ -21,22 +21,25 @@ import butterknife.BindView;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 分类fragment
  */
 
 public class BillBookFragment extends BaseMVPFragment<BillBookContract.Presenter>
         implements BillBookContract.View{
+    /***************************常量********************************/
     private static final String EXTRA_BILL_ID = "extra_bill_id";
 
-    /********************/
     @BindView(R.id.refresh_layout)
     RefreshLayout mRefreshLayout;
     @BindView(R.id.refresh_rv_content)
     RecyclerView mRvContent;
-    /*******************/
+    /***************************视图********************************/
     private BillBookAdapter mBillBookAdapter;
-    /*****************/
+
+    /***************************参数********************************/
     private String mBillId;
 
+    /***************************公共方法********************************/
     public static Fragment newInstance(String billId){
         Bundle bundle = new Bundle();
         bundle.putString(EXTRA_BILL_ID,billId);
@@ -45,6 +48,7 @@ public class BillBookFragment extends BaseMVPFragment<BillBookContract.Presenter
         return fragment;
     }
 
+    /***************************初始化********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_refresh_list;
@@ -75,21 +79,18 @@ public class BillBookFragment extends BaseMVPFragment<BillBookContract.Presenter
     @Override
     protected void initWidget(Bundle savedInstanceState) {
         super.initWidget(savedInstanceState);
-        setUpAdapter();
+        mRvContent.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRvContent.addItemDecoration(new DividerItemDecoration(getContext()));
+        mBillBookAdapter = new BillBookAdapter();
+        mRvContent.setAdapter(mBillBookAdapter);
     }
 
+    /***************************业务逻辑********************************/
     @Override
     protected void processLogic() {
         super.processLogic();
         mRefreshLayout.showLoading();
         mPresenter.refreshBookBrief(mBillId);
-    }
-
-    private void setUpAdapter(){
-        mRvContent.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRvContent.addItemDecoration(new DividerItemDecoration(getContext()));
-        mBillBookAdapter = new BillBookAdapter();
-        mRvContent.setAdapter(mBillBookAdapter);
     }
 
     @Override

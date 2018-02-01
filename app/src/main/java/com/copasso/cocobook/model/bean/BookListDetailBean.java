@@ -3,7 +3,7 @@ package com.copasso.cocobook.model.bean;
 import java.util.List;
 
 /**
- * Created by zhouas666 on 17-5-2.
+ * Created by zhouas666 on 18-2-2.
  */
 
 public class BookListDetailBean {

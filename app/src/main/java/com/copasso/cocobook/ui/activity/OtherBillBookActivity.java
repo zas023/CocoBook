@@ -81,7 +81,7 @@ public class OtherBillBookActivity extends BaseMVPActivity<BillBookContract.Pres
     @Override
     protected void initWidget() {
         super.initWidget();
-        setUpAdapter();
+        initAdapter();
     }
 
     @Override
@@ -91,7 +91,7 @@ public class OtherBillBookActivity extends BaseMVPActivity<BillBookContract.Pres
         mPresenter.refreshBookBrief(mBillId);
     }
 
-    private void setUpAdapter(){
+    private void initAdapter(){
         mRvContent.setLayoutManager(new LinearLayoutManager(this));
         mRvContent.addItemDecoration(new DividerItemDecoration(this));
         mBillBookAdapter = new BillBookAdapter();

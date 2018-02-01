@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by zhouas666 on 17-5-5.
+ * Created by zhouas666 on 18-2-5.
  * 用于头标签 + 表格的布局View
  */
 

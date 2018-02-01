@@ -6,7 +6,7 @@ import com.copasso.cocobook.App;
 import com.copasso.cocobook.R;
 
 /**
- * Created by zhouas666 on 17-5-1.
+ * Created by zhouas666 on 18-2-1.
  */
 
 public enum  BookListType{

@@ -54,10 +54,10 @@ public class BookSortActivity extends BaseMVPActivity<BookSortContract.Presenter
     @Override
     protected void initWidget() {
         super.initWidget();
-        setUpAdapter();
+        initAdapter();
     }
 
-    private void setUpAdapter(){
+    private void initAdapter(){
         mBoyAdapter = new BookSortAdapter();
         mGirlAdapter = new BookSortAdapter();
 

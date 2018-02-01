@@ -103,10 +103,10 @@ public class BookSortListActivity extends BaseBackTabActivity {
     @Override
     protected void initWidget() {
         super.initWidget();
-        setUpAdapter();
+        initAdapter();
     }
 
-    private void setUpAdapter(){
+    private void initAdapter(){
         mTagAdapter = new HorizonTagAdapter();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);

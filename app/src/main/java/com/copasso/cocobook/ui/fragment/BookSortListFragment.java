@@ -27,22 +27,24 @@ import io.reactivex.disposables.Disposable;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 图书分类列表fragment
  */
 
 public class BookSortListFragment extends BaseMVPFragment<BookSortListContract.Presenter>
         implements BookSortListContract.View{
+    /***************************常量********************************/
     private static final String EXTRA_GENDER = "extra_gender";
     private static final String EXTRA_TYPE = "extra_type";
     private static final String EXTRA_MAJOR = "extra_major";
 
-    /********************/
     @BindView(R.id.refresh_layout)
     RefreshLayout mRefreshLayout;
     @BindView(R.id.refresh_rv_content)
     RecyclerView mRvContent;
-    /*************************************/
+    /***************************视图********************************/
     BookSortListAdapter mBookSortListAdapter;
-    /************************************/
+
+    /***************************参数********************************/
     private String mGender;
     private String mMajor;
     private BookSortListType mType;
@@ -50,6 +52,7 @@ public class BookSortListFragment extends BaseMVPFragment<BookSortListContract.P
     private int mStart = 0;
     private int mLimit = 20;
 
+    /***************************公共方法********************************/
     public static Fragment newInstance(String gender,String major,BookSortListType type){
         Bundle bundle = new Bundle();
         bundle.putString(EXTRA_GENDER,gender);
@@ -60,6 +63,15 @@ public class BookSortListFragment extends BaseMVPFragment<BookSortListContract.P
         return fragment;
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(EXTRA_GENDER, mGender);
+        outState.putString(EXTRA_MAJOR,mMajor);
+        outState.putSerializable(EXTRA_TYPE,mType);
+    }
+
+    /***************************初始化********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_refresh_list;
@@ -117,10 +129,10 @@ public class BookSortListFragment extends BaseMVPFragment<BookSortListContract.P
     @Override
     protected void initWidget(Bundle savedInstanceState) {
         super.initWidget(savedInstanceState);
-        setUpAdapter();
+        initAdapter();
     }
 
-    private void setUpAdapter(){
+    private void initAdapter(){
         mBookSortListAdapter = new BookSortListAdapter(getContext(),new WholeAdapter.Options());
 
         mRvContent.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -128,6 +140,7 @@ public class BookSortListFragment extends BaseMVPFragment<BookSortListContract.P
         mRvContent.setAdapter(mBookSortListAdapter);
     }
 
+    /***************************业务逻辑********************************/
     @Override
     protected void processLogic() {
         super.processLogic();
@@ -166,12 +179,4 @@ public class BookSortListFragment extends BaseMVPFragment<BookSortListContract.P
         mRefreshLayout.showFinish();
     }
 
-    /***************************************************************/
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString(EXTRA_GENDER, mGender);
-        outState.putString(EXTRA_MAJOR,mMajor);
-        outState.putSerializable(EXTRA_TYPE,mType);
-    }
 }

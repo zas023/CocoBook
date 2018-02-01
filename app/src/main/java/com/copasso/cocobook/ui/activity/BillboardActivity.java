@@ -46,7 +46,7 @@ public class BillboardActivity extends BaseMVPActivity<BillboardContract.Present
     @Override
     protected void initWidget() {
         super.initWidget();
-        setUpAdapter();
+        initAdapter();
     }
 
     @Override
@@ -54,7 +54,7 @@ public class BillboardActivity extends BaseMVPActivity<BillboardContract.Present
         getSupportActionBar().setTitle("排行榜");
     }
 
-    private void setUpAdapter() {
+    private void initAdapter() {
         mBoyAdapter = new BillboardAdapter(this);
         mGirlAdapter = new BillboardAdapter(this);
         mElvBoy.setAdapter(mBoyAdapter);

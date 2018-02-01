@@ -83,11 +83,11 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
     @Override
     protected void initWidget() {
         super.initWidget();
-        setUpAdapter();
+        initAdapter();
         mRlRefresh.setBackground(getDrawable(R.color.white));
     }
 
-    private void setUpAdapter() {
+    private void initAdapter() {
         mKeyWordAdapter = new KeyWordAdapter();
         mSearchAdapter = new SearchBookAdapter();
 

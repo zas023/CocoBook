@@ -27,7 +27,7 @@ import butterknife.BindView;
 
 /**
  * Created by zhouas666 on 18-1-23.
- * 书籍讨论
+ * 书籍讨论activity
  */
 
 public class BookDiscussionActivity extends BaseBackActivity implements SelectorView.OnItemSelectedListener {

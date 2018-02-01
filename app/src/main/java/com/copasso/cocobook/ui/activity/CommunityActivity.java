@@ -8,7 +8,7 @@ import com.copasso.cocobook.ui.base.BaseActivity;
 import com.copasso.cocobook.ui.base.BaseBackActivity;
 
 /**
- * Created by zhouas666 on 17-5-26.
+ * Created by zhouas666 on 18-2-26.
  */
 
 public class CommunityActivity extends BaseBackActivity {

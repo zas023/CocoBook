@@ -19,7 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by zhouas666 on 17-5-8.
+ * Created by zhouas666 on 18-2-8.
  */
 
 public class BookStorePresenter extends RxPresenter<BookStoreContract.View>

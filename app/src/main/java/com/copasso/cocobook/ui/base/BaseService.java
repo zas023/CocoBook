@@ -9,7 +9,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
 /**
- * Created by zhouas666 on 17-5-13.
+ * Created by zhouas666 on 18-2-13.
  */
 
 public abstract class BaseService extends Service {

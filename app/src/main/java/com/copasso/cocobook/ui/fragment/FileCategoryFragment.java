@@ -26,19 +26,24 @@ import java.util.Set;
 import butterknife.BindView;
 
 /**
- * Created by zhouas666 on 17-5-27.
+ * Created by zhouas666 on 18-2-27.
+ * 文件目录fragment
  */
 
 public class FileCategoryFragment extends BaseFileFragment {
+    /***************************常量********************************/
     private static final String TAG = "FileCategoryFragment";
+
     @BindView(R.id.file_category_tv_path)
     TextView mTvPath;
     @BindView(R.id.file_category_tv_back_last)
     TextView mTvBackLast;
     @BindView(R.id.file_category_rv_content)
     RecyclerView mRvContent;
-
+    /***************************视图********************************/
     private FileStack mFileStack;
+
+    /***************************初始化********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_file_category;
@@ -48,10 +53,10 @@ public class FileCategoryFragment extends BaseFileFragment {
     protected void initWidget(Bundle savedInstanceState) {
         super.initWidget(savedInstanceState);
         mFileStack = new FileStack();
-        setUpAdapter();
+        initAdapter();
     }
 
-    private void setUpAdapter(){
+    private void initAdapter(){
         mAdapter = new FileSystemAdapter();
         mRvContent.setLayoutManager(new LinearLayoutManager(getContext()));
         mRvContent.addItemDecoration(new DividerItemDecoration(getContext()));
@@ -108,6 +113,7 @@ public class FileCategoryFragment extends BaseFileFragment {
 
     }
 
+    /***************************业务逻辑********************************/
     @Override
     protected void processLogic() {
         super.processLogic();

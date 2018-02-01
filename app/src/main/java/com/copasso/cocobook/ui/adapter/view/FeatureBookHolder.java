@@ -10,7 +10,7 @@ import com.copasso.cocobook.ui.base.adapter.ViewHolderImpl;
 import com.copasso.cocobook.utils.Constant;
 
 /**
- * Created by zhouas666 on 17-5-8.
+ * Created by zhouas666 on 18-2-8.
  * CollectionBookView
  */
 

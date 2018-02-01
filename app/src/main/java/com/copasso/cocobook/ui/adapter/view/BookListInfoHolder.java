@@ -10,7 +10,7 @@ import com.copasso.cocobook.ui.base.adapter.ViewHolderImpl;
 import com.copasso.cocobook.utils.Constant;
 
 /**
- * Created by zhouas666 on 17-5-2.
+ * Created by zhouas666 on 18-2-2.
  */
 
 public class BookListInfoHolder extends ViewHolderImpl<BookListDetailBean.BooksBean.BookBean> {

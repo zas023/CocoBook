@@ -6,7 +6,7 @@ import com.copasso.cocobook.R;
 import com.copasso.cocobook.ui.base.adapter.ViewHolderImpl;
 
 /**
- * Created by zhouas666 on 17-5-5.
+ * Created by zhouas666 on 18-2-5.
  */
 
 public class TagGroupHolder extends ViewHolderImpl<String> {

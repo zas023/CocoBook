@@ -15,33 +15,30 @@ import com.copasso.cocobook.ui.base.adapter.BaseListAdapter;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
 
 import java.util.ArrayList;
-
-
 /**
  * Created by zhouas666 on 18-1-23.
- * 讨论区
+ * 社区fragment
  */
 
 public class CommunityFragment extends BaseFragment implements BaseListAdapter.OnItemClickListener{
-    /***************view******************/
+
     @BindView(R.id.community_rv_content)
     RecyclerView mRvContent;
-
+    /***************************视图********************************/
     private SectionAdapter mAdapter;
 
+    /***************************初始化********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_community;
     }
 
-    /***********************************init method*************************************************/
-
     @Override
     protected void initWidget(Bundle savedInstanceState) {
-        setUpAdapter();
+        initAdapter();
     }
 
-    private void setUpAdapter(){
+    private void initAdapter(){
         ArrayList<SectionBean> sections = new ArrayList<>();
 
         /*觉得采用枚举会好一些，要不然就是在Constant中创建Map类*/
@@ -57,17 +54,15 @@ public class CommunityFragment extends BaseFragment implements BaseListAdapter.O
         mAdapter.addItems(sections);
     }
 
-    /****************************click method********************************/
-
     @Override
     protected void initClick() {
         mAdapter.setOnItemClickListener(this);
     }
 
+    /***************************事件处理********************************/
     @Override
     public void onItemClick(View view, int pos) {
         //根据类型，启动相应的Discussion区
-        CommunityType type = CommunityType.values()[pos];
-        BookDiscussionActivity.startActivity(getContext(),type);
+        BookDiscussionActivity.startActivity(mContext,CommunityType.values()[pos]);
     }
 }

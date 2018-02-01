@@ -16,7 +16,7 @@ import com.copasso.cocobook.model.gen.BookChapterBeanDao;
 import com.copasso.cocobook.model.gen.DownloadTaskBeanDao;
 
 /**
- * Created by zhouas666 on 17-5-11.
+ * Created by zhouas666 on 18-2-11.
  */
 @Entity
 public class DownloadTaskBean{

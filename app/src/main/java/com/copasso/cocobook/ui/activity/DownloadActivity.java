@@ -21,7 +21,7 @@ import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
 import butterknife.BindView;
 
 /**
- * Created by zhouas666 on 17-5-11.
+ * Created by zhouas666 on 18-2-11.
  * 下载面板
  */
 
@@ -50,10 +50,10 @@ public class DownloadActivity extends BaseBackActivity implements DownloadServic
     @Override
     protected void initWidget() {
         super.initWidget();
-        setUpAdapter();
+        initAdapter();
     }
 
-    private void setUpAdapter(){
+    private void initAdapter(){
         mDownloadAdapter = new DownLoadAdapter();
         mRvContent.addItemDecoration(new DividerItemDecoration(this));
         mRvContent.setLayoutManager(new LinearLayoutManager(this));

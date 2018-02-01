@@ -40,24 +40,29 @@ import butterknife.Unbinder;
 
 /**
  * Created by zhouas666 on 17-4-30.
+ * 评论区fragment
  */
 
 public class ReviewDetailFragment extends BaseMVPFragment<ReviewDetailContract.Presenter>
         implements ReviewDetailContract.View{
+    /***************************常量********************************/
     private static final String TAG = "ReviewDetailFragment";
     private static final String EXTRA_DETAIL_ID = "extra_detail_id";
+
     @BindView(R.id.refresh_layout)
     RefreshLayout mRefreshLayout;
     @BindView(R.id.refresh_rv_content)
     RecyclerView mRvContent;
-    /***********************************/
+    /***************************视图********************************/
     private CommentAdapter mCommentAdapter;
     private DetailHeader mDetailHeader;
-    /***********params****************/
+
+    /***************************参数********************************/
     private String mDetailId;
     private int start = 0;
     private int limit = 30;
 
+    /***************************公共方法********************************/
     public static Fragment newInstance(String detailId){
         Bundle bundle = new Bundle();
         bundle.putSerializable(EXTRA_DETAIL_ID,detailId);
@@ -66,6 +71,7 @@ public class ReviewDetailFragment extends BaseMVPFragment<ReviewDetailContract.P
         return fragment;
     }
 
+    /***************************初始化********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_refresh_list;
@@ -111,6 +117,7 @@ public class ReviewDetailFragment extends BaseMVPFragment<ReviewDetailContract.P
         );
     }
 
+    /***************************业务逻辑********************************/
     @Override
     protected void processLogic() {
         super.processLogic();
@@ -149,6 +156,14 @@ public class ReviewDetailFragment extends BaseMVPFragment<ReviewDetailContract.P
         mRefreshLayout.showFinish();
     }
 
+    /***************************状态处理********************************/
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mDetailHeader.detailUnbinder.unbind();
+    }
+
+    /***************************************************************/
     class DetailHeader implements WholeAdapter.ItemView{
         @BindView(R.id.disc_detail_iv_portrait)
         ImageView ivPortrait;
@@ -281,9 +296,4 @@ public class ReviewDetailFragment extends BaseMVPFragment<ReviewDetailContract.P
         }
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mDetailHeader.detailUnbinder.unbind();
-    }
 }

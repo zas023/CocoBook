@@ -15,7 +15,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by zhouas666 on 17-5-1.
+ * Created by zhouas666 on 18-2-1.
  */
 
 public class BookListPresenter extends RxPresenter<BookListContract.View> implements BookListContract.Presenter {

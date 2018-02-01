@@ -28,23 +28,34 @@ import io.reactivex.disposables.Disposable;
 
 /**
  * Created by zhouas666 on 17-4-21.
+ * 帮助区fragment
  */
 
 public class DiscHelpsFragment extends BaseMVPFragment<DiscHelpsContract.Presenter> implements DiscHelpsContract.View{
+    /***************************常量********************************/
     private static final String BUNDLE_SORT = "bundle_sort";
     private static final String BUNDLE_DISTILLATE = "bundle_distillate";
-    /*****************View********************/
+
     @BindView(R.id.scroll_refresh_rv_content)
     ScrollRefreshRecyclerView mRvContent;
-    /******************Object******************/
+    /***************************视图********************************/
     private DiscHelpsAdapter mDiscHelpsAdapter;
-    /******************Params*******************/
+
+    /***************************参数********************************/
     private BookSort mBookSort = BookSort.DEFAULT;
     private BookDistillate mDistillate = BookDistillate.ALL;
     private int mStart = 0;
     private int mLimited = 20;
 
-    /************************init method*********************************/
+    /***************************公共方法********************************/
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(BUNDLE_SORT, mBookSort);
+        outState.putSerializable(BUNDLE_DISTILLATE,mDistillate);
+    }
+
+    /***************************初始化********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_scroll_refresh_list;
@@ -61,17 +72,16 @@ public class DiscHelpsFragment extends BaseMVPFragment<DiscHelpsContract.Present
 
     @Override
     protected void initWidget(Bundle savedInstanceState) {
-        setUpAdapter();
+        initAdapter();
     }
 
-    private void setUpAdapter(){
+    private void initAdapter(){
         mRvContent.setLayoutManager(new LinearLayoutManager(getContext()));
         mRvContent.addItemDecoration(new DividerItemDecoration(getContext()));
         mDiscHelpsAdapter = new DiscHelpsAdapter(getContext(),new WholeAdapter.Options());
         mRvContent.setAdapter(mDiscHelpsAdapter);
     }
 
-    /******************************click method******************************/
     @Override
     protected void initClick() {
         mRvContent.setOnRefreshListener(
@@ -106,7 +116,7 @@ public class DiscHelpsFragment extends BaseMVPFragment<DiscHelpsContract.Present
         return new DiscHelpsPresenter();
     }
 
-    /*****************************logic method*****************************/
+    /***************************业务逻辑********************************/
     @Override
     protected void processLogic() {
         super.processLogic();
@@ -120,7 +130,6 @@ public class DiscHelpsFragment extends BaseMVPFragment<DiscHelpsContract.Present
         mPresenter.refreshBookHelps(mBookSort,mStart,mLimited,mDistillate);
     }
 
-    /**************************rewrite method****************************************/
     @Override
     public void finishRefresh(List<BookHelpsBean> beans) {
         mDiscHelpsAdapter.refreshItems(beans);
@@ -148,14 +157,8 @@ public class DiscHelpsFragment extends BaseMVPFragment<DiscHelpsContract.Present
     public void complete() {
         mRvContent.finishRefresh();
     }
-    /****************************************************************************/
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putSerializable(BUNDLE_SORT, mBookSort);
-        outState.putSerializable(BUNDLE_DISTILLATE,mDistillate);
-    }
 
+    /***************************状态处理********************************/
     @Override
     public void onStop() {
         super.onStop();

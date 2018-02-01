@@ -56,7 +56,7 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 /**
- * Created by zhouas666 on 17-5-16.
+ * Created by zhouas666 on 18-2-16.
  */
 
 public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
@@ -226,7 +226,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         mDlCatalog.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         mSettingDialog = new ReadSettingDialog(this, mPageLoader);
 
-        setUpAdapter();
+        initAdapter();
 
         //夜间模式按钮的状态
         toggleNightMode();
@@ -298,7 +298,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     /**
      * 初始化目录
      */
-    private void setUpAdapter() {
+    private void initAdapter() {
         mCategoryAdapter = new CategoryAdapter();
         mLvCategory.setAdapter(mCategoryAdapter);
         mLvCategory.setFastScrollEnabled(true);

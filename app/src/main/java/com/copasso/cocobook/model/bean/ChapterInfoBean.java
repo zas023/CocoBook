@@ -1,7 +1,7 @@
 package com.copasso.cocobook.model.bean;
 
 /**
- * Created by zhouas666 on 17-5-10.
+ * Created by zhouas666 on 18-2-10.
  */
 
 public class ChapterInfoBean {

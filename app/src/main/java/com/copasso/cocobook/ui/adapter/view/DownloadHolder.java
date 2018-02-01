@@ -13,7 +13,7 @@ import com.copasso.cocobook.utils.FileUtils;
 import com.copasso.cocobook.utils.StringUtils;
 
 /**
- * Created by zhouas666 on 17-5-12.
+ * Created by zhouas666 on 18-2-12.
  */
 
 public class DownloadHolder extends ViewHolderImpl<DownloadTaskBean> {

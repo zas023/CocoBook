@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by zhouas666 on 17-5-17.
+ * Created by zhouas666 on 18-2-17.
  */
 
 public abstract class ViewHolderImpl<T> implements IViewHolder<T> {

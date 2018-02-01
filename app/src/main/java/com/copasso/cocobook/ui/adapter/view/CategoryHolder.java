@@ -11,7 +11,7 @@ import com.copasso.cocobook.ui.base.adapter.ViewHolderImpl;
 import com.copasso.cocobook.widget.page.TxtChapter;
 
 /**
- * Created by zhouas666 on 17-5-16.
+ * Created by zhouas666 on 18-2-16.
  */
 
 public class CategoryHolder extends ViewHolderImpl<TxtChapter> {

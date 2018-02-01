@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by zhouas666 on 17-5-10.
+ * Created by zhouas666 on 18-2-10.
  */
 
 public class BookChapterPackage extends BaseBean {

@@ -5,7 +5,7 @@ import android.widget.Toast;
 import com.copasso.cocobook.App;
 
 /**
- * Created by zhouas666 on 17-5-11.
+ * Created by zhouas666 on 18-2-11.
  */
 
 public class ToastUtils {

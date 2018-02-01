@@ -26,26 +26,30 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 
 /**
- * Created by zhouas666 on 17-5-1.
- * 书单页面
+ * Created by zhouas666 on 18-2-1.
+ * 书单fragment
  */
 
 public class BookListFragment extends BaseMVPFragment<BookListContract.Presenter>
         implements BookListContract.View{
+    /***************************常量********************************/
     private static final String EXTRA_BOOK_LIST_TYPE = "extra_book_list_type";
     private static final String BUNDLE_BOOK_TAG = "bundle_book_tag";
+
     @BindView(R.id.refresh_layout)
     RefreshLayout mRefreshLayout;
     @BindView(R.id.refresh_rv_content)
     RecyclerView mRvContent;
-    /************************************/
+    /***************************视图********************************/
     private BookListAdapter mBookListAdapter;
-    /***************************************/
+
+    /***************************参数********************************/
     private BookListType mBookListType;
     private String mTag = "";
     private int mStart = 0;
     private int mLimit = 20;
 
+    /***************************公共方法********************************/
     public static Fragment newInstance(BookListType bookListType){
         Bundle bundle = new Bundle();
         bundle.putSerializable(EXTRA_BOOK_LIST_TYPE,bookListType);
@@ -54,6 +58,14 @@ public class BookListFragment extends BaseMVPFragment<BookListContract.Presenter
         return fragment;
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(EXTRA_BOOK_LIST_TYPE, mBookListType);
+        outState.putSerializable(BUNDLE_BOOK_TAG,mTag);
+    }
+
+    /***************************初始化********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_refresh_list;
@@ -79,7 +91,7 @@ public class BookListFragment extends BaseMVPFragment<BookListContract.Presenter
     @Override
     protected void initWidget(Bundle savedInstanceState) {
         super.initWidget(savedInstanceState);
-        setUpAdapter();
+        initAdapter();
     }
 
 
@@ -110,6 +122,7 @@ public class BookListFragment extends BaseMVPFragment<BookListContract.Presenter
         addDisposable(disposable);
     }
 
+    /***************************业务逻辑********************************/
     @Override
     protected void processLogic() {
         super.processLogic();
@@ -122,7 +135,7 @@ public class BookListFragment extends BaseMVPFragment<BookListContract.Presenter
         mPresenter.refreshBookList(mBookListType,mTag,mStart,mLimit);
     }
 
-    private void setUpAdapter(){
+    private void initAdapter(){
         mRvContent.setLayoutManager(new LinearLayoutManager(getContext()));
         mRvContent.addItemDecoration(new DividerItemDecoration(getContext()));
         mBookListAdapter = new BookListAdapter(getContext(),new WholeAdapter.Options());
@@ -156,11 +169,4 @@ public class BookListFragment extends BaseMVPFragment<BookListContract.Presenter
         mRefreshLayout.showFinish();
     }
 
-    /***********************************************************************/
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putSerializable(EXTRA_BOOK_LIST_TYPE, mBookListType);
-        outState.putSerializable(BUNDLE_BOOK_TAG,mTag);
-    }
 }

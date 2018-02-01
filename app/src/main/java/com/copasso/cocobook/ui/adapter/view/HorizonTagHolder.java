@@ -6,7 +6,7 @@ import com.copasso.cocobook.R;
 import com.copasso.cocobook.ui.base.adapter.ViewHolderImpl;
 
 /**
- * Created by zhouas666 on 17-5-2.
+ * Created by zhouas666 on 18-2-2.
  */
 
 public class HorizonTagHolder extends ViewHolderImpl<String> {

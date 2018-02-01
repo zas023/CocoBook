@@ -1,7 +1,7 @@
 package com.copasso.cocobook.event;
 
 /**
- * Created by zhouas666 on 17-5-8.
+ * Created by zhouas666 on 18-2-8.
  */
 
 public class RecommendBookEvent {

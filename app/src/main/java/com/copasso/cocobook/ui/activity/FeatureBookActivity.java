@@ -77,7 +77,7 @@ public class FeatureBookActivity extends BaseMVPActivity<FeatureDetailContract.P
     @Override
     protected void initWidget() {
         super.initWidget();
-        setUpAdapter();
+        initAdapter();
     }
 
     @Override
@@ -87,7 +87,7 @@ public class FeatureBookActivity extends BaseMVPActivity<FeatureDetailContract.P
         mPresenter.refreshFeatureDetail(mFeatureId);
     }
 
-    private void setUpAdapter(){
+    private void initAdapter(){
         mRvContent.setLayoutManager(new LinearLayoutManager(this));
         mRvContent.addItemDecoration(new DividerItemDecoration(this));
         mAdapter = new FeatureDetailAdapter();

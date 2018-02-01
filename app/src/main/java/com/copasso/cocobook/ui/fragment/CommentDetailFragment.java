@@ -26,35 +26,37 @@ import com.copasso.cocobook.widget.BookTextView;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.adapter.WholeAdapter;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
-import com.copasso.cocobook.widget.transform.CircleTransform;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import com.copasso.cocobook.widget.transform.CircleTransform;
 
 /**
  * Created by zhouas666 on 18-1-23.
- * 综合评论区 + 书荒互助区详情
+ * 综合讨论区、书荒互助区详情fragment
  */
 
 public class CommentDetailFragment extends BaseMVPFragment<CommentDetailContract.Presenter>
         implements CommentDetailContract.View{
+    /*****************************常量***********************************/
     private static final String TAG = "CommentDetailFragment";
     private static final String EXTRA_DETAIL_ID = "extra_detail_id";
     @BindView(R.id.refresh_layout)
     RefreshLayout mRefreshLayout;
     @BindView(R.id.refresh_rv_content)
     RecyclerView mRvContent;
-    /***********************************/
+    /*****************************视图***********************************/
     private CommentAdapter mCommentAdapter;
     private DetailHeader mDetailHeader;
-    /***********params****************/
+    /*****************************参数**********************************/
     private String mDetailId;
     private int start = 0;
     private int limit = 30;
 
+    /*****************************公共方法**********************************/
     public static Fragment newInstance(String detailId){
         Bundle bundle = new Bundle();
         bundle.putSerializable(EXTRA_DETAIL_ID,detailId);
@@ -63,6 +65,13 @@ public class CommentDetailFragment extends BaseMVPFragment<CommentDetailContract
         return fragment;
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(EXTRA_DETAIL_ID, mDetailId);
+    }
+
+    /*****************************初始化**********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_refresh_list;
@@ -86,11 +95,6 @@ public class CommentDetailFragment extends BaseMVPFragment<CommentDetailContract
     @Override
     protected void initWidget(Bundle savedInstanceState) {
         super.initWidget(savedInstanceState);
-        initRecyclerView();
-    }
-
-    private void initRecyclerView(){
-
         mCommentAdapter = new CommentAdapter(getContext(),new WholeAdapter.Options());
         mDetailHeader = new DetailHeader();
         mCommentAdapter.addHeaderView(mDetailHeader);
@@ -107,7 +111,7 @@ public class CommentDetailFragment extends BaseMVPFragment<CommentDetailContract
                 () -> mPresenter.loadComment(mDetailId, start, limit)
         );
     }
-
+    /*****************************业务逻辑**********************************/
     @Override
     protected void processLogic() {
         super.processLogic();
@@ -149,11 +153,6 @@ public class CommentDetailFragment extends BaseMVPFragment<CommentDetailContract
     }
 
     /***********************************************************************/
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString(EXTRA_DETAIL_ID, mDetailId);
-    }
 
     class DetailHeader implements WholeAdapter.ItemView{
         @BindView(R.id.disc_detail_iv_portrait)

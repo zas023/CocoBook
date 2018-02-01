@@ -6,7 +6,7 @@ import com.copasso.cocobook.ui.base.adapter.IViewHolder;
 import com.copasso.cocobook.widget.adapter.WholeAdapter;
 
 /**
- * Created by zhouas666 on 17-5-8.
+ * Created by zhouas666 on 18-2-8.
  */
 
 public class RecommendBookAdapter extends WholeAdapter<BillBookBean> {

@@ -18,7 +18,7 @@ import java.io.File;
 import java.util.HashMap;
 
 /**
- * Created by zhouas666 on 17-5-27.
+ * Created by zhouas666 on 18-2-27.
  */
 
 public class FileHolder extends ViewHolderImpl<File> {

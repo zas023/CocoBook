@@ -8,7 +8,7 @@ import com.copasso.cocobook.ui.base.adapter.IViewHolder;
 import com.copasso.cocobook.widget.adapter.WholeAdapter;
 
 /**
- * Created by zhouas666 on 17-5-1.
+ * Created by zhouas666 on 18-2-1.
  */
 
 public class BookListAdapter extends WholeAdapter<BookListBean> {

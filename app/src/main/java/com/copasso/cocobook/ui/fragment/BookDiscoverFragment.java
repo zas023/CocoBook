@@ -31,32 +31,33 @@ import java.util.List;
 
 /**
  * Created by zhouas666 on 18-1-23.
- * 讨论区
+ * 讨论区fragment
  */
 
 public class BookDiscoverFragment extends BaseMVPFragment<BookStoreContract.Presenter> implements BookStoreContract.View {
-    /***************view******************/
+    /***************************常量********************************/
+
     @BindView(R.id.banner)
     Banner banner;
     @BindView(R.id.store_rv_find)
     RecyclerView storeRvFind;
     @BindView(R.id.store_rv_content)
     RecyclerView storeRvContent;
-
+    /***************************视图********************************/
     private SquareAdapter mSquareAdapter;
     private FeatureAdapter mFeatureAdapter;
 
+    /***************************参数********************************/
     List<SwipePictureBean> mSwipePictures;
     List<FeatureBean> mFeatures=new ArrayList<>();
     private List<String> mImages = new ArrayList<>();
     private List<String> mTitles = new ArrayList<>();
 
+    /***************************初始化********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_discover;
     }
-
-    /***********************************init method*************************************************/
 
     @Override
     protected void initWidget(Bundle savedInstanceState) {
@@ -90,10 +91,10 @@ public class BookDiscoverFragment extends BaseMVPFragment<BookStoreContract.Pres
         storeRvContent.setLayoutManager(new LinearLayoutManager(mContext));
         storeRvContent.setAdapter(mFeatureAdapter);
 
-        setUpAdapter();
+        initAdapter();
     }
 
-    private void setUpAdapter() {
+    private void initAdapter() {
 
         ArrayList<SectionBean> finds = new ArrayList<>();
         for (FindType type : FindType.values()){
@@ -107,9 +108,6 @@ public class BookDiscoverFragment extends BaseMVPFragment<BookStoreContract.Pres
         mFeatureAdapter.addItems(mFeatures);
 
     }
-
-
-    /****************************click method********************************/
 
     @Override
     protected void initClick() {
@@ -143,6 +141,14 @@ public class BookDiscoverFragment extends BaseMVPFragment<BookStoreContract.Pres
         });
     }
 
+    /***************************业务逻辑********************************/
+    @Override
+    protected void processLogic() {
+        super.processLogic();
+        mPresenter.refreshSwipePictures();
+        //mPresenter.refreshFeatures();
+    }
+
     @Override
     public void finishRefreshSwipePictures(List<SwipePictureBean> swipePictureBeans) {
 
@@ -163,7 +169,7 @@ public class BookDiscoverFragment extends BaseMVPFragment<BookStoreContract.Pres
     @Override
     public void finishRefreshFeatures(List<FeatureBean> featureBeans) {
         mFeatures = featureBeans;
-        setUpAdapter();
+        initAdapter();
     }
 
     @Override
@@ -174,13 +180,6 @@ public class BookDiscoverFragment extends BaseMVPFragment<BookStoreContract.Pres
     @Override
     public void showErrorTip(String error) {
 
-    }
-
-    @Override
-    protected void processLogic() {
-        super.processLogic();
-        mPresenter.refreshSwipePictures();
-        //mPresenter.refreshFeatures();
     }
 
     @Override

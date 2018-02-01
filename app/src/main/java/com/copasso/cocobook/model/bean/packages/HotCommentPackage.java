@@ -6,7 +6,7 @@ import com.copasso.cocobook.model.bean.HotCommentBean;
 import java.util.List;
 
 /**
- * Created by zhouas666 on 17-5-4.
+ * Created by zhouas666 on 18-2-4.
  */
 
 public class HotCommentPackage extends BaseBean {

@@ -40,6 +40,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 书架fragment
  */
 
 public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Presenter>
@@ -47,16 +48,15 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
 
     @BindView(R.id.book_shelf_rv_content)
     ScrollRefreshRecyclerView mRvContent;
-
-    /*********************************视图********************************/
+    /***************************视图********************************/
     private CollBookAdapter mCollBookAdapter;
     private FooterItemView mFooterItem;
 
-    /********************************* 参数****************************/
+    /***************************参数********************************/
     //是否是第一次进入
     private boolean isInit = true;
 
-    /***********************************初始化****************************/
+    /***************************初始化********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_bookshelf;
@@ -70,11 +70,11 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
     @Override
     protected void initWidget(Bundle savedInstanceState) {
         super.initWidget(savedInstanceState);
-        setUpAdapter();
+        initAdapter();
         initEvent();
     }
 
-    private void setUpAdapter() {
+    private void initAdapter() {
         //添加Footer
         mCollBookAdapter = new CollBookAdapter();
         mRvContent.setLayoutManager(new LinearLayoutManager(mContext));
@@ -185,14 +185,57 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
         );
     }
 
-    /***********************************数据请求****************************/
+    /***************************业务逻辑********************************/
     @Override
     protected void processLogic() {
         super.processLogic();
         mRvContent.startRefresh();
     }
 
-    /***********************************事件处理****************************/
+    @Override
+    public void showError() {
+
+    }
+
+    @Override
+    public void complete() {
+        if (mCollBookAdapter.getItemCount() > 0 && mFooterItem == null) {
+            mFooterItem = new FooterItemView();
+            mCollBookAdapter.addFooterView(mFooterItem);
+        }
+
+        if (mRvContent.isRefreshing()) {
+            mRvContent.finishRefresh();
+        }
+    }
+
+    @Override
+    public void finishRefresh(List<CollBookBean> collBookBeans) {
+        mCollBookAdapter.refreshItems(collBookBeans);
+        //如果是初次进入，则更新书籍信息
+        if (isInit) {
+            isInit = false;
+            mRvContent.post(
+                    () -> mPresenter.updateCollBooks(mCollBookAdapter.getItems())
+            );
+        }
+    }
+
+    @Override
+    public void finishUpdate() {
+        //重新从数据库中获取数据
+        mCollBookAdapter.refreshItems(BookRepository
+                .getInstance().getCollBooks());
+    }
+
+    @Override
+    public void showErrorTip(String error) {
+        mRvContent.setTip(error);
+        mRvContent.showTip();
+    }
+
+
+    /***************************事件处理********************************/
     private void openItemDialog(CollBookBean collBook) {
         String[] menus = collBook.isLocal() ? UiUtils.getStringArray(R.array.nb_menu_local_book)
                 : UiUtils.getStringArray(R.array.nb_menu_net_book);
@@ -266,50 +309,6 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
         } else {
             RxBus.getInstance().post(new DeleteTaskEvent(collBook));
         }
-    }
-
-    /*******************************************************************8*/
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
-    public void complete() {
-        if (mCollBookAdapter.getItemCount() > 0 && mFooterItem == null) {
-            mFooterItem = new FooterItemView();
-            mCollBookAdapter.addFooterView(mFooterItem);
-        }
-
-        if (mRvContent.isRefreshing()) {
-            mRvContent.finishRefresh();
-        }
-    }
-
-    @Override
-    public void finishRefresh(List<CollBookBean> collBookBeans) {
-        mCollBookAdapter.refreshItems(collBookBeans);
-        //如果是初次进入，则更新书籍信息
-        if (isInit) {
-            isInit = false;
-            mRvContent.post(
-                    () -> mPresenter.updateCollBooks(mCollBookAdapter.getItems())
-            );
-        }
-    }
-
-    @Override
-    public void finishUpdate() {
-        //重新从数据库中获取数据
-        mCollBookAdapter.refreshItems(BookRepository
-                .getInstance().getCollBooks());
-    }
-
-    @Override
-    public void showErrorTip(String error) {
-        mRvContent.setTip(error);
-        mRvContent.showTip();
     }
 
     /*****************************************************************/

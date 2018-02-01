@@ -4,7 +4,7 @@ import com.copasso.cocobook.model.bean.BaseBean;
 import com.copasso.cocobook.model.bean.BookListDetailBean;
 
 /**
- * Created by zhouas666 on 17-5-1.
+ * Created by zhouas666 on 18-2-1.
  */
 
 public class BookListDetailPackage extends BaseBean {

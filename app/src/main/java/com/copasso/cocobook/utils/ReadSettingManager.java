@@ -3,7 +3,7 @@ package com.copasso.cocobook.utils;
 import com.copasso.cocobook.widget.page.PageView;
 
 /**
- * Created by zhouas666 on 17-5-17.
+ * Created by zhouas666 on 18-2-17.
  * 阅读器的配置管理
  */
 

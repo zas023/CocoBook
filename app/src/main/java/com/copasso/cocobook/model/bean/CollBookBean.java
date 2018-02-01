@@ -15,7 +15,7 @@ import com.copasso.cocobook.model.gen.BookChapterBeanDao;
 import com.copasso.cocobook.model.gen.CollBookBeanDao;
 
 /**
- * Created by zhouas666 on 17-5-8.
+ * Created by zhouas666 on 18-2-8.
  * 收藏的书籍
  */
 @Entity

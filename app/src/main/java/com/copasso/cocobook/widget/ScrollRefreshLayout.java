@@ -18,7 +18,7 @@ import com.copasso.cocobook.R;
 import butterknife.ButterKnife;
 
 /**
- * Created by zhouas666 on 17-5-5.
+ * Created by zhouas666 on 18-2-5.
  */
 
 public class ScrollRefreshLayout extends SwipeRefreshLayout {

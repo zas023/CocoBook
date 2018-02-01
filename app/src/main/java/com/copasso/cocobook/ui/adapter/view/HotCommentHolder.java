@@ -13,7 +13,7 @@ import com.copasso.cocobook.widget.EasyRatingBar;
 import com.copasso.cocobook.widget.transform.CircleTransform;
 
 /**
- * Created by zhouas666 on 17-5-4.
+ * Created by zhouas666 on 18-2-4.
  */
 
 public class HotCommentHolder extends ViewHolderImpl<HotCommentBean>{

@@ -133,10 +133,10 @@ public class ReadSettingDialog extends Dialog{
         mCbFontDefault.setChecked(isTextDefault);
         initPageMode();
         //RecyclerView
-        setUpAdapter();
+        initAdapter();
     }
 
-    private void setUpAdapter(){
+    private void initAdapter(){
         Drawable []drawables = {
                 getDrawable(R.color.nb_read_bg_1)
                 ,getDrawable(R.color.nb_read_bg_2)

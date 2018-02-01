@@ -36,9 +36,11 @@ import butterknife.Unbinder;
 
 /**
  * Created by zhouas666 on 17-4-30.
+ * 求助区fragment
  */
 
 public class HelpsDetailFragment extends BaseMVPFragment<HelpsDetailContract.Presenter> implements HelpsDetailContract.View{
+    /***************************常量********************************/
     private static final String TAG = "HelpsDetailFragment";
     private static final String EXTRA_DETAIL_ID = "extra_detail_id";
 
@@ -46,14 +48,16 @@ public class HelpsDetailFragment extends BaseMVPFragment<HelpsDetailContract.Pre
     RefreshLayout mRefreshLayout;
     @BindView(R.id.refresh_rv_content)
     RecyclerView mRvContent;
-    /***********************************/
+    /***************************视图********************************/
     private CommentAdapter mCommentAdapter;
     private DetailHeader mDetailHeader;
-    /***********params****************/
+
+    /***************************参数********************************/
     private String mDetailId;
     private int start = 0;
     private int limit = 30;
 
+    /***************************公共方法********************************/
     public static Fragment newInstance(String detailId){
         Bundle bundle = new Bundle();
         bundle.putSerializable(EXTRA_DETAIL_ID,detailId);
@@ -62,6 +66,14 @@ public class HelpsDetailFragment extends BaseMVPFragment<HelpsDetailContract.Pre
         return fragment;
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(EXTRA_DETAIL_ID, mDetailId);
+    }
+
+
+    /***************************初始化********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_refresh_list;
@@ -85,10 +97,6 @@ public class HelpsDetailFragment extends BaseMVPFragment<HelpsDetailContract.Pre
     @Override
     protected void initWidget(Bundle savedInstanceState) {
         super.initWidget(savedInstanceState);
-        initRecyclerView();
-    }
-
-    private void initRecyclerView(){
 
         mCommentAdapter = new CommentAdapter(getContext(),new WholeAdapter.Options());
         mDetailHeader = new DetailHeader();
@@ -99,6 +107,7 @@ public class HelpsDetailFragment extends BaseMVPFragment<HelpsDetailContract.Pre
         mRvContent.setAdapter(mCommentAdapter);
     }
 
+
     @Override
     protected void initClick() {
         super.initClick();
@@ -107,6 +116,7 @@ public class HelpsDetailFragment extends BaseMVPFragment<HelpsDetailContract.Pre
         );
     }
 
+    /***************************业务逻辑********************************/
     @Override
     protected void processLogic() {
         super.processLogic();
@@ -148,12 +158,6 @@ public class HelpsDetailFragment extends BaseMVPFragment<HelpsDetailContract.Pre
     }
 
     /***********************************************************************/
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString(EXTRA_DETAIL_ID, mDetailId);
-    }
-
     class DetailHeader implements WholeAdapter.ItemView{
         @BindView(R.id.disc_detail_iv_portrait)
         ImageView ivPortrait;

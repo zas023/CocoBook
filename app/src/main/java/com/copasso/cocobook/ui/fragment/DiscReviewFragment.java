@@ -27,26 +27,38 @@ import butterknife.BindView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
- * Created by zhouas666 on 17-4-21.
+ * Created by zhouas666 on 18-1-23.
+ * 评论区fragment
  */
 
 public class DiscReviewFragment extends BaseMVPFragment<DiscReviewContract.Presenter> implements DiscReviewContract.View{
+    /***************************常量********************************/
     private static final String BUNDLE_BOOK = "bundle_book";
     private static final String BUNDLE_SORT = "bundle_sort";
     private static final String BUNDLE_DISTILLATE = "bundle_distillate";
-    /*******************View**********************/
+
     @BindView(R.id.scroll_refresh_rv_content)
     ScrollRefreshRecyclerView mRvContent;
-    /*******************Object*********************/
+    /***************************视图********************************/
     private DiscReviewAdapter mDiscReviewAdapter;
-    /*******************Params**********************/
+
+    /***************************参数********************************/
     private BookSort mBookSort = BookSort.DEFAULT;
     private BookType mBookType = BookType.ALL;
     private BookDistillate mDistillate = BookDistillate.ALL;
     private int mStart = 0;
     private int mLimited = 20;
 
-    /**********************init method****************************/
+    /***************************公共方法********************************/
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(BUNDLE_BOOK, mBookType);
+        outState.putSerializable(BUNDLE_SORT, mBookSort);
+        outState.putSerializable(BUNDLE_DISTILLATE,mDistillate);
+    }
+
+    /***************************初始化********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_scroll_refresh_list;
@@ -65,10 +77,10 @@ public class DiscReviewFragment extends BaseMVPFragment<DiscReviewContract.Prese
     @Override
     protected void initWidget(Bundle savedInstanceState) {
         super.initWidget(savedInstanceState);
-        setUpAdapter();
+        initAdapter();
     }
 
-    private void setUpAdapter(){
+    private void initAdapter(){
         mRvContent.setLayoutManager(new LinearLayoutManager(getContext()));
         mRvContent.addItemDecoration(new DividerItemDecoration(getContext()));
         mDiscReviewAdapter = new DiscReviewAdapter(getContext(),new WholeAdapter.Options());
@@ -79,7 +91,6 @@ public class DiscReviewFragment extends BaseMVPFragment<DiscReviewContract.Prese
     protected DiscReviewContract.Presenter bindPresenter() {
         return new DiscReviewPresenter();
     }
-    /*************************click method************************/
 
     @Override
     protected void initClick() {
@@ -112,7 +123,7 @@ public class DiscReviewFragment extends BaseMVPFragment<DiscReviewContract.Prese
                 );
     }
 
-    /****************************logic method*********************************/
+    /***************************业务逻辑********************************/
     @Override
     protected void processLogic() {
         super.processLogic();
@@ -127,7 +138,6 @@ public class DiscReviewFragment extends BaseMVPFragment<DiscReviewContract.Prese
         mPresenter.refreshBookReview(mBookSort,mBookType,mStart,mLimited,mDistillate);
     }
 
-    /****************************rewrite method******************************************/
     @Override
     public void finishRefresh(List<BookReviewBean> beans) {
         mDiscReviewAdapter.refreshItems(beans);
@@ -155,14 +165,8 @@ public class DiscReviewFragment extends BaseMVPFragment<DiscReviewContract.Prese
     public void complete() {
         mRvContent.finishRefresh();
     }
-    /****************************lifecycle method************************************/
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putSerializable(BUNDLE_BOOK, mBookType);
-        outState.putSerializable(BUNDLE_SORT, mBookSort);
-        outState.putSerializable(BUNDLE_DISTILLATE,mDistillate);
-    }
+
+    /***************************状态处理********************************/
 
     @Override
     public void onStop() {

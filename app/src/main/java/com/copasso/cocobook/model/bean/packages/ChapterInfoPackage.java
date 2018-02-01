@@ -4,7 +4,7 @@ import com.copasso.cocobook.model.bean.BaseBean;
 import com.copasso.cocobook.model.bean.ChapterInfoBean;
 
 /**
- * Created by zhouas666 on 17-5-10.
+ * Created by zhouas666 on 18-2-10.
  */
 
 public class ChapterInfoPackage extends BaseBean {

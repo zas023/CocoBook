@@ -34,7 +34,7 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by zhouas666 on 17-5-16.
+ * Created by zhouas666 on 18-2-16.
  */
 
 public class ReadPresenter extends RxPresenter<ReadContract.View>

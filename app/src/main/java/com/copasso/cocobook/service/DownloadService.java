@@ -33,7 +33,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 
 /**
- * Created by zhouas666 on 17-5-10.
+ * Created by zhouas666 on 18-2-10.
  */
 
 public class DownloadService extends BaseService {

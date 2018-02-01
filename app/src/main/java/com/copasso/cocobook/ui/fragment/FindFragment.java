@@ -21,6 +21,7 @@ import butterknife.BindView;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 发现fragment
  */
 
 public class FindFragment extends BaseFragment {
@@ -37,10 +38,10 @@ public class FindFragment extends BaseFragment {
 
     @Override
     protected void initWidget(Bundle savedInstanceState) {
-        setUpAdapter();
+        initAdapter();
     }
 
-    private void setUpAdapter(){
+    private void initAdapter(){
         ArrayList<SectionBean> sections = new ArrayList<>();
         for (FindType type : FindType.values()){
             sections.add(new SectionBean(type.getTypeName(),type.getIconId()));
