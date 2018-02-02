@@ -197,4 +197,12 @@
     
     <!--search-->
     <string name="nb.search.book.brief">%1$d人在追 | %2$s读者留存 | %3$s著</string>
+
+    <!--land-->
+    <string name="nb.land.login">登陆</string>
+    <string name="nb.land.sign">注册</string>
+    <string name="nb.land.forget">忘记密码?</string>
+    <string name="nb.land.hint.name">请输入用户名</string>
+    <string name="nb.land.hint.password">请输入密码</string>
+
 </resources>

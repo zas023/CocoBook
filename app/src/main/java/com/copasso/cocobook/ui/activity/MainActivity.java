@@ -15,10 +15,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
+import android.view.*;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +23,13 @@ import android.widget.Toast;
 import butterknife.BindView;
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 import com.copasso.cocobook.R;
+import com.copasso.cocobook.model.bean.BmobBook;
+import com.copasso.cocobook.model.bean.CollBookBean;
+import com.copasso.cocobook.model.local.BookRepository;
+import com.copasso.cocobook.model.remote.RemoteRepository;
 import com.copasso.cocobook.ui.base.BaseTabActivity;
 import com.copasso.cocobook.ui.fragment.BookShelfFragment;
 import com.copasso.cocobook.ui.fragment.BookDiscoverFragment;
@@ -256,15 +259,29 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
             case R.id.action_search:
                 activityCls = SearchActivity.class;
                 break;
-//            case R.id.action_login:
-//                startActivity(new Intent(mContext,LandActivity.class));
-//                break;
             case R.id.action_my_message:
                 break;
             case R.id.action_download:
                 activityCls = DownloadActivity.class;
                 break;
             case R.id.action_sync_bookshelf:
+                if (BmobUser.getCurrentUser()==null) break ;
+                ProgressUtils.show(mContext,"正在同步");
+                RemoteRepository.getInstance().syncBooks(BmobUser.getCurrentUser()
+                        , new RemoteRepository.SyncBookListener() {
+                            @Override
+                            public void onSuccess(List<CollBookBean> list) {
+                                ProgressUtils.dismiss();
+                                BookRepository.getInstance()
+                                        .saveCollBooks(list);
+                                ToastUtils.show("同步完成");
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                ProgressUtils.dismiss();
+                            }
+                        });
                 break;
             case R.id.action_scan_local_book:
 
@@ -298,6 +315,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
             default:
                 break;
         }
+        drawer.closeDrawer(Gravity.LEFT);
         if (activityCls != null) {
             Intent intent = new Intent(mContext, activityCls);
             startActivity(intent);

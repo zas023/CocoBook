@@ -1,155 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#eeeeee">
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:gravity="center"
+        android:orientation="vertical">
 
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:orientation="vertical"
-                  android:weightSum="2">
-        <View
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:background="?attr/colorPrimary"
-                android:layout_weight="1"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="?attr/colorPrimary">
+
+        <com.copasso.cocobook.widget.OwlView
+                android:id="@+id/land_owl_view"
+                android:layout_width="175dp"
+                android:layout_height="107dp"
+                android:layout_marginTop="100dp"
+                android:layout_centerHorizontal="true"/>
     </LinearLayout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:id="@+id/land_ll_pane"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_marginLeft="25dp"
-                  android:layout_marginRight="25dp"
-                  android:layout_centerInParent="true"
-                  android:background="?attr/colorPrimary"
-                  android:orientation="vertical">
 
-        <EditText
-                android:id="@+id/land_et_email"
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+                android:id="@+id/land_til_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:inputType="textWebEmailAddress"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="15dp"
-                android:minHeight="45dp"
-                android:drawableLeft="@android:drawable/ic_dialog_email"
-                android:drawablePadding="5dp"
-                android:gravity="center_vertical"
-                android:hint="Email"
-                android:singleLine="true"
-                android:textSize="16sp"/>
+                android:layout_margin="@dimen/nb.margin.large"
+                app:counterEnabled="true"
+                app:counterMaxLength="11">
 
-        <EditText
-                android:id="@+id/land_et_name"
+            <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/nb.land.hint.name"
+                    android:inputType="phone"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+                android:id="@+id/land_til_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="15dp"
-                android:minHeight="45dp"
-                android:drawableLeft="@android:drawable/ic_dialog_info"
-                android:drawablePadding="5dp"
-                android:gravity="center_vertical"
-                android:hint="Username"
-                android:singleLine="true"
-                android:textSize="16sp"/>
+                android:layout_marginLeft="@dimen/nb.margin.large"
+                android:layout_marginRight="@dimen/nb.margin.large"
+                app:counterEnabled="true"
+                app:counterMaxLength="16"
+                app:passwordToggleDrawable="@mipmap/ic_pwd_look"
+                app:passwordToggleTintMode="src_in">
 
-        <EditText
-                android:id="@+id/land_et_pw1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="15dp"
-                android:minHeight="45dp"
-                android:drawableLeft="@android:drawable/ic_lock_idle_lock"
-                android:drawablePadding="5dp"
-                android:gravity="center_vertical"
-                android:hint="Password"
-                android:singleLine="true"
-                android:textSize="16sp"/>
+            <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/nb.land.hint.password"
+                    android:inputType="textPassword"/>
 
-        <EditText
-                android:id="@+id/land_et_pw2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:inputType="textPassword"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:minHeight="45dp"
-                android:drawableLeft="@android:drawable/ic_lock_idle_lock"
-                android:drawablePadding="5dp"
-                android:gravity="center_vertical"
-                android:hint="Repeat password"
-                android:singleLine="true"
-                android:textSize="16sp"/>
+        </android.support.design.widget.TextInputLayout>
 
-        <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#f3f3f3"/>
+        <android.support.v7.widget.AppCompatButton
+                android:id="@+id/land_btn_login"
+                style="@style/NB.Theme.Widget.Button.Default"
+                android:layout_marginLeft="@dimen/nb.margin.large"
+                android:layout_marginRight="@dimen/nb.margin.large"
+                android:layout_marginTop="@dimen/nb.margin.large"
+                android:text="@string/nb.land.login"/>
 
         <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="#f7f7f7">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/nb.margin.large"
+                android:layout_marginLeft="@dimen/nb.margin.large"
+                android:layout_marginRight="@dimen/nb.margin.large"
+                android:layout_marginTop="5dp">
 
             <TextView
                     android:id="@+id/land_tv_forget"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:gravity="center"
-                    android:layout_centerVertical="true"
-                    android:text="Forgot password?"
-                    android:textSize="14sp"
-                    android:textColor="#999999"/>
-
-            <Button
-                    android:id="@+id/land_btn_login"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
-                    android:padding="8dp"
-                    android:gravity="center"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:text="Login"/>
-            <!--style="@style/NB.Theme.Widget.Button.Default"-->
+                    android:text="@string/nb.land.forget"/>
 
             <TextView
-                    android:id="@+id/land_tv_sign"
-                    android:layout_toLeftOf="@id/land_btn_login"
+                    android:id="@+id/land_tv_register"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:gravity="center"
-                    android:layout_centerVertical="true"
-                    android:text="Sign Up"
-                    android:textSize="14sp"
-                    android:textColor="#999999"/>
-
+                    android:layout_alignParentRight="true"
+                    android:text="@string/nb.land.sign"
+                    android:textColor="?attr/colorAccent"/>
         </RelativeLayout>
-
     </LinearLayout>
 
-    <com.copasso.cocobook.widget.OwlView
-            android:id="@+id/land_owl_view"
-            android:layout_above="@id/land_ll_pane"
-            android:layout_width="175dp"
-            android:layout_height="107dp"
-            android:layout_centerHorizontal="true"/>
 
-
-</RelativeLayout>
+</LinearLayout>
 

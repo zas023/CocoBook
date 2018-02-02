@@ -87,6 +87,22 @@ public class CollBookBean implements Parcelable{
         this.isLocal = isLocal;
     }
 
+    public CollBookBean(BmobBook bean){
+        this._id=bean.getBookId();
+        this.title=bean.getTitle();
+        this.author=bean.getAuthor();
+        this.cover=bean.getCover();
+        this.shortIntro=bean.getShortIntro();
+        this.hasCp=bean.isHasCp();
+        this.latelyFollower=bean.getLatelyFollower();
+        this.retentionRatio=bean.getRetentionRatio();
+        this.updated=bean.getUpdated();
+        this.lastRead=bean.getLastRead();
+        this.chaptersCount=bean.getChaptersCount();
+        this.lastChapter=bean.getLastChapter();
+        this.isLocal=bean.isLocal();
+    }
+
     public CollBookBean() {
     }
 

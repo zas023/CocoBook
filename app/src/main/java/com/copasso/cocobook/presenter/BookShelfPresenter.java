@@ -56,15 +56,12 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
     public void loadRecommendBooks(String gender) {
         Disposable disposable = RemoteRepository.getInstance()
                 .getRecommendBooks(gender)
-                .doOnSuccess(new Consumer<List<CollBookBean>>() {
-                    @Override
-                    public void accept(List<CollBookBean> collBooks) throws Exception{
-                        //更新目录
-                        updateCategory(collBooks);
-                        //异步存储到数据库中
-                        BookRepository.getInstance()
-                                .saveCollBooksWithAsync(collBooks);
-                    }
+                .doOnSuccess((collBooks)->{
+                    //更新目录
+                    updateCategory(collBooks);
+                    //异步存储到数据库中
+                    BookRepository.getInstance()
+                            .saveCollBooksWithAsync(collBooks);
                 })
                 .compose(RxUtils::toSimpleSingle)
                 .subscribe(
