@@ -1,24 +1,16 @@
 package com.copasso.cocobook.ui.adapter.view;
 
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.bean.FeatureBean;
-import com.copasso.cocobook.model.bean.FeatureBookBean;
-import com.copasso.cocobook.model.bean.SectionBean;
-import com.copasso.cocobook.model.remote.RemoteRepository;
+import com.copasso.cocobook.model.service.RemoteRepository;
 import com.copasso.cocobook.ui.activity.BookDetailActivity;
 import com.copasso.cocobook.ui.adapter.FeatureBookAdapter;
-import com.copasso.cocobook.ui.adapter.FeatureDetailAdapter;
 import com.copasso.cocobook.ui.base.adapter.ViewHolderImpl;
 import com.copasso.cocobook.utils.RxUtils;
 import io.reactivex.disposables.CompositeDisposable;
-
-import java.util.List;
 
 /**
  * Created by zhouas666 on 18-1-23.

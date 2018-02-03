@@ -1,7 +1,5 @@
 package com.copasso.cocobook.presenter;
 
-import android.util.Log;
-
 import com.copasso.cocobook.RxBus;
 import com.copasso.cocobook.model.bean.BookChapterBean;
 import com.copasso.cocobook.model.bean.ChapterInfoBean;
@@ -9,7 +7,7 @@ import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.bean.DownloadTaskBean;
 import com.copasso.cocobook.utils.BookManager;
 import com.copasso.cocobook.model.local.BookRepository;
-import com.copasso.cocobook.model.remote.RemoteRepository;
+import com.copasso.cocobook.model.service.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.ReadContract;
 import com.copasso.cocobook.ui.base.RxPresenter;
 import com.copasso.cocobook.utils.LogUtils;
@@ -25,11 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Single;
-import io.reactivex.SingleEmitter;
-import io.reactivex.SingleOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.BiConsumer;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 

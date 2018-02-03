@@ -1,13 +1,9 @@
-package com.copasso.cocobook.model.remote;
+package com.copasso.cocobook.model.service;
 
-import com.copasso.cocobook.model.bean.BookChapterBean;
 import com.copasso.cocobook.model.bean.BookDetailBean;
-import com.copasso.cocobook.model.bean.ChapterInfoBean;
 import com.copasso.cocobook.model.bean.packages.*;
 
-import io.reactivex.Observable;
 import io.reactivex.Single;
-import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;

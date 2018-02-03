@@ -76,7 +76,6 @@
         <!--直接写windowEnter或者windowExit 是无效的-->Re
         <item name="android:windowAnimationStyle">@style/anim_slide_left_in_right_out</item>
     </style>
-    
     <style name="ReadSettingDialog" parent="CommonDialog">
         <item name="android:windowAnimationStyle">@style/anim_slide_bottom_in_out</item>
     </style>
@@ -86,12 +85,10 @@
         <item name="android:windowEnterAnimation">@anim/slide_bottom_in</item>
         <item name="android:windowExitAnimation">@anim/slide_bottom_out</item>
     </style>
-    
     <style name="anim_slide_left_in_right_out" parent="android:Animation.Dialog">
         <item name="android:windowEnterAnimation">@anim/slide_left_in</item>
         <item name="android:windowExitAnimation">@anim/slide_right_out</item>
     </style>
-    
     <style name="anim_slide_right_in_left_out" parent="android:Animation.Dialog">
         <item name="android:windowExitAnimation">@anim/slide_right_out</item>
         <item name="android:windowEnterAnimation">@anim/slide_left_in</item>
@@ -123,11 +120,9 @@
         <item name="android:dropDownListViewStyle">@style/dropDownStyle</item>
         <item name="dropDownListViewStyle">@style/dropDownStyle</item>
     </style>
-
     <style name="ActionButton.Overflow.Menu" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
         <item name="android:src">@drawable/ic_menu_overflow</item>
     </style>
-
     <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
         <item name="overlapAnchor">false</item>
     </style>
@@ -141,10 +136,29 @@
     
     <!--Common-->
     <style name="NB.Theme" parent="AppTheme"/>
-    
-    
+
     <style name="NB.Theme.Linear"/>
-    
+
+    <!--分割线-->
+    <style name="NB.Theme.Linear.Divide.Narrow" parent="NB.Theme.Linear">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:background">@color/nb.divider.narrow</item>
+    </style>
+
+    <style name="NB.Theme.Linear.Divide.Wide" parent="NB.Theme.Linear">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:background">@color/nb.divider.wide</item>
+    </style>
+
+    <!--Linear-->
     <style name="NB.Theme.Linear.Weight" parent="NB.Theme.Linear">
         <item name="android:layout_weight">1</item>
     </style>
@@ -167,7 +181,7 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
     </style>
-    
+
     <!-- Widget:修改View的样式的-->
     <style name="NB.Theme.Widget"/>
 

@@ -2,7 +2,7 @@ package com.copasso.cocobook.presenter;
 
 import com.copasso.cocobook.model.bean.CommentBean;
 import com.copasso.cocobook.model.bean.HelpsDetailBean;
-import com.copasso.cocobook.model.remote.RemoteRepository;
+import com.copasso.cocobook.model.service.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.HelpsDetailContract;
 import com.copasso.cocobook.ui.base.RxPresenter;
 import com.copasso.cocobook.utils.LogUtils;

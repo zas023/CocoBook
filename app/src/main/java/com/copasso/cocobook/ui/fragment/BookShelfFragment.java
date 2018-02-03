@@ -75,6 +75,7 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
         return isMultiSelectMode;
     }
 
+    /***************************公共方法********************************/
     /**
      * 退出多选
      */
@@ -82,6 +83,11 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
         isMultiSelectMode=false;
         mCollBookAdapter.setShowCheckBox(isMultiSelectMode);
         multiSelectRlRoot.setVisibility(View.GONE);
+    }
+
+    public void refreshShelf(){
+        mCollBookAdapter.refreshItems(BookRepository
+                .getInstance().getCollBooks());
     }
     /***************************初始化********************************/
     @Override

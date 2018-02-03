@@ -31,7 +31,7 @@ import java.util.List;
 
 /**
  * Created by zhouas666 on 18-1-23.
- * 讨论区fragment
+ * 精选fragment
  */
 
 public class BookDiscoverFragment extends BaseMVPFragment<BookStoreContract.Presenter> implements BookStoreContract.View {

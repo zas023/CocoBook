@@ -23,13 +23,11 @@ import android.widget.Toast;
 import butterknife.BindView;
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.model.bean.BmobBook;
 import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.local.BookRepository;
-import com.copasso.cocobook.model.remote.RemoteRepository;
+import com.copasso.cocobook.model.service.BmobRepository;
+import com.copasso.cocobook.model.service.RemoteRepository;
 import com.copasso.cocobook.ui.base.BaseTabActivity;
 import com.copasso.cocobook.ui.fragment.BookShelfFragment;
 import com.copasso.cocobook.ui.fragment.BookDiscoverFragment;
@@ -267,13 +265,14 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
             case R.id.action_sync_bookshelf:
                 if (BmobUser.getCurrentUser()==null) break ;
                 ProgressUtils.show(mContext,"正在同步");
-                RemoteRepository.getInstance().syncBooks(BmobUser.getCurrentUser()
-                        , new RemoteRepository.SyncBookListener() {
+                BmobRepository.getInstance().syncBooks(BmobUser.getCurrentUser()
+                        , new BmobRepository.SyncBookListener() {
                             @Override
                             public void onSuccess(List<CollBookBean> list) {
                                 ProgressUtils.dismiss();
                                 BookRepository.getInstance()
                                         .saveCollBooks(list);
+                                bookShelfFragment.refreshShelf();
                                 ToastUtils.show("同步完成");
                             }
 

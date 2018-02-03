@@ -1,22 +1,10 @@
 package com.copasso.cocobook.presenter;
 
-import com.copasso.cocobook.RxBus;
-import com.copasso.cocobook.model.bean.*;
-import com.copasso.cocobook.model.local.BookRepository;
-import com.copasso.cocobook.model.remote.RemoteRepository;
-import com.copasso.cocobook.presenter.contract.BookShelfContract;
+import com.copasso.cocobook.model.service.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.BookStoreContract;
 import com.copasso.cocobook.ui.base.RxPresenter;
 import com.copasso.cocobook.utils.*;
-import io.reactivex.Single;
-import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 /**
  * Created by zhouas666 on 18-2-8.

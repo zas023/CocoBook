@@ -205,4 +205,11 @@
     <string name="nb.land.hint.name">请输入用户名</string>
     <string name="nb.land.hint.password">请输入密码</string>
 
+    <!--info-->
+    <string name="nb.user.info.icon">头像</string>
+    <string name="nb.user.info.username">用户名</string>
+    <string name="nb.user.info.sex">性别</string>
+    <string name="nb.user.info.phone">手机</string>
+    <string name="nb.user.info.email">邮箱</string>
+
 </resources>

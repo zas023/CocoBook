@@ -1,12 +1,10 @@
 package com.copasso.cocobook.presenter;
 
-import android.util.Log;
-
 import com.copasso.cocobook.model.bean.BookChapterBean;
 import com.copasso.cocobook.model.bean.BookDetailBean;
 import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.local.BookRepository;
-import com.copasso.cocobook.model.remote.RemoteRepository;
+import com.copasso.cocobook.model.service.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.BookDetailContract;
 import com.copasso.cocobook.ui.base.RxPresenter;
 import com.copasso.cocobook.utils.LogUtils;

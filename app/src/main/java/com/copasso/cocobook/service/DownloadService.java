@@ -17,7 +17,7 @@ import com.copasso.cocobook.model.bean.DownloadTaskBean;
 import com.copasso.cocobook.utils.BookManager;
 import com.copasso.cocobook.model.local.BookRepository;
 import com.copasso.cocobook.model.local.LocalRepository;
-import com.copasso.cocobook.model.remote.RemoteRepository;
+import com.copasso.cocobook.model.service.RemoteRepository;
 import com.copasso.cocobook.ui.base.BaseService;
 import com.copasso.cocobook.utils.LogUtils;
 import com.copasso.cocobook.utils.NetworkUtils;

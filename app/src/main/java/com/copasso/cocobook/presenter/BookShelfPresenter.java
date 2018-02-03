@@ -6,7 +6,7 @@ import com.copasso.cocobook.model.bean.BookDetailBean;
 import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.bean.DownloadTaskBean;
 import com.copasso.cocobook.model.local.BookRepository;
-import com.copasso.cocobook.model.remote.RemoteRepository;
+import com.copasso.cocobook.model.service.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.BookShelfContract;
 import com.copasso.cocobook.ui.base.RxPresenter;
 import com.copasso.cocobook.utils.Constant;
@@ -22,7 +22,6 @@ import java.util.List;
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 
 /**

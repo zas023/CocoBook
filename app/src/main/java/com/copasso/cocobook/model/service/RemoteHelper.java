@@ -1,4 +1,4 @@
-package com.copasso.cocobook.model.remote;
+package com.copasso.cocobook.model.service;
 
 import android.util.Log;
 

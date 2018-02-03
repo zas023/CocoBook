@@ -2,7 +2,7 @@ package com.copasso.cocobook.presenter;
 
 import com.copasso.cocobook.model.bean.BookListBean;
 import com.copasso.cocobook.model.type.BookListType;
-import com.copasso.cocobook.model.remote.RemoteRepository;
+import com.copasso.cocobook.model.service.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.BookListContract;
 import com.copasso.cocobook.ui.base.RxPresenter;
 import com.copasso.cocobook.utils.LogUtils;

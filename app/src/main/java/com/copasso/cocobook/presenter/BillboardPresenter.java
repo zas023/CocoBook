@@ -2,7 +2,7 @@ package com.copasso.cocobook.presenter;
 
 import com.copasso.cocobook.model.bean.packages.BillboardPackage;
 import com.copasso.cocobook.model.local.LocalRepository;
-import com.copasso.cocobook.model.remote.RemoteRepository;
+import com.copasso.cocobook.model.service.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.BillboardContract;
 import com.copasso.cocobook.ui.base.RxPresenter;
 
