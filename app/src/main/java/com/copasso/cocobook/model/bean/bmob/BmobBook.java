@@ -1,7 +1,8 @@
-package com.copasso.cocobook.model.bean;
+package com.copasso.cocobook.model.bean.bmob;
 
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.BmobUser;
+import com.copasso.cocobook.model.bean.CollBookBean;
 
 
 /**

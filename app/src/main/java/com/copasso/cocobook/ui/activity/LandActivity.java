@@ -1,17 +1,17 @@
 package com.copasso.cocobook.ui.activity;
 
 import android.support.design.widget.TextInputLayout;
-import android.support.v7.widget.AppCompatButton;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
-import butterknife.OnFocusChange;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.LogInListener;
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.model.bean.BmobUser;
+import com.copasso.cocobook.model.bean.bmob.CocoUser;
 import com.copasso.cocobook.ui.base.BaseBackActivity;
 import com.copasso.cocobook.utils.ProgressUtils;
 import com.copasso.cocobook.utils.SnackbarUtils;
@@ -31,7 +31,7 @@ public class LandActivity extends BaseBackActivity {
     @BindView(R.id.land_til_password)
     TextInputLayout landTilPassword;
     @BindView(R.id.land_btn_login)
-    AppCompatButton landBtnLogin;
+    Button landBtnLogin;
     @BindView(R.id.land_tv_forget)
     TextView landTvForget;
     @BindView(R.id.land_tv_register)
@@ -40,6 +40,7 @@ public class LandActivity extends BaseBackActivity {
     private EditText mEdtUsername;
     private EditText mEdtPassword;
 
+    /*****************************初始化********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_user_land;
@@ -50,21 +51,14 @@ public class LandActivity extends BaseBackActivity {
         super.initWidget();
         mEdtUsername=landTilUsername.getEditText();
         mEdtPassword=landTilPassword.getEditText();
-    }
-
-    /**
-     * 监听密码输入框的聚焦事件
-     *
-     * @param view
-     * @param b
-     */
-    @OnFocusChange({R.id.land_til_username, R.id.land_til_password})
-    public void onFocusChange(View view, boolean b) {
-        if (b) {
-            landOwlView.open();
-        } else {
-            landOwlView.close();
-        }
+        //监听密码输入框的聚焦事件
+        mEdtPassword.setOnFocusChangeListener((view, b) -> {
+            if (b) {
+                landOwlView.open();
+            } else {
+                landOwlView.close();
+            }
+        });
     }
 
     /**
@@ -104,17 +98,19 @@ public class LandActivity extends BaseBackActivity {
 
         ProgressUtils.show(this, "正在登陆...");
 
-        BmobUser.loginByAccount(username, password, new LogInListener<BmobUser>() {
+        BmobUser.loginByAccount(username, password, new LogInListener<CocoUser>() {
             @Override
-            public void done(BmobUser bmobUser, BmobException e) {
+            public void done(CocoUser cocoUser, BmobException e) {
                 ProgressUtils.dismiss();
                 if (e==null){
-                    if (bmobUser.getEmailVerified()){
-
+                    if (cocoUser.getEmailVerified()){
+                        setResult(MainActivity.REQUEST_LAND);
+                        finish();
                     }else {
                         SnackbarUtils.show(mContext, "请到邮箱激活账户后登陆");
                     }
-                }
+                }else
+                    SnackbarUtils.show(mContext, e.getMessage());
             }
         });
     }

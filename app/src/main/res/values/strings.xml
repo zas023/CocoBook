@@ -211,5 +211,6 @@
     <string name="nb.user.info.sex">性别</string>
     <string name="nb.user.info.phone">手机</string>
     <string name="nb.user.info.email">邮箱</string>
+    <string name="nb.user.info.logout">退出</string>
 
 </resources>

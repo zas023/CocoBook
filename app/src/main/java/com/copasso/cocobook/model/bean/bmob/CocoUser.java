@@ -1,6 +1,8 @@
-package com.copasso.cocobook.model.bean;
+package com.copasso.cocobook.model.bean.bmob;
 
-public class BmobUser extends cn.bmob.v3.BmobUser {
+import cn.bmob.v3.BmobUser;
+
+public class CocoUser extends BmobUser {
 
     private String portrait; //用户头像
     private String sex;      //用户性别

@@ -3,6 +3,7 @@ package com.copasso.cocobook.model.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.copasso.cocobook.model.bean.bmob.BmobBook;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;

@@ -8,7 +8,7 @@ import cn.bmob.v3.datatype.BatchResult;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListListener;
-import com.copasso.cocobook.model.bean.BmobBook;
+import com.copasso.cocobook.model.bean.bmob.BmobBook;
 import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.local.BookRepository;
 import retrofit2.Retrofit;

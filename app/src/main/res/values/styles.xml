@@ -143,7 +143,6 @@
     <style name="NB.Theme.Linear.Divide.Narrow" parent="NB.Theme.Linear">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1px</item>
-        <item name="android:layout_marginBottom">10dp</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
         <item name="android:background">@color/nb.divider.narrow</item>
@@ -152,7 +151,6 @@
     <style name="NB.Theme.Linear.Divide.Wide" parent="NB.Theme.Linear">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1px</item>
-        <item name="android:layout_marginBottom">10dp</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
         <item name="android:background">@color/nb.divider.wide</item>
@@ -198,17 +196,22 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="NB.Theme.Widget.Button.Logout">
+        <item name="android:background">@drawable/bg_button_default_logout</item>
+        <item name="android:layout_margin">@dimen/nb.padding.large</item>
     </style>
 
     <style name="NB.Theme.Widget.Button.Default">
-        <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/bg_button_default</item>
-        <!--<item name="com.github.airsaid.accountbook:backgroundTint">?attr/colorAccent</item>-->
-    </style>
-
-    <style name="NB.Theme.Widget.Button.Default.Margin">
         <item name="android:layout_margin">@dimen/nb.padding.large</item>
     </style>
+
+    <!--<style name="NB.Theme.Widget.Button.Default.Margin">-->
+        <!--<item name="android:layout_margin">@dimen/nb.padding.large</item>-->
+    <!--</style>-->
     
     <!--图片-->
     <style name="NB.Theme.Widget.ImageView"/>

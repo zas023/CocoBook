@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -34,13 +35,13 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/nb.margin.large"
                 app:counterEnabled="true"
-                app:counterMaxLength="11">
+                app:counterMaxLength="8">
 
             <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/nb.land.hint.name"
-                    android:inputType="phone"/>
+                    android:inputType="text"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -63,12 +64,9 @@
 
         </android.support.design.widget.TextInputLayout>
 
-        <android.support.v7.widget.AppCompatButton
+        <Button
                 android:id="@+id/land_btn_login"
                 style="@style/NB.Theme.Widget.Button.Default"
-                android:layout_marginLeft="@dimen/nb.margin.large"
-                android:layout_marginRight="@dimen/nb.margin.large"
-                android:layout_marginTop="@dimen/nb.margin.large"
                 android:text="@string/nb.land.login"/>
 
         <RelativeLayout
@@ -94,7 +92,6 @@
                     android:textColor="?attr/colorAccent"/>
         </RelativeLayout>
     </LinearLayout>
-
 
 </LinearLayout>
 

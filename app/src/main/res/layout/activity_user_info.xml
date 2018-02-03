@@ -9,20 +9,20 @@
     <include layout="@layout/toolbar"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:elevation="1dp"
-        android:orientation="vertical"
-        tools:targetApi="lollipop">
-
-        <RelativeLayout
-            android:id="@+id/info_rlt_update_icon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:orientation="horizontal"
-            android:padding="@dimen/nb.padding.large">
+            android:background="@color/white"
+            android:elevation="1dp"
+            android:orientation="vertical"
+            tools:targetApi="lollipop">
+
+        <RelativeLayout
+                android:id="@+id/info_rlt_update_icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:orientation="horizontal"
+                android:padding="@dimen/nb.padding.large">
 
             <TextView
                     android:layout_width="match_parent"
@@ -31,52 +31,46 @@
                     android:layout_centerVertical="true"
                     android:text="@string/nb.user.info.icon"/>
 
-            <ImageView
-                android:id="@+id/info_iv_icon"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_alignParentEnd="true"
-                android:src="@mipmap/ic_def_icon"/>
+            <com.copasso.cocobook.widget.CircleImageView
+                    android:id="@+id/info_iv_icon"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@mipmap/ic_def_icon"/>
         </RelativeLayout>
 
-        <View style="NB.Theme.Linear.Divide.Narrow"/>
+        <View style="@style/NB.Theme.Linear.Divide.Narrow"/>
 
         <com.copasso.cocobook.widget.CommonItemLayout
-            android:id="@+id/info_cil_username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cil_leftText="@string/nb.user.info.username"
-            app:cil_leftTextColor="@color/nb.text.default"
-            app:cil_rightText="admin"
-            app:cil_rightTextColor="@color/nb.text.common_h1"/>
-
-        <View style="NB.Theme.Linear.Divide.Narrow"/>
-
-        <com.copasso.cocobook.widget.CommonItemLayout
-            android:id="@+id/info_cil_sex"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cil_leftText="@string/nb.user.info.sex"
-            app:cil_leftTextColor="@color/nb.text.default"
-            app:cil_rightText="男"
-            app:cil_rightTextColor="@color/nb.text.common_h1"/>
-
-        <View
+                android:id="@+id/info_cil_username"
                 android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@color/nb.divider.narrow"/>
+                android:layout_height="wrap_content"
+                app:cil_leftText="@string/nb.user.info.username"
+                app:cil_leftTextColor="@color/nb.text.default"
+                app:cil_rightText="admin"
+                app:cil_rightTextColor="@color/nb.text.common_h2"/>
+
+        <View style="@style/NB.Theme.Linear.Divide.Narrow"/>
 
         <com.copasso.cocobook.widget.CommonItemLayout
-            android:id="@+id/info_cil_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cil_leftText="@string/nb.user.info.phone"
-            app:cil_leftTextColor="@color/nb.text.default"
-            app:cil_rightText="18"
-            app:cil_rightTextColor="@color/nb.text.common_h1"/>
+                android:id="@+id/info_cil_sex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cil_leftText="@string/nb.user.info.sex"
+                app:cil_leftTextColor="@color/nb.text.default"
+                app:cil_rightText="男"
+                app:cil_rightTextColor="@color/nb.text.common_h2"/>
+
+        <View style="@style/NB.Theme.Linear.Divide.Narrow"/>
+
+        <com.copasso.cocobook.widget.CommonItemLayout
+                android:id="@+id/info_cil_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cil_leftText="@string/nb.user.info.phone"
+                app:cil_leftTextColor="@color/nb.text.default"
+                app:cil_rightText="18"
+                app:cil_rightTextColor="@color/nb.text.common_h2"/>
 
         <View style="@style/NB.Theme.Linear.Divide.Narrow"/>
 
@@ -87,8 +81,14 @@
                 app:cil_leftText="@string/nb.user.info.email"
                 app:cil_leftTextColor="@color/nb.text.default"
                 app:cil_rightText="18"
-                app:cil_rightTextColor="@color/nb.text.common_h1"/>
+                app:cil_rightTextColor="@color/nb.text.common_h2"/>
 
     </LinearLayout>
+
+    <Button
+            android:id="@+id/info_btn_logout"
+            android:text="@string/nb.user.info.logout"
+            android:layout_marginTop="@dimen/nb.margin.large"
+            style="@style/NB.Theme.Widget.Button.Logout"/>
 
 </LinearLayout>
