@@ -12,11 +12,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
 import android.view.*;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -129,7 +127,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
 
         drawerHeader.setOnClickListener(view -> {
             if (BmobUser.getCurrentUser()==null)
-                startActivityForResult(new Intent(mContext,LandActivity.class),REQUEST_LAND);
+                startActivityForResult(new Intent(mContext,UserLoginActivity.class),REQUEST_LAND);
             else
                 startActivityForResult(new Intent(mContext,UserInfoActivity.class),REQUEST_USER_INFO);
         });

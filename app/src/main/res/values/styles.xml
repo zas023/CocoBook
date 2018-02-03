@@ -58,11 +58,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDarkBrown</item>
         <item name="colorAccent">@color/colorAccentBrown</item>
     </style>
-    
-    <!--Splash-->
-    <style name="SplashTheme" parent="AppTheme">
-        <item name="android:background">@color/transparent</item>
-    </style>
+
     
     <!--Dialog-->
     <style name="CommonDialog" parent="@style/Theme.AppCompat.Light.Dialog">

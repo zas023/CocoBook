@@ -25,9 +25,11 @@
     <dimen name="nb.divider.line">0.5dp</dimen>
     '
     <!--text-->
+    <!--splash内容-->
+    <dimen name="nb.text.xlarge">22sp</dimen>
+    <dimen name="nb.text.xsmall">10sp</dimen>
     <!--二级标题-->
     <dimen name="nb.text.large">18sp</dimen>
-    
     <dimen name="nb.text.normal">16sp</dimen>
     <!--小标签-->
     <dimen name="nb.text.small">12sp</dimen>

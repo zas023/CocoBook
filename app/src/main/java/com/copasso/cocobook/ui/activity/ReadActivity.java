@@ -584,10 +584,10 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     private void initMenuAnim() {
         if (mTopInAnim != null) return;
 
-        mTopInAnim = AnimationUtils.loadAnimation(this, R.anim.slide_top_in);
-        mTopOutAnim = AnimationUtils.loadAnimation(this, R.anim.slide_top_out);
-        mBottomInAnim = AnimationUtils.loadAnimation(this, R.anim.slide_bottom_in);
-        mBottomOutAnim = AnimationUtils.loadAnimation(this, R.anim.slide_bottom_out);
+        mTopInAnim = AnimationUtils.loadAnimation(mContext, R.anim.slide_top_in);
+        mTopOutAnim = AnimationUtils.loadAnimation(mContext, R.anim.slide_top_out);
+        mBottomInAnim = AnimationUtils.loadAnimation(mContext, R.anim.slide_bottom_in);
+        mBottomOutAnim = AnimationUtils.loadAnimation(mContext, R.anim.slide_bottom_out);
     }
 
     /***************************数据处理************************************/

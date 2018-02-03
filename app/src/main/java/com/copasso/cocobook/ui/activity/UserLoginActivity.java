@@ -1,5 +1,6 @@
 package com.copasso.cocobook.ui.activity;
 
+import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +22,7 @@ import com.copasso.cocobook.widget.OwlView;
  * Created by zhouas666 on 2017/12/8.
  * 登陆activity
  */
-public class LandActivity extends BaseBackActivity {
+public class UserLoginActivity extends BaseBackActivity {
 
 
     @BindView(R.id.land_owl_view)
@@ -73,7 +74,7 @@ public class LandActivity extends BaseBackActivity {
                 login();
                 break;
             case R.id.land_tv_register:  //sign
-
+                startActivity(new Intent(mContext,UserRegisterActivity.class));
                 break;
 
             case R.id.land_tv_forget:  //忘记密码

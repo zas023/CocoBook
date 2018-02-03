@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/nb.margin.large"
                 app:counterEnabled="true"
-                app:counterMaxLength="8">
+                app:counterMaxLength="12">
 
             <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
@@ -88,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="@string/nb.land.sign"
+                    android:text="@string/nb.land.register"
                     android:textColor="?attr/colorAccent"/>
         </RelativeLayout>
     </LinearLayout>
