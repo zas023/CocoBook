@@ -21,6 +21,8 @@ import com.copasso.cocobook.ui.activity.*;
 import com.copasso.cocobook.ui.adapter.FeatureAdapter;
 import com.copasso.cocobook.ui.adapter.SquareAdapter;
 import com.copasso.cocobook.ui.base.BaseMVPFragment;
+import com.copasso.cocobook.utils.NetworkUtils;
+import com.copasso.cocobook.utils.SnackbarUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -91,16 +93,22 @@ public class BookDiscoverFragment extends BaseMVPFragment<BookStoreContract.Pres
         storeRvContent.setLayoutManager(new LinearLayoutManager(mContext));
         storeRvContent.setAdapter(mFeatureAdapter);
 
-        initAdapter();
+        initSectionAdapter();
+
+        initFeatureAdapter();
     }
 
-    private void initAdapter() {
+    private void initSectionAdapter() {
 
         ArrayList<SectionBean> finds = new ArrayList<>();
         for (FindType type : FindType.values()){
             finds.add(new SectionBean(type.getTypeName(),type.getIconId()));
         }
         mSquareAdapter.addItems(finds);
+
+    }
+
+    private void initFeatureAdapter() {
 
         for (FeatureType type : FeatureType.values()){
             mFeatures.add(new FeatureBean(type.getTypeId(),type.getTypeName()));
@@ -145,8 +153,9 @@ public class BookDiscoverFragment extends BaseMVPFragment<BookStoreContract.Pres
     @Override
     protected void processLogic() {
         super.processLogic();
-        mPresenter.refreshSwipePictures();
-        //mPresenter.refreshFeatures();
+        if(NetworkUtils.isConnected()){
+            mPresenter.refreshSwipePictures();
+        }
     }
 
     @Override
@@ -169,7 +178,7 @@ public class BookDiscoverFragment extends BaseMVPFragment<BookStoreContract.Pres
     @Override
     public void finishRefreshFeatures(List<FeatureBean> featureBeans) {
         mFeatures = featureBeans;
-        initAdapter();
+        initFeatureAdapter();
     }
 
     @Override

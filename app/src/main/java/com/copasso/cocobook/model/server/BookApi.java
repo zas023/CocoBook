@@ -1,4 +1,4 @@
-package com.copasso.cocobook.model.service;
+package com.copasso.cocobook.model.server;
 
 import com.copasso.cocobook.model.bean.BookDetailBean;
 import com.copasso.cocobook.model.bean.packages.*;

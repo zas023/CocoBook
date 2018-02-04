@@ -56,7 +56,7 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 /**
- * Created by zhouas666 on 18-2-16.
+ * Created by zhouas666 on 18-2-3.
  * 阅读activity
  */
 

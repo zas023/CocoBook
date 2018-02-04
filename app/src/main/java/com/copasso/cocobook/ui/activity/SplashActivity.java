@@ -18,6 +18,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import cn.bmob.v3.Bmob;
 import com.copasso.cocobook.BuildConfig;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.utils.PermissionsChecker;
@@ -70,6 +71,9 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         unbinder = ButterKnife.bind(this);
+
+        //默认初始化Bmob
+        Bmob.initialize(this, "3f3b7628bf00914940a6919da16b33bf");
 
         initWidget();
 

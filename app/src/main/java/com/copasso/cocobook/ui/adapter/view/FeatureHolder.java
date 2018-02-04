@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.bean.FeatureBean;
-import com.copasso.cocobook.model.service.RemoteRepository;
+import com.copasso.cocobook.model.server.RemoteRepository;
 import com.copasso.cocobook.ui.activity.BookDetailActivity;
 import com.copasso.cocobook.ui.adapter.FeatureBookAdapter;
 import com.copasso.cocobook.ui.base.adapter.ViewHolderImpl;

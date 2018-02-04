@@ -7,7 +7,7 @@ import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.bean.DownloadTaskBean;
 import com.copasso.cocobook.utils.BookManager;
 import com.copasso.cocobook.model.local.BookRepository;
-import com.copasso.cocobook.model.service.RemoteRepository;
+import com.copasso.cocobook.model.server.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.ReadContract;
 import com.copasso.cocobook.ui.base.RxPresenter;
 import com.copasso.cocobook.utils.LogUtils;
@@ -29,7 +29,7 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by zhouas666 on 18-2-16.
+ * Created by zhouas666 on 18-2-3.
  */
 
 public class ReadPresenter extends RxPresenter<ReadContract.View>

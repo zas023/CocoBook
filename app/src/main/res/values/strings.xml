@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">CocoBook</string>
-    <string name="nb.title.app">iReader</string>
+    <string name="app_name">览阅</string>
+    <string name="nb.title.app">览阅</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -115,6 +115,7 @@
     <string name="nb.menu.action.scan">扫描本地书籍</string>
     <string name="nb.menu.action.transfer">WIFI传书</string>
     <string name="nb.menu.action.feedback">意见反馈</string>
+    <string name="nb.menu.action.about">关于</string>
     <string name="nb.menu.action.night_mode">夜间模式</string>
     <string name="nb.menu.action.setting">设置</string>
     
@@ -182,6 +183,7 @@
     
     <!--read-->
     <string name="nb.read.community">社区</string>
+    <string name="nb.read.song">朗诵</string>
     <string name="nb.read.brief">简介</string>
     <string name="nb.read.setting">设置</string>
     <string name="nb.read.download">缓存</string>'
@@ -214,4 +216,31 @@
     <string name="nb.user.info.email">邮箱</string>
     <string name="nb.user.info.logout">退出</string>
 
+    <!--about-->
+    <string name="nb.about.introduce">览阅致力于打造绿色健康、无广告的阅读平台，为广大读者提供优质健康的阅读服务。
+        \n\n数据内容来源于追书神器api和第三方网站，如有侵犯您的权益,请来信告知,我们将立即予以处理(联系方式：anshunzhou@outlook.com)。
+        \n\n项目采用MVP架构，使用流行的RxJava和Retrofit 框架等等，追求每个功能的最佳代码实现。
+        \n\n我的 GitHub: https://github.com/zhouas666
+        \n\n完全开源，最佳的源代码，最佳的学习软件，如果你觉得不错，可以帮忙分享给你更多的朋友，这是我们最大的动力和支持.</string>
+    <string name="nb.about.open_source"> com.android.support:appcompat-v7:25.+
+        \n com.android.support:design:25.+
+        \n com.android.support:support-v4:25.+
+        \n com.android.support:cardview-v7:25.+
+        \n com.jakewharton:butterknife:8.5.1
+        \n com.jakewharton:butterknife-compiler:8.5.1
+        \n io.reactivex.rxjava2:rxandroid:2.0.1
+        \n io.reactivex.rxjava2:rxjava:2.0.1
+        \n com.squareup.okhttp3:okhttp:3.6.0
+        \n com.squareup.okio:okio:1.11.0
+        \n com.squareup.retrofit2:retrofit:2.2.0
+        \n com.squareup.retrofit2:converter-gson:2.2.0
+        \n com.squareup.retrofit2:adapter-rxjava2:2.2.0
+        \n cn.bmob.android:bmob-sdk:3.5.5
+        \n com.github.bumptech.glide:glide:3.7.0
+        \n org.greenrobot:greendao:3.2.0
+        \n org.greenrobot:eventbus:3.0.0
+        \n me.imid.swipebacklayout.lib:library:1.1.0
+        \n me.gujun.android.taggroup:library:1.4@aar
+        \n com.youth.banner:banner:1.4.10
+        \n org.glassfish:javax.annotation:10.0-b28</string>
 </resources>

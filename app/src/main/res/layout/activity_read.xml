@@ -42,7 +42,7 @@
 				    <TextView
 					    android:id="@+id/read_tv_community"
 					    android:layout_toLeftOf="@id/read_tv_brief"
-					    android:text="@string/nb.read.community"
+					    android:text="@string/nb.read.song"
 					    style="@style/NB.Theme.TextAppearance.Read.TopMenu"/>
 			    </RelativeLayout>
 		    </android.support.v7.widget.Toolbar>

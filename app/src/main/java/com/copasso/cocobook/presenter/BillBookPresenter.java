@@ -1,6 +1,6 @@
 package com.copasso.cocobook.presenter;
 
-import com.copasso.cocobook.model.service.RemoteRepository;
+import com.copasso.cocobook.model.server.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.BillBookContract;
 import com.copasso.cocobook.ui.base.RxPresenter;
 import com.copasso.cocobook.utils.LogUtils;

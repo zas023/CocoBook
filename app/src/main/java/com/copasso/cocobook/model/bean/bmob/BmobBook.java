@@ -2,6 +2,7 @@ package com.copasso.cocobook.model.bean.bmob;
 
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.datatype.BmobGeoPoint;
 import com.copasso.cocobook.model.bean.CollBookBean;
 
 
@@ -45,6 +46,16 @@ public class BmobBook extends BmobObject{
 
     //是否是本地文件,打开的本地文件，而非指缓存文件
     private boolean isLocal = false;
+
+    //地理位置信息
+    private BmobGeoPoint gpsAdd;
+
+    public BmobGeoPoint getGpsAdd() {
+        return gpsAdd;
+    }
+    public void setGpsAdd(BmobGeoPoint gpsAdd) {
+        this.gpsAdd = gpsAdd;
+    }
 
     public BmobBook(CollBookBean collBookBean){
         super();

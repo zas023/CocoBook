@@ -1,16 +1,19 @@
-package com.copasso.cocobook.model.service;
+package com.copasso.cocobook.model.server;
 
+import android.location.Location;
 import cn.bmob.v3.BmobBatch;
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BatchResult;
+import cn.bmob.v3.datatype.BmobGeoPoint;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListListener;
 import com.copasso.cocobook.model.bean.bmob.BmobBook;
 import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.local.BookRepository;
+import com.copasso.cocobook.utils.LogUtils;
 import retrofit2.Retrofit;
 
 import java.util.ArrayList;
@@ -78,10 +81,13 @@ public class BmobRepository {
                         if (remoteShelf.containsKey(collBookBean.get_id())) {
                             BmobBook bean = remoteShelf.get(collBookBean.get_id());
                             bean.update(collBookBean);
+//                            if (location!=null)
+//                                bean.setGpsAdd(new BmobGeoPoint(location.getLongitude(),location.getLatitude()));
                             remoteUpdate.add(bean);
                         } else {
                             BmobBook bean = new BmobBook(collBookBean);
                             bean.setUser(user);
+                            bean.setGpsAdd(new BmobGeoPoint());
                             remoteAdd.add(bean);
                         }
                     }

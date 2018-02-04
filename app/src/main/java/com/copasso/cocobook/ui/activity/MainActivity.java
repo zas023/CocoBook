@@ -26,7 +26,7 @@ import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.bean.bmob.CocoUser;
 import com.copasso.cocobook.model.local.BookRepository;
-import com.copasso.cocobook.model.service.BmobRepository;
+import com.copasso.cocobook.model.server.BmobRepository;
 import com.copasso.cocobook.ui.base.BaseTabActivity;
 import com.copasso.cocobook.ui.fragment.BookShelfFragment;
 import com.copasso.cocobook.ui.fragment.BookDiscoverFragment;
@@ -70,7 +70,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     private PermissionsChecker mPermissionsChecker;
     /*************************参数**************************/
     private boolean isPrepareFinish = false;
-    private CocoUser currentUser;
+    private CocoUser  currentUser=BmobUser.getCurrentUser(CocoUser.class);
 
     /*************************初始化**************************/
     @Override
@@ -82,7 +82,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     protected void setUpToolbar(Toolbar toolbar) {
         super.setUpToolbar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar().setTitle("CocoBook");
+        getSupportActionBar().setTitle(UiUtils.getString(R.string.app_name));
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -112,10 +112,6 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     @Override
     protected void initWidget() {
         super.initWidget();
-        //默认初始化Bmob
-        Bmob.initialize(this, "3f3b7628bf00914940a6919da16b33bf");
-        //获取当前用户
-        currentUser=BmobUser.getCurrentUser(CocoUser.class);
         //实现侧滑菜单状态栏透明
         getWindow().setStatusBarColor(Color.TRANSPARENT);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
@@ -125,6 +121,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
 
         refreshDrawerHeader();
 
+        //监听菜单栏头部
         drawerHeader.setOnClickListener(view -> {
             if (BmobUser.getCurrentUser()==null)
                 startActivityForResult(new Intent(mContext,UserLoginActivity.class),REQUEST_LAND);
@@ -243,16 +240,10 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        Class<?> activityCls = null;
-        switch (id) {
+        switch (item.getItemId()) {
             case R.id.action_search:
-                activityCls = SearchActivity.class;
+                startActivity(new Intent(this, SearchActivity.class));
                 break;
-        }
-        if (activityCls != null) {
-            Intent intent = new Intent(this, activityCls);
-            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -265,21 +256,24 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
      */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        Class<?> activityCls = null;
-        switch (id) {
+        Class<?> activityClasss = null;
+        switch (item.getItemId()) {
             case R.id.action_search:
-                activityCls = SearchActivity.class;
+                activityClasss = SearchActivity.class;
                 break;
             case R.id.action_my_message:
+                ToastUtils.show("暂无消息");
                 break;
             case R.id.action_download:
-                activityCls = DownloadActivity.class;
+                activityClasss = DownloadActivity.class;
                 break;
             case R.id.action_sync_bookshelf:
-                if (BmobUser.getCurrentUser()==null) break ;
+                if (BmobUser.getCurrentUser()==null) {
+
+                }
                 ProgressUtils.show(mContext,"正在同步");
                 BmobRepository.getInstance().syncBooks(BmobUser.getCurrentUser()
+//                        ,LocationUtils.getInstance(mContext).showLocation()
                         , new BmobRepository.SyncBookListener() {
                             @Override
                             public void onSuccess(List<CollBookBean> list) {
@@ -312,11 +306,10 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
                     }
                 }
 
-                activityCls = LocalBookActivity.class;
+                activityClasss = LocalBookActivity.class;
                 break;
-//            case R.id.action_wifi_book:
-//                break;
-            case R.id.action_feedback:
+            case R.id.action_about:
+                activityClasss=AboutActivity.class;
                 break;
 //            case R.id.action_night_mode:
 //                showUpdateThemeDialog();
@@ -329,9 +322,8 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
                 break;
         }
         drawer.closeDrawer(Gravity.LEFT);
-        if (activityCls != null) {
-            Intent intent = new Intent(mContext, activityCls);
-            startActivity(intent);
+        if (activityClasss != null) {
+            startActivity(new Intent(mContext, activityClasss));
         }
         return super.onOptionsItemSelected(item);
     }

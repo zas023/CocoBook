@@ -1,21 +1,11 @@
-package com.copasso.cocobook.model.service;
+package com.copasso.cocobook.model.server;
 
-import cn.bmob.v3.BmobBatch;
-import cn.bmob.v3.BmobObject;
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.datatype.BatchResult;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.QueryListListener;
 import com.copasso.cocobook.model.bean.*;
 import com.copasso.cocobook.model.bean.packages.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import com.copasso.cocobook.model.local.BookRepository;
 import io.reactivex.Single;
 import retrofit2.Retrofit;
 

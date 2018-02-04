@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     <uses-permission android:name="android.permission.BATTERY_STATS"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
             android:allowBackup="true"
@@ -27,6 +29,7 @@
         </activity>
         <activity android:name=".ui.activity.MainActivity">
         </activity>
+        <activity android:name=".ui.activity.AboutActivity"/>
         <activity android:name=".ui.activity.UserLoginActivity"/>
         <activity android:name=".ui.activity.UserRegisterActivity"/>
         <activity android:name=".ui.activity.UserInfoActivity"/>

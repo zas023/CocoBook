@@ -29,10 +29,7 @@ import com.copasso.cocobook.ui.activity.ReadActivity;
 import com.copasso.cocobook.ui.activity.SearchActivity;
 import com.copasso.cocobook.ui.adapter.CollBookAdapter;
 import com.copasso.cocobook.ui.base.BaseMVPFragment;
-import com.copasso.cocobook.utils.ProgressUtils;
-import com.copasso.cocobook.utils.RxUtils;
-import com.copasso.cocobook.utils.ToastUtils;
-import com.copasso.cocobook.utils.UiUtils;
+import com.copasso.cocobook.utils.*;
 import com.copasso.cocobook.widget.adapter.WholeAdapter;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
 import com.copasso.cocobook.widget.refresh.ScrollRefreshRecyclerView;
@@ -237,7 +234,11 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
     @Override
     protected void processLogic() {
         super.processLogic();
-        mRvContent.startRefresh();
+        if(NetworkUtils.isConnected()){
+            mRvContent.startRefresh();
+        }else {
+            SnackbarUtils.show(mContext,"当前网络不可用");
+        }
     }
 
     @Override

@@ -19,8 +19,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/choose_iv_close"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/ic_sex_logo"/>
+        android:layout_centerHorizontal="true"/>
+        <!--android:background="@drawable/ic_sex_logo"/>-->
 
     <TextView
         android:id="@+id/choose_tv_introduce"

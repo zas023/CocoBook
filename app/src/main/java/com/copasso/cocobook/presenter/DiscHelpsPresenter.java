@@ -4,7 +4,7 @@ import com.copasso.cocobook.model.bean.BookHelpsBean;
 import com.copasso.cocobook.model.type.BookDistillate;
 import com.copasso.cocobook.model.type.BookSort;
 import com.copasso.cocobook.model.local.LocalRepository;
-import com.copasso.cocobook.model.service.RemoteRepository;
+import com.copasso.cocobook.model.server.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.DiscHelpsContract;
 import com.copasso.cocobook.ui.base.RxPresenter;
 

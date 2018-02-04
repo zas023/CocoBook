@@ -45,11 +45,16 @@
         <!--android:icon="@drawable/ic_menu_transfer"-->
         <!--app:showAsAction="never" />-->
 
+    <!--<item-->
+        <!--android:id="@+id/action_feedback"-->
+        <!--android:title="@string/nb.menu.action.feedback"-->
+        <!--android:icon="@drawable/ic_menu_feedback"-->
+        <!--app:showAsAction="never" />-->
     <item
-        android:id="@+id/action_feedback"
-        android:title="@string/nb.menu.action.feedback"
-        android:icon="@drawable/ic_menu_feedback"
-        app:showAsAction="never" />
+            android:id="@+id/action_about"
+            android:title="@string/nb.menu.action.about"
+            android:icon="@drawable/ic_menu_feedback"
+            app:showAsAction="never" />
 
     <!--<item-->
         <!--android:id="@+id/action_night_mode"-->
