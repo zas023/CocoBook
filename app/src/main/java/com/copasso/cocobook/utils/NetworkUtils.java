@@ -1,11 +1,8 @@
 package com.copasso.cocobook.utils;
 
-import android.app.Service;
-import android.app.usage.NetworkStatsManager;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.wifi.WifiManager;
 
 import com.copasso.cocobook.App;
 

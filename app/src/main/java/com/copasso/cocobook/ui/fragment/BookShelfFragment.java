@@ -301,6 +301,7 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
     private void onItemMenuClick(String which, CollBookBean collBook) {
         switch (which) {
             case "置顶":
+                SnackbarUtils.show(mContext,"此功能尚未完成");
                 break;
             case "缓存":
                 downloadBook(collBook);
@@ -309,9 +310,10 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
                 deleteBook(collBook);
                 break;
             case "批量管理":
-                isMultiSelectMode=true;
-                mCollBookAdapter.setShowCheckBox(isMultiSelectMode);
-                multiSelectRlRoot.setVisibility(View.VISIBLE);
+//                isMultiSelectMode=true;
+//                mCollBookAdapter.setShowCheckBox(isMultiSelectMode);
+//                multiSelectRlRoot.setVisibility(View.VISIBLE);
+                SnackbarUtils.show(mContext,"此功能尚未完成");
                 break;
             default:
                 break;

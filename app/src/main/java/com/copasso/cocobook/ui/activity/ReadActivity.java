@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.ContentObserver;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -112,6 +113,8 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     TextView mTvSetting;
 
     //章节目录
+    @BindView(R.id.read_llt_root)
+    LinearLayout mLltRoot;
     @BindView(R.id.read_tv_category_title)
     TextView mTvCatalogTitle;
     @BindView(R.id.read_tv_category_size)
@@ -289,6 +292,8 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
             mTvNightMode.setText(StringUtils.getString(R.string.nb_mode_morning));
             Drawable drawable = ContextCompat.getDrawable(this, R.drawable.ic_read_menu_morning);
             mTvNightMode.setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
+//            mLltRoot.setBackground(new ColorDrawable(ContextCompat.getColor(this, R.color.nb_read_bg_night)));
+//            mLvCategory.setBackground(new ColorDrawable(ContextCompat.getColor(this, R.color.nb_read_bg_night)));
         } else {
             mTvNightMode.setText(StringUtils.getString(R.string.nb_mode_night));
             Drawable drawable = ContextCompat.getDrawable(this, R.drawable.ic_read_menu_night);

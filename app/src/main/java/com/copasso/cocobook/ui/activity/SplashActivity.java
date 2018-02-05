@@ -95,6 +95,7 @@ public class SplashActivity extends AppCompatActivity {
                         ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSIONS_REQUEST_STORAGE);
                     }
                 }
+                startCount(WAIT_TIME);
             }else
                 startCount(WAIT_TIME);
         } else {

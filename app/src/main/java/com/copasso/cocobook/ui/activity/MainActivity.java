@@ -262,18 +262,15 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
                 activityClasss = SearchActivity.class;
                 break;
             case R.id.action_my_message:
-                ToastUtils.show("暂无消息");
+                SnackbarUtils.show(mContext,"暂无消息");
                 break;
             case R.id.action_download:
                 activityClasss = DownloadActivity.class;
                 break;
             case R.id.action_sync_bookshelf:
-                if (BmobUser.getCurrentUser()==null) {
-
-                }
+                if (currentUser==null) break;
                 ProgressUtils.show(mContext,"正在同步");
                 BmobRepository.getInstance().syncBooks(BmobUser.getCurrentUser()
-//                        ,LocationUtils.getInstance(mContext).showLocation()
                         , new BmobRepository.SyncBookListener() {
                             @Override
                             public void onSuccess(List<CollBookBean> list) {
@@ -317,6 +314,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
 //                recreate();//重新启动当前activity
 //                break;
             case R.id.action_settings:
+                activityClasss=MoreSettingActivity.class;
                 break;
             default:
                 break;

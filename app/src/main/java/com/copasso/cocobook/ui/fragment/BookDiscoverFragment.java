@@ -22,7 +22,6 @@ import com.copasso.cocobook.ui.adapter.FeatureAdapter;
 import com.copasso.cocobook.ui.adapter.SquareAdapter;
 import com.copasso.cocobook.ui.base.BaseMVPFragment;
 import com.copasso.cocobook.utils.NetworkUtils;
-import com.copasso.cocobook.utils.SnackbarUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -109,7 +108,7 @@ public class BookDiscoverFragment extends BaseMVPFragment<BookStoreContract.Pres
     }
 
     private void initFeatureAdapter() {
-
+        if(!NetworkUtils.isConnected()) return;
         for (FeatureType type : FeatureType.values()){
             mFeatures.add(new FeatureBean(type.getTypeId(),type.getTypeName()));
         }

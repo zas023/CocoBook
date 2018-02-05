@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/read_llt_root"
               android:layout_width="300dp"
               android:layout_height="match_parent"
               android:orientation="vertical"
@@ -7,7 +8,7 @@
               android:layout_gravity="start"
               android:paddingTop="@dimen/nb.padding.large"
               android:paddingBottom="@dimen/nb.padding.large"
-              android:background="@drawable/theme_leather_bg">
+              android:background="@color/nb.read.bg_1">
 
     <!--最新章节-->
     <LinearLayout
@@ -49,6 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
+                android:divider="@color/nb.divider.common"
                 android:scrollbars="vertical"
                 android:fastScrollEnabled="true"
                 android:focusable="true">
