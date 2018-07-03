@@ -12,6 +12,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
 import android.view.*;
@@ -308,11 +309,11 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
             case R.id.action_about:
                 activityClasss=AboutActivity.class;
                 break;
-//            case R.id.action_night_mode:
+            case R.id.action_night_mode:
 //                showUpdateThemeDialog();
-//                getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);//切换夜间模式
-//                recreate();//重新启动当前activity
-//                break;
+                getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);//切换夜间模式
+                recreate();//重新启动当前activity
+                break;
             case R.id.action_settings:
                 activityClasss=MoreSettingActivity.class;
                 break;

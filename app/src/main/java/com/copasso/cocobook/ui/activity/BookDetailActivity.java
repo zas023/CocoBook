@@ -173,6 +173,7 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
         });
         //监听推荐书单
         mBookListAdapter.setOnItemClickListener((view, pos) -> {
+            System.out.println(mBookListAdapter.getItem(pos).get_id());
             BookListDetailActivity.startActivity(mContext, mBookListAdapter.getItem(pos).get_id());
         });
     }

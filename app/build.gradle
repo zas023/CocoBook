@@ -73,6 +73,8 @@ dependencies {
     compile 'me.gujun.android.taggroup:library:1.4@aar'
     //Banner
     compile "com.youth.banner:banner:$rootProject.bannerVersion"
+    //Jsoup
+    compile 'org.jsoup:jsoup:1.10.2'
     //Annotation
     compile 'org.glassfish:javax.annotation:10.0-b28'
     compile "junit:junit:$rootProject.junitVersion"

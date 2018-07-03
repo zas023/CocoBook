@@ -56,11 +56,11 @@
             android:icon="@drawable/ic_menu_feedback"
             app:showAsAction="never" />
 
-    <!--<item-->
-        <!--android:id="@+id/action_night_mode"-->
-        <!--android:title="@string/nb.menu.action.night_mode"-->
-        <!--android:icon="@drawable/ic_read_menu_night"-->
-        <!--app:showAsAction="never" />-->
+    <item
+        android:id="@+id/action_night_mode"
+        android:title="@string/nb.menu.action.night_mode"
+        android:icon="@drawable/ic_read_menu_night"
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/action_settings"
