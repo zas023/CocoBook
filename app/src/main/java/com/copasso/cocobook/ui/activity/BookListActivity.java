@@ -36,6 +36,7 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 主题书单activity
  */
 
 public class BookListActivity extends BaseBackTabActivity {
@@ -107,59 +108,48 @@ public class BookListActivity extends BaseBackTabActivity {
         super.initClick();
         //滑动的Tag
         mHorizonTagAdapter.setOnItemClickListener(
-                new BaseListAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View view, int pos) {
-                        RxBusManager.getInstance().post(new BookSubSortEvent(mHorizonTagAdapter.getItem(pos)));
-                    }
-                }
+                (view, pos) -> RxBusManager.getInstance().post(new BookSubSortEvent(mHorizonTagAdapter.getItem(pos)))
         );
 
         //筛选
         mCbFilter.setOnCheckedChangeListener(
-                new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        if (mTopInAnim == null || mTopOutAnim == null) {
-                            mTopInAnim = AnimationUtils.loadAnimation(mContext, R.anim.slide_top_in);
-                            mTopOutAnim = AnimationUtils.loadAnimation(mContext, R.anim.slide_top_out);
-                        }
+                (buttonView, isChecked) -> {
+                    if (mTopInAnim == null || mTopOutAnim == null) {
+                        mTopInAnim = AnimationUtils.loadAnimation(mContext, R.anim.slide_top_in);
+                        mTopOutAnim = AnimationUtils.loadAnimation(mContext, R.anim.slide_top_out);
+                    }
 
-                        if (b) {
-                            mRvFilter.setVisibility(View.VISIBLE);
-                            mRvFilter.startAnimation(mTopInAnim);
-                        } else {
-                            mRvFilter.startAnimation(mTopOutAnim);
-                            mRvFilter.setVisibility(View.GONE);
-                        }
+                    if (isChecked) {
+                        mRvFilter.setVisibility(View.VISIBLE);
+                        mRvFilter.startAnimation(mTopInAnim);
+                    } else {
+                        mRvFilter.startAnimation(mTopOutAnim);
+                        mRvFilter.setVisibility(View.GONE);
                     }
                 }
         );
 
         //筛选列表
         mTagGroupAdapter.setOnChildItemListener(
-                new GroupAdapter.OnChildClickListener() {
-                    @Override
-                    public void onChildClick(View view, int groupPos, int childPos) {
-                        String bean = mTagGroupAdapter.getChildItem(groupPos, childPos);
-                        //是否已存在
-                        List<String> tags = mHorizonTagAdapter.getItems();
-                        boolean isExist = false;
-                        for (int i = 0; i < tags.size(); ++i) {
-                            if (bean.equals(tags.get(i))) {
-                                mHorizonTagAdapter.setCurrentSelected(i);
-                                mRvTag.getLayoutManager().scrollToPosition(i);
-                                isExist = true;
-                            }
+                (view, groupPos, childPos) -> {
+                    String bean = mTagGroupAdapter.getChildItem(groupPos, childPos);
+                    //是否已存在
+                    List<String> tags = mHorizonTagAdapter.getItems();
+                    boolean isExist = false;
+                    for (int i = 0; i < tags.size(); ++i) {
+                        if (bean.equals(tags.get(i))) {
+                            mHorizonTagAdapter.setCurrentSelected(i);
+                            mRvTag.getLayoutManager().scrollToPosition(i);
+                            isExist = true;
                         }
-                        if (!isExist) {
-                            //添加到1的位置,保证全本的位置
-                            mHorizonTagAdapter.addItem(1, bean);
-                            mHorizonTagAdapter.setCurrentSelected(1);
-                            mRvTag.getLayoutManager().scrollToPosition(1);
-                        }
-                        mCbFilter.setChecked(false);
                     }
+                    if (!isExist) {
+                        //添加到1的位置,保证全本的位置
+                        mHorizonTagAdapter.addItem(1, bean);
+                        mHorizonTagAdapter.setCurrentSelected(1);
+                        mRvTag.getLayoutManager().scrollToPosition(1);
+                    }
+                    mCbFilter.setChecked(false);
                 }
         );
     }

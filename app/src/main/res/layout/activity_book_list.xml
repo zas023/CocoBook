@@ -18,8 +18,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="40dp"
 			android:gravity="center_vertical"
-			android:orientation="horizontal"
-			android:background="@color/colorBackground">
+			android:orientation="horizontal">
 			
 			<android.support.v7.widget.RecyclerView
 				android:id="@+id/book_list_rv_tag_horizon"
@@ -59,7 +58,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:visibility="gone"
-				android:background="@color/common_gray"
+				android:background="@color/colorBackground"
 				android:paddingLeft="10dp"
 				android:paddingRight="10dp">
 			</android.support.v7.widget.RecyclerView>
