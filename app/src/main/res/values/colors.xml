@@ -4,7 +4,7 @@
     <color name="colorPrimary">#4caf50</color>
     <color name="colorPrimaryDark">#388e3c</color>
     <color name="colorAccent">#7cb342</color>
-    <color name="colorGrounding">#fff5f5f5</color><!--界面底色-->
+    <color name="colorBackground">#fff5f5f5</color><!--界面底色-->
     <color name="colorForeground">#ffffff</color><!--界面前景色-->
     <color name="colorDivider">#ffe0e0e0</color> <!-- 分割线颜色-->
 
@@ -73,29 +73,25 @@
     
     <!--list-->
     <color name="nb.divider.common">#727272</color>
-    <color name="nb.divider.dash">@color/light_white</color>
+    <color name="nb.divider.dash">@color/colorDivider</color>
     <!--通用分割线细-->
-    <color name="nb.divider.narrow">#E3E3E3</color>
+    <color name="nb.divider.narrow">@color/colorDivider</color>
     <!--通用分割线粗-->
-    <color name="nb.divider.wide">@color/light_white</color>
+    <color name="nb.divider.wide">@color/colorDivider</color>
     
     
     <!--text-->
 
-    <color name="nb.text.default">@color/black</color>
+    <color name="nb.text.default">@color/textPrimary</color>
     <!--通用一级标题的颜色-->
-    <color name="nb.text.common_h1">#212121</color>
+    <color name="nb.text.common_h1">@color/textPrimary</color>
     <!--通用二级标题的颜色-->
-    <color name="nb.text.common_h2">#727272</color>
+    <color name="nb.text.common_h2">@color/textAssist</color>
     <!--通用三级标题的颜色-->
-    <color name="nb.text.common_h3">#B2B2B2</color>
+    <color name="nb.text.common_h3">@color/textAssistSecondary</color>
 
     <color name="nb.text.user_name">@color/light_coffee</color>
     <color name="translucent_text">#96ffffff</color>
-
-    <!--button-->
-    <color name="nb.widget.button.normal">@color/white</color>
-    <color name="nb.widget.button.selected">#E3E3E3</color>
 
     <!--性别选择颜色值-->
     <color name="gender_select_boy_normal">#B0E2FF</color>

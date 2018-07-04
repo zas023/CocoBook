@@ -9,7 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.RxBus;
+import com.copasso.cocobook.utils.RxBusManager;
 import com.copasso.cocobook.model.event.SelectorEvent;
 
 import com.copasso.cocobook.model.type.BookDistillate;
@@ -151,7 +151,7 @@ public class BookDiscussionActivity extends BaseBackActivity implements Selector
                 break;
         }
 
-        RxBus.getInstance()
+        RxBusManager.getInstance()
                 .post(Constant.MSG_SELECTOR, new SelectorEvent(mDistillate, mBookType, mBookSort));
     }
 }

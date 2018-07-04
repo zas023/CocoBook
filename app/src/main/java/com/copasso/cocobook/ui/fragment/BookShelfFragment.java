@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +12,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.RxBus;
+import com.copasso.cocobook.utils.RxBusManager;
 import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.event.DeleteResponseEvent;
 import com.copasso.cocobook.model.event.DeleteTaskEvent;
@@ -119,7 +116,7 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
      */
     private void initEvent() {
         //推荐书籍
-        addDisposable(RxBus.getInstance()
+        addDisposable(RxBusManager.getInstance()
                 .toObservable(RecommendBookEvent.class)
                 .subscribe(
                         event -> {
@@ -128,7 +125,7 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
                         }
                 ));
         //下载书籍
-        addDisposable(RxBus.getInstance()
+        addDisposable(RxBusManager.getInstance()
                 .toObservable(DownloadMessage.class)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -138,7 +135,7 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
                         }
                 ));
         //删除书籍
-        addDisposable(RxBus.getInstance()
+        addDisposable(RxBusManager.getInstance()
                 .toObservable(DeleteResponseEvent.class)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -362,7 +359,7 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
                     .setNegativeButton(getResources().getString(R.string.nb_common_cancel), null)
                     .show();
         } else {
-            RxBus.getInstance().post(new DeleteTaskEvent(collBook));
+            RxBusManager.getInstance().post(new DeleteTaskEvent(collBook));
         }
     }
 

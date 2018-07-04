@@ -11,7 +11,7 @@ import android.widget.CheckBox;
 
 import android.widget.CompoundButton;
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.RxBus;
+import com.copasso.cocobook.utils.RxBusManager;
 import com.copasso.cocobook.model.event.BookSubSortEvent;
 import com.copasso.cocobook.model.bean.BookTagBean;
 import com.copasso.cocobook.model.type.BookListType;
@@ -110,7 +110,7 @@ public class BookListActivity extends BaseBackTabActivity {
                 new BaseListAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int pos) {
-                        RxBus.getInstance().post(new BookSubSortEvent(mHorizonTagAdapter.getItem(pos)));
+                        RxBusManager.getInstance().post(new BookSubSortEvent(mHorizonTagAdapter.getItem(pos)));
                     }
                 }
         );

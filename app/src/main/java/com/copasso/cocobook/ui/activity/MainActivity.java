@@ -83,7 +83,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     protected void setUpToolbar(Toolbar toolbar) {
         super.setUpToolbar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar().setTitle(UiUtils.getString(R.string.app_name));
+        getSupportActionBar().setTitle(UiUtils.getString(R.string.app_name_en));
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
@@ -227,7 +227,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
                     () -> isPrepareFinish = false, WAIT_INTERVAL
             );
             isPrepareFinish = true;
-            Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
+            SnackbarUtils.show("再按一次退出");
         } else {
             super.onBackPressed();
         }
@@ -310,9 +310,15 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
                 activityClasss=AboutActivity.class;
                 break;
             case R.id.action_night_mode:
-//                showUpdateThemeDialog();
-                getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);//切换夜间模式
-                recreate();//重新启动当前activity
+                boolean nightMode=ReadSettingManager.getInstance().isNightMode();
+                //切换夜间模式
+                if(nightMode)
+                    getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                else
+                    getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                ReadSettingManager.getInstance().setNightMode(!nightMode);
+                //重新启动当前activity
+                recreate();
                 break;
             case R.id.action_settings:
                 activityClasss=MoreSettingActivity.class;

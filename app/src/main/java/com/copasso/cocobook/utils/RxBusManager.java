@@ -1,4 +1,4 @@
-package com.copasso.cocobook;
+package com.copasso.cocobook.utils;
 
 import io.reactivex.Observable;
 import io.reactivex.subjects.PublishSubject;
@@ -8,15 +8,15 @@ import io.reactivex.subjects.PublishSubject;
  * PublishSubject本身作为观察者和被观察者。
  */
 
-public class RxBus{
-    private static volatile RxBus sInstance;
+public class RxBusManager {
+    private static volatile RxBusManager sInstance;
     private final PublishSubject<Object> mEventBus = PublishSubject.create();
 
-    public static RxBus getInstance(){
+    public static RxBusManager getInstance(){
         if (sInstance == null){
-            synchronized (RxBus.class){
+            synchronized (RxBusManager.class){
                 if (sInstance == null){
-                    sInstance = new RxBus();
+                    sInstance = new RxBusManager();
                 }
             }
         }
@@ -64,7 +64,6 @@ public class RxBus{
         return mEventBus.ofType(Message.class)
                 .filter(msg -> msg.code == code && cls.isInstance(msg.event))
                 .map( msg -> (T)msg.event);
-
     }
 
     class Message{

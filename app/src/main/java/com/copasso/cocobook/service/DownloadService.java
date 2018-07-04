@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.RxBus;
+import com.copasso.cocobook.utils.RxBusManager;
 import com.copasso.cocobook.model.event.DeleteResponseEvent;
 import com.copasso.cocobook.model.event.DeleteTaskEvent;
 import com.copasso.cocobook.model.event.DownloadMessage;
@@ -81,7 +81,7 @@ public class DownloadService extends BaseService {
     public int onStartCommand(Intent intent, int flags, int startId){
 
         //接受创建的DownloadTask
-        addDisposable(RxBus.getInstance()
+        addDisposable(RxBusManager.getInstance()
                 .toObservable(DownloadTaskBean.class)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -96,7 +96,7 @@ public class DownloadService extends BaseService {
                 ));
 
         //是否删除数据的问题
-        addDisposable(RxBus.getInstance()
+        addDisposable(RxBusManager.getInstance()
                 .toObservable(DeleteTaskEvent.class)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -121,7 +121,7 @@ public class DownloadService extends BaseService {
                                 }
                             }
                             //返回状态
-                            RxBus.getInstance().post(new DeleteResponseEvent(isDelete,event.collBook));
+                            RxBusManager.getInstance().post(new DeleteResponseEvent(isDelete,event.collBook));
                         }
                 ));
         return super.onStartCommand(intent, flags, startId);
@@ -333,11 +333,11 @@ public class DownloadService extends BaseService {
     }
 
     private void postMessage(String msg){
-        RxBus.getInstance().post(new DownloadMessage(msg));
+        RxBusManager.getInstance().post(new DownloadMessage(msg));
     }
 
     private void post(DownloadTaskBean task){
-        RxBus.getInstance().post(task);
+        RxBusManager.getInstance().post(task);
     }
 
 

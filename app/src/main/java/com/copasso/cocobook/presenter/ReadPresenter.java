@@ -1,6 +1,6 @@
 package com.copasso.cocobook.presenter;
 
-import com.copasso.cocobook.RxBus;
+import com.copasso.cocobook.utils.RxBusManager;
 import com.copasso.cocobook.model.bean.BookChapterBean;
 import com.copasso.cocobook.model.bean.ChapterInfoBean;
 import com.copasso.cocobook.model.bean.CollBookBean;
@@ -46,7 +46,7 @@ public class ReadPresenter extends RxPresenter<ReadContract.View>
         task.setBookChapters(bean.getBookChapters());
         task.setLastChapter(bean.getBookChapters().size());
 
-        RxBus.getInstance().post(task);
+        RxBusManager.getInstance().post(task);
     }
 
     @Override

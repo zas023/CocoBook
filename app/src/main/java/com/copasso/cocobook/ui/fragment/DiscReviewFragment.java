@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.RxBus;
+import com.copasso.cocobook.utils.RxBusManager;
 import com.copasso.cocobook.model.event.SelectorEvent;
 import com.copasso.cocobook.model.bean.BookReviewBean;
 import com.copasso.cocobook.model.type.BookDistillate;
@@ -110,7 +110,7 @@ public class DiscReviewFragment extends BaseMVPFragment<DiscReviewContract.Prese
                 }
         );
 
-        RxBus.getInstance()
+        RxBusManager.getInstance()
                 .toObservable(Constant.MSG_SELECTOR, SelectorEvent.class)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(

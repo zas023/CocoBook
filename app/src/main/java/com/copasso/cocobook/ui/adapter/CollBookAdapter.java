@@ -78,61 +78,8 @@ public class CollBookAdapter extends WholeAdapter<CollBookBean> {
         super.removeItems(values);
     }
 
-    //设置点击切换
-    public void setCheckedItem(int pos){
-        CollBookBean value = getItem(pos);
-
-        boolean isSelected = mCheckMap.get(value);
-        if (isSelected){
-            mCheckMap.put(value, false);
-            --mCheckedCount;
-        }
-        else{
-            mCheckMap.put(value, true);
-            ++mCheckedCount;
-        }
-        notifyDataSetChanged();
-    }
-
-    public void setCheckedAll(boolean isChecked){
-        Set<Map.Entry<CollBookBean, Boolean>> entrys = mCheckMap.entrySet();
-        mCheckedCount = 0;
-        for (Map.Entry<CollBookBean, Boolean> entry:entrys){
-            entry.setValue(isChecked);
-            //如果选中，则增加点击的数量
-            if (isChecked){
-                ++mCheckedCount;
-            }
-        }
-        notifyDataSetChanged();
-    }
-
-
-    public int getCheckableCount(){
-        return getItems().size();
-    }
-
-    public boolean getItemIsChecked(int pos){
-        return mCheckMap.get(getItem(pos));
-    }
-
-    public List<CollBookBean> getCheckedFiles(){
-        List<CollBookBean> values = new ArrayList<>();
-        Set<Map.Entry<CollBookBean, Boolean>> entrys = mCheckMap.entrySet();
-        for (Map.Entry<CollBookBean, Boolean> entry:entrys){
-            if (entry.getValue()){
-                values.add(entry.getKey());
-            }
-        }
-        return values;
-    }
-
     public int getCheckedCount(){
         return mCheckedCount;
-    }
-
-    public HashMap<CollBookBean,Boolean> getCheckMap(){
-        return mCheckMap;
     }
 }
 

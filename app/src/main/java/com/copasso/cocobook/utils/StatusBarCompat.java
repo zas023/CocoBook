@@ -16,8 +16,7 @@ import com.copasso.cocobook.R;
  * Created by zhouas666 on 18-1-23.
  */
 
-public class StatusBarCompat
-{
+public class StatusBarCompat {
     private static final int INVALID_VAL = -1;
     private static final int COLOR_DEFAULT = Color.parseColor("#20000000");
 

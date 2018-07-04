@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.RxBus;
+import com.copasso.cocobook.utils.RxBusManager;
 import com.copasso.cocobook.model.event.BookSubSortEvent;
 import com.copasso.cocobook.model.bean.SortBookBean;
 import com.copasso.cocobook.model.type.BookSortListType;
@@ -112,7 +112,7 @@ public class BookSortListFragment extends BaseMVPFragment<BookSortListContract.P
         );
 
         //子类的切换
-        Disposable disposable = RxBus.getInstance()
+        Disposable disposable = RxBusManager.getInstance()
                 .toObservable(BookSubSortEvent.class)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(

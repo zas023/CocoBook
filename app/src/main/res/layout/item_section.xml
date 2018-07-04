@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
               android:orientation="horizontal"
               android:layout_width="match_parent"
               android:layout_height="70dp"
               android:paddingLeft="@dimen/nb.padding.large"
               android:paddingRight="@dimen/nb.padding.large"
-              android:background="@drawable/selector_common_bg">
+              android:background="@color/colorBackground">
 
     <ImageView
         android:id="@+id/section_iv_icon"
@@ -24,7 +23,7 @@
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/section_iv_icon"
         android:textSize="18sp"
-        android:textColor="@color/black"
+        android:textColor="@color/textPrimary"
         android:text="综合讨论区"/>
 
     <ImageView

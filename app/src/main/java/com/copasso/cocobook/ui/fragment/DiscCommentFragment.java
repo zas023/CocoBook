@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import butterknife.BindView;
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.RxBus;
+import com.copasso.cocobook.utils.RxBusManager;
 import com.copasso.cocobook.model.event.SelectorEvent;
 import com.copasso.cocobook.model.bean.BookCommentBean;
 import com.copasso.cocobook.model.type.BookDistillate;
@@ -111,7 +111,7 @@ public class DiscCommentFragment extends BaseMVPFragment<DiscCommentContact.Pres
                 }
         );
         //选择刷新
-        RxBus.getInstance()
+        RxBusManager.getInstance()
                 .toObservable(Constant.MSG_SELECTOR, SelectorEvent.class)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(

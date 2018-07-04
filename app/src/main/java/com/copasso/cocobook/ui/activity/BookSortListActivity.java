@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.RxBus;
+import com.copasso.cocobook.utils.RxBusManager;
 import com.copasso.cocobook.model.event.BookSubSortEvent;
 import com.copasso.cocobook.model.bean.BookSubSortBean;
 import com.copasso.cocobook.model.type.BookSortListType;
@@ -95,7 +95,7 @@ public class BookSortListActivity extends BaseBackTabActivity {
         mTagAdapter.setOnItemClickListener(
                 (view,pos) -> {
                     String subType = mTagAdapter.getItem(pos);
-                    RxBus.getInstance().post(new BookSubSortEvent(subType));
+                    RxBusManager.getInstance().post(new BookSubSortEvent(subType));
                 }
         );
     }

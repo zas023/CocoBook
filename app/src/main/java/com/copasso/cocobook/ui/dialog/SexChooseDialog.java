@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.RxBus;
+import com.copasso.cocobook.utils.RxBusManager;
 import com.copasso.cocobook.model.event.RecommendBookEvent;
 import com.copasso.cocobook.utils.Constant;
 import com.copasso.cocobook.utils.SharedPreUtils;
@@ -20,10 +20,13 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
+ * 性别选择对话框
  * Created by zhouas666 on 18-1-23.
  */
 
 public class SexChooseDialog extends Dialog {
+    private static final String TAG = "SexChooseDialog";
+
     @BindView(R.id.choose_iv_close)
     ImageView mIvClose;
     @BindView(R.id.choose_btn_boy)
@@ -59,13 +62,13 @@ public class SexChooseDialog extends Dialog {
                 //保存到SharePreference中
                 SharedPreUtils.getInstance()
                         .putString(Constant.SHARED_SEX,Constant.SEX_BOY);
-                RxBus.getInstance().post(new RecommendBookEvent("male"));
+                RxBusManager.getInstance().post(new RecommendBookEvent("male"));
                 break;
             case R.id.choose_btn_girl:
                 //保存到SharePreference中
                 SharedPreUtils.getInstance()
                         .putString(Constant.SHARED_SEX,Constant.SEX_GIRL);
-                RxBus.getInstance().post(new RecommendBookEvent("female"));
+                RxBusManager.getInstance().post(new RecommendBookEvent("female"));
                 break;
             default:
                 break;

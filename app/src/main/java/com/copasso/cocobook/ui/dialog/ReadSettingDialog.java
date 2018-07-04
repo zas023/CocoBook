@@ -34,6 +34,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
+ * 阅读设置对话框
  * Created by zhouas666 on 18-1-23.
  */
 
