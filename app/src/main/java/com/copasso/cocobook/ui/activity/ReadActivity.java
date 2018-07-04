@@ -53,6 +53,7 @@ import com.copasso.cocobook.widget.page.PageView;
 import com.copasso.cocobook.widget.page.TxtChapter;
 
 import java.util.List;
+import java.util.UUID;
 
 import butterknife.BindView;
 

@@ -17,10 +17,8 @@ import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
 import android.view.*;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import butterknife.BindView;
-import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobUser;
 import com.bumptech.glide.Glide;
 import com.copasso.cocobook.R;
@@ -71,7 +69,6 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     private PermissionsChecker mPermissionsChecker;
     /*************************参数**************************/
     private boolean isPrepareFinish = false;
-    private boolean nightMode=ReadSettingManager.getInstance().isNightMode();
     private CocoUser  currentUser=BmobUser.getCurrentUser(CocoUser.class);
 
     /*************************初始化**************************/

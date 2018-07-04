@@ -8,11 +8,12 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import com.copasso.cocobook.AppManager;
 import com.copasso.cocobook.R;
+import com.copasso.cocobook.utils.ReadSettingManager;
 import com.copasso.cocobook.utils.StatusBarCompat;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -27,6 +28,8 @@ public abstract class BaseBackActivity extends SwipeBackActivity {
     protected Activity mContext;
 
     protected CompositeDisposable mDisposable;
+
+    protected boolean nightMode=ReadSettingManager.getInstance().isNightMode();
     //ButterKnife
     private Toolbar mToolbar;
 
@@ -48,6 +51,17 @@ public abstract class BaseBackActivity extends SwipeBackActivity {
      * 配置Toolbar
      */
     protected void setUpToolbar(Toolbar toolbar){
+    }
+
+    /**
+     * 初始化主题
+     */
+    public void initTheme() {
+        if (nightMode) {
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
     }
 
     protected void initData(Bundle savedInstanceState){
@@ -74,6 +88,7 @@ public abstract class BaseBackActivity extends SwipeBackActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initTheme();
         setContentView(getLayoutId());
         initData(savedInstanceState);
         mContext=this;

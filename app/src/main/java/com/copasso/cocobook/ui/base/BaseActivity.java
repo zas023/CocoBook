@@ -8,8 +8,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import com.copasso.cocobook.R;
+import com.copasso.cocobook.utils.ReadSettingManager;
 import com.copasso.cocobook.utils.StatusBarCompat;
 
 import butterknife.ButterKnife;
@@ -26,6 +28,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected Activity mContext;
 
     protected CompositeDisposable mDisposable;
+
+    protected boolean nightMode=ReadSettingManager.getInstance().isNightMode();
+
     //ButterKnife
     private Toolbar mToolbar;
 
@@ -52,6 +57,17 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void initData(Bundle savedInstanceState){
     }
     /**
+     * 初始化主题
+     */
+    public void initTheme() {
+        if (nightMode) {
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+    }
+
+    /**
      * 初始化零件
      */
     protected void initWidget() {
@@ -73,6 +89,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initTheme();
         setContentView(getLayoutId());
         initData(savedInstanceState);
         mContext=this;

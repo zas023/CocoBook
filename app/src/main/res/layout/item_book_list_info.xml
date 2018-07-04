@@ -9,7 +9,7 @@
     android:layout_marginRight="5dp"
     android:layout_marginTop="5dp"
     android:foreground="?attr/selectableItemBackground"
-    app:cardBackgroundColor="@color/white"
+    app:cardBackgroundColor="@color/colorBackground"
     app:cardCornerRadius="5dp"
     app:cardUseCompatPadding="true">
 
