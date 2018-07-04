@@ -18,8 +18,8 @@
     <color name="textError">#ffe7492e</color>
 
     <!--button-->
-    <color name="nb.widget.button.normal">@color/colorBackground</color>
-    <color name="nb.widget.button.selected">@color/colorForeground</color>
+    <color name="nb.widget.button.normal">@color/colorForeground</color>
+    <color name="nb.widget.button.selected">@color/colorBackground</color>
 
 
 </resources>

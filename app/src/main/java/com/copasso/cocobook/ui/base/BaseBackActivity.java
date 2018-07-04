@@ -21,7 +21,6 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
  * Created by PC on 2016/9/8.
  */
 public abstract class BaseBackActivity extends SwipeBackActivity {
-    private static final int INVALID_VAL = -1;
     protected static String TAG;
 
     protected Activity mContext;

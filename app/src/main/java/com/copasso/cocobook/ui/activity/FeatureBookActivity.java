@@ -13,7 +13,7 @@ import com.copasso.cocobook.model.bean.FeatureDetailBean;
 import com.copasso.cocobook.presenter.FeatureDetailPresenter;
 import com.copasso.cocobook.presenter.contract.FeatureDetailContract;
 import com.copasso.cocobook.ui.adapter.FeatureDetailAdapter;
-import com.copasso.cocobook.ui.base.BaseMVPActivity;
+import com.copasso.cocobook.ui.base.BaseBackMVPActivity;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
 
@@ -23,7 +23,7 @@ import java.util.List;
  * Created by zhouas666 on 18-1-23.
  */
 
-public class FeatureBookActivity extends BaseMVPActivity<FeatureDetailContract.Presenter>
+public class FeatureBookActivity extends BaseBackMVPActivity<FeatureDetailContract.Presenter>
         implements FeatureDetailContract.View{
     private static final String EXTRA_FEATURE_ID = "extra_feature_id";
     private static final String EXTRA_FEATURE_NAME = "extra_feature_name";

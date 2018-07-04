@@ -71,6 +71,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     private PermissionsChecker mPermissionsChecker;
     /*************************参数**************************/
     private boolean isPrepareFinish = false;
+    private boolean nightMode=ReadSettingManager.getInstance().isNightMode();
     private CocoUser  currentUser=BmobUser.getCurrentUser(CocoUser.class);
 
     /*************************初始化**************************/
@@ -223,11 +224,9 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
             return;
         }
         if (!isPrepareFinish) {
-            mVp.postDelayed(
-                    () -> isPrepareFinish = false, WAIT_INTERVAL
-            );
+            mVp.postDelayed(() -> isPrepareFinish = false, WAIT_INTERVAL);
             isPrepareFinish = true;
-            SnackbarUtils.show("再按一次退出");
+            SnackbarUtils.show(mContext,"再按一次退出");
         } else {
             super.onBackPressed();
         }
@@ -310,7 +309,6 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
                 activityClasss=AboutActivity.class;
                 break;
             case R.id.action_night_mode:
-                boolean nightMode=ReadSettingManager.getInstance().isNightMode();
                 //切换夜间模式
                 if(nightMode)
                     getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);

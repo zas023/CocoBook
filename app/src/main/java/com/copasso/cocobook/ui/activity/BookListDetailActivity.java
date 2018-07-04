@@ -19,8 +19,7 @@ import com.copasso.cocobook.model.bean.BookListDetailBean;
 import com.copasso.cocobook.presenter.BookListDetailPresenter;
 import com.copasso.cocobook.presenter.contract.BookListDetailContract;
 import com.copasso.cocobook.ui.adapter.BookListDetailAdapter;
-import com.copasso.cocobook.ui.base.BaseMVPActivity;
-import com.copasso.cocobook.ui.base.adapter.BaseListAdapter;
+import com.copasso.cocobook.ui.base.BaseBackMVPActivity;
 import com.copasso.cocobook.utils.Constant;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.adapter.WholeAdapter;
@@ -38,7 +37,7 @@ import butterknife.Unbinder;
  * Created by zhouas666 on 18-2-1.
  */
 
-public class BookListDetailActivity extends BaseMVPActivity<BookListDetailContract.Presenter> implements BookListDetailContract.View {
+public class BookListDetailActivity extends BaseBackMVPActivity<BookListDetailContract.Presenter> implements BookListDetailContract.View {
 
     private static final String EXTRA_DETAIL_ID = "extra_detail_id";
     @BindView(R.id.refresh_layout)

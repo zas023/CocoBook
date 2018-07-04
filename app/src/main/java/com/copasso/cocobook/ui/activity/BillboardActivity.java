@@ -10,7 +10,7 @@ import com.copasso.cocobook.model.bean.packages.BillboardPackage;
 import com.copasso.cocobook.presenter.BillboardPresenter;
 import com.copasso.cocobook.presenter.contract.BillboardContract;
 import com.copasso.cocobook.ui.adapter.BillboardAdapter;
-import com.copasso.cocobook.ui.base.BaseMVPActivity;
+import com.copasso.cocobook.ui.base.BaseBackMVPActivity;
 import com.copasso.cocobook.widget.RefreshLayout;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ import butterknife.BindView;
  * 数据的初始化，Expand的配置
  */
 
-public class BillboardActivity extends BaseMVPActivity<BillboardContract.Presenter>
+public class BillboardActivity extends BaseBackMVPActivity<BillboardContract.Presenter>
         implements BillboardContract.View, ExpandableListView.OnGroupClickListener, ExpandableListView.OnChildClickListener {
 
     @BindView(R.id.billboard_rl_refresh)

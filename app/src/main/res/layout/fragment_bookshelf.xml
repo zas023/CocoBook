@@ -11,7 +11,7 @@
             android:id="@+id/book_shelf_rv_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorForeground"
+            android:background="@color/colorBackground"
             app:layout_scroll_empty="@layout/view_empty_book_shelf">
     </com.copasso.cocobook.widget.refresh.ScrollRefreshRecyclerView>
 

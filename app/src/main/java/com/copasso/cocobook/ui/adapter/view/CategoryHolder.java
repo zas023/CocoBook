@@ -28,15 +28,12 @@ public class CategoryHolder extends ViewHolderImpl<TxtChapter> {
         //首先判断是否该章已下载
         Drawable drawable = null;
 
-        //TODO:目录显示设计的有点不好，需要靠成员变量是否为null来判断。
         //如果没有链接地址表示是本地文件
         if (value.getLink() == null){
             drawable = ContextCompat.getDrawable(getContext(),R.drawable.selector_category_load);
         }
         else {
-            if (value.getBookId() != null
-                    && BookManager
-                    .isChapterCached(value.getBookId(),value.getTitle())){
+            if (value.getBookId() != null && BookManager.isChapterCached(value.getBookId(),value.getTitle())){
                 drawable = ContextCompat.getDrawable(getContext(),R.drawable.selector_category_load);
             }
             else {

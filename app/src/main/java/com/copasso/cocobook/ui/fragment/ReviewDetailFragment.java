@@ -112,9 +112,7 @@ public class ReviewDetailFragment extends BaseMVPFragment<ReviewDetailContract.P
     @Override
     protected void initClick() {
         super.initClick();
-        mCommentAdapter.setOnLoadMoreListener(
-                () ->   mPresenter.loadComment(mDetailId, start, limit)
-        );
+        mCommentAdapter.setOnLoadMoreListener(() ->mPresenter.loadComment(mDetailId, start, limit));
     }
 
     /***************************业务逻辑********************************/

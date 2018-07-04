@@ -2,7 +2,6 @@
 <android.support.design.widget.CoordinatorLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:fitsSystemWindows="true">
@@ -20,7 +19,7 @@
 			android:layout_height="40dp"
 			android:gravity="center_vertical"
 			android:orientation="horizontal"
-			android:background="@color/nb.theme.background">
+			android:background="@color/colorBackground">
 			
 			<android.support.v7.widget.RecyclerView
 				android:id="@+id/book_list_rv_tag_horizon"

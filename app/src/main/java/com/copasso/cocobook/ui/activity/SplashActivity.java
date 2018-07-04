@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.AppCompatImageView;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
@@ -22,6 +23,7 @@ import cn.bmob.v3.Bmob;
 import com.copasso.cocobook.BuildConfig;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.utils.PermissionsChecker;
+import com.copasso.cocobook.utils.ReadSettingManager;
 import rx.Observable;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -107,6 +109,10 @@ public class SplashActivity extends AppCompatActivity {
 
 
     private void initWidget() {
+        //是否为夜间模式
+        if(ReadSettingManager.getInstance().isNightMode())
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
         splashTvDate.setText(new SimpleDateFormat("yyyy年MM月dd日，EEEE").format(new Date()));
         splashTvVersion.setText(BuildConfig.VERSION_NAME);
         splashLltWelcome.setAnimation(AnimationUtils.loadAnimation(this, R.anim.alpha_in));

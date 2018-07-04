@@ -4,7 +4,7 @@ package com.copasso.cocobook.ui.base;
  * Created by zhouas666 on 17-4-25.
  */
 
-public abstract class BaseMVPActivity<T extends BaseContract.BasePresenter> extends BaseActivity{
+public abstract class BaseBackMVPActivity<T extends BaseContract.BasePresenter> extends BaseBackActivity{
 
     protected T mPresenter;
 

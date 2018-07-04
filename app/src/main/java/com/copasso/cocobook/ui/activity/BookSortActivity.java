@@ -11,7 +11,7 @@ import com.copasso.cocobook.model.bean.packages.BookSubSortPackage;
 import com.copasso.cocobook.presenter.BookSortPresenter;
 import com.copasso.cocobook.presenter.contract.BookSortContract;
 import com.copasso.cocobook.ui.adapter.BookSortAdapter;
-import com.copasso.cocobook.ui.base.BaseMVPActivity;
+import com.copasso.cocobook.ui.base.BaseBackMVPActivity;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.itemdecoration.DividerGridItemDecoration;
 
@@ -23,7 +23,7 @@ import butterknife.BindView;
  *
  */
 
-public class BookSortActivity extends BaseMVPActivity<BookSortContract.Presenter> implements BookSortContract.View{
+public class BookSortActivity extends BaseBackMVPActivity<BookSortContract.Presenter> implements BookSortContract.View{
     /*******************Constant*********************/
     private static final int SPAN_COUNT = 3;
 

@@ -11,14 +11,10 @@ import android.view.View;
 import butterknife.BindView;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.bean.BillBookBean;
-import com.copasso.cocobook.model.bean.CollBookBean;
-import com.copasso.cocobook.presenter.BillBookPresenter;
 import com.copasso.cocobook.presenter.RecommendBookPresenter;
-import com.copasso.cocobook.presenter.contract.BillBookContract;
 import com.copasso.cocobook.presenter.contract.RecommendBookContract;
 import com.copasso.cocobook.ui.adapter.BillBookAdapter;
-import com.copasso.cocobook.ui.adapter.RecommendBookAdapter;
-import com.copasso.cocobook.ui.base.BaseMVPActivity;
+import com.copasso.cocobook.ui.base.BaseBackMVPActivity;
 import com.copasso.cocobook.ui.base.adapter.BaseListAdapter;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
@@ -29,7 +25,7 @@ import java.util.List;
  * Created by zhouas666 on 18-1-23.
  */
 
-public class RecommendBookActivity extends BaseMVPActivity<RecommendBookContract.Presenter>
+public class RecommendBookActivity extends BaseBackMVPActivity<RecommendBookContract.Presenter>
         implements RecommendBookContract.View{
     private static final String EXTRA_BOOK_ID = "extra_book_id";
     /********************/

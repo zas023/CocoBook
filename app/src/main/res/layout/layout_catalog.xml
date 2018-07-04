@@ -8,7 +8,7 @@
               android:layout_gravity="start"
               android:paddingTop="@dimen/nb.padding.large"
               android:paddingBottom="@dimen/nb.padding.large"
-              android:background="@color/nb.read.bg_1">
+              android:background="@color/colorBackground">
 
     <!--最新章节-->
     <LinearLayout

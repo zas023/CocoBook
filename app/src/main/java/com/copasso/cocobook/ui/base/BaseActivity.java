@@ -2,7 +2,6 @@ package com.copasso.cocobook.ui.base;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -10,11 +9,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-
-import com.copasso.cocobook.BuildConfig;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.utils.StatusBarCompat;
 
@@ -27,7 +21,6 @@ import io.reactivex.disposables.Disposable;
  * Created by PC on 2016/9/8.
  */
 public abstract class BaseActivity extends AppCompatActivity {
-    private static final int INVALID_VAL = -1;
     protected static String TAG;
 
     protected Activity mContext;

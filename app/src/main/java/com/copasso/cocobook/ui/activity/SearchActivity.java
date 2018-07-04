@@ -22,6 +22,7 @@ import com.copasso.cocobook.presenter.SearchPresenter;
 import com.copasso.cocobook.presenter.contract.SearchContract;
 import com.copasso.cocobook.ui.adapter.KeyWordAdapter;
 import com.copasso.cocobook.ui.adapter.SearchBookAdapter;
+import com.copasso.cocobook.ui.base.BaseBackMVPActivity;
 import com.copasso.cocobook.ui.base.BaseMVPActivity;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
@@ -35,7 +36,7 @@ import java.util.List;
  * Created by zhouas666 on 18-1-23.
  */
 
-public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
+public class SearchActivity extends BaseBackMVPActivity<SearchContract.Presenter>
         implements SearchContract.View {
     private static final int TAG_LIMIT = 8;
 

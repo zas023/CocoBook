@@ -3,14 +3,11 @@ package com.copasso.cocobook.ui.activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -26,9 +23,7 @@ import com.copasso.cocobook.presenter.contract.BookDetailContract;
 import com.copasso.cocobook.ui.adapter.BookListAdapter;
 import com.copasso.cocobook.ui.adapter.HotCommentAdapter;
 import com.copasso.cocobook.ui.adapter.RecommendBookAdapter;
-import com.copasso.cocobook.ui.adapter.TagGroupAdapter;
-import com.copasso.cocobook.ui.base.BaseMVPActivity;
-import com.copasso.cocobook.ui.base.adapter.BaseListAdapter;
+import com.copasso.cocobook.ui.base.BaseBackMVPActivity;
 import com.copasso.cocobook.utils.Constant;
 import com.copasso.cocobook.utils.StringUtils;
 import com.copasso.cocobook.utils.ToastUtils;
@@ -47,7 +42,7 @@ import me.gujun.android.taggroup.TagGroup;
  * 书籍详情activity
  */
 
-public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Presenter>
+public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.Presenter>
         implements BookDetailContract.View {
     /************************************常量************************************/
     public static final String RESULT_IS_COLLECTED = "result_is_collected";
