@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.ContentObserver;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -18,6 +19,8 @@ import android.support.design.widget.AppBarLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
@@ -32,6 +35,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import butterknife.OnClick;
+import com.copasso.cocobook.AppManager;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.bean.BookChapterBean;
 import com.copasso.cocobook.model.bean.CollBookBean;
@@ -69,12 +73,9 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     public static final String EXTRA_IS_COLLECTED = "extra_is_collected";
 
     //注册 Brightness 的 uri
-    private final Uri BRIGHTNESS_MODE_URI =
-            Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS_MODE);
-    private final Uri BRIGHTNESS_URI =
-            Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS);
-    private final Uri BRIGHTNESS_ADJ_URI =
-            Settings.System.getUriFor("screen_auto_brightness_adj");
+    private final Uri BRIGHTNESS_MODE_URI = Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS_MODE);
+    private final Uri BRIGHTNESS_URI = Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS);
+    private final Uri BRIGHTNESS_ADJ_URI = Settings.System.getUriFor("screen_auto_brightness_adj");
 
     private boolean isRegistered = false;
 
@@ -291,8 +292,6 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
             mTvNightMode.setText(StringUtils.getString(R.string.nb_mode_morning));
             Drawable drawable = ContextCompat.getDrawable(this, R.drawable.ic_read_menu_morning);
             mTvNightMode.setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
-//            mLltRoot.setBackground(new ColorDrawable(ContextCompat.getColor(this, R.color.nb_read_bg_night)));
-//            mLvCategory.setBackground(new ColorDrawable(ContextCompat.getColor(this, R.color.nb_read_bg_night)));
         } else {
             mTvNightMode.setText(StringUtils.getString(R.string.nb_mode_night));
             Drawable drawable = ContextCompat.getDrawable(this, R.drawable.ic_read_menu_night);

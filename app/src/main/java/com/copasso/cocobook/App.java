@@ -18,6 +18,8 @@ public class App extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
+        //初始化AppManager
+        AppManager.init(this);
 
         startService(new Intent(getContext(), DownloadService.class));
     }

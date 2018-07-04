@@ -2,7 +2,6 @@ package com.copasso.cocobook.ui.base;
 
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
 
 import com.copasso.cocobook.ui.base.adapter.IViewHolder;
 

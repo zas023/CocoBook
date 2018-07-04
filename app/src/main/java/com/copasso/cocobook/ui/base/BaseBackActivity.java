@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import com.copasso.cocobook.AppManager;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.utils.StatusBarCompat;
 import io.reactivex.disposables.CompositeDisposable;
@@ -83,7 +84,6 @@ public abstract class BaseBackActivity extends SwipeBackActivity {
         initWidget();
         initClick();
         processLogic();
-
     }
 
     private void initToolbar(){

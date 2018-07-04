@@ -154,8 +154,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
      * 首次进入应用，性别选择
      */
     private void showSexChooseDialog() {
-        String sex = SharedPreUtils.getInstance()
-                .getString(Constant.SHARED_SEX);
+        String sex = SharedPreUtils.getInstance().getString(Constant.SHARED_SEX);
         if (sex.equals("")) {
             mVp.postDelayed(() -> {
                 Dialog dialog = new SexChooseDialog(this);

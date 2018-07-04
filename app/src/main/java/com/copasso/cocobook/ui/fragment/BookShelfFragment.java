@@ -80,8 +80,7 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
     }
 
     public void refreshShelf(){
-        mCollBookAdapter.refreshItems(BookRepository
-                .getInstance().getCollBooks());
+        mCollBookAdapter.refreshItems(BookRepository.getInstance().getCollBooks());
     }
     /***************************初始化********************************/
     @Override
