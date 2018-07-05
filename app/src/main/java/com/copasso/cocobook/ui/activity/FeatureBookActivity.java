@@ -94,7 +94,8 @@ public class FeatureBookActivity extends BaseBackMVPActivity<FeatureDetailContra
         mRvContent.setAdapter(mAdapter);
 
         mAdapter.setOnItemClickListener((view, pos) -> {
-            BookDetailActivity.startActivity(mContext,mAdapter.getItem(pos).getBook().get_id());
+            BookDetailActivity.startActivity(mContext,
+                    mAdapter.getItem(pos).getBook().get_id(),mAdapter.getItem(pos).getBook().getTitle());
         });
     }
 

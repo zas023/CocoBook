@@ -102,7 +102,7 @@ public class BookStoreFragment extends BaseMVPFragment<BookStoreContract.Present
                 (pos) -> {
                     SwipePictureBean bean = mSwipePictures.get(pos);
                     if (bean.getType().equals("c-bookdetail"))
-                        BookDetailActivity.startActivity(mContext, bean.getLink());
+                        BookDetailActivity.startActivity(mContext, bean.getLink(),bean.getTitle());
                     if (bean.getType().equals("c-booklist"))
                         BookListDetailActivity.startActivity(mContext, bean.getLink());
                 });

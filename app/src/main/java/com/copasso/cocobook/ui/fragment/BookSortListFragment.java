@@ -103,7 +103,7 @@ public class BookSortListFragment extends BaseMVPFragment<BookSortListContract.P
         mBookSortListAdapter.setOnItemClickListener(
                 (view, pos) -> {
                     String bookId = mBookSortListAdapter.getItem(pos).get_id();
-                    BookDetailActivity.startActivity(getContext(),bookId);
+                    BookDetailActivity.startActivity(getContext(),bookId,mBookSortListAdapter.getItem(pos).getTitle());
                 }
         );
 

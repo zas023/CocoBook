@@ -33,7 +33,8 @@ public class FeatureHolder extends ViewHolderImpl<FeatureBean>{
         mRvContent.setAdapter(mAdapter);
 
         mAdapter.setOnItemClickListener((view, pos) -> {
-            BookDetailActivity.startActivity(getContext(),mAdapter.getItem(pos).getBook().get_id());
+            BookDetailActivity.startActivity(getContext(),
+                    mAdapter.getItem(pos).getBook().get_id(),mAdapter.getItem(pos).getBook().getTitle());
         });
     }
 

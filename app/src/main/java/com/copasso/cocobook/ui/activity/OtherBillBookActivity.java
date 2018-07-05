@@ -100,7 +100,7 @@ public class OtherBillBookActivity extends BaseBackMVPActivity<BillBookContract.
         mBillBookAdapter.setOnItemClickListener(new BaseListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int pos) {
-                BookDetailActivity.startActivity(mContext,mBillBookAdapter.getItem(pos).get_id());
+                BookDetailActivity.startActivity(mContext,mBillBookAdapter.getItem(pos).get_id(),mBillBookAdapter.getItem(pos).getTitle());
             }
         });
     }

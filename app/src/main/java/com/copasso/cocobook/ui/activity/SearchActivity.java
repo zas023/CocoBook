@@ -215,7 +215,7 @@ public class SearchActivity extends BaseBackMVPActivity<SearchContract.Presenter
         mSearchAdapter.setOnItemClickListener(
                 (view, pos) -> {
                     String bookId = mSearchAdapter.getItem(pos).get_id();
-                    BookDetailActivity.startActivity(this, bookId);
+                    BookDetailActivity.startActivity(this, bookId,mSearchAdapter.getItem(pos).getTitle());
                 }
         );
         //清空历史

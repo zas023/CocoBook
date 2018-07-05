@@ -134,11 +134,12 @@
 
     <!--user:用户的信息-->
     <string name="nb.user.lv">&#160;lv.%1$d</string>
+
     <!--book:书籍的信息-->
     <string name="nb.book.type">[%1$s]</string>
     <string name="nb.book.recommend">%1$d 人推荐</string>
     <string name="nb.book.message">%1$d人在追 |&#160; %2$s%%读者留存</string>
-    <string name="nb.book.word">|&#160;%1$d&#160;万字</string>
+    <string name="nb.book.word">%1$d&#160;万字</string>
     <!--sort:每类的书-->
     <string name="nb.sort.book_count">%1$d 本</string>
     
@@ -162,6 +163,12 @@
     <string name="nb.book_detail.give_up">放弃</string>
     <string name="nb.book_detail.start_read">开始阅读</string>
     <string name="nb.book_detail.go_on_read">继续阅读</string>
+
+    <string name="book_detail.open_book">打开阅读</string>
+    <string name="book_detail.go_on">继续阅读</string>
+    <string name="book_detail.give_up">移出书架</string>
+    <string name="book_detail.add_bookcase">加入书架</string>
+    <string name="book_detail.download_book">缓存全本</string>
 
     <!--DownloadTask:书籍下载-->
     <string name="nb.download.add_succeed">成功添加到下载列表</string>

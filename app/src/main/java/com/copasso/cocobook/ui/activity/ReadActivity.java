@@ -499,7 +499,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                 toggleNightMode();
                 break;
             case R.id.read_tv_brief:  //简介
-                BookDetailActivity.startActivity(this, mBookId);
+                BookDetailActivity.startActivity(this, mBookId,mCollBook.getTitle());
                 break;
             case R.id.read_tv_community:  //社区
                 startActivity(new Intent(this, CommunityActivity.class));

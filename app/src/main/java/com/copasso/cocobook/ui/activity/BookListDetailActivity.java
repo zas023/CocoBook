@@ -98,7 +98,7 @@ public class BookListDetailActivity extends BaseBackMVPActivity<BookListDetailCo
         mDetailAdapter.setOnItemClickListener(
                 (view, pos) -> {
                     String bookId = mBooksList.get(pos).getBook().get_id();
-                    BookDetailActivity.startActivity(this,bookId);
+                    BookDetailActivity.startActivity(this,bookId,mBooksList.get(pos).getBook().getTitle());
                 }
         );
 

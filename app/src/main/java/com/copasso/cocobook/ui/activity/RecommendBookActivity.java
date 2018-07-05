@@ -93,7 +93,8 @@ public class RecommendBookActivity extends BaseBackMVPActivity<RecommendBookCont
         mBooksAdapter.setOnItemClickListener(new BaseListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int pos) {
-                BookDetailActivity.startActivity(mContext,mBooksAdapter.getItem(pos).get_id());
+                BookDetailActivity.startActivity(mContext,
+                        mBooksAdapter.getItem(pos).get_id(),mBooksAdapter.getItem(pos).getTitle());
             }
         });
     }

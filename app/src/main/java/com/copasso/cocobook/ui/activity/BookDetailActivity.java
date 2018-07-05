@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import butterknife.OnClick;
@@ -25,7 +24,6 @@ import com.copasso.cocobook.ui.adapter.HotCommentAdapter;
 import com.copasso.cocobook.ui.adapter.RecommendBookAdapter;
 import com.copasso.cocobook.base.BaseBackMVPActivity;
 import com.copasso.cocobook.utils.Constant;
-import com.copasso.cocobook.utils.StringUtils;
 import com.copasso.cocobook.utils.ToastUtils;
 import com.copasso.cocobook.utils.UiUtils;
 import com.copasso.cocobook.widget.RefreshLayout;
@@ -47,48 +45,45 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
     /************************************常量************************************/
     public static final String RESULT_IS_COLLECTED = "result_is_collected";
     private static final String EXTRA_BOOK_ID = "extra_book_id";
+    private static final String EXTRA_BOOK_TITLE = "extra_book_title";
     private static final int REQUEST_READ = 1;
 
     @BindView(R.id.refresh_layout)
     RefreshLayout mRefreshLayout;
     @BindView(R.id.book_detail_iv_cover)
     ImageView mIvCover;
-    @BindView(R.id.book_detail_tv_title)
-    TextView mTvTitle;
+    //    @BindView(R.id.book_detail_tv_title)
+//    TextView mTvTitle;
     @BindView(R.id.book_detail_tv_author)
     TextView mTvAuthor;
     @BindView(R.id.book_detail_tv_type)
     TextView mTvType;
     @BindView(R.id.book_detail_tv_word_count)
     TextView mTvWordCount;
-    @BindView(R.id.book_detail_tv_lately_update)
-    TextView mTvLatelyUpdate;
-    @BindView(R.id.book_list_tv_chase)
-    TextView mTvChase;
-    @BindView(R.id.book_detail_tv_read)
-    TextView mTvRead;
-    @BindView(R.id.book_detail_tv_follower_count)
-    TextView mTvFollowerCount;
-    @BindView(R.id.book_detail_tv_retention)
-    TextView mTvRetention;
-    @BindView(R.id.book_detail_tv_day_word_count)
-    TextView mTvDayWordCount;
+    //    @BindView(R.id.book_detail_tv_lately_update)
+//    TextView mTvLatelyUpdate;
+//    @BindView(R.id.book_list_tv_chase)
+//    TextView mTvChase;
+//    @BindView(R.id.book_detail_tv_read)
+//    TextView mTvRead;
+//    @BindView(R.id.book_detail_tv_follower_count)
+//    TextView mTvFollowerCount;
+//    @BindView(R.id.book_detail_tv_retention)
+//    TextView mTvRetention;
+    @BindView(R.id.book_detail_tv_add)
+    TextView mTvAddBook;
+    @BindView(R.id.book_detail_tv_open)
+    TextView mTvOpenBook;
     @BindView(R.id.book_detail_tg)
     TagGroup mTg;
-    @BindView(R.id.book_detail_tv_last_chapter)
-    TextView mTvLastChapter;
+    //    @BindView(R.id.book_detail_tv_last_chapter)
+//    TextView mTvLastChapter;
     @BindView(R.id.book_detail_tv_brief)
     TextView mTvBrief;
-    @BindView(R.id.book_detail_tv_more_comment)
-    TextView mTvMoreComment;
+    //    @BindView(R.id.book_detail_tv_more_comment)
+//    TextView mTvMoreComment;
     @BindView(R.id.book_detail_rv_hot_comment)
     RecyclerView mRvHotComment;
-    @BindView(R.id.book_detail_rv_community)
-    RelativeLayout mRvCommunity;
-    @BindView(R.id.book_detail_tv_community)
-    TextView mTvCommunity;
-    @BindView(R.id.book_detail_tv_posts_count)
-    TextView mTvPostsCount;
     @BindView(R.id.book_list_tv_recommend_books)
     TextView mTvRecommendBooks;
     @BindView(R.id.book_detail_rv_recommend_books)
@@ -105,15 +100,18 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
     private ProgressDialog mProgressDialog;
     /************************************参数************************************/
     private String mBookId;
+    private String mBookTitle;
     private boolean isBriefOpen = false;
     private boolean isCollected = false;
 
     /**********************************公共方法**********************************/
-    public static void startActivity(Context context, String bookId) {
+    public static void startActivity(Context context, String bookId, String bookTitle) {
         Intent intent = new Intent(context, BookDetailActivity.class);
         intent.putExtra(EXTRA_BOOK_ID, bookId);
+        intent.putExtra(EXTRA_BOOK_TITLE, bookTitle);
         context.startActivity(intent);
     }
+
     /************************************初始化***********************************/
     @Override
     protected int getLayoutId() {
@@ -148,15 +146,17 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
         super.initData(savedInstanceState);
         if (savedInstanceState != null) {
             mBookId = savedInstanceState.getString(EXTRA_BOOK_ID);
+            mBookTitle = savedInstanceState.getString(EXTRA_BOOK_TITLE);
         } else {
             mBookId = getIntent().getStringExtra(EXTRA_BOOK_ID);
+            mBookTitle = getIntent().getStringExtra(EXTRA_BOOK_TITLE);
         }
     }
 
     @Override
     protected void setUpToolbar(Toolbar toolbar) {
         super.setUpToolbar(toolbar);
-        getSupportActionBar().setTitle("图书详情");
+        getSupportActionBar().setTitle(mBookTitle);
     }
 
     @Override
@@ -164,7 +164,8 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
         super.initClick();
         //监听推荐图书
         mBooksAdapter.setOnItemClickListener((view, pos) -> {
-            BookDetailActivity.startActivity(mContext, mBooksAdapter.getItem(pos).get_id());
+            BookDetailActivity.startActivity(mContext,
+                    mBooksAdapter.getItem(pos).get_id(), mBooksAdapter.getItem(pos).getTitle());
         });
         //监听推荐书单
         mBookListAdapter.setOnItemClickListener((view, pos) -> {
@@ -200,41 +201,34 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
                 .error(R.drawable.ic_load_error)
                 .centerCrop()
                 .into(mIvCover);
-        //书名
-        mTvTitle.setText(bean.getTitle());
         //作者
         mTvAuthor.setText(bean.getAuthor());
         //类型
         mTvType.setText(bean.getMajorCate());
-
         //总字数
         mTvWordCount.setText(getResources().getString(R.string.nb_book_word, bean.getWordCount() / 10000));
         //更新时间
-        mTvLatelyUpdate.setText(StringUtils.dateConvert(bean.getUpdated(), Constant.FORMAT_BOOK_DATE));
+//        mTvLatelyUpdate.setText(StringUtils.dateConvert(bean.getUpdated(), Constant.FORMAT_BOOK_DATE));
         //追书人数
-        mTvFollowerCount.setText(bean.getFollowerCount() + "");
+//        mTvFollowerCount.setText(bean.getFollowerCount() + "");
         //存留率
-        mTvRetention.setText(bean.getRetentionRatio() + "%");
+        //mTvRetention.setText(bean.getRetentionRatio() + "%");
         //日更字数
-        mTvDayWordCount.setText(bean.getSerializeWordCount() + "");
+        //mTvDayWordCount.setText(bean.getSerializeWordCount() + "");
         //最新章节
-        mTvLastChapter.setText(bean.getLastChapter());
+        //mTvLastChapter.setText(bean.getLastChapter());
         //Tags
         mTg.setTags(bean.getTags());
         //简介
         mTvBrief.setText(bean.getLongIntro());
-        //社区
-        mTvCommunity.setText(getResources().getString(R.string.nb_book_detail_community, bean.getTitle()));
-        //帖子数
-        mTvPostsCount.setText(getResources().getString(R.string.nb_book_detail_posts_count, bean.getPostCount()));
+
         mCollBookBean = BookRepository.getInstance().getCollBook(bean.get_id());
 
         //判断是否收藏
         if (mCollBookBean != null) {
             isCollected = true;
-
-            mTvChase.setText(UiUtils.getString(R.string.nb_book_detail_give_up));
-            mTvRead.setText(UiUtils.getString(R.string.nb_book_detail_go_on_read));
+            mTvAddBook.setText(UiUtils.getString(R.string.book_detail_give_up));
+            mTvOpenBook.setText(UiUtils.getString(R.string.book_detail_go_on));
         } else {
             mCollBookBean = bean.getCollBookBean();
         }
@@ -321,6 +315,7 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
 
     /**
      * 处理返回事件
+     *
      * @param requestCode
      * @param resultCode
      * @param data
@@ -335,10 +330,8 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
             isCollected = data.getBooleanExtra(RESULT_IS_COLLECTED, false);
 
             if (isCollected) {
-                mTvChase.setText(UiUtils.getString(R.string.nb_book_detail_give_up));
-                //修改背景
-                mTvChase.setBackground(UiUtils.getDrawable(R.drawable.shape_common_gray_corner));
-                mTvRead.setText(UiUtils.getString(R.string.nb_book_detail_go_on_read));
+                mTvAddBook.setText(UiUtils.getString(R.string.book_detail_give_up));
+                mTvOpenBook.setText(UiUtils.getString(R.string.book_detail_go_on));
             }
         }
     }
@@ -348,8 +341,8 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
      *
      * @param view
      */
-    @OnClick({R.id.book_detail_tv_brief, R.id.book_list_tv_chase, R.id.book_detail_tv_read
-            , R.id.book_detail_tv_more_books})
+    @OnClick({R.id.book_detail_tv_brief, R.id.book_detail_tv_add,
+            R.id.book_detail_tv_open, R.id.book_detail_tv_more_books})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.book_detail_tv_brief: //展开简介
@@ -361,10 +354,10 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
                     isBriefOpen = true;
                 }
                 break;
-            case R.id.book_list_tv_chase:  //加入书架
+            case R.id.book_detail_tv_add:  //加入书架
                 addShelf();
                 break;
-            case R.id.book_detail_tv_read:  //开始阅读
+            case R.id.book_detail_tv_open:  //开始阅读
                 startActivityForResult(new Intent(this, ReadActivity.class)
                         .putExtra(ReadActivity.EXTRA_IS_COLLECTED, isCollected)
                         .putExtra(ReadActivity.EXTRA_COLL_BOOK, mCollBookBean), REQUEST_READ);
@@ -382,15 +375,13 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
         if (isCollected) {
             //放弃点击
             BookRepository.getInstance().deleteCollBookInRx(mCollBookBean);
-            mTvChase.setText(UiUtils.getString(R.string.nb_book_detail_chase_update));
-            //修改背景
-            mTvChase.setBackground(UiUtils.getDrawable(R.drawable.selector_btn_book_list));
+            mTvAddBook.setText(UiUtils.getString(R.string.book_detail_add_bookcase));
+            mTvOpenBook.setText(UiUtils.getString(R.string.book_detail_open_book));
             isCollected = false;
         } else {
             mPresenter.addToBookShelf(mCollBookBean);
-            mTvChase.setText(UiUtils.getString(R.string.nb_book_detail_give_up));
-            //修改背景
-            mTvChase.setBackground(UiUtils.getDrawable(R.drawable.shape_common_gray_corner));
+            mTvAddBook.setText(UiUtils.getString(R.string.book_detail_give_up));
+            mTvOpenBook.setText(UiUtils.getString(R.string.book_detail_go_on));
             isCollected = true;
         }
     }

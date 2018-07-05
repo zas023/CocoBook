@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <!--简介-->
+    <TextView
+            android:id="@+id/book_detail_tv_brief"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            android:ellipsize="end"
+            android:maxLines="4"
+            android:padding="15dp"
+            android:textColor="@color/nb.text.default"
+            android:textSize="15sp"/>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_margin="10dp"
+            android:background="@color/nb.divider.narrow"/>
+
+    <!--标签-->
+    <me.gujun.android.taggroup.TagGroup
+            style="@style/TagGroup"
+            android:id="@+id/book_detail_tg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            app:atg_isAppendMode="false"
+            app:atg_borderColor="@color/gray"
+            app:atg_textColor="@color/black">
+    </me.gujun.android.taggroup.TagGroup>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/nb.divider.wide"/>
+
+    <!--热门评论-->
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/book_detail_rv_hot_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foregroundGravity="center"/>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/nb.divider.wide"/>
+
+    <!--书籍推荐-->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:id="@+id/book_list_tv_recommend_books"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:text="@string/nb.book_detail.recommend_books"
+                android:textColor="@color/nb.text.default"
+                android:textSize="15sp"/>
+
+        <TextView
+                android:id="@+id/book_detail_tv_more_books"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="15dp"
+                android:text="更多"
+                android:textColor="@color/nb.text.common_h2"
+                android:textSize="15sp"/>
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/book_detail_rv_recommend_books"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foregroundGravity="center"/>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/nb.divider.wide"/>
+
+    <!--书单推荐-->
+    <TextView
+            android:id="@+id/book_list_tv_recommend_book_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="@string/nb.book_detail.recommend_book_list"
+            android:textColor="@color/nb.text.default"
+            android:textSize="15sp"/>
+
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/book_detail_rv_recommend_book_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foregroundGravity="center"/>
+</LinearLayout>

@@ -71,7 +71,8 @@ public class BillBookFragment extends BaseMVPFragment<BillBookContract.Presenter
         mBillBookAdapter.setOnItemClickListener(
                 (view, pos) -> {
                     String bookId = mBillBookAdapter.getItem(pos).get_id();
-                    BookDetailActivity.startActivity(getContext(),bookId);
+                    String bookTitle = mBillBookAdapter.getItem(pos).getTitle();
+                    BookDetailActivity.startActivity(getContext(),bookId,bookTitle);
                 }
         );
     }

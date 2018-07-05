@@ -30,10 +30,10 @@ public abstract class BaseBackActivity extends SwipeBackActivity {
     protected CompositeDisposable mDisposable;
 
     protected boolean nightMode=ReadSettingManager.getInstance().isNightMode();
-    //ButterKnife
-    private Toolbar mToolbar;
 
-    private Unbinder unbinder;
+    protected Toolbar mToolbar;
+    //ButterKnife
+    protected Unbinder unbinder;
     /****************************abstract area*************************************/
 
     @LayoutRes
@@ -50,8 +50,7 @@ public abstract class BaseBackActivity extends SwipeBackActivity {
     /**
      * 配置Toolbar
      */
-    protected void setUpToolbar(Toolbar toolbar){
-    }
+    protected void setUpToolbar(Toolbar toolbar){ }
 
     /**
      * 初始化主题
