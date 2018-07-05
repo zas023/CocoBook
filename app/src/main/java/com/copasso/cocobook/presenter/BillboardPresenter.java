@@ -4,7 +4,7 @@ import com.copasso.cocobook.model.bean.packages.BillboardPackage;
 import com.copasso.cocobook.model.local.LocalRepository;
 import com.copasso.cocobook.model.server.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.BillboardContract;
-import com.copasso.cocobook.ui.base.RxPresenter;
+import com.copasso.cocobook.base.RxPresenter;
 
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;

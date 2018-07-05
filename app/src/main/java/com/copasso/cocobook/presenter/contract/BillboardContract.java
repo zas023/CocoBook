@@ -1,7 +1,7 @@
 package com.copasso.cocobook.presenter.contract;
 
 import com.copasso.cocobook.model.bean.packages.BillboardPackage;
-import com.copasso.cocobook.ui.base.BaseContract;
+import com.copasso.cocobook.base.BaseContract;
 
 /**
  * Created by zhouas666 on 18-1-23.

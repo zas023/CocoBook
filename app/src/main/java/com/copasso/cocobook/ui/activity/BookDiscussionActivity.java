@@ -16,7 +16,7 @@ import com.copasso.cocobook.model.type.BookDistillate;
 import com.copasso.cocobook.model.type.BookSort;
 import com.copasso.cocobook.model.type.BookType;
 import com.copasso.cocobook.model.type.CommunityType;
-import com.copasso.cocobook.ui.base.BaseBackActivity;
+import com.copasso.cocobook.base.BaseBackActivity;
 import com.copasso.cocobook.ui.fragment.DiscCommentFragment;
 import com.copasso.cocobook.ui.fragment.DiscHelpsFragment;
 import com.copasso.cocobook.ui.fragment.DiscReviewFragment;

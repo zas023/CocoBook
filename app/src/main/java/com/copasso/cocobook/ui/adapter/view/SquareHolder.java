@@ -4,7 +4,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.bean.SectionBean;
-import com.copasso.cocobook.ui.base.adapter.ViewHolderImpl;
+import com.copasso.cocobook.base.adapter.ViewHolderImpl;
 
 /**
  * Created by zhouas666 on 18-1-23.

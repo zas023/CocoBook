@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.local.BookRepository;
-import com.copasso.cocobook.ui.base.adapter.ViewHolderImpl;
+import com.copasso.cocobook.base.adapter.ViewHolderImpl;
 import com.copasso.cocobook.utils.Constant;
 import com.copasso.cocobook.utils.FileUtils;
 import com.copasso.cocobook.utils.MD5Utils;

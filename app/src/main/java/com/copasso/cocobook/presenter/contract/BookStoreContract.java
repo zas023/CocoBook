@@ -3,7 +3,7 @@ package com.copasso.cocobook.presenter.contract;
 import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.bean.FeatureBean;
 import com.copasso.cocobook.model.bean.SwipePictureBean;
-import com.copasso.cocobook.ui.base.BaseContract;
+import com.copasso.cocobook.base.BaseContract;
 
 import java.util.List;
 

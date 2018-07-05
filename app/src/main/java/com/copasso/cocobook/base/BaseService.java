@@ -1,4 +1,4 @@
-package com.copasso.cocobook.ui.base;
+package com.copasso.cocobook.base;
 
 import android.app.Service;
 import android.content.Intent;

@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.ui.base.adapter.BaseListAdapter;
+import com.copasso.cocobook.base.adapter.BaseListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

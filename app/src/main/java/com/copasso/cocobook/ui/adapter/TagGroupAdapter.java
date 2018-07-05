@@ -5,8 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import com.copasso.cocobook.model.bean.BookTagBean;
 import com.copasso.cocobook.ui.adapter.view.TagChildHolder;
 import com.copasso.cocobook.ui.adapter.view.TagGroupHolder;
-import com.copasso.cocobook.ui.base.adapter.IViewHolder;
-import com.copasso.cocobook.ui.base.adapter.GroupAdapter;
+import com.copasso.cocobook.base.adapter.IViewHolder;
+import com.copasso.cocobook.base.adapter.GroupAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

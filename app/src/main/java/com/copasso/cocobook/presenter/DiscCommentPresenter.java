@@ -9,7 +9,7 @@ import com.copasso.cocobook.model.type.CommunityType;
 import com.copasso.cocobook.model.local.LocalRepository;
 import com.copasso.cocobook.model.server.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.DiscCommentContact;
-import com.copasso.cocobook.ui.base.RxPresenter;
+import com.copasso.cocobook.base.RxPresenter;
 
 import java.util.List;
 

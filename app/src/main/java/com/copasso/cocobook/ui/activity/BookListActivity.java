@@ -18,9 +18,9 @@ import com.copasso.cocobook.model.type.BookListType;
 import com.copasso.cocobook.model.server.RemoteRepository;
 import com.copasso.cocobook.ui.adapter.HorizonTagAdapter;
 import com.copasso.cocobook.ui.adapter.TagGroupAdapter;
-import com.copasso.cocobook.ui.base.BaseBackTabActivity;
-import com.copasso.cocobook.ui.base.adapter.BaseListAdapter;
-import com.copasso.cocobook.ui.base.adapter.GroupAdapter;
+import com.copasso.cocobook.base.BaseBackTabActivity;
+import com.copasso.cocobook.base.adapter.BaseListAdapter;
+import com.copasso.cocobook.base.adapter.GroupAdapter;
 import com.copasso.cocobook.ui.fragment.BookListFragment;
 import com.copasso.cocobook.utils.LogUtils;
 

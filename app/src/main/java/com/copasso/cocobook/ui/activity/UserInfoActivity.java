@@ -28,7 +28,7 @@ import cn.bmob.v3.listener.UploadFileListener;
 import com.bumptech.glide.Glide;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.bean.bmob.CocoUser;
-import com.copasso.cocobook.ui.base.BaseBackActivity;
+import com.copasso.cocobook.base.BaseBackActivity;
 import com.copasso.cocobook.utils.*;
 import com.copasso.cocobook.widget.CircleImageView;
 import com.copasso.cocobook.widget.CommonItemLayout;

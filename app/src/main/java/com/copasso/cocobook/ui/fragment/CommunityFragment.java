@@ -10,8 +10,8 @@ import com.copasso.cocobook.model.bean.SectionBean;
 import com.copasso.cocobook.model.type.CommunityType;
 import com.copasso.cocobook.ui.activity.BookDiscussionActivity;
 import com.copasso.cocobook.ui.adapter.SectionAdapter;
-import com.copasso.cocobook.ui.base.BaseFragment;
-import com.copasso.cocobook.ui.base.adapter.BaseListAdapter;
+import com.copasso.cocobook.base.BaseFragment;
+import com.copasso.cocobook.base.adapter.BaseListAdapter;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
 
 import java.util.ArrayList;

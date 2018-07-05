@@ -4,7 +4,7 @@ import com.copasso.cocobook.model.bean.BookListBean;
 import com.copasso.cocobook.model.type.BookListType;
 import com.copasso.cocobook.model.server.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.BookListContract;
-import com.copasso.cocobook.ui.base.RxPresenter;
+import com.copasso.cocobook.base.RxPresenter;
 import com.copasso.cocobook.utils.LogUtils;
 
 import java.util.List;

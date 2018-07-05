@@ -15,7 +15,7 @@ import com.copasso.cocobook.presenter.DiscReviewPresenter;
 import com.copasso.cocobook.presenter.contract.DiscReviewContract;
 import com.copasso.cocobook.ui.activity.DiscDetailActivity;
 import com.copasso.cocobook.ui.adapter.DiscReviewAdapter;
-import com.copasso.cocobook.ui.base.BaseMVPFragment;
+import com.copasso.cocobook.base.BaseMVPFragment;
 import com.copasso.cocobook.utils.Constant;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
 import com.copasso.cocobook.widget.refresh.ScrollRefreshRecyclerView;

@@ -7,9 +7,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.ui.base.BaseActivity;
-import com.copasso.cocobook.ui.base.BaseBackTabActivity;
-import com.copasso.cocobook.ui.base.BaseTabActivity;
+import com.copasso.cocobook.base.BaseActivity;
+import com.copasso.cocobook.base.BaseBackTabActivity;
+import com.copasso.cocobook.base.BaseTabActivity;
 import com.copasso.cocobook.ui.fragment.BillBookFragment;
 
 import java.util.ArrayList;

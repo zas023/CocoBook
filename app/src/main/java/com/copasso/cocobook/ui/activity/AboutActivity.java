@@ -6,7 +6,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.ui.base.BaseBackActivity;
+import com.copasso.cocobook.base.BaseBackActivity;
 import com.copasso.cocobook.widget.CircleImageView;
 
 /**

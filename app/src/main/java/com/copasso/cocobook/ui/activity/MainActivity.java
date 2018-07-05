@@ -26,7 +26,7 @@ import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.bean.bmob.CocoUser;
 import com.copasso.cocobook.model.local.BookRepository;
 import com.copasso.cocobook.model.server.BmobRepository;
-import com.copasso.cocobook.ui.base.BaseTabActivity;
+import com.copasso.cocobook.base.BaseTabActivity;
 import com.copasso.cocobook.ui.fragment.BookShelfFragment;
 import com.copasso.cocobook.ui.fragment.BookDiscoverFragment;
 import com.copasso.cocobook.ui.fragment.CommunityFragment;

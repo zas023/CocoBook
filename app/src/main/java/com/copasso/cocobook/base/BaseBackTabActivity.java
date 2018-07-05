@@ -1,23 +1,20 @@
-package com.copasso.cocobook.ui.base;
+package com.copasso.cocobook.base;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-
+import butterknife.BindView;
 import com.copasso.cocobook.R;
 
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.Unbinder;
 
 /**
  * Created by zhouas666 on 18-1-23.
  */
 
-public abstract class BaseTabActivity extends BaseActivity {
+public abstract class BaseBackTabActivity extends BaseBackActivity {
     /**************View***************/
     @BindView(R.id.tab_tl_indicator)
     protected TabLayout mTlIndicator;

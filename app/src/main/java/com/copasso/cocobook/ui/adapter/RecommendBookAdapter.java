@@ -2,7 +2,7 @@ package com.copasso.cocobook.ui.adapter;
 
 import com.copasso.cocobook.model.bean.BillBookBean;
 import com.copasso.cocobook.ui.adapter.view.RecommendBookHolder;
-import com.copasso.cocobook.ui.base.adapter.IViewHolder;
+import com.copasso.cocobook.base.adapter.IViewHolder;
 import com.copasso.cocobook.widget.adapter.WholeAdapter;
 
 /**

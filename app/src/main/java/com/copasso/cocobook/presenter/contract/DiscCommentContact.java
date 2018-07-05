@@ -4,7 +4,7 @@ import com.copasso.cocobook.model.bean.BookCommentBean;
 import com.copasso.cocobook.model.type.BookDistillate;
 import com.copasso.cocobook.model.type.BookSort;
 import com.copasso.cocobook.model.type.CommunityType;
-import com.copasso.cocobook.ui.base.BaseContract;
+import com.copasso.cocobook.base.BaseContract;
 
 import java.util.List;
 

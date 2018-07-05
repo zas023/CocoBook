@@ -12,7 +12,7 @@ import com.copasso.cocobook.ui.activity.BillboardActivity;
 import com.copasso.cocobook.ui.activity.BookListActivity;
 import com.copasso.cocobook.ui.activity.BookSortActivity;
 import com.copasso.cocobook.ui.adapter.SectionAdapter;
-import com.copasso.cocobook.ui.base.BaseFragment;
+import com.copasso.cocobook.base.BaseFragment;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
 
 import java.util.ArrayList;

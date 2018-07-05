@@ -2,8 +2,8 @@ package com.copasso.cocobook.ui.adapter;
 
 import com.copasso.cocobook.model.local.BookRepository;
 import com.copasso.cocobook.ui.adapter.view.FileHolder;
-import com.copasso.cocobook.ui.base.adapter.BaseListAdapter;
-import com.copasso.cocobook.ui.base.adapter.IViewHolder;
+import com.copasso.cocobook.base.adapter.BaseListAdapter;
+import com.copasso.cocobook.base.adapter.IViewHolder;
 
 import java.io.File;
 import java.util.ArrayList;

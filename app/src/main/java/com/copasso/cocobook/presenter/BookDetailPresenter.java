@@ -6,7 +6,7 @@ import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.local.BookRepository;
 import com.copasso.cocobook.model.server.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.BookDetailContract;
-import com.copasso.cocobook.ui.base.RxPresenter;
+import com.copasso.cocobook.base.RxPresenter;
 import com.copasso.cocobook.utils.LogUtils;
 import com.copasso.cocobook.utils.MD5Utils;
 

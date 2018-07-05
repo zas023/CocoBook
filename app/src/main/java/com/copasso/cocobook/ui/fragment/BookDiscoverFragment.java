@@ -20,7 +20,7 @@ import com.copasso.cocobook.presenter.contract.BookStoreContract;
 import com.copasso.cocobook.ui.activity.*;
 import com.copasso.cocobook.ui.adapter.FeatureAdapter;
 import com.copasso.cocobook.ui.adapter.SquareAdapter;
-import com.copasso.cocobook.ui.base.BaseMVPFragment;
+import com.copasso.cocobook.base.BaseMVPFragment;
 import com.copasso.cocobook.utils.NetworkUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;

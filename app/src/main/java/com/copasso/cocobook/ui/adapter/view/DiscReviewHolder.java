@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide;
 import com.copasso.cocobook.App;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.bean.BookReviewBean;
-import com.copasso.cocobook.ui.base.adapter.ViewHolderImpl;
+import com.copasso.cocobook.base.adapter.ViewHolderImpl;
 import com.copasso.cocobook.utils.Constant;
 import com.copasso.cocobook.utils.StringUtils;
 

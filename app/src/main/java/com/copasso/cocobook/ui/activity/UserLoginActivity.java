@@ -13,7 +13,7 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.LogInListener;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.bean.bmob.CocoUser;
-import com.copasso.cocobook.ui.base.BaseBackActivity;
+import com.copasso.cocobook.base.BaseBackActivity;
 import com.copasso.cocobook.utils.ProgressUtils;
 import com.copasso.cocobook.utils.SnackbarUtils;
 import com.copasso.cocobook.widget.OwlView;

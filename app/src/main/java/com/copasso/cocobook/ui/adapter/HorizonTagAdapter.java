@@ -4,9 +4,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.copasso.cocobook.ui.adapter.view.HorizonTagHolder;
-import com.copasso.cocobook.ui.base.adapter.BaseListAdapter;
-import com.copasso.cocobook.ui.base.adapter.IViewHolder;
-import com.copasso.cocobook.ui.base.adapter.BaseViewHolder;
+import com.copasso.cocobook.base.adapter.BaseListAdapter;
+import com.copasso.cocobook.base.adapter.IViewHolder;
+import com.copasso.cocobook.base.adapter.BaseViewHolder;
 
 /**
  * Created by zhouas666 on 18-2-2.

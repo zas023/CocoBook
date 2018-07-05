@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.ui.base.adapter.ViewHolderImpl;
+import com.copasso.cocobook.base.adapter.ViewHolderImpl;
 import com.copasso.cocobook.widget.CircleImageView;
 
 /**

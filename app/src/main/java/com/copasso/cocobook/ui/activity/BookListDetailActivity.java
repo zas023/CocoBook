@@ -19,7 +19,7 @@ import com.copasso.cocobook.model.bean.BookListDetailBean;
 import com.copasso.cocobook.presenter.BookListDetailPresenter;
 import com.copasso.cocobook.presenter.contract.BookListDetailContract;
 import com.copasso.cocobook.ui.adapter.BookListDetailAdapter;
-import com.copasso.cocobook.ui.base.BaseBackMVPActivity;
+import com.copasso.cocobook.base.BaseBackMVPActivity;
 import com.copasso.cocobook.utils.Constant;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.adapter.WholeAdapter;

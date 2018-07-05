@@ -14,7 +14,7 @@ import com.copasso.cocobook.model.event.BookSubSortEvent;
 import com.copasso.cocobook.model.bean.BookSubSortBean;
 import com.copasso.cocobook.model.type.BookSortListType;
 import com.copasso.cocobook.ui.adapter.HorizonTagAdapter;
-import com.copasso.cocobook.ui.base.BaseBackTabActivity;
+import com.copasso.cocobook.base.BaseBackTabActivity;
 import com.copasso.cocobook.ui.fragment.BookSortListFragment;
 
 import java.util.ArrayList;

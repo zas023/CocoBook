@@ -6,7 +6,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.bean.HotCommentBean;
-import com.copasso.cocobook.ui.base.adapter.ViewHolderImpl;
+import com.copasso.cocobook.base.adapter.ViewHolderImpl;
 import com.copasso.cocobook.utils.Constant;
 import com.copasso.cocobook.utils.StringUtils;
 import com.copasso.cocobook.widget.EasyRatingBar;

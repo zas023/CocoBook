@@ -6,7 +6,7 @@ import com.bumptech.glide.Glide;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.bean.BillBookBean;
 import com.copasso.cocobook.model.bean.FeatureBookBean;
-import com.copasso.cocobook.ui.base.adapter.ViewHolderImpl;
+import com.copasso.cocobook.base.adapter.ViewHolderImpl;
 import com.copasso.cocobook.utils.Constant;
 
 /**

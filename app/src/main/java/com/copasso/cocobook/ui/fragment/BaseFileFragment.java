@@ -1,7 +1,7 @@
 package com.copasso.cocobook.ui.fragment;
 
 import com.copasso.cocobook.ui.adapter.FileSystemAdapter;
-import com.copasso.cocobook.ui.base.BaseFragment;
+import com.copasso.cocobook.base.BaseFragment;
 
 import java.io.File;
 import java.util.List;

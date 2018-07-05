@@ -1,4 +1,4 @@
-package com.copasso.cocobook.ui.base.adapter;
+package com.copasso.cocobook.base.adapter;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;

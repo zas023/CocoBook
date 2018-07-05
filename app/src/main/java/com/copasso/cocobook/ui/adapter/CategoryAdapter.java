@@ -8,8 +8,8 @@ import android.widget.ListView;
 
 import com.copasso.cocobook.model.bean.BookChapterBean;
 import com.copasso.cocobook.ui.adapter.view.CategoryHolder;
-import com.copasso.cocobook.ui.base.EasyAdapter;
-import com.copasso.cocobook.ui.base.adapter.IViewHolder;
+import com.copasso.cocobook.base.EasyAdapter;
+import com.copasso.cocobook.base.adapter.IViewHolder;
 import com.copasso.cocobook.widget.page.TxtChapter;
 
 import java.util.List;

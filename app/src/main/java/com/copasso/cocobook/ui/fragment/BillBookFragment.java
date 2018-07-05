@@ -11,7 +11,7 @@ import com.copasso.cocobook.presenter.BillBookPresenter;
 import com.copasso.cocobook.presenter.contract.BillBookContract;
 import com.copasso.cocobook.ui.activity.BookDetailActivity;
 import com.copasso.cocobook.ui.adapter.BillBookAdapter;
-import com.copasso.cocobook.ui.base.BaseMVPFragment;
+import com.copasso.cocobook.base.BaseMVPFragment;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
 

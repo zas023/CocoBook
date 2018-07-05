@@ -4,7 +4,7 @@ import com.copasso.cocobook.model.bean.CommentBean;
 import com.copasso.cocobook.model.bean.CommentDetailBean;
 import com.copasso.cocobook.model.server.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.CommentDetailContract;
-import com.copasso.cocobook.ui.base.RxPresenter;
+import com.copasso.cocobook.base.RxPresenter;
 import com.copasso.cocobook.utils.LogUtils;
 import com.copasso.cocobook.utils.RxUtils;
 

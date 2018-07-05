@@ -14,8 +14,8 @@ import com.copasso.cocobook.model.bean.BillBookBean;
 import com.copasso.cocobook.presenter.RecommendBookPresenter;
 import com.copasso.cocobook.presenter.contract.RecommendBookContract;
 import com.copasso.cocobook.ui.adapter.BillBookAdapter;
-import com.copasso.cocobook.ui.base.BaseBackMVPActivity;
-import com.copasso.cocobook.ui.base.adapter.BaseListAdapter;
+import com.copasso.cocobook.base.BaseBackMVPActivity;
+import com.copasso.cocobook.base.adapter.BaseListAdapter;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
 

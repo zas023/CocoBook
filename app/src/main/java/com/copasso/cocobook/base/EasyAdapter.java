@@ -1,9 +1,9 @@
-package com.copasso.cocobook.ui.base;
+package com.copasso.cocobook.base;
 
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.copasso.cocobook.ui.base.adapter.IViewHolder;
+import com.copasso.cocobook.base.adapter.IViewHolder;
 
 import java.util.ArrayList;
 import java.util.Collections;

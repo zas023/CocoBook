@@ -11,7 +11,7 @@ import com.copasso.cocobook.model.bean.packages.BookSubSortPackage;
 import com.copasso.cocobook.presenter.BookSortPresenter;
 import com.copasso.cocobook.presenter.contract.BookSortContract;
 import com.copasso.cocobook.ui.adapter.BookSortAdapter;
-import com.copasso.cocobook.ui.base.BaseBackMVPActivity;
+import com.copasso.cocobook.base.BaseBackMVPActivity;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.itemdecoration.DividerGridItemDecoration;
 

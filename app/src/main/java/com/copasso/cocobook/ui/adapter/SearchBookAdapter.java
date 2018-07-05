@@ -2,8 +2,8 @@ package com.copasso.cocobook.ui.adapter;
 
 import com.copasso.cocobook.model.bean.packages.SearchBookPackage;
 import com.copasso.cocobook.ui.adapter.view.SearchBookHolder;
-import com.copasso.cocobook.ui.base.adapter.BaseListAdapter;
-import com.copasso.cocobook.ui.base.adapter.IViewHolder;
+import com.copasso.cocobook.base.adapter.BaseListAdapter;
+import com.copasso.cocobook.base.adapter.IViewHolder;
 
 /**
  * Created by zhouas666 on 17-6-2.

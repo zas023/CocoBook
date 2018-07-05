@@ -1,7 +1,7 @@
 package com.copasso.cocobook.presenter.contract;
 
 import com.copasso.cocobook.model.bean.*;
-import com.copasso.cocobook.ui.base.BaseContract;
+import com.copasso.cocobook.base.BaseContract;
 
 import java.util.List;
 

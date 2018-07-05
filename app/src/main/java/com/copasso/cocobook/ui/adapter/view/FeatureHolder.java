@@ -8,7 +8,7 @@ import com.copasso.cocobook.model.bean.FeatureBean;
 import com.copasso.cocobook.model.server.RemoteRepository;
 import com.copasso.cocobook.ui.activity.BookDetailActivity;
 import com.copasso.cocobook.ui.adapter.FeatureBookAdapter;
-import com.copasso.cocobook.ui.base.adapter.ViewHolderImpl;
+import com.copasso.cocobook.base.adapter.ViewHolderImpl;
 import com.copasso.cocobook.utils.RxUtils;
 import io.reactivex.disposables.CompositeDisposable;
 

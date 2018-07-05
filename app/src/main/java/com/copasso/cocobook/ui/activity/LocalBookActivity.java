@@ -13,7 +13,7 @@ import android.widget.CheckBox;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.local.BookRepository;
-import com.copasso.cocobook.ui.base.BaseBackTabActivity;
+import com.copasso.cocobook.base.BaseBackTabActivity;
 import com.copasso.cocobook.ui.fragment.BaseFileFragment;
 import com.copasso.cocobook.ui.fragment.FileCategoryFragment;
 import com.copasso.cocobook.ui.fragment.LocalBookFragment;

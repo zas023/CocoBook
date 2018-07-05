@@ -14,7 +14,7 @@ import com.copasso.cocobook.presenter.BookListPresenter;
 import com.copasso.cocobook.presenter.contract.BookListContract;
 import com.copasso.cocobook.ui.activity.BookListDetailActivity;
 import com.copasso.cocobook.ui.adapter.BookListAdapter;
-import com.copasso.cocobook.ui.base.BaseMVPFragment;
+import com.copasso.cocobook.base.BaseMVPFragment;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.adapter.WholeAdapter;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;

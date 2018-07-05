@@ -15,7 +15,7 @@ import com.copasso.cocobook.presenter.DiscCommentPresenter;
 import com.copasso.cocobook.presenter.contract.DiscCommentContact;
 import com.copasso.cocobook.ui.activity.DiscDetailActivity;
 import com.copasso.cocobook.ui.adapter.DiscCommentAdapter;
-import com.copasso.cocobook.ui.base.BaseMVPFragment;
+import com.copasso.cocobook.base.BaseMVPFragment;
 import com.copasso.cocobook.utils.Constant;
 import com.copasso.cocobook.widget.adapter.WholeAdapter;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;

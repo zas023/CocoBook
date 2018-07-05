@@ -3,7 +3,7 @@ package com.copasso.cocobook.presenter;
 import com.copasso.cocobook.model.type.BookSortListType;
 import com.copasso.cocobook.model.server.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.BookSortListContract;
-import com.copasso.cocobook.ui.base.RxPresenter;
+import com.copasso.cocobook.base.RxPresenter;
 import com.copasso.cocobook.utils.LogUtils;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;

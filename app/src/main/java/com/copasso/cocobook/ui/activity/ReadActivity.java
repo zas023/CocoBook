@@ -44,7 +44,7 @@ import com.copasso.cocobook.utils.ReadSettingManager;
 import com.copasso.cocobook.presenter.ReadPresenter;
 import com.copasso.cocobook.presenter.contract.ReadContract;
 import com.copasso.cocobook.ui.adapter.CategoryAdapter;
-import com.copasso.cocobook.ui.base.BaseMVPActivity;
+import com.copasso.cocobook.base.BaseMVPActivity;
 import com.copasso.cocobook.ui.dialog.ReadSettingDialog;
 import com.copasso.cocobook.utils.*;
 import com.copasso.cocobook.widget.page.NetPageLoader;

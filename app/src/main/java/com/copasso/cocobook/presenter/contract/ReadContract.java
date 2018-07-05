@@ -2,7 +2,7 @@ package com.copasso.cocobook.presenter.contract;
 
 import com.copasso.cocobook.model.bean.BookChapterBean;
 import com.copasso.cocobook.model.bean.CollBookBean;
-import com.copasso.cocobook.ui.base.BaseContract;
+import com.copasso.cocobook.base.BaseContract;
 import com.copasso.cocobook.widget.page.TxtChapter;
 
 import java.util.List;

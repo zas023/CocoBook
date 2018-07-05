@@ -10,7 +10,7 @@ import com.copasso.cocobook.model.bean.packages.BillboardPackage;
 import com.copasso.cocobook.presenter.BillboardPresenter;
 import com.copasso.cocobook.presenter.contract.BillboardContract;
 import com.copasso.cocobook.ui.adapter.BillboardAdapter;
-import com.copasso.cocobook.ui.base.BaseBackMVPActivity;
+import com.copasso.cocobook.base.BaseBackMVPActivity;
 import com.copasso.cocobook.widget.RefreshLayout;
 
 import java.util.ArrayList;

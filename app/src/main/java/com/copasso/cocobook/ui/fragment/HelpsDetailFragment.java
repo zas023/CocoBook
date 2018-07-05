@@ -19,7 +19,7 @@ import com.copasso.cocobook.presenter.HelpsDetailPresenter;
 import com.copasso.cocobook.presenter.contract.HelpsDetailContract;
 import com.copasso.cocobook.ui.adapter.CommentAdapter;
 import com.copasso.cocobook.ui.adapter.GodCommentAdapter;
-import com.copasso.cocobook.ui.base.BaseMVPFragment;
+import com.copasso.cocobook.base.BaseMVPFragment;
 import com.copasso.cocobook.utils.Constant;
 import com.copasso.cocobook.utils.StringUtils;
 import com.copasso.cocobook.widget.BookTextView;

@@ -25,7 +25,7 @@ import com.copasso.cocobook.presenter.contract.BookShelfContract;
 import com.copasso.cocobook.ui.activity.ReadActivity;
 import com.copasso.cocobook.ui.activity.SearchActivity;
 import com.copasso.cocobook.ui.adapter.CollBookAdapter;
-import com.copasso.cocobook.ui.base.BaseMVPFragment;
+import com.copasso.cocobook.base.BaseMVPFragment;
 import com.copasso.cocobook.utils.*;
 import com.copasso.cocobook.widget.adapter.WholeAdapter;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;

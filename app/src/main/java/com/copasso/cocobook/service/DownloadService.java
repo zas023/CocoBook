@@ -18,7 +18,7 @@ import com.copasso.cocobook.utils.BookManager;
 import com.copasso.cocobook.model.local.BookRepository;
 import com.copasso.cocobook.model.local.LocalRepository;
 import com.copasso.cocobook.model.server.RemoteRepository;
-import com.copasso.cocobook.ui.base.BaseService;
+import com.copasso.cocobook.base.BaseService;
 import com.copasso.cocobook.utils.LogUtils;
 import com.copasso.cocobook.utils.NetworkUtils;
 

@@ -13,7 +13,7 @@ import com.copasso.cocobook.model.bean.FeatureDetailBean;
 import com.copasso.cocobook.presenter.FeatureDetailPresenter;
 import com.copasso.cocobook.presenter.contract.FeatureDetailContract;
 import com.copasso.cocobook.ui.adapter.FeatureDetailAdapter;
-import com.copasso.cocobook.ui.base.BaseBackMVPActivity;
+import com.copasso.cocobook.base.BaseBackMVPActivity;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
 

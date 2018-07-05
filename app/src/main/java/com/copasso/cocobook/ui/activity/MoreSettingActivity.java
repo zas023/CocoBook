@@ -9,7 +9,7 @@ import com.copasso.cocobook.R;
 import com.copasso.cocobook.utils.ReadSettingManager;
 
 import butterknife.BindView;
-import com.copasso.cocobook.ui.base.BaseBackActivity;
+import com.copasso.cocobook.base.BaseBackActivity;
 
 /**
  * Created by zhouas666 on 17-6-6.

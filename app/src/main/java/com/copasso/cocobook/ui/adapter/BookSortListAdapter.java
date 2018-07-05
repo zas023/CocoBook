@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.copasso.cocobook.model.bean.SortBookBean;
 import com.copasso.cocobook.ui.adapter.view.BookSortListHolder;
-import com.copasso.cocobook.ui.base.adapter.IViewHolder;
+import com.copasso.cocobook.base.adapter.IViewHolder;
 import com.copasso.cocobook.widget.adapter.WholeAdapter;
 
 /**

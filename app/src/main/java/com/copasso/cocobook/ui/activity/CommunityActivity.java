@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.support.v7.widget.Toolbar;
 
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.ui.base.BaseActivity;
-import com.copasso.cocobook.ui.base.BaseBackActivity;
+import com.copasso.cocobook.base.BaseActivity;
+import com.copasso.cocobook.base.BaseBackActivity;
 
 /**
  * Created by zhouas666 on 18-2-26.

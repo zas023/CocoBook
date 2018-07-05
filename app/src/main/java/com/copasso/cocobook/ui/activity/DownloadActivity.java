@@ -13,8 +13,8 @@ import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.bean.DownloadTaskBean;
 import com.copasso.cocobook.service.DownloadService;
 import com.copasso.cocobook.ui.adapter.DownLoadAdapter;
-import com.copasso.cocobook.ui.base.BaseActivity;
-import com.copasso.cocobook.ui.base.BaseBackActivity;
+import com.copasso.cocobook.base.BaseActivity;
+import com.copasso.cocobook.base.BaseBackActivity;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
 

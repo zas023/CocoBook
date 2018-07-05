@@ -1,4 +1,4 @@
-package com.copasso.cocobook.ui.base.adapter;
+package com.copasso.cocobook.base.adapter;
 
 import android.view.View;
 import android.view.ViewGroup;

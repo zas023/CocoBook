@@ -23,7 +23,7 @@ import com.copasso.cocobook.presenter.contract.BookDetailContract;
 import com.copasso.cocobook.ui.adapter.BookListAdapter;
 import com.copasso.cocobook.ui.adapter.HotCommentAdapter;
 import com.copasso.cocobook.ui.adapter.RecommendBookAdapter;
-import com.copasso.cocobook.ui.base.BaseBackMVPActivity;
+import com.copasso.cocobook.base.BaseBackMVPActivity;
 import com.copasso.cocobook.utils.Constant;
 import com.copasso.cocobook.utils.StringUtils;
 import com.copasso.cocobook.utils.ToastUtils;

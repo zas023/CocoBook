@@ -1,4 +1,4 @@
-package com.copasso.cocobook.ui.base;
+package com.copasso.cocobook.base;
 
 /**
  * Created by zhouas666 on 17-4-25.

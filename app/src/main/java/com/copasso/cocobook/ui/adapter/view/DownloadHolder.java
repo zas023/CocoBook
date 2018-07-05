@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.bean.DownloadTaskBean;
-import com.copasso.cocobook.ui.base.adapter.ViewHolderImpl;
+import com.copasso.cocobook.base.adapter.ViewHolderImpl;
 import com.copasso.cocobook.utils.FileUtils;
 import com.copasso.cocobook.utils.StringUtils;
 
