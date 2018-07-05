@@ -13,8 +13,8 @@
 
     <ImageView
             android:id="@+id/recommend_book_iv_cover"
-            android:layout_width="54dp"
-            android:layout_height="72dp"
+            android:layout_width="66dp"
+            android:layout_height="88dp"
             android:layout_gravity="center"
             android:src="@drawable/ic_book_loading"/>
 

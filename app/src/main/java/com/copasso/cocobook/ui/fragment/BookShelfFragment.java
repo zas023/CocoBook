@@ -201,13 +201,13 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
                         } else {
                             //提示(从目录中移除这个文件)
                             new AlertDialog.Builder(mContext)
-                                    .setTitle(UiUtils.getString(R.string.nb_common_tip))
+                                    .setTitle(UiUtils.getString(R.string.common_tip))
                                     .setMessage("文件不存在,是否删除")
-                                    .setPositiveButton(getResources().getString(R.string.nb_common_sure),
+                                    .setPositiveButton(getResources().getString(R.string.common_sure),
                                             ((dialogInterface, i) -> {
                                                 deleteBook(collBook);
                                             }))
-                                    .setNegativeButton(UiUtils.getString(R.string.nb_common_cancel), null)
+                                    .setNegativeButton(UiUtils.getString(R.string.common_cancel), null)
                                     .show();
                         }
                     } else {
@@ -282,8 +282,8 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
 
     /***************************事件处理********************************/
     private void openItemDialog(CollBookBean collBook) {
-        String[] menus = collBook.isLocal() ? UiUtils.getStringArray(R.array.nb_menu_local_book)
-                : UiUtils.getStringArray(R.array.nb_menu_net_book);
+        String[] menus = collBook.isLocal() ? UiUtils.getStringArray(R.array.menu_local_book)
+                : UiUtils.getStringArray(R.array.menu_net_book);
         AlertDialog collBookDialog = new AlertDialog.Builder(mContext)
                 .setTitle(collBook.getTitle())
                 .setAdapter(new ArrayAdapter<String>(mContext,
@@ -335,7 +335,7 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
             new AlertDialog.Builder(mContext)
                     .setTitle("删除文件")
                     .setView(view)
-                    .setPositiveButton(UiUtils.getString(R.string.nb_common_sure), ((dialogInterface, i) -> {
+                    .setPositiveButton(UiUtils.getString(R.string.common_sure), ((dialogInterface, i) -> {
                         boolean isSelected = cb.isSelected();
                         if (isSelected) {
                             ProgressUtils.show(mContext, "删除中...");
@@ -355,7 +355,7 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
                             mCollBookAdapter.removeItem(collBook);
                         }
                     }))
-                    .setNegativeButton(getResources().getString(R.string.nb_common_cancel), null)
+                    .setNegativeButton(getResources().getString(R.string.common_cancel), null)
                     .show();
         } else {
             RxBusManager.getInstance().post(new DeleteTaskEvent(collBook));

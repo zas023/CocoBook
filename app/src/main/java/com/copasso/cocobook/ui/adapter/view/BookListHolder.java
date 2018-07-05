@@ -53,7 +53,7 @@ public class BookListHolder extends ViewHolderImpl<BookListBean> {
         //简介
         mTvBrief.setText(value.getDesc());
         //信息
-        mTvMsg.setText(getContext().getResources().getString(R.string.nb_fragment_book_list_message,
+        mTvMsg.setText(getContext().getResources().getString(R.string.fragment_book_list_message,
                 value.getBookCount(),value.getCollectorCount()));
     }
 }

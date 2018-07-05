@@ -12,6 +12,7 @@ import com.copasso.cocobook.utils.Constant;
 /**
  * Created by zhouas666 on 18-2-8.
  * CollectionBookView
+ * 书城书籍view
  */
 
 public class FeatureBookHolder extends ViewHolderImpl<FeatureBookBean>{

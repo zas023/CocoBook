@@ -7,6 +7,7 @@ import com.copasso.cocobook.base.adapter.IViewHolder;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 书城分块Adapter
  */
 
 public class FeatureAdapter extends BaseListAdapter<FeatureBean> {

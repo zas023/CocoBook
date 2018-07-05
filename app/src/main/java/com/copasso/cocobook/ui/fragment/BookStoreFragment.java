@@ -35,17 +35,14 @@ import java.util.List;
  * 精选fragment
  */
 
-public class BookDiscoverFragment extends BaseMVPFragment<BookStoreContract.Presenter> implements BookStoreContract.View {
+public class BookStoreFragment extends BaseMVPFragment<BookStoreContract.Presenter> implements BookStoreContract.View {
     /***************************常量********************************/
 
     @BindView(R.id.banner)
     Banner banner;
-    @BindView(R.id.store_rv_find)
-    RecyclerView storeRvFind;
     @BindView(R.id.store_rv_content)
     RecyclerView storeRvContent;
     /***************************视图********************************/
-    private SquareAdapter mSquareAdapter;
     private FeatureAdapter mFeatureAdapter;
 
     /***************************参数********************************/
@@ -57,7 +54,7 @@ public class BookDiscoverFragment extends BaseMVPFragment<BookStoreContract.Pres
     /***************************初始化********************************/
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_discover;
+        return R.layout.fragment_store;
     }
 
     @Override
@@ -82,29 +79,12 @@ public class BookDiscoverFragment extends BaseMVPFragment<BookStoreContract.Pres
         //设置指示器位置（当banner模式中有指示器时）
         banner.setIndicatorGravity(BannerConfig.CENTER);
 
-        mSquareAdapter = new SquareAdapter();
-        storeRvFind.setHasFixedSize(true);
-        storeRvFind.setLayoutManager(new GridLayoutManager(mContext,4));
-        storeRvFind.setAdapter(mSquareAdapter);
-
         mFeatureAdapter = new FeatureAdapter();
         storeRvContent.setHasFixedSize(true);
         storeRvContent.setLayoutManager(new LinearLayoutManager(mContext));
         storeRvContent.setAdapter(mFeatureAdapter);
 
-        initSectionAdapter();
-
         initFeatureAdapter();
-    }
-
-    private void initSectionAdapter() {
-
-        ArrayList<SectionBean> finds = new ArrayList<>();
-        for (FindType type : FindType.values()){
-            finds.add(new SectionBean(type.getTypeName(),type.getIconId()));
-        }
-        mSquareAdapter.addItems(finds);
-
     }
 
     private void initFeatureAdapter() {
@@ -126,22 +106,6 @@ public class BookDiscoverFragment extends BaseMVPFragment<BookStoreContract.Pres
                     if (bean.getType().equals("c-booklist"))
                         BookListDetailActivity.startActivity(mContext, bean.getLink());
                 });
-
-        mSquareAdapter.setOnItemClickListener((view, pos) -> {
-            //跳转
-            switch (FindType.values()[pos]){
-                case TOP:
-                    startActivity(new Intent(getContext(),BillboardActivity.class));
-                    break;
-                case SORT:
-                    startActivity(new Intent(getContext(), BookSortActivity.class));
-                    break;
-                case TOPIC:
-                    startActivity(new Intent(getContext(), BookListActivity.class));
-                    break;
-            }
-        });
-
         mFeatureAdapter.setOnItemClickListener((view, pos) -> {
             FeatureBean bean=mFeatureAdapter.getItem(pos);
             FeatureBookActivity.startActivity(mContext,bean.getTitle(),bean.get_id());

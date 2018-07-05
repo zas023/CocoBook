@@ -1,8 +1,7 @@
 package com.copasso.cocobook.model.type;
 
 /**
- * Created by zhouas666 on 18-1-23.
- *
+ * 书籍类型
  */
 
 public enum BookType implements BookConvert{

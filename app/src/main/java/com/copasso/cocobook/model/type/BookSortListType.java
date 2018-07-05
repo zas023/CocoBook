@@ -1,7 +1,7 @@
 package com.copasso.cocobook.model.type;
 
 /**
- * Created by zhouas666 on 18-1-23.
+ * 小说分类类型
  */
 
 public enum BookSortListType {

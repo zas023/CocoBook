@@ -28,8 +28,8 @@ import com.copasso.cocobook.model.local.BookRepository;
 import com.copasso.cocobook.model.server.BmobRepository;
 import com.copasso.cocobook.base.BaseTabActivity;
 import com.copasso.cocobook.ui.fragment.BookShelfFragment;
-import com.copasso.cocobook.ui.fragment.BookDiscoverFragment;
-import com.copasso.cocobook.ui.fragment.CommunityFragment;
+import com.copasso.cocobook.ui.fragment.BookStoreFragment;
+import com.copasso.cocobook.ui.fragment.DiscoverFragment;
 import com.copasso.cocobook.utils.*;
 import com.copasso.cocobook.ui.dialog.SexChooseDialog;
 import com.copasso.cocobook.widget.CircleImageView;
@@ -69,7 +69,8 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     private PermissionsChecker mPermissionsChecker;
     /*************************参数**************************/
     private boolean isPrepareFinish = false;
-    private CocoUser  currentUser=BmobUser.getCurrentUser(CocoUser.class);
+//    private CocoUser  currentUser=BmobUser.getCurrentUser(CocoUser.class);
+    private CocoUser  currentUser;
 
     /*************************初始化**************************/
     @Override
@@ -97,14 +98,14 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     protected List<Fragment> createTabFragments() {
         bookShelfFragment=new BookShelfFragment();
         mFragmentList.add(bookShelfFragment);
-        mFragmentList.add(new BookDiscoverFragment());
-        mFragmentList.add(new CommunityFragment());
+        mFragmentList.add(new BookStoreFragment());
+        mFragmentList.add(new DiscoverFragment());
         return mFragmentList;
     }
 
     @Override
     protected List<String> createTabTitles() {
-        String[] titles = getResources().getStringArray(R.array.nb_fragment_title);
+        String[] titles = getResources().getStringArray(R.array.fragment_title);
         return Arrays.asList(titles);
     }
 
@@ -215,10 +216,6 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
      */
     @Override
     public void onBackPressed() {
-        if (bookShelfFragment.isMultiSelectMode()){
-            bookShelfFragment.cancelMultiSelectMode();
-            return;
-        }
         if (!isPrepareFinish) {
             mVp.postDelayed(() -> isPrepareFinish = false, WAIT_INTERVAL);
             isPrepareFinish = true;
@@ -271,8 +268,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
                             @Override
                             public void onSuccess(List<CollBookBean> list) {
                                 ProgressUtils.dismiss();
-                                BookRepository.getInstance()
-                                        .saveCollBooks(list);
+                                BookRepository.getInstance().saveCollBooks(list);
                                 bookShelfFragment.refreshShelf();
                                 ToastUtils.show("同步完成");
                             }

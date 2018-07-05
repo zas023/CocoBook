@@ -6,68 +6,71 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <!--string_array-->
-    <string-array name="nb_fragment_title">
-        <item>@string/nb.fragment.title.bookshelf</item>
-        <item>@string/nb.fragment.title.find</item>
-        <item>@string/nb.fragment.title.community</item>
+    <!--首页fragment-->
+    <string-array name="fragment_title">
+        <item>@string/fragment.title.bookshelf</item>
+        <item>@string/fragment.title.store</item>
+        <item>@string/fragment.title.find</item>
     </string-array>
 
-    <string-array name="nb_fragment_section">
-        <item>@string/nb.fragment.community.comment</item>
-        <item>@string/nb.fragment.community.discussion</item>
-        <item>@string/nb.fragment.community.help</item>
-        <item>@string/nb.fragment.community.girl</item>
-        <item>@string/nb.fragment.community.compose</item>
+    <!--社区fragment-->
+    <string-array name="fragment_section">
+        <item>@string/fragment.community.comment</item>
+        <item>@string/fragment.community.discussion</item>
+        <item>@string/fragment.community.help</item>
+        <item>@string/fragment.community.girl</item>
+        <item>@string/fragment.community.compose</item>
     </string-array>
 
     <!--榜单分类-->
-    <string-array name="nb_fragment_bill_book">
+    <string-array name="fragment_bill_book">
         <item>周榜</item>
         <item>月榜</item>
         <item>总榜</item>
     </string-array>
     
     <!--CollBook的长按点击-->
-    <string-array name="nb_menu_net_book">
-        <item>@string/nb.menu.action.top</item>
-        <item>@string/nb.menu.action.cache</item>
-        <item>@string/nb.menu.action.delete</item>
-        <item>@string/nb.menu.action.batch_manage</item>
+    <string-array name="menu_net_book">
+        <item>@string/menu.action.top</item>
+        <item>@string/menu.action.cache</item>
+        <item>@string/menu.action.delete</item>
+        <item>@string/menu.action.batch_manage</item>
     </string-array>
     
-    <string-array name="nb_menu_local_book">
-        <item>@string/nb.menu.action.top</item>
-        <item>@string/nb.menu.action.delete</item>
-        <item>@string/nb.menu.action.batch_manage</item>
+    <string-array name="menu_local_book">
+        <item>@string/menu.action.top</item>
+        <item>@string/menu.action.delete</item>
+        <item>@string/menu.action.batch_manage</item>
     </string-array>
     
-    <!--常用-->
-    <string name="nb.common.tip">提示</string>
-    <string name="nb.common.sure">确定</string>
-    <string name="nb.common.cancel">取消</string>
+    <!--通用-->
+    <string name="common.tip">提示</string>
+    <string name="common.sure">确定</string>
+    <string name="common.cancel">取消</string>
     
     <!--网络相关-->
     
-    <string name="nb.net.error_tip">似乎没有网络哦</string>
+    <string name="net.error_tip">似乎没有网络哦</string>
     
     <!--fragment_title:主页的名字-->
-    <string name="nb.fragment.title.bookshelf">书架</string>
-    <string name="nb.fragment.title.find">发现</string>
-    <string name="nb.fragment.title.community">社区</string>
+    <string name="fragment.title.bookshelf">书架</string>
+    <string name="fragment.title.store">书城</string>
+    <string name="fragment.title.find">发现</string>
+    <string name="fragment.title.community">社区</string>
 
-    <!--fragment-->
-    <string name="nb.fragment.community.comment">综合讨论区</string>
-    <string name="nb.fragment.community.discussion">书评区</string>
-    <string name="nb.fragment.community.help">书荒帮助区</string>
-    <string name="nb.fragment.community.girl">女生区</string>
-    <string name="nb.fragment.community.compose">原创区</string>
+    <!--fragment 社区-->
+    <string name="fragment.community.comment">综合讨论区</string>
+    <string name="fragment.community.discussion">书评区</string>
+    <string name="fragment.community.help">书荒帮助区</string>
+    <string name="fragment.community.girl">女生区</string>
+    <string name="fragment.community.compose">原创区</string>
     
     <!--fragment 主题书单-->
-    <string name="nb.fragment.book_list.hot">本周最热</string>
-    <string name="nb.fragment.book_list.newest">最新发布</string>
-    <string name="nb.fragment.book_list.collect">最多收藏</string>
+    <string name="fragment.book_list.hot">本周最热</string>
+    <string name="fragment.book_list.newest">最新发布</string>
+    <string name="fragment.book_list.collect">最多收藏</string>
     
-    <string name="nb.fragment.book_list.message">共%1$d本书 |&#160; %2$d人收藏</string>
+    <string name="fragment.book_list.message">共%1$d本书 |&#160; %2$d人收藏</string>
     
     <!--评论相关-->
     <string name="nb.comment.floor">%1$d楼&#160;</string>
@@ -87,12 +90,14 @@
     <string name="nb.review.master_score">楼主打分：</string>
 
     <!--node-->
-    <string name="nb.fragment.node.nsrm">男生热门</string>
-    <string name="nb.fragment.node.nsza">女生最爱</string>
-    <string name="nb.fragment.node.nswb">男生完本</string>
-    <string name="nb.fragment.node.nswj">女生完结</string>
-    <string name="nb.fragment.node.nsdsq">男生大神区</string>
-    <string name="nb.fragment.node.nshwq">女生红文区</string>
+    <string name="fragment.node.nsrm">男生热门</string>
+    <string name="fragment.node.nsza">女生最爱</string>
+    <string name="fragment.node.nswb">男生完本</string>
+    <string name="fragment.node.nswj">女生完结</string>
+    <string name="fragment.node.nsdsq">男生大神区</string>
+    <string name="fragment.node.nshwq">女生红文区</string>
+    <string name="fragment.node.npxm">男频推荐</string>
+    <string name="fragment.node.nvpxm">女频推荐</string>
 
     <!--find-->
     <string name="nb.fragment.find.top">排行榜</string>
@@ -119,10 +124,10 @@
     <string name="nb.menu.action.night_mode">夜间模式</string>
     <string name="nb.menu.action.setting">设置</string>
     
-    <string name="nb.menu.action.top">置顶</string>
-    <string name="nb.menu.action.cache">缓存</string>
-    <string name="nb.menu.action.delete">删除</string>
-    <string name="nb.menu.action.batch_manage">批量管理</string>
+    <string name="menu.action.top">置顶</string>
+    <string name="menu.action.cache">缓存</string>
+    <string name="menu.action.delete">删除</string>
+    <string name="menu.action.batch_manage">批量管理</string>
     
     <!--SplashActivity-->
     <string name="nb.splash.skip">跳过</string>

@@ -72,7 +72,7 @@ public class BillBookActivity extends BaseBackTabActivity {
 
     @Override
     protected List<String> createTabTitles() {
-        String [] title = getResources().getStringArray(R.array.nb_fragment_bill_book);
+        String [] title = getResources().getStringArray(R.array.fragment_bill_book);
         return Arrays.asList(title);
     }
 

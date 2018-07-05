@@ -14,6 +14,7 @@ import io.reactivex.disposables.CompositeDisposable;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 书城分块view
  */
 
 public class FeatureHolder extends ViewHolderImpl<FeatureBean>{

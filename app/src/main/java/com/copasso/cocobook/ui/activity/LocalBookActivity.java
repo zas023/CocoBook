@@ -148,7 +148,7 @@ public class LocalBookActivity extends BaseBackTabActivity {
                     new AlertDialog.Builder(this)
                             .setTitle("删除文件")
                             .setMessage("确定删除文件吗?")
-                            .setPositiveButton(getResources().getString(R.string.nb_common_sure), new DialogInterface.OnClickListener() {
+                            .setPositiveButton(getResources().getString(R.string.common_sure), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     //删除选中的文件
@@ -157,7 +157,7 @@ public class LocalBookActivity extends BaseBackTabActivity {
                                     ToastUtils.show("删除文件成功");
                                 }
                             })
-                            .setNegativeButton(getResources().getString(R.string.nb_common_cancel), null)
+                            .setNegativeButton(getResources().getString(R.string.common_cancel), null)
                             .show();
                 }
         );

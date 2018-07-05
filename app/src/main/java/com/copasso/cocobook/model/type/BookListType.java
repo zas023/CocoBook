@@ -7,12 +7,13 @@ import com.copasso.cocobook.R;
 
 /**
  * Created by zhouas666 on 18-2-1.
+ * 书单排序类型
  */
 
 public enum  BookListType{
-    HOT(R.string.nb_fragment_book_list_hot,"last-seven-days"),
-    NEWEST(R.string.nb_fragment_book_list_newest,"created"),
-    COLLECT(R.string.nb_fragment_book_list_collect,"collectorCount")
+    HOT(R.string.fragment_book_list_hot,"last-seven-days"),
+    NEWEST(R.string.fragment_book_list_newest,"created"),
+    COLLECT(R.string.fragment_book_list_collect,"collectorCount")
     ;
     private String typeName;
     private String netName;
