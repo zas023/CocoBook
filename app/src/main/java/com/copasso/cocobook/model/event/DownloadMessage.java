@@ -2,7 +2,7 @@ package com.copasso.cocobook.model.event;
 
 /**
  * Created by zhouas666 on 18-2-10.
- * 下载进度事件
+ * 下载进度event
  */
 
 public class DownloadMessage {

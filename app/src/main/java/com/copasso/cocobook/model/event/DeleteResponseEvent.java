@@ -4,6 +4,7 @@ import com.copasso.cocobook.model.bean.CollBookBean;
 
 /**
  * Created by zhouas666 on 18-2-27.
+ * 移出书架event
  */
 
 public class DeleteResponseEvent {

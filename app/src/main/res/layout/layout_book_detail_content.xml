@@ -41,16 +41,16 @@
             android:background="@color/nb.divider.wide"/>
 
     <!--热门评论-->
-    <android.support.v7.widget.RecyclerView
-            android:id="@+id/book_detail_rv_hot_comment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:foregroundGravity="center"/>
+    <!--<android.support.v7.widget.RecyclerView-->
+            <!--android:id="@+id/book_detail_rv_hot_comment"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:foregroundGravity="center"/>-->
 
-    <View
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="@color/nb.divider.wide"/>
+    <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="10dp"-->
+            <!--android:background="@color/nb.divider.wide"/>-->
 
     <!--书籍推荐-->
     <LinearLayout
@@ -102,4 +102,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:foregroundGravity="center"/>
+
+    <!--底部空白，给底部bottom预留位置-->
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/nb.divider.wide"/>
+
 </LinearLayout>

@@ -13,7 +13,6 @@ import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.bean.DownloadTaskBean;
 import com.copasso.cocobook.service.DownloadService;
 import com.copasso.cocobook.ui.adapter.DownLoadAdapter;
-import com.copasso.cocobook.base.BaseActivity;
 import com.copasso.cocobook.base.BaseBackActivity;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
@@ -22,7 +21,7 @@ import butterknife.BindView;
 
 /**
  * Created by zhouas666 on 18-2-11.
- * 下载面板
+ * 下载列表activity
  */
 
 public class DownloadActivity extends BaseBackActivity implements DownloadService.OnDownloadListener{

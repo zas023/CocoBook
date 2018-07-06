@@ -82,8 +82,8 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
     TextView mTvBrief;
     //    @BindView(R.id.book_detail_tv_more_comment)
 //    TextView mTvMoreComment;
-    @BindView(R.id.book_detail_rv_hot_comment)
-    RecyclerView mRvHotComment;
+//    @BindView(R.id.book_detail_rv_hot_comment)
+//    RecyclerView mRvHotComment;
     @BindView(R.id.book_list_tv_recommend_books)
     TextView mTvRecommendBooks;
     @BindView(R.id.book_detail_rv_recommend_books)
@@ -93,7 +93,7 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
     @BindView(R.id.book_detail_rv_recommend_book_list)
     RecyclerView mRvRecommendBookList;
     /************************************视图***********************************/
-    private HotCommentAdapter mHotCommentAdapter;
+//    private HotCommentAdapter mHotCommentAdapter;
     private RecommendBookAdapter mBooksAdapter;
     private BookListAdapter mBookListAdapter;
     private CollBookBean mCollBookBean;
@@ -122,10 +122,10 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
     protected void initWidget() {
         super.initWidget();
         //热门评论列表
-        mHotCommentAdapter = new HotCommentAdapter();
-        mRvHotComment.setLayoutManager(new LinearLayoutManager(mContext));
-        mRvHotComment.addItemDecoration(new DividerItemDecoration(mContext));
-        mRvHotComment.setAdapter(mHotCommentAdapter);
+//        mHotCommentAdapter = new HotCommentAdapter();
+//        mRvHotComment.setLayoutManager(new LinearLayoutManager(mContext));
+//        mRvHotComment.addItemDecoration(new DividerItemDecoration(mContext));
+//        mRvHotComment.setAdapter(mHotCommentAdapter);
 
         //推荐如图书列表
         mBooksAdapter = new RecommendBookAdapter();
@@ -173,7 +173,7 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
         });
     }
 
-    /************************************数据请求************************************/
+    /************************************业务逻辑************************************/
     @Override
     protected BookDetailContract.Presenter bindPresenter() {
         return new BookDetailPresenter();
@@ -241,7 +241,7 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
     @Override
     public void finishHotComment(List<HotCommentBean> beans) {
         if (beans.isEmpty()) return;
-        mHotCommentAdapter.addItems(beans);
+//        mHotCommentAdapter.addItems(beans);
     }
 
 
