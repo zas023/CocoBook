@@ -8,8 +8,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 
 /**
- * Created by zhouas666 on 17-7-24.
- * 横向动画的模板
+ * 横向动画Animation
  */
 
 public abstract class HorizonPageAnim extends PageAnimation{

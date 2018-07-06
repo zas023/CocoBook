@@ -6,7 +6,8 @@ import android.content.Intent;
 import com.copasso.cocobook.R;
 
 /**
- * Created by zhouas666 on 18-1-23. on 2017/12/27.
+ * Created by zhouas666 on 18-1-23.
+ * 主题管理类
  */
 public class ThemeManager {
 

@@ -23,6 +23,7 @@ import io.reactivex.SingleOnSubscribe;
 
 /**
  * Created by zhouas666 on 18-2-11.
+ * 文件相关工具类
  */
 
 public class FileUtils {

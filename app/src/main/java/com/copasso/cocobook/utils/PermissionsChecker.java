@@ -6,6 +6,7 @@ import android.support.v4.content.ContextCompat;
 
 /**
  * Created by zhouas666 on 2017/10/8.
+ * 权限检查类
  */
 
 public class PermissionsChecker {

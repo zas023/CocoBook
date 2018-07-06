@@ -7,6 +7,7 @@ import com.copasso.cocobook.App;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * SharedPreferences工具类
  */
 
 public class SharedPreUtils {

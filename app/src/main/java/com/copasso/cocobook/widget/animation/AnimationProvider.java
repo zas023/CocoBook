@@ -6,7 +6,7 @@ import android.graphics.PointF;
 import android.widget.Scroller;
 
 /**
- * Created by Administrator on 2016/8/1 0001.
+ * 翻页动画类
  */
 public abstract class AnimationProvider {
 

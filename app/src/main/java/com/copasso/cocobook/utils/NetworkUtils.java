@@ -8,6 +8,7 @@ import com.copasso.cocobook.App;
 
 /**
  * Created by zhouas666 on 18-2-11.
+ * 网络管理工具类
  */
 
 public class NetworkUtils {

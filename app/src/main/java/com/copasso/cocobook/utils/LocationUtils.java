@@ -13,6 +13,9 @@ import android.util.Log;
 
 import java.util.List;
 
+/**
+ * Location定位工具类
+ */
 public class LocationUtils {
 
     public final static String TAG="LocationUtils";

@@ -1,16 +1,13 @@
 package com.copasso.cocobook.widget.adapter;
 
 import android.content.Context;
-import android.os.Build;
 import android.support.annotation.LayoutRes;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 
 /**
  * Created by zhouas666 on 17-4-19.
- * 前提是，保证不会重新绘制
  */
 
 public class LoadMoreView extends FrameLayout {

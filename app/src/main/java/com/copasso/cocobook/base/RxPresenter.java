@@ -1,7 +1,5 @@
 package com.copasso.cocobook.base;
 
-import org.reactivestreams.Subscription;
-
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 

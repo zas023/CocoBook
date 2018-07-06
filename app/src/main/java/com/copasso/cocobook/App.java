@@ -9,6 +9,7 @@ import com.copasso.cocobook.service.DownloadService;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 自定义application
  */
 
 public class App extends MultiDexApplication {

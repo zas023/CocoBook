@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.View;
 
 /**
- * Created by zhouas666 on 17-7-24.
+ * 覆盖动画Animation
  */
 
 public class CoverPageAnim extends HorizonPageAnim {

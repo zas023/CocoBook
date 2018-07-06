@@ -1,7 +1,5 @@
 package com.copasso.cocobook.utils;
 
-import android.util.Log;
-
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -15,6 +13,7 @@ import java.util.Map;
 
 public class BookManager{
     private static final String TAG = "BookManager";
+
     private String chapterName;
     private String bookId;
     private long chapterLen;

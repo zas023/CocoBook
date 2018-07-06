@@ -22,7 +22,7 @@ import java.lang.reflect.Method;
 
 /**
  * Created by zhouas666 on 2017/12/24.
- * Class desc: ui 操作相关封装
+ * 封装ui相关操作
  */
 public class UiUtils {
 

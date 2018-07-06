@@ -8,7 +8,7 @@ import com.copasso.cocobook.App;
 
 /**
  * Created by zhouas666 on 2017/12/28.
- * ProgressDialog封装工具类
+ * Snackbar工具类
  */
 public class SnackbarUtils {
 

@@ -2,6 +2,7 @@ package com.copasso.cocobook.widget.page;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 书籍chapter
  */
 
 public class TxtChapter{

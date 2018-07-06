@@ -12,6 +12,7 @@ import java.util.Map;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 常量类
  */
 
 public class Constant {

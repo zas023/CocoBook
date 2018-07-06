@@ -1,14 +1,10 @@
 package com.copasso.cocobook.utils;
 
-/**
- * Created by zhouas666 on 2018/1/1.
- */
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- *@Description: 将字符串转化为MD5
+ *MD5工具类
  */
 
 public class MD5Utils {

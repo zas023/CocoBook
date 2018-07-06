@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 import android.view.View;
 
 /**
- * Created by zhouas666 on 17-7-24.
+ * 空Animation
  */
 
 public class NonePageAnim extends HorizonPageAnim{

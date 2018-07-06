@@ -1,6 +1,5 @@
 package com.copasso.cocobook.utils;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
@@ -14,6 +13,7 @@ import com.copasso.cocobook.R;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 状态栏兼容类
  */
 
 public class StatusBarCompat {

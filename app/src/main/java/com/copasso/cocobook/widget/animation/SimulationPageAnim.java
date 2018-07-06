@@ -1,6 +1,5 @@
 package com.copasso.cocobook.widget.animation;
 
-import android.animation.ArgbEvaluator;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -10,18 +9,12 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PointF;
-import android.graphics.PorterDuff;
 import android.graphics.Region;
 import android.graphics.drawable.GradientDrawable;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.View;
-import android.widget.Scroller;
-
-import com.copasso.cocobook.R;
 
 /**
- * Created by zhouas666 on 17-7-24.
+ *
  */
 
 public class SimulationPageAnim extends HorizonPageAnim{

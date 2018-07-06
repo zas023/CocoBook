@@ -1,12 +1,11 @@
 package com.copasso.cocobook.widget.animation;
 
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.view.View;
 
 /**
- * Created by zhouas666 on 17-7-24.
+ *滑动动画Animation
  */
 
 public class SlidePageAnim extends HorizonPageAnim {

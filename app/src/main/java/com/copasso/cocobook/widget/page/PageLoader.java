@@ -40,7 +40,7 @@ import io.reactivex.SingleOnSubscribe;
 import io.reactivex.disposables.Disposable;
 
 /**
- * Created by zhouas666 on 18-1-23.
+ * 页面加载器PageLoader
  */
 
 public abstract class PageLoader{
