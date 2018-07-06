@@ -219,7 +219,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
         if (!isPrepareFinish) {
             mVp.postDelayed(() -> isPrepareFinish = false, WAIT_INTERVAL);
             isPrepareFinish = true;
-            SnackbarUtils.show(mContext,"再按一次退出");
+            ToastUtils.show("再按一次退出");
         } else {
             super.onBackPressed();
         }

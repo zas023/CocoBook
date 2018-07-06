@@ -35,20 +35,22 @@ import butterknife.Unbinder;
 
 /**
  * Created by zhouas666 on 18-2-1.
+ * 书单详情activity
  */
 
-public class BookListDetailActivity extends BaseBackMVPActivity<BookListDetailContract.Presenter> implements BookListDetailContract.View {
+public class BookListDetailActivity extends BaseBackMVPActivity<BookListDetailContract.Presenter>
+        implements BookListDetailContract.View {
 
     private static final String EXTRA_DETAIL_ID = "extra_detail_id";
     @BindView(R.id.refresh_layout)
     RefreshLayout mRefreshLayout;
     @BindView(R.id.refresh_rv_content)
     RecyclerView mRvContent;
-    /****************************/
+    /************************************************************/
     private BookListDetailAdapter mDetailAdapter;
     private DetailHeader mDetailHeader;
     private List<BookListDetailBean.BooksBean> mBooksList;
-    /***********params****************/
+    /***************************变量********************************/
     private String mDetailId;
     private int start = 0;
     private int limit = 20;
@@ -59,6 +61,7 @@ public class BookListDetailActivity extends BaseBackMVPActivity<BookListDetailCo
         context.startActivity(intent);
     }
 
+    /******************************初始化******************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_refresh_list;
@@ -115,6 +118,7 @@ public class BookListDetailActivity extends BaseBackMVPActivity<BookListDetailCo
         );
     }
 
+    /*****************************业务逻辑*******************************/
     @Override
     protected void processLogic() {
         super.processLogic();

@@ -14,8 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by zhouas666 on 17-4-19.
- *
+ * 通用adapter
  */
 
 public abstract class WholeAdapter<T> extends BaseListAdapter<T>{

@@ -12,7 +12,7 @@
             android:layout_height="60dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_book_loading"
+            android:src="@drawable/ic_default_book_cover"
             android:scaleType="centerCrop"/>
 
     <LinearLayout

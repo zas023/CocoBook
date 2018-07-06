@@ -9,7 +9,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.CheckBox;
 
-import android.widget.CompoundButton;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.utils.RxBusManager;
 import com.copasso.cocobook.model.event.BookSubSortEvent;
@@ -19,8 +18,6 @@ import com.copasso.cocobook.model.server.RemoteRepository;
 import com.copasso.cocobook.ui.adapter.HorizonTagAdapter;
 import com.copasso.cocobook.ui.adapter.TagGroupAdapter;
 import com.copasso.cocobook.base.BaseBackTabActivity;
-import com.copasso.cocobook.base.adapter.BaseListAdapter;
-import com.copasso.cocobook.base.adapter.GroupAdapter;
 import com.copasso.cocobook.ui.fragment.BookListFragment;
 import com.copasso.cocobook.utils.LogUtils;
 
@@ -40,7 +37,7 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 public class BookListActivity extends BaseBackTabActivity {
-    /**常量**/
+
     private static final int RANDOM_COUNT = 5;
     @BindView(R.id.book_list_rv_tag_horizon)
     RecyclerView mRvTag;
@@ -53,8 +50,6 @@ public class BookListActivity extends BaseBackTabActivity {
     private TagGroupAdapter mTagGroupAdapter;
     private Animation mTopInAnim;
     private Animation mTopOutAnim;
-    /**参数**/
-    private final CompositeDisposable mDisposable = new CompositeDisposable();
 
     @Override
     protected int getLayoutId() {
@@ -158,12 +153,7 @@ public class BookListActivity extends BaseBackTabActivity {
     @Override
     protected void processLogic() {
         super.processLogic();
-        refreshTag();
-    }
-
-    private void refreshTag() {
-
-        Disposable refreshDispo = RemoteRepository.getInstance()
+        addDisposable(RemoteRepository.getInstance()
                 .getBookTags()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -175,8 +165,7 @@ public class BookListActivity extends BaseBackTabActivity {
                         (e) -> {
                             LogUtils.e(e);
                         }
-                );
-        mDisposable.add(refreshDispo);
+                ));
     }
 
     private void refreshHorizonTag(List<BookTagBean> tagBeans) {

@@ -169,8 +169,7 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
         });
         //监听推荐书单
         mBookListAdapter.setOnItemClickListener((view, pos) -> {
-            System.out.println(mBookListAdapter.getItem(pos).get_id());
-            BookListDetailActivity.startActivity(mContext, mBookListAdapter.getItem(pos).get_id());
+            BookListDetailActivity.startActivity(mContext, mBookListAdapter.getItem(pos).getId());
         });
     }
 
@@ -197,7 +196,7 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
         //封面
         Glide.with(this)
                 .load(Constant.IMG_BASE_URL + bean.getCover())
-                .placeholder(R.drawable.ic_book_loading)
+                .placeholder(R.drawable.ic_default_book_cover)
                 .error(R.drawable.ic_load_error)
                 .centerCrop()
                 .into(mIvCover);

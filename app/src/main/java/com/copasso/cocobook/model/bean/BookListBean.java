@@ -1,9 +1,8 @@
 package com.copasso.cocobook.model.bean;
 
-import java.util.List;
-
 /**
  * Created by zhouas666 on 18-2-1.
+ * 书单列表
  */
 
 public class BookListBean {
@@ -18,7 +17,9 @@ public class BookListBean {
      * bookCount : 295
      */
 
-    private String _id;
+    //在主题书单和书籍详情推荐的书单列表id字段不同
+    private String _id;  //主题书单获取的列表id字段
+    private String id;   //书籍详情推荐获取的列表id字段
     private String title;
     private String author;
     private String desc;
@@ -33,6 +34,14 @@ public class BookListBean {
 
     public void set_id(String _id) {
         this._id = _id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {

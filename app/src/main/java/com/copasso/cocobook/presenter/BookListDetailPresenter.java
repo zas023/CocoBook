@@ -11,9 +11,11 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by zhouas666 on 18-2-2.
+ * 书单详情Presenter
  */
 
-public class BookListDetailPresenter extends RxPresenter<BookListDetailContract.View> implements BookListDetailContract.Presenter {
+public class BookListDetailPresenter extends RxPresenter<BookListDetailContract.View>
+        implements BookListDetailContract.Presenter {
     @Override
     public void refreshBookListDetail(String detailId) {
         Disposable refreshDispo = RemoteRepository.getInstance()

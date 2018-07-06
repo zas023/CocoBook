@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_gravity="center"
-            android:src="@drawable/ic_book_loading"/>
+            android:src="@drawable/ic_default_book_cover"/>
 
     <TextView
             android:id="@+id/square_tv_name"

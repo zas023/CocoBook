@@ -39,7 +39,7 @@ public class RemoteRepository {
     }
 
 
-    /*********************************************************************/
+    /********************************书城推荐*************************************/
     /**
      * 精选轮播
      *
@@ -266,8 +266,7 @@ public class RemoteRepository {
      * @param gender
      * @return
      */
-    public Single<List<BookListBean>> getBookLists(String duration, String sort,
-                                                   int start, int limit,
+    public Single<List<BookListBean>> getBookLists(String duration, String sort, int start, int limit,
                                                    String tag, String gender) {
         return mBookApi.getBookListPackage(duration, sort, start + "", limit + "", tag, gender)
                 .map(bean -> bean.getBookLists());

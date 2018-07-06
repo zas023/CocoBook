@@ -24,7 +24,7 @@
 			android:layout_centerVertical="true"
 			android:layout_marginRight="10dp"
 			android:scaleType="centerCrop"
-			android:src="@drawable/ic_book_loading" />
+			android:src="@drawable/ic_default_book_cover" />
 		
 		<RelativeLayout
 			android:layout_width="match_parent"

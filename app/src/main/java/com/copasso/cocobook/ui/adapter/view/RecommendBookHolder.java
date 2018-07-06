@@ -35,7 +35,7 @@ public class RecommendBookHolder extends ViewHolderImpl<BillBookBean>{
         //书的图片
         Glide.with(getContext())
                 .load(Constant.IMG_BASE_URL+value.getCover())
-                .placeholder(R.drawable.ic_book_loading)
+                .placeholder(R.drawable.ic_default_book_cover)
                 .error(R.drawable.ic_load_error)
                 .fitCenter()
                 .into(mIvCover);
