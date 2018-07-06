@@ -17,6 +17,7 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by zhouas666 on 18-2-4.
+ * 书籍详情presenter
  */
 
 public class BookDetailPresenter extends RxPresenter<BookDetailContract.View>
@@ -28,7 +29,6 @@ public class BookDetailPresenter extends RxPresenter<BookDetailContract.View>
     public void refreshBookDetail(String bookId) {
         this.bookId = bookId;
         refreshBook();
-        refreshComment();
         refreshRecommendList();
         refreshRecommendBooks();
 
@@ -92,18 +92,6 @@ public class BookDetailPresenter extends RxPresenter<BookDetailContract.View>
                         mView.showError();
                     }
                 });
-    }
-
-    private void refreshComment(){
-        Disposable disposable = RemoteRepository
-                .getInstance()
-                .getHotComments(bookId)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        (value) -> mView.finishHotComment(value)
-                );
-        addDisposable(disposable);
     }
 
     private void refreshRecommendList(){

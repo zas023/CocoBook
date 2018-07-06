@@ -132,69 +132,6 @@ public class RemoteRepository {
                 .map(bean -> bean.getChapter());
     }
 
-    /*************************************社区**********************************************/
-
-    public Single<List<BookCommentBean>> getBookComment(String block, String sort, int start, int limit, String distillate) {
-
-        return mBookApi.getBookCommentList(block, "all", sort, "all", start + "", limit + "", distillate)
-                .map((listBean) -> listBean.getPosts());
-    }
-
-    public Single<List<BookHelpsBean>> getBookHelps(String sort, int start, int limit, String distillate) {
-        return mBookApi.getBookHelpList("all", sort, start + "", limit + "", distillate)
-                .map((listBean) -> listBean.getHelps());
-    }
-
-    public Single<List<BookReviewBean>> getBookReviews(String sort, String bookType, int start, int limited, String distillate) {
-        return mBookApi.getBookReviewList("all", sort, bookType, start + "", limited + "", distillate)
-                .map(listBean -> listBean.getReviews());
-    }
-
-    public Single<CommentDetailBean> getCommentDetail(String detailId) {
-        return mBookApi.getCommentDetailPackage(detailId)
-                .map(bean -> bean.getPost());
-    }
-
-    public Single<ReviewDetailBean> getReviewDetail(String detailId) {
-        return mBookApi.getReviewDetailPacakge(detailId)
-                .map(bean -> bean.getReview());
-    }
-
-    public Single<HelpsDetailBean> getHelpsDetail(String detailId) {
-        return mBookApi.getHelpsDetailPackage(detailId)
-                .map(bean -> bean.getHelp());
-    }
-
-    public Single<List<CommentBean>> getBestComments(String detailId) {
-        return mBookApi.getBestCommentPackage(detailId)
-                .map(bean -> bean.getComments());
-    }
-
-    /**
-     * 获取的是 综合讨论区的 评论
-     *
-     * @param detailId
-     * @param start
-     * @param limit
-     * @return
-     */
-    public Single<List<CommentBean>> getDetailComments(String detailId, int start, int limit) {
-        return mBookApi.getCommentPackage(detailId, start + "", limit + "")
-                .map(bean -> bean.getComments());
-    }
-
-    /**
-     * 获取的是 书评区和书荒区的 评论
-     *
-     * @param detailId
-     * @param start
-     * @param limit
-     * @return
-     */
-    public Single<List<CommentBean>> getDetailBookComments(String detailId, int start, int limit) {
-        return mBookApi.getBookCommentPackage(detailId, start + "", limit + "")
-                .map(bean -> bean.getComments());
-    }
 
     /**********************************书籍分类*******************************************/
     /**
@@ -231,7 +168,7 @@ public class RemoteRepository {
                 .map(bean -> bean.getBooks());
     }
 
-    /*******************************************************************************/
+    /***************************************排行榜****************************************/
 
     /**
      * 排行榜的类型
@@ -293,7 +230,7 @@ public class RemoteRepository {
                 .map(bean -> bean.getBookList());
     }
 
-    /***************************************书籍详情**********************************************/
+    /**********************************书籍详情**********************************************/
     /**
      * 图书详情
      *
@@ -304,16 +241,6 @@ public class RemoteRepository {
         return mBookApi.getBookDetail(bookId);
     }
 
-    /**
-     * 热门评论
-     *
-     * @param bookId
-     * @return
-     */
-    public Single<List<HotCommentBean>> getHotComments(String bookId) {
-        return mBookApi.getHotCommnentPackage(bookId)
-                .map(bean -> bean.getReviews());
-    }
 
     /**
      * 推荐书单

@@ -1,6 +1,5 @@
 package com.copasso.cocobook.model.server;
 
-import android.location.Location;
 import cn.bmob.v3.BmobBatch;
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.BmobQuery;
@@ -13,7 +12,6 @@ import cn.bmob.v3.listener.QueryListListener;
 import com.copasso.cocobook.model.bean.bmob.BmobBook;
 import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.local.BookRepository;
-import com.copasso.cocobook.utils.LogUtils;
 import retrofit2.Retrofit;
 
 import java.util.ArrayList;

@@ -12,7 +12,6 @@ import java.util.List;
 public interface BookDetailContract {
     interface View extends BaseContract.BaseView{
         void finishRefresh(BookDetailBean bean);
-        void finishHotComment(List<HotCommentBean> beans);
         void finishRecommendBookList(List<BookListBean> beans);
         void finishRecommendBooks(List<BillBookBean> beans);
 

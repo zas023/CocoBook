@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.ContentObserver;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
@@ -19,8 +18,6 @@ import android.support.design.widget.AppBarLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
@@ -35,7 +32,6 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import butterknife.OnClick;
-import com.copasso.cocobook.AppManager;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.bean.BookChapterBean;
 import com.copasso.cocobook.model.bean.CollBookBean;
@@ -53,7 +49,6 @@ import com.copasso.cocobook.widget.page.PageView;
 import com.copasso.cocobook.widget.page.TxtChapter;
 
 import java.util.List;
-import java.util.UUID;
 
 import butterknife.BindView;
 

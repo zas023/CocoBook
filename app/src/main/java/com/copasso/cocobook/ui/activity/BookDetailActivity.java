@@ -92,7 +92,6 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
     @BindView(R.id.book_detail_rv_recommend_book_list)
     RecyclerView mRvRecommendBookList;
     /************************************视图***********************************/
-//    private HotCommentAdapter mHotCommentAdapter;
     private RecommendBookAdapter mBooksAdapter;
     private BookListAdapter mBookListAdapter;
     private CollBookBean mCollBookBean;
@@ -120,11 +119,6 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
     @Override
     protected void initWidget() {
         super.initWidget();
-        //热门评论列表
-//        mHotCommentAdapter = new HotCommentAdapter();
-//        mRvHotComment.setLayoutManager(new LinearLayoutManager(mContext));
-//        mRvHotComment.addItemDecoration(new DividerItemDecoration(mContext));
-//        mRvHotComment.setAdapter(mHotCommentAdapter);
 
         //推荐如图书列表
         mBooksAdapter = new RecommendBookAdapter();
@@ -230,17 +224,6 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
         } else {
             mCollBookBean = bean.getCollBookBean();
         }
-    }
-
-    /**
-     * 热门评论
-     *
-     * @param beans
-     */
-    @Override
-    public void finishHotComment(List<HotCommentBean> beans) {
-        if (beans.isEmpty()) return;
-//        mHotCommentAdapter.addItems(beans);
     }
 
 
