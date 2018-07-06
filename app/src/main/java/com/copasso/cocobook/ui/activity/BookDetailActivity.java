@@ -341,8 +341,8 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
      *
      * @param view
      */
-    @OnClick({R.id.book_detail_tv_brief, R.id.book_detail_tv_add,
-            R.id.book_detail_tv_open, R.id.book_detail_tv_more_books})
+    @OnClick({R.id.book_detail_tv_brief, R.id.fl_add_bookcase,
+            R.id.fl_open_book, R.id.book_detail_tv_more_books})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.book_detail_tv_brief: //展开简介
@@ -354,10 +354,10 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
                     isBriefOpen = true;
                 }
                 break;
-            case R.id.book_detail_tv_add:  //加入书架
+            case R.id.fl_add_bookcase:  //加入书架
                 addShelf();
                 break;
-            case R.id.book_detail_tv_open:  //开始阅读
+            case R.id.fl_open_book:  //开始阅读
                 startActivityForResult(new Intent(this, ReadActivity.class)
                         .putExtra(ReadActivity.EXTRA_IS_COLLECTED, isCollected)
                         .putExtra(ReadActivity.EXTRA_COLL_BOOK, mCollBookBean), REQUEST_READ);
