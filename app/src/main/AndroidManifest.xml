@@ -31,8 +31,6 @@
         <activity android:name=".ui.activity.UserLoginActivity"/>
         <activity android:name=".ui.activity.UserRegisterActivity"/>
         <activity android:name=".ui.activity.UserInfoActivity"/>
-        <activity android:name=".ui.activity.BookDiscussionActivity"/>
-        <activity android:name=".ui.activity.DiscDetailActivity"/>
         <activity android:name=".ui.activity.BillboardActivity"/>
         <activity android:name=".ui.activity.BookSortActivity"/>
         <activity android:name=".ui.activity.FeatureBookActivity"/>
@@ -47,7 +45,6 @@
         <activity android:name=".ui.activity.DownloadActivity"/>
         <activity android:name=".ui.activity.ReadActivity"/>
         <activity android:name=".ui.activity.LocalBookActivity"/>
-        <activity android:name=".ui.activity.CommunityActivity"/>
         <activity android:name=".ui.activity.MoreSettingActivity"/>
 
         <service android:name=".service.DownloadService"/>

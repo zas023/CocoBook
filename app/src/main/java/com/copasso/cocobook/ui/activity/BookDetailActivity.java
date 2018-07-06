@@ -20,7 +20,6 @@ import com.copasso.cocobook.model.local.BookRepository;
 import com.copasso.cocobook.presenter.BookDetailPresenter;
 import com.copasso.cocobook.presenter.contract.BookDetailContract;
 import com.copasso.cocobook.ui.adapter.BookListAdapter;
-import com.copasso.cocobook.ui.adapter.HotCommentAdapter;
 import com.copasso.cocobook.ui.adapter.RecommendBookAdapter;
 import com.copasso.cocobook.base.BaseBackMVPActivity;
 import com.copasso.cocobook.utils.Constant;

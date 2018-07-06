@@ -502,7 +502,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                 BookDetailActivity.startActivity(this, mBookId,mCollBook.getTitle());
                 break;
             case R.id.read_tv_community:  //社区
-                startActivity(new Intent(this, CommunityActivity.class));
+
                 break;
         }
     }
