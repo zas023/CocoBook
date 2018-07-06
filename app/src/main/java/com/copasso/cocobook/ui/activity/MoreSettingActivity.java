@@ -13,7 +13,7 @@ import com.copasso.cocobook.base.BaseBackActivity;
 
 /**
  * Created by zhouas666 on 17-6-6.
- * 阅读界面的更多设置
+ * 更多设置activity
  */
 
 public class MoreSettingActivity extends BaseBackActivity {

@@ -25,6 +25,7 @@ import butterknife.BindView;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 其他排行榜中书籍activity
  */
 
 public class OtherBillBookActivity extends BaseBackMVPActivity<BillBookContract.Presenter>

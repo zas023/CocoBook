@@ -23,6 +23,7 @@ import java.util.List;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 推荐书籍activity
  */
 
 public class RecommendBookActivity extends BaseBackMVPActivity<RecommendBookContract.Presenter>

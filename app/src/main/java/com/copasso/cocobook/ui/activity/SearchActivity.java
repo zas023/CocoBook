@@ -34,6 +34,7 @@ import java.util.List;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 搜索activity
  */
 
 public class SearchActivity extends BaseBackMVPActivity<SearchContract.Presenter>

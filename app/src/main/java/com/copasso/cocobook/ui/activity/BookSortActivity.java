@@ -19,7 +19,7 @@ import butterknife.BindView;
 
 /**
  * Created by zhouas666 on 18-1-23.
- * 分类选择
+ * 分类选择activity
  *
  */
 

@@ -24,7 +24,7 @@ import butterknife.BindView;
 
 /**
  * Created by zhouas666 on 18-1-23.
- * Book Sort List: 分类书籍列表
+ * 分类书籍列表activity
  */
 
 public class BookSortListActivity extends BaseBackTabActivity {
