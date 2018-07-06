@@ -20,8 +20,8 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
- * 性别选择对话框
  * Created by zhouas666 on 18-1-23.
+ * 性别选择对话框
  */
 
 public class SexChooseDialog extends Dialog {
