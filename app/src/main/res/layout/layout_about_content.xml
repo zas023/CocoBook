@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="@string/nb.about.introduce"
+                android:text="@string/about.introduce"
                 android:textColor="@color/textSecondary"
                 android:textSize="@dimen/nb.text.normal" />
 
@@ -119,7 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="@string/nb.about.open_source"
+                android:text="@string/about.open_source"
                 android:textColor="@color/textSecondary"
                 android:textSize="@dimen/nb.text.normal" />
 

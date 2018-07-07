@@ -39,7 +39,7 @@
 			android:layout_below="@id/search_book_tv_name"
 			android:ellipsize="end"
 			android:singleLine="true"
-			android:text="@string/nb.search.book.brief"
+			android:text="@string/search.book.brief"
 			android:textColor="@color/textAssist"
 			android:textSize="13sp" />
 	</RelativeLayout>

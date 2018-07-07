@@ -39,7 +39,7 @@ public class SearchBookHolder extends ViewHolderImpl<SearchBookPackage.BooksBean
 
         mTvName.setText(data.getTitle());
 
-        mTvBrief.setText(getContext().getString(R.string.nb_search_book_brief,
+        mTvBrief.setText(getContext().getString(R.string.search_book_brief,
                 data.getLatelyFollower(),data.getRetentionRatio(),data.getAuthor()));
     }
 

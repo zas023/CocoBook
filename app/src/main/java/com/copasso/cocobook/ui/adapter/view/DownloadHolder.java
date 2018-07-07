@@ -60,12 +60,12 @@ public class DownloadHolder extends ViewHolderImpl<DownloadTaskBean> {
                 break;
             case DownloadTaskBean.STATUS_PAUSE:
                 //按钮状态
-                changeBtnStyle(R.string.nb_download_start,
+                changeBtnStyle(R.string.download_start,
                         R.color.download_loading,R.drawable.ic_download_loading);
 
                 //进度状态
                 setProgressMax(value);
-                setTip(R.string.nb_download_pausing);
+                setTip(R.string.download_pausing);
 
                 mPbShow.setProgress(value.getCurrentChapter());
                 mTvMsg.setText(StringUtils.getString(R.string.nb_download_progress,
@@ -88,7 +88,7 @@ public class DownloadHolder extends ViewHolderImpl<DownloadTaskBean> {
                 //按钮状态
                 changeBtnStyle(R.string.download_error,
                         R.color.download_error,R.drawable.ic_download_error);
-                setTip(R.string.nb_download_source_error);
+                setTip(R.string.download_source_error);
                 mPbShow.setVisibility(View.INVISIBLE);
                 mTvMsg.setVisibility(View.GONE);
                 break;
@@ -96,7 +96,7 @@ public class DownloadHolder extends ViewHolderImpl<DownloadTaskBean> {
                 //按钮状态
                 changeBtnStyle(R.string.download_finish,
                         R.color.download_finish,R.drawable.ic_download_complete);
-                setTip(R.string.nb_download_complete);
+                setTip(R.string.download_complete);
                 mPbShow.setVisibility(View.INVISIBLE);
 
                 //设置文件大小

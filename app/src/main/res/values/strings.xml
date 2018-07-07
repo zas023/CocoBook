@@ -119,16 +119,8 @@
 
     <!--book_detail : -->
     <string name="book_detail.last_chapter">最新章</string>
-    <string name="book_detail.hot_comment">热门书评</string>
-    <string name="book_detail.community">%1$s的社区</string>
-    <string name="book_detail.posts_count">共有%1$d个帖子</string>
     <string name="book_detail.recommend_books">推荐书籍</string>
-    <string name="nb.book_detail.recommend_book_list">推荐书单</string>
-    <string name="nb.book_detail.chase_update">追更</string>
-    <string name="nb.book_detail.give_up">放弃</string>
-    <string name="nb.book_detail.start_read">开始阅读</string>
-    <string name="nb.book_detail.go_on_read">继续阅读</string>
-
+    <string name="book_detail.recommend_book_list">推荐书单</string>
     <string name="book_detail.open_book">打开阅读</string>
     <string name="book_detail.go_on">继续阅读</string>
     <string name="book_detail.give_up">移出书架</string>
@@ -142,17 +134,17 @@
     <string name="nb.download.progress">%1$d/%2$d</string>
     <string name="nb.download.chapter_scope">(%1$d-%2$d章)</string>
     
-    <string name="nb.download.start">继续</string>
+    <string name="download.start">继续</string>
     <string name="download.pause">暂停</string>
     <string name="download.wait">等待</string>
     <string name="download.error">错误</string>
     <string name="download.finish">完成</string>
-    
+
     <string name="download.loading">下载中</string>
     <string name="download.waiting">等待中</string>
-    <string name="nb.download.pausing">暂停中</string>
-    <string name="nb.download.complete">已完成</string>
-    <string name="nb.download.source_error">资源或网络错误</string>
+    <string name="download.pausing">暂停中</string>
+    <string name="download.complete">已完成</string>
+    <string name="download.source_error">资源或网络错误</string>
     
     <!--mode-->
     <string name="nb.mode.night">夜间</string>
@@ -175,7 +167,7 @@
     <string name="nb.file.add_succeed">成功添加%1$d本书</string>
     
     <!--search-->
-    <string name="nb.search.book.brief">%1$d人在追 | %2$s读者留存 | %3$s著</string>
+    <string name="search.book.brief">%1$d人在追 | %2$s读者留存 | %3$s著</string>
 
     <!--land-->
     <string name="nb.land.login">登陆</string>
@@ -194,12 +186,13 @@
     <string name="nb.user.info.logout">退出</string>
 
     <!--about-->
-    <string name="nb.about.introduce">览阅致力于打造绿色健康、无广告的阅读平台，为广大读者提供优质健康的阅读服务。
+    <string name="about.introduce">览阅致力于打造绿色健康、无广告的阅读平台，为广大读者提供优质健康的阅读服务。
         \n\n数据内容来源于追书神器api和第三方网站，如有侵犯您的权益,请来信告知,我们将立即予以处理(联系方式：anshunzhou@outlook.com)。
         \n\n项目采用MVP架构，使用流行的RxJava和Retrofit 框架等等，追求每个功能的最佳代码实现。
         \n\n我的 GitHub: https://github.com/zhouas666
         \n\n完全开源，最佳的源代码，最佳的学习软件，如果你觉得不错，可以帮忙分享给你更多的朋友，这是我们最大的动力和支持.</string>
-    <string name="nb.about.open_source"> com.android.support:appcompat-v7:25.+
+    <string name="about.open_source">
+        \n com.android.support:appcompat-v7:25.+
         \n com.android.support:design:25.+
         \n com.android.support:support-v4:25.+
         \n com.android.support:cardview-v7:25.+
