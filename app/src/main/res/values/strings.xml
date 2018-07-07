@@ -6,22 +6,14 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <!--string_array-->
+
     <!--首页fragment-->
     <string-array name="fragment_title">
         <item>@string/fragment.title.bookshelf</item>
         <item>@string/fragment.title.store</item>
         <item>@string/fragment.title.find</item>
     </string-array>
-
-    <!--社区fragment-->
-    <string-array name="fragment_section">
-        <item>@string/fragment.community.comment</item>
-        <item>@string/fragment.community.discussion</item>
-        <item>@string/fragment.community.help</item>
-        <item>@string/fragment.community.girl</item>
-        <item>@string/fragment.community.compose</item>
-    </string-array>
-
+    
     <!--榜单分类-->
     <string-array name="fragment_bill_book">
         <item>周榜</item>
@@ -58,12 +50,6 @@
     <string name="fragment.title.find">发现</string>
     <string name="fragment.title.community">社区</string>
 
-    <!--fragment 社区-->
-    <string name="fragment.community.comment">综合讨论区</string>
-    <string name="fragment.community.discussion">书评区</string>
-    <string name="fragment.community.help">书荒帮助区</string>
-    <string name="fragment.community.girl">女生区</string>
-    <string name="fragment.community.compose">原创区</string>
     
     <!--fragment 主题书单-->
     <string name="fragment.book_list.hot">本周最热</string>
