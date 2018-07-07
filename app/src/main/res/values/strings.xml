@@ -170,20 +170,20 @@
     <string name="search.book.brief">%1$d人在追 | %2$s读者留存 | %3$s著</string>
 
     <!--land-->
-    <string name="nb.land.login">登陆</string>
-    <string name="nb.land.register">注册</string>
-    <string name="nb.land.forget">忘记密码?</string>
-    <string name="nb.land.hint.name">请输入用户名</string>
-    <string name="nb.land.hint.email">请输入注册邮箱</string>
-    <string name="nb.land.hint.password">请输入密码</string>
+    <string name="land.login">登陆</string>
+    <string name="land.register">注册</string>
+    <string name="land.forget">忘记密码?</string>
+    <string name="land.hint.name">请输入用户名</string>
+    <string name="land.hint.email">请输入注册邮箱</string>
+    <string name="land.hint.password">请输入密码</string>
 
     <!--info-->
-    <string name="nb.user.info.icon">头像</string>
-    <string name="nb.user.info.username">用户名</string>
-    <string name="nb.user.info.sex">性别</string>
-    <string name="nb.user.info.phone">手机</string>
-    <string name="nb.user.info.email">邮箱</string>
-    <string name="nb.user.info.logout">退出</string>
+    <string name="user.info.icon">头像</string>
+    <string name="user.info.username">用户名</string>
+    <string name="user.info.sex">性别</string>
+    <string name="user.info.phone">手机</string>
+    <string name="user.info.email">邮箱</string>
+    <string name="user.info.logout">退出</string>
 
     <!--about-->
     <string name="about.introduce">览阅致力于打造绿色健康、无广告的阅读平台，为广大读者提供优质健康的阅读服务。

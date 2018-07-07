@@ -29,7 +29,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/textPrimary"
                     android:layout_centerVertical="true"
-                    android:text="@string/nb.user.info.icon"/>
+                    android:text="@string/user.info.icon"/>
 
             <com.copasso.cocobook.widget.CircleImageView
                     android:id="@+id/info_iv_icon"
@@ -45,7 +45,7 @@
                 android:id="@+id/info_cil_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cil_leftText="@string/nb.user.info.username"
+                app:cil_leftText="@string/user.info.username"
                 app:cil_leftTextColor="@color/textPrimary"
                 app:cil_rightText="admin"
                 app:cil_rightTextColor="@color/textAssist"/>
@@ -56,7 +56,7 @@
                 android:id="@+id/info_cil_sex"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cil_leftText="@string/nb.user.info.sex"
+                app:cil_leftText="@string/user.info.sex"
                 app:cil_leftTextColor="@color/textPrimary"
                 app:cil_rightText="男"
                 app:cil_rightTextColor="@color/textAssist"/>
@@ -67,7 +67,7 @@
                 android:id="@+id/info_cil_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cil_leftText="@string/nb.user.info.phone"
+                app:cil_leftText="@string/user.info.phone"
                 app:cil_leftTextColor="@color/textPrimary"
                 app:cil_rightText="18"
                 app:cil_rightTextColor="@color/textAssist"/>
@@ -78,7 +78,7 @@
                 android:id="@+id/info_cil_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cil_leftText="@string/nb.user.info.email"
+                app:cil_leftText="@string/user.info.email"
                 app:cil_leftTextColor="@color/textPrimary"
                 app:cil_rightText="18"
                 app:cil_rightTextColor="@color/textAssist"/>
@@ -87,7 +87,7 @@
 
     <Button
             android:id="@+id/info_btn_logout"
-            android:text="@string/nb.user.info.logout"
+            android:text="@string/user.info.logout"
             android:layout_marginTop="@dimen/nb.margin.large"
             style="@style/NB.Theme.Widget.Button.Logout"/>
 

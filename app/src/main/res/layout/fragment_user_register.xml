@@ -43,7 +43,7 @@
                 <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/nb.land.hint.email"
+                        android:hint="@string/land.hint.email"
                         android:inputType="textEmailAddress"/>
 
             </android.support.design.widget.TextInputLayout>
@@ -59,7 +59,7 @@
                 <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/nb.land.hint.name"
+                        android:hint="@string/land.hint.name"
                         android:inputType="text"/>
 
             </android.support.design.widget.TextInputLayout>
@@ -78,7 +78,7 @@
                 <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/nb.land.hint.password"
+                        android:hint="@string/land.hint.password"
                         android:inputType="textPassword"/>
 
             </android.support.design.widget.TextInputLayout>
@@ -86,7 +86,7 @@
             <Button
                     android:id="@+id/register_btn_login"
                     style="@style/NB.Theme.Widget.Button.Default"
-                    android:text="@string/nb.land.register"/>
+                    android:text="@string/land.register"/>
 
             <RelativeLayout
                     android:layout_width="match_parent"
@@ -100,14 +100,14 @@
                         android:id="@+id/register_tv_forget"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/nb.land.forget"/>
+                        android:text="@string/land.forget"/>
 
                 <TextView
                         android:id="@+id/register_tv_login"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="@string/nb.land.login"
+                        android:text="@string/land.login"
                         android:textColor="?attr/colorAccent"/>
             </RelativeLayout>
         </LinearLayout>
