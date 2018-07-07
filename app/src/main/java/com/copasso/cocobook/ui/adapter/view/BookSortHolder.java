@@ -24,7 +24,7 @@ public class BookSortHolder extends ViewHolderImpl<BookSortBean>{
     @Override
     public void onBind(BookSortBean value, int pos) {
         mTvType.setText(value.getName());
-        mTvCount.setText(getContext().getResources().getString(R.string.nb_sort_book_count,value.getBookCount()));
+        mTvCount.setText(getContext().getResources().getString(R.string.sort_book_count,value.getBookCount()));
     }
 
     @Override

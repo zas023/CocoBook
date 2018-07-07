@@ -83,7 +83,7 @@
             android:gravity="center"
             android:textColor="@color/white"
             android:background="@drawable/bg_skip"
-            android:text="@string/nb.splash.skip"
+            android:text="@string/splash.skip"
             tools:ignore="RtlHardcoded"/>
 
 </FrameLayout>

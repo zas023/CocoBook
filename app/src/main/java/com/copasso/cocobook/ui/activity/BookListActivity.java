@@ -195,8 +195,8 @@ public class BookListActivity extends BaseBackTabActivity {
     private void refreshGroupTag(List<BookTagBean> tagBeans) {
         //由于数据还有根据性别分配，所以需要加上去
         BookTagBean bean = new BookTagBean();
-        bean.setName(getResources().getString(R.string.nb_tag_sex));
-        bean.setTags(Arrays.asList(getResources().getString(R.string.nb_tag_boy), getResources().getString(R.string.nb_tag_girl)));
+        bean.setName(getResources().getString(R.string.tag_sex));
+        bean.setTags(Arrays.asList(getResources().getString(R.string.tag_boy), getResources().getString(R.string.tag_girl)));
         tagBeans.add(0, bean);
 
         mTagGroupAdapter.refreshItems(tagBeans);

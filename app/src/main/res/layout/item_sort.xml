@@ -22,5 +22,5 @@
 		android:layout_height="wrap_content"
 		android:textColor="@color/textAssist"
 		android:textSize="13sp"
-		tools:text="@string/nb.sort.book_count" />
+		tools:text="@string/sort.book_count" />
 </LinearLayout>

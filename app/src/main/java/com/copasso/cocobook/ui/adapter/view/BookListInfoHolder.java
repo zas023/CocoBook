@@ -53,9 +53,9 @@ public class BookListInfoHolder extends ViewHolderImpl<BookListDetailBean.BooksB
         //简介
         mTvContent.setText(value.getLongIntro());
         //信息
-        mTvMsg.setText(getContext().getResources().getString(R.string.nb_book_message,
+        mTvMsg.setText(getContext().getResources().getString(R.string.book_message,
                 value.getLatelyFollower(),value.getRetentionRatio()));
         //书籍字数
-        mTvWord.setText(getContext().getResources().getString(R.string.nb_book_word,value.getWordCount()/10000));
+        mTvWord.setText(getContext().getResources().getString(R.string.book_word_count,value.getWordCount()/10000));
     }
 }

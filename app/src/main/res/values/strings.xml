@@ -96,35 +96,33 @@
     <string name="menu.action.delete">删除</string>
     <string name="menu.action.batch_manage">批量管理</string>
     
-    <!--SplashActivity-->
-    <string name="nb.splash.skip">跳过</string>
-
-    <!--user:用户的信息-->
-    <string name="nb.user.lv">&#160;lv.%1$d</string>
+    <!--Splash-->
+    <string name="splash.skip">跳过</string>
 
     <!--book:书籍的信息-->
-    <string name="nb.book.type">[%1$s]</string>
-    <string name="nb.book.recommend">%1$d 人推荐</string>
-    <string name="nb.book.message">%1$d人在追 |&#160; %2$s%%读者留存</string>
-    <string name="nb.book.word">%1$d&#160;万字</string>
+    <string name="book.type">[%1$s]</string>
+    <string name="book.recommend">%1$d 人推荐</string>
+    <string name="book.message">%1$d人加入书架 |&#160; %2$s%%读者留存</string>
+    <string name="book.word_count">%1$d&#160;万字</string>
+
     <!--sort:每类的书-->
-    <string name="nb.sort.book_count">%1$d 本</string>
+    <string name="sort.book_count">%1$d 本</string>
     
     <!--tag: 标签-->
-    <string name="nb.tag.all">全部</string>
-    <string name="nb.tag.sex">性别</string>
-    <string name="nb.tag.boy">男生</string>
-    <string name="nb.tag.girl">女生</string>
+    <string name="tag.all">全部</string>
+    <string name="tag.sex">性别</string>
+    <string name="tag.boy">男生</string>
+    <string name="tag.girl">女生</string>
 
     <!--load:加载-->
-    <string name="nb.load.msg">正在加载</string>
+    <string name="load.msg">正在加载</string>
 
     <!--book_detail : -->
-    <string name="nb.book_detail.last_chapter">最新章</string>
-    <string name="nb.book_detail.hot_comment">热门书评</string>
-    <string name="nb.book_detail.community">%1$s的社区</string>
-    <string name="nb.book_detail.posts_count">共有%1$d个帖子</string>
-    <string name="nb.book_detail.recommend_books">推荐书籍</string>
+    <string name="book_detail.last_chapter">最新章</string>
+    <string name="book_detail.hot_comment">热门书评</string>
+    <string name="book_detail.community">%1$s的社区</string>
+    <string name="book_detail.posts_count">共有%1$d个帖子</string>
+    <string name="book_detail.recommend_books">推荐书籍</string>
     <string name="nb.book_detail.recommend_book_list">推荐书单</string>
     <string name="nb.book_detail.chase_update">追更</string>
     <string name="nb.book_detail.give_up">放弃</string>

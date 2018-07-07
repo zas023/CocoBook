@@ -53,7 +53,7 @@ public class FeatureDetailHolder extends ViewHolderImpl<FeatureDetailBean> {
         //简介
         mTvBrief.setText(value.getBook().getShortIntro());
         //信息
-        mTvMsg.setText(App.getContext().getString(R.string.nb_book_message,
+        mTvMsg.setText(App.getContext().getString(R.string.book_message,
                 value.getBook().getLatelyFollower(),value.getBook().getRetentionRatio()));
     }
 }

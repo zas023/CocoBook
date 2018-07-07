@@ -62,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
-                android:text="@string/nb.book_detail.recommend_books"
+                android:text="@string/book_detail.recommend_books"
                 android:textColor="@color/textPrimary"
                 android:textSize="15sp"/>
 

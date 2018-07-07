@@ -198,7 +198,7 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
         //类型
         mTvType.setText(bean.getMajorCate());
         //总字数
-        mTvWordCount.setText(getResources().getString(R.string.nb_book_word, bean.getWordCount() / 10000));
+        mTvWordCount.setText(getResources().getString(R.string.book_word_count, bean.getWordCount() / 10000));
         //更新时间
 //        mTvLatelyUpdate.setText(StringUtils.dateConvert(bean.getUpdated(), Constant.FORMAT_BOOK_DATE));
         //追书人数

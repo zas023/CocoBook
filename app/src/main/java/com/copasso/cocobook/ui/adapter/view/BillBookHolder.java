@@ -53,7 +53,7 @@ public class BillBookHolder extends ViewHolderImpl<BillBookBean> {
         //简介
         mTvBrief.setText(value.getShortIntro());
         //信息
-        mTvMsg.setText(App.getContext().getString(R.string.nb_book_message,
+        mTvMsg.setText(App.getContext().getString(R.string.book_message,
                 value.getLatelyFollower(),value.getRetentionRatio()));
     }
 }

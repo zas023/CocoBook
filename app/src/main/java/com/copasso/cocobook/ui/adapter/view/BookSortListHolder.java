@@ -51,7 +51,7 @@ public class BookSortListHolder extends ViewHolderImpl<SortBookBean>{
         //简介
         mTvBrief.setText(value.getShortIntro());
         //信息
-        mTvMsg.setText(getContext().getResources().getString(R.string.nb_book_message,
+        mTvMsg.setText(getContext().getResources().getString(R.string.book_message,
                 value.getLatelyFollower(),value.getRetentionRatio()));
     }
 }

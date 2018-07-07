@@ -67,7 +67,7 @@
                     android:singleLine="true"
                     android:textColor="@color/textAssistSecondary"
                     android:textSize="13sp"
-                    tools:text="@string/nb.book.message" />
+                    tools:text="@string/book.message" />
 
                 <TextView
                     android:id="@+id/book_list_info_tv_word"
