@@ -24,7 +24,7 @@
 				android:fitsSystemWindows="true">
 				
 				<TextView
-					style="@style/NB.Theme.TextAppearance.Billboard.Title"
+					style="@style/AppTheme.TextAppearance.Billboard.Title"
 					android:text="男生" />
 				
 				<android.support.v7.widget.RecyclerView
@@ -34,7 +34,7 @@
 				</android.support.v7.widget.RecyclerView>
 				
 				<TextView
-					style="@style/NB.Theme.TextAppearance.Billboard.Title"
+					style="@style/AppTheme.TextAppearance.Billboard.Title"
 					android:text="女生" />
 				
 				<android.support.v7.widget.RecyclerView

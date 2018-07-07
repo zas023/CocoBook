@@ -67,7 +67,7 @@
                 android:button="@null"
                 android:textColor="@color/selector_btn_read_setting"
                 android:background="@drawable/selector_btn_read_setting"
-                style="@style/NB.Theme.TextAppearance.Read.BottomMenu"/>
+                style="@style/AppTheme.TextAppearance.Read.BottomMenu"/>
     </LinearLayout>
 
     <LinearLayout
@@ -85,7 +85,7 @@
                 android:text="Aa-"
                 android:textSize="14dp"
                 android:background="@drawable/shape_btn_read_setting_normal"
-                style="@style/NB.Theme.TextAppearance.Read.BottomMenu"/>
+                style="@style/AppTheme.TextAppearance.Read.BottomMenu"/>
 
         <TextView
                 android:id="@+id/read_setting_tv_font"
@@ -107,7 +107,7 @@
                 android:text="Aa+"
                 android:textSize="18dp"
                 android:background="@drawable/shape_btn_read_setting_normal"
-                style="@style/NB.Theme.TextAppearance.Read.BottomMenu"/>
+                style="@style/AppTheme.TextAppearance.Read.BottomMenu"/>
 
         <CheckBox
                 android:id="@+id/read_setting_cb_font_default"
@@ -118,7 +118,7 @@
                 android:button="@null"
                 android:textColor="@color/selector_btn_read_setting"
                 android:background="@drawable/selector_btn_read_setting"
-                style="@style/NB.Theme.TextAppearance.Read.BottomMenu"/>
+                style="@style/AppTheme.TextAppearance.Read.BottomMenu"/>
     </LinearLayout>
 
     <RadioGroup
@@ -139,7 +139,7 @@
                 android:gravity="center"
                 android:button="@null"
                 android:background="@drawable/selector_btn_read_setting"
-                style="@style/NB.Theme.TextAppearance.Read.BottomMenu"/>
+                style="@style/AppTheme.TextAppearance.Read.BottomMenu"/>
 
         <RadioButton
                 android:id="@+id/read_setting_rb_cover"
@@ -152,7 +152,7 @@
                 android:layout_marginRight="18dp"
                 android:button="@null"
                 android:background="@drawable/selector_btn_read_setting"
-                style="@style/NB.Theme.TextAppearance.Read.BottomMenu"/>
+                style="@style/AppTheme.TextAppearance.Read.BottomMenu"/>
 
         <RadioButton
                 android:id="@+id/read_setting_rb_slide"
@@ -166,7 +166,7 @@
                 android:button="@null"
                 android:background="@drawable/selector_btn_read_setting"
                 android:visibility="gone"
-                style="@style/NB.Theme.TextAppearance.Read.BottomMenu"/>
+                style="@style/AppTheme.TextAppearance.Read.BottomMenu"/>
 
         <RadioButton
                 android:id="@+id/read_setting_rb_scroll"
@@ -179,7 +179,7 @@
                 android:layout_marginRight="18dp"
                 android:button="@null"
                 android:background="@drawable/selector_btn_read_setting"
-                style="@style/NB.Theme.TextAppearance.Read.BottomMenu"/>
+                style="@style/AppTheme.TextAppearance.Read.BottomMenu"/>
 
         <RadioButton
                 android:id="@+id/read_setting_rb_none"
@@ -191,7 +191,7 @@
                 android:gravity="center"
                 android:button="@null"
                 android:background="@drawable/selector_btn_read_setting"
-                style="@style/NB.Theme.TextAppearance.Read.BottomMenu"/>
+                style="@style/AppTheme.TextAppearance.Read.BottomMenu"/>
     </RadioGroup>
 
     <android.support.v7.widget.RecyclerView

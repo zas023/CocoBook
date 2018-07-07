@@ -30,29 +30,6 @@
         <attr name="layout_refresh_loading" format="reference"/>
     </declare-styleable>
 
-    <!--SuperShapeView-->
-    <declare-styleable name="SuperShapeView">
-        <attr name="super_cornerRadius" format="dimension"/>
-        <attr name="super_strokeWidth" format="dimension"/>
-
-        <attr name="super_strokeColor" format="color|reference"/>
-        <attr name="super_strokeColor_pressed" format="color|reference"/>
-        <attr name="super_strokeColor_selected" format="color|reference"/>
-
-        <attr name="super_solidColor" format="color|reference"/>
-        <attr name="super_solidColor_pressed" format="color|reference"/>
-        <attr name="super_solidColor_selected" format="color|reference"/>
-
-        <attr name="super_dashWidth" format="dimension"/>
-        <attr name="super_dashGap" format="dimension"/>
-
-        <attr name="super_topLeftRadius" format="dimension"/>
-        <attr name="super_topRightRadius" format="dimension"/>
-        <attr name="super_bottomLeftRadius" format="dimension"/>
-        <attr name="super_bottomRightRadius" format="dimension"/>
-
-    </declare-styleable>
-
     <!--BookText-->
     <declare-styleable name="BookTextView">
         <attr name="bookColor" format="reference"/>

@@ -39,7 +39,7 @@
                     android:src="@mipmap/ic_def_icon"/>
         </RelativeLayout>
 
-        <View style="@style/NB.Theme.Linear.Divide.Narrow"/>
+        <View style="@style/AppTheme.Linear.Divide.Narrow"/>
 
         <com.copasso.cocobook.widget.CommonItemLayout
                 android:id="@+id/info_cil_username"
@@ -50,7 +50,7 @@
                 app:cil_rightText="admin"
                 app:cil_rightTextColor="@color/textAssist"/>
 
-        <View style="@style/NB.Theme.Linear.Divide.Narrow"/>
+        <View style="@style/AppTheme.Linear.Divide.Narrow"/>
 
         <com.copasso.cocobook.widget.CommonItemLayout
                 android:id="@+id/info_cil_sex"
@@ -61,7 +61,7 @@
                 app:cil_rightText="男"
                 app:cil_rightTextColor="@color/textAssist"/>
 
-        <View style="@style/NB.Theme.Linear.Divide.Narrow"/>
+        <View style="@style/AppTheme.Linear.Divide.Narrow"/>
 
         <com.copasso.cocobook.widget.CommonItemLayout
                 android:id="@+id/info_cil_phone"
@@ -72,7 +72,7 @@
                 app:cil_rightText="18"
                 app:cil_rightTextColor="@color/textAssist"/>
 
-        <View style="@style/NB.Theme.Linear.Divide.Narrow"/>
+        <View style="@style/AppTheme.Linear.Divide.Narrow"/>
 
         <com.copasso.cocobook.widget.CommonItemLayout
                 android:id="@+id/info_cil_email"
@@ -89,6 +89,6 @@
             android:id="@+id/info_btn_logout"
             android:text="@string/user.info.logout"
             android:layout_marginTop="@dimen/nb.margin.large"
-            style="@style/NB.Theme.Widget.Button.Logout"/>
+            style="@style/AppTheme.Widget.Button.Logout"/>
 
 </LinearLayout>

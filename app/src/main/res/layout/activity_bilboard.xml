@@ -21,21 +21,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
-                    style="@style/NB.Theme.TextAppearance.Billboard.Title"
+                    style="@style/AppTheme.TextAppearance.Billboard.Title"
                     android:text="男生" />
         
                 <com.copasso.cocobook.widget.CustomExpandableListView
                     android:id="@+id/billboard_elv_boy"
-                    style="@style/NB.Theme.Widget.DefaultExpandListView">
+                    style="@style/AppTheme.Widget.DefaultExpandListView">
                 </com.copasso.cocobook.widget.CustomExpandableListView>
         
                 <TextView
-                    style="@style/NB.Theme.TextAppearance.Billboard.Title"
+                    style="@style/AppTheme.TextAppearance.Billboard.Title"
                     android:text="女生" />
         
                 <com.copasso.cocobook.widget.CustomExpandableListView
                     android:id="@+id/billboard_elv_girl"
-                    style="@style/NB.Theme.Widget.DefaultExpandListView">
+                    style="@style/AppTheme.Widget.DefaultExpandListView">
                 </com.copasso.cocobook.widget.CustomExpandableListView>
             </LinearLayout>
         </ScrollView>

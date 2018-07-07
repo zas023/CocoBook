@@ -10,7 +10,7 @@
 		android:layout_height="35dp"
 		android:orientation="horizontal">
 		<TextView
-			style="@style/NB.Theme.TextAppearance.Common.SingleLine"
+			style="@style/AppTheme.TextAppearance.Common.SingleLine"
 			android:id="@+id/file_category_tv_path"
 			android:layout_width="0dp"
 			android:layout_height="match_parent"

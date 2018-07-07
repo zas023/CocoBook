@@ -85,7 +85,7 @@
 
             <Button
                     android:id="@+id/register_btn_login"
-                    style="@style/NB.Theme.Widget.Button.Default"
+                    style="@style/AppTheme.Widget.Button.Default"
                     android:text="@string/land.register"/>
 
             <RelativeLayout

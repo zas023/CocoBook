@@ -2,26 +2,18 @@ package com.copasso.cocobook.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
-import android.text.Spannable;
-import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
-import android.text.method.MovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.TextView;
 
 import com.copasso.cocobook.R;
 
 /**
- * Created by zhouas666 on 18-1-23.
  * 1. 找到改写TextView内容的方法:是哪个 0 0，个人猜测是setText()
  * 2. 找到文章中存在《》的位置:
  * 3. 设置ForeSpan

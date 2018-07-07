@@ -23,7 +23,7 @@
 		android:layout_toRightOf="@+id/search_book_iv_cover">
 		
 		<TextView
-			style="@style/NB.Theme.TextAppearance.Common.SingleLine"
+			style="@style/AppTheme.TextAppearance.Common.SingleLine"
 			android:id="@+id/search_book_tv_name"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"

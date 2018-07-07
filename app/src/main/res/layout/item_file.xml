@@ -39,7 +39,7 @@
 		android:paddingBottom="8dp">
 		
 		<TextView
-			style="@style/NB.Theme.TextAppearance.Common.SingleLine"
+			style="@style/AppTheme.TextAppearance.Common.SingleLine"
 			android:id="@+id/file_tv_name"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
 			android:layout_alignParentBottom="true">
 			
 			<TextView
-				style="@style/NB.Theme.TextAppearance.File.Tag"
+				style="@style/AppTheme.TextAppearance.File.Tag"
 				android:id="@+id/file_tv_tag"
 				android:layout_toRightOf="@+id/file_fl_icon"
 				android:layout_alignParentBottom="true"

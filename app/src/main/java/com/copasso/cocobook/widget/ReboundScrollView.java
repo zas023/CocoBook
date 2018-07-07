@@ -11,6 +11,7 @@ import android.widget.Scroller;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 可上下拖动的ScrollView
  */
 
 public class ReboundScrollView extends ScrollView{

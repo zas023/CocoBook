@@ -169,12 +169,10 @@
     </style>
 
     <!--Common-->
-    <style name="NB.Theme" parent="AppTheme"/>
-
-    <style name="NB.Theme.Linear"/>
+    <style name="AppTheme.Linear"/>
 
     <!--分割线-->
-    <style name="NB.Theme.Linear.Divide.Narrow" parent="NB.Theme.Linear">
+    <style name="AppTheme.Linear.Divide.Narrow" parent="AppTheme.Linear">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1px</item>
         <item name="android:layout_marginLeft">10dp</item>
@@ -182,7 +180,7 @@
         <item name="android:background">@color/divider.narrow</item>
     </style>
 
-    <style name="NB.Theme.Linear.Divide.Wide" parent="NB.Theme.Linear">
+    <style name="AppTheme.Linear.Divide.Wide" parent="AppTheme.Linear">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1px</item>
         <item name="android:layout_marginLeft">10dp</item>
@@ -191,34 +189,34 @@
     </style>
 
     <!--Linear-->
-    <style name="NB.Theme.Linear.Weight" parent="NB.Theme.Linear">
+    <style name="AppTheme.Linear.Weight" parent="AppTheme.Linear">
         <item name="android:layout_weight">1</item>
     </style>
     
-    <style name="NB.Theme.Linear.Weight.Wrap_Width" parent="NB.Theme.Linear.Weight">
+    <style name="AppTheme.Linear.Weight.Wrap_Width" parent="AppTheme.Linear.Weight">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">0dp</item>
     </style>
     
-    <style name="NB.Theme.Linear.Weight.Wrap_Height" parent="NB.Theme.Linear.Weight">
+    <style name="AppTheme.Linear.Weight.Wrap_Height" parent="AppTheme.Linear.Weight">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
-    <style name="NB.Theme.Linear.Weight.Match_Width" parent="NB.Theme.Linear.Weight">
+    <style name="AppTheme.Linear.Weight.Match_Width" parent="AppTheme.Linear.Weight">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>
     </style>
     
-    <style name="NB.Theme.Linear.Weight.Match_Height" parent="NB.Theme.Linear.Weight">
+    <style name="AppTheme.Linear.Weight.Match_Height" parent="AppTheme.Linear.Weight">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
     </style>
 
     <!-- Widget:修改View的样式的-->
-    <style name="NB.Theme.Widget"/>
+    <style name="AppTheme.Widget"/>
 
     <!--ExpandListView-->
-    <style name="NB.Theme.Widget.DefaultExpandListView">
+    <style name="AppTheme.Widget.DefaultExpandListView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:childDivider">@drawable/shape_divider_dash</item>
@@ -226,32 +224,32 @@
         <item name="android:listSelector">@drawable/selector_common_bg</item>
     </style>
     <!--按钮样式-->
-    <style name="NB.Theme.Widget.Button">
+    <style name="AppTheme.Widget.Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="NB.Theme.Widget.Button.Logout">
+    <style name="AppTheme.Widget.Button.Logout">
         <item name="android:background">@drawable/bg_button_default_logout</item>
         <item name="android:layout_margin">@dimen/nb.padding.large</item>
     </style>
 
-    <style name="NB.Theme.Widget.Button.Default">
+    <style name="AppTheme.Widget.Button.Default">
         <item name="android:background">@drawable/bg_button_default</item>
         <item name="android:layout_margin">@dimen/nb.padding.large</item>
     </style>
 
-    <!--<style name="NB.Theme.Widget.Button.Default.Margin">-->
+    <!--<style name="AppTheme.Widget.Button.Default.Margin">-->
         <!--<item name="android:layout_margin">@dimen/nb.padding.large</item>-->
     <!--</style>-->
     
     <!--图片-->
-    <style name="NB.Theme.Widget.ImageView"/>
+    <style name="AppTheme.Widget.ImageView"/>
     
     <!--书籍的显示封面-->
-    <style name="NB.Theme.Widget.ImageView.Book">
+    <style name="AppTheme.Widget.ImageView.Book">
         <item name="android:layout_width">@dimen/nb.book.cover.width</item>
         <item name="android:layout_height">@dimen/nb.book.cover.height</item>
         <item name="android:src">@drawable/ic_default_book_cover</item>
@@ -259,5 +257,5 @@
     </style>
     
     <!-- TextAppearance:修改 -->
-    <style name="NB.Theme.TextAppearance"/>
+    <style name="AppTheme.TextAppearance"/>
 </resources>
