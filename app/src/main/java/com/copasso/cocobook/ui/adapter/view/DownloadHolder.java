@@ -55,7 +55,7 @@ public class DownloadHolder extends ViewHolderImpl<DownloadTaskBean> {
 
                 setTip(R.string.download_loading);
 
-                mTvMsg.setText(StringUtils.getString(R.string.nb_download_progress,
+                mTvMsg.setText(StringUtils.getString(R.string.download_progress,
                         value.getCurrentChapter(),value.getBookChapters().size()));
                 break;
             case DownloadTaskBean.STATUS_PAUSE:
@@ -68,7 +68,7 @@ public class DownloadHolder extends ViewHolderImpl<DownloadTaskBean> {
                 setTip(R.string.download_pausing);
 
                 mPbShow.setProgress(value.getCurrentChapter());
-                mTvMsg.setText(StringUtils.getString(R.string.nb_download_progress,
+                mTvMsg.setText(StringUtils.getString(R.string.download_progress,
                         value.getCurrentChapter(),value.getBookChapters().size()));
                 break;
             case DownloadTaskBean.STATUS_WAIT:
@@ -81,7 +81,7 @@ public class DownloadHolder extends ViewHolderImpl<DownloadTaskBean> {
                 setTip(R.string.download_waiting);
 
                 mPbShow.setProgress(value.getCurrentChapter());
-                mTvMsg.setText(StringUtils.getString(R.string.nb_download_progress,
+                mTvMsg.setText(StringUtils.getString(R.string.download_progress,
                         value.getCurrentChapter(),value.getBookChapters().size()));
                 break;
             case DownloadTaskBean.STATUS_ERROR:

@@ -155,7 +155,7 @@ public class DownloadService extends BaseService {
                             .subList(downloadTask.getLastChapter(),
                                     newTask.getLastChapter());
                     String taskName = newTask.getTaskName()
-                            + getString(R.string.nb_download_chapter_scope,
+                            + getString(R.string.download_chapter_scope,
                             downloadTask.getLastChapter(), newTask.getLastChapter());
                     //重置任务
                     newTask.setBookChapters(remainChapterBeans);
@@ -175,7 +175,7 @@ public class DownloadService extends BaseService {
         //重置名字
         if (!isExist){
             String taskName = newTask.getTaskName()
-                    + getString(R.string.nb_download_chapter_scope,
+                    + getString(R.string.download_chapter_scope,
                     1, newTask.getLastChapter());
             newTask.setTaskName(taskName);
             postMessage("成功添加到缓存队列");

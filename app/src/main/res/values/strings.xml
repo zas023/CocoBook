@@ -128,11 +128,11 @@
     <string name="book_detail.download_book">缓存全本</string>
 
     <!--DownloadTask:书籍下载-->
-    <string name="nb.download.add_succeed">成功添加到下载列表</string>
-    <string name="nb.download.exist">该任务已存在</string>
-    <string name="nb.download.load_all">已缓存全部章节</string>
-    <string name="nb.download.progress">%1$d/%2$d</string>
-    <string name="nb.download.chapter_scope">(%1$d-%2$d章)</string>
+    <string name="download.add_succeed">成功添加到下载列表</string>
+    <string name="download.exist">该任务已存在</string>
+    <string name="download.load_all">已缓存全部章节</string>
+    <string name="download.progress">%1$d/%2$d</string>
+    <string name="download.chapter_scope">(%1$d-%2$d章)</string>
     
     <string name="download.start">继续</string>
     <string name="download.pause">暂停</string>
@@ -147,8 +147,8 @@
     <string name="download.source_error">资源或网络错误</string>
     
     <!--mode-->
-    <string name="nb.mode.night">夜间</string>
-    <string name="nb.mode.morning">日间</string>
+    <string name="mode.night">夜间</string>
+    <string name="mode.light">日间</string>
     
     <!--read-->
     <string name="nb.read.community">社区</string>
