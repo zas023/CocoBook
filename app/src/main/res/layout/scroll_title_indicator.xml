@@ -19,7 +19,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="40dp"
 			android:background="@color/colorPrimary"
-			app:tabTextColor="@color/translucent_text"
+			app:tabTextColor="@color/textTranslucent"
 			app:tabSelectedTextColor="@color/white"
 			app:tabIndicatorColor="@color/white">
 		</android.support.design.widget.TabLayout>

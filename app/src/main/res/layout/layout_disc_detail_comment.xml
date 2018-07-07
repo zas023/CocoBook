@@ -8,7 +8,7 @@
             android:padding="15dp"
             android:background="@color/colorBackground"
             android:text="@string/nb.comment.best_comment"
-            android:textColor="@color/nb.text.common_h3"
+            android:textColor="@color/textAssistSecondary"
             android:visibility="gone"
             tools:visibility="visible"/>
 
@@ -26,5 +26,5 @@
             android:background="@color/colorBackground"
             android:padding="15dp"
             android:text="@string/nb.comment.comment_count"
-            android:textColor="@color/nb.text.common_h3"/>
+            android:textColor="@color/textAssistSecondary"/>
 </merge>

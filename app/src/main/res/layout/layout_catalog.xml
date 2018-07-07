@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="目录"
-                android:textColor="@color/nb.text.default"
+                android:textColor="@color/textPrimary"
                 android:textSize="20sp"
                 android:layout_marginLeft="15dp"/>
 
@@ -36,7 +36,7 @@
                 android:gravity="right"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textColor="@color/nb.text.common_h1"
+                android:textColor="@color/textSecondary"
                 android:textSize="15sp"/>
     </LinearLayout>
 
@@ -50,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
-                android:divider="@color/nb.divider.common"
+                android:divider="@color/divider.common"
                 android:scrollbars="vertical"
                 android:fastScrollEnabled="true"
                 android:focusable="true">

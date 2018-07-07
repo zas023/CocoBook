@@ -242,10 +242,10 @@ public class SelectorView extends LinearLayout {
                     holder = (ViewHolder) convertView.getTag();
                 }
                 if (current == position){
-                    holder.tvName.setTextColor(ContextCompat.getColor(getContext(),R.color.nb_popup_text_selected));
+                    holder.tvName.setTextColor(ContextCompat.getColor(getContext(),R.color.light_pink));
                 }
                 else {
-                    holder.tvName.setTextColor(ContextCompat.getColor(getContext(),R.color.nb_text_default));
+                    holder.tvName.setTextColor(ContextCompat.getColor(getContext(),R.color.textPrimary));
                 }
                 holder.tvName.setText(typeList.get(position));
                 return convertView;

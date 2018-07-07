@@ -131,18 +131,18 @@
     <!--Toolbar-->
     <style name="Theme.ToolBar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <!-- 设置-弹窗的背景-颜色-->
-        <item name="android:colorBackground">@color/nb.theme.background</item>
+        <item name="android:colorBackground">@color/theme.background</item>
         <!-- 字体的颜色-->
-        <item name="android:textColor">@color/nb.text.default</item>
+        <item name="android:textColor">@color/textPrimary</item>
         <!-- 字体大小-->
         <item name="android:textSize">16sp</item>
         <item name="android:gravity">center_vertical</item>
     </style>
     <style name="Theme.ToolBar.Menu" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <!-- 设置-弹窗的背景-颜色-->
-        <item name="android:colorBackground">@color/nb.theme.background</item>
+        <item name="android:colorBackground">@color/theme.background</item>
         <!-- 字体的颜色-->
-        <item name="android:textColor">@color/nb.text.default</item>
+        <item name="android:textColor">@color/textPrimary</item>
         <!-- 字体大小-->
         <item name="android:textSize">16sp</item>
         <item name="android:gravity">center_vertical</item>
@@ -164,7 +164,7 @@
     <!--用于修改popmenu的分割线-->
     <style name="dropDownStyle" parent="android:style/Widget.Holo.ListView.DropDown">
         <item name="android:listSelector">@drawable/selector_common_bg</item>
-        <item name="android:divider">@color/nb.divider.common</item>
+        <item name="android:divider">@color/divider.common</item>
         <item name="android:dividerHeight">@dimen/nb.divider.line</item>
     </style>
 
@@ -179,7 +179,7 @@
         <item name="android:layout_height">1px</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
-        <item name="android:background">@color/nb.divider.narrow</item>
+        <item name="android:background">@color/divider.narrow</item>
     </style>
 
     <style name="NB.Theme.Linear.Divide.Wide" parent="NB.Theme.Linear">
@@ -187,7 +187,7 @@
         <item name="android:layout_height">1px</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
-        <item name="android:background">@color/nb.divider.wide</item>
+        <item name="android:background">@color/divider.wide</item>
     </style>
 
     <!--Linear-->

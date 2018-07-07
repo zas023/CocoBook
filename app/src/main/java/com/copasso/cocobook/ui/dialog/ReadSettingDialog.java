@@ -139,12 +139,12 @@ public class ReadSettingDialog extends Dialog{
 
     private void initAdapter(){
         Drawable []drawables = {
-                getDrawable(R.color.nb_read_bg_1)
-                ,getDrawable(R.color.nb_read_bg_2)
-                ,getDrawable(R.color.nb_read_bg_3)
-                ,getDrawable(R.color.nb_read_bg_4)
-                ,getDrawable(R.color.nb_read_bg_5)
-                ,getDrawable(R.color.nb_read_bg_6)};
+                getDrawable(R.color.read_bg_1)
+                ,getDrawable(R.color.read_bg_2)
+                ,getDrawable(R.color.read_bg_3)
+                ,getDrawable(R.color.read_bg_4)
+                ,getDrawable(R.color.read_bg_5)
+                ,getDrawable(R.color.read_bg_6)};
 
         mReadBgAdapter = new ReadBgAdapter();
         mRvBg.setLayoutManager(new GridLayoutManager(getContext(),6));

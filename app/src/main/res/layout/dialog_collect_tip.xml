@@ -11,7 +11,7 @@
 		android:layout_alignParentTop="true"
 		android:textSize="@dimen/nb.text.large"
 		android:layout_marginTop="20dp"
-		android:textColor="@color/nb.text.default"/>
+		android:textColor="@color/textPrimary"/>
 	
 	<TextView
 		android:layout_width="match_parent"
@@ -20,5 +20,5 @@
 		android:gravity="center"
 		android:layout_alignParentBottom="true"
 		android:layout_marginBottom="20dp"
-		android:textColor="@color/nb.text.common_h2"/>
+		android:textColor="@color/textAssist"/>
 </RelativeLayout>

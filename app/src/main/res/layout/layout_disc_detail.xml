@@ -39,7 +39,7 @@
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:text="昨天"
-                android:textColor="@color/nb.text.common_h3"/>
+                android:textColor="@color/textAssistSecondary"/>
     </RelativeLayout>
 
     <TextView
@@ -50,7 +50,7 @@
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:text="xxxx"
-            android:textColor="@color/nb.text.default"
+            android:textColor="@color/textPrimary"
             android:textSize="16dp"/>
 
     <com.copasso.cocobook.widget.BookTextView
@@ -62,6 +62,6 @@
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:text=""
-            android:textColor="@color/nb.text.common_h2"
+            android:textColor="@color/textAssist"
             android:textSize="16dp"/>
 </merge>

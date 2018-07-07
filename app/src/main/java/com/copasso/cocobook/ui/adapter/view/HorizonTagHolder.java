@@ -21,7 +21,7 @@ public class HorizonTagHolder extends ViewHolderImpl<String> {
     @Override
     public void onBind(String value, int pos) {
         mTvName.setText(value);
-        mTvName.setTextColor(getContext().getResources().getColor(R.color.nb_text_common_h2));
+        mTvName.setTextColor(getContext().getResources().getColor(R.color.textAssist));
     }
 
     public void setSelectedTag(){

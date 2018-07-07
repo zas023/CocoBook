@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:padding="15dp"
-        android:textColor="@color/nb.text.default"
+        android:textColor="@color/textPrimary"
         android:textSize="18sp"
         tools:text="追书包月精选书单之科幻第一期" />
 
@@ -41,7 +41,7 @@
         android:layout_marginBottom="15dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
-        android:textColor="@color/nb.text.common_h2"
+        android:textColor="@color/textAssist"
         android:textSize="13sp"
         tools:text="开通包月，这些精品书就能免费阅读了" />
 
@@ -65,7 +65,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="5dp"
             android:layout_toRightOf="@id/book_list_info_iv_cover"
-            android:textColor="@color/nb.text.common_h2"
+            android:textColor="@color/textAssist"
             android:textSize="15sp"
             tools:text="创建自 " />
 

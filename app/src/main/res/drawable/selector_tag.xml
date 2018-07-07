@@ -4,5 +4,5 @@
 		android:drawable="@color/light_red"/>
 	<item android:state_selected="true"
 		android:drawable="@color/light_red"/>
-	<item android:drawable="@color/nb.text.common_h2"/>
+	<item android:drawable="@color/textAssist"/>
 </selector>

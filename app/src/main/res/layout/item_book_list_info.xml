@@ -52,7 +52,7 @@
                     android:layout_marginBottom="10dp"
                     android:ellipsize="end"
                     android:singleLine="true"
-                    android:textColor="@color/nb.text.common_h2"
+                    android:textColor="@color/textAssist"
                     android:textSize="13sp"
                     tools:text="选择" />
 
@@ -65,7 +65,7 @@
                     android:layout_marginRight="5dp"
                     android:ellipsize="end"
                     android:singleLine="true"
-                    android:textColor="@color/nb.text.common_h3"
+                    android:textColor="@color/textAssistSecondary"
                     android:textSize="13sp"
                     tools:text="@string/nb.book.message" />
 
@@ -77,7 +77,7 @@
                     android:layout_toRightOf="@id/book_list_info_tv_msg"
                     android:ellipsize="end"
                     android:singleLine="true"
-                    android:textColor="@color/nb.text.common_h3"
+                    android:textColor="@color/textAssistSecondary"
                     android:textSize="13sp"
                     tools:text="@string/nb.book.word" />
 
@@ -90,7 +90,7 @@
             android:layout_height="1dp"
             android:layout_below="@+id/book_list_info_rl"
             android:layout_marginTop="10dp"
-            android:background="@color/nb.divider.wide" />
+            android:background="@color/divider.wide" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -112,7 +112,7 @@
                 android:ellipsize="end"
                 android:maxLines="10"
                 android:text="00000"
-                android:textColor="@color/nb.text.common_h2" />
+                android:textColor="@color/textAssist" />
 
         </LinearLayout>
     </LinearLayout>

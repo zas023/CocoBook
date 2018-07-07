@@ -9,7 +9,7 @@
 	<View
 		android:layout_width="match_parent"
 		android:layout_height="2px"
-		android:background="@color/nb.divider.narrow"/>
+		android:background="@color/divider.narrow"/>
 	
 	<TextView
 		android:layout_width="match_parent"
@@ -18,5 +18,5 @@
 		android:gravity="center"
 		android:padding="20dp"
 		android:text="添加你喜欢的小说"
-		android:textColor="@color/nb.text.default"/>
+		android:textColor="@color/textPrimary"/>
 </LinearLayout>

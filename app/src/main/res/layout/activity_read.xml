@@ -18,7 +18,7 @@
 		    android:id="@+id/read_abl_top_menu"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:background="@color/nb.read.menu.bg"
+		    android:background="@color/read.menu.bg"
 		    android:visibility="gone"
 		    tools:visibility="visible">
 		
@@ -32,7 +32,7 @@
 				    android:layout_width="120dp"
 				    android:layout_height="50dp"
 				    android:layout_gravity="right"
-				    android:background="@color/nb.read.menu.bg">
+				    android:background="@color/read.menu.bg">
 				    <TextView
 					    android:id="@+id/read_tv_brief"
 					    android:layout_alignParentRight="true"
@@ -64,7 +64,7 @@
             android:layout_above="@+id/read_ll_bottom_menu"
             android:layout_marginBottom="10dp"
             android:layout_centerHorizontal="true"
-            android:background="@color/nb.read.menu.bg"
+            android:background="@color/read.menu.bg"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
             android:paddingTop="8dp"
@@ -82,7 +82,7 @@
             android:orientation="vertical"
             android:clickable="true"
             android:layout_alignParentBottom="true"
-            android:background="@color/nb.read.menu.bg"
+            android:background="@color/read.menu.bg"
             android:visibility="gone"
             tools:visibility="visible">
             

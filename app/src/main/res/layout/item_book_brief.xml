@@ -30,7 +30,7 @@
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:text="宦官哈哈"
-                android:textColor="@color/nb.text.default"
+                android:textColor="@color/textPrimary"
                 android:textSize="16sp"/>
 
         <TextView
@@ -41,7 +41,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="xxxxxxxxxxxxxxxx"
-                android:textColor="@color/nb.text.common_h2"/>
+                android:textColor="@color/textAssist"/>
 
         <TextView
                 android:id="@+id/book_brief_tv_brief"
@@ -51,7 +51,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="xxxxxxxxxxxxxxxx"
-                android:textColor="@color/nb.text.common_h2"/>
+                android:textColor="@color/textAssist"/>
 
         <TextView
                 android:id="@+id/book_brief_tv_msg"
@@ -61,6 +61,6 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="xxxxxxxxxxxxxxxx"
-                android:textColor="@color/nb.text.common_h3"/>
+                android:textColor="@color/textAssistSecondary"/>
     </LinearLayout>
 </RelativeLayout>

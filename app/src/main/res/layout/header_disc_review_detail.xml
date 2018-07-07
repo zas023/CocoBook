@@ -39,7 +39,7 @@
 				android:layout_marginBottom="3dp"
 				android:ellipsize="end"
 				android:singleLine="true"
-				android:textColor="@color/nb.text.default"
+				android:textColor="@color/textPrimary"
 				android:textSize="15sp"
 				tools:text="灭生决" />
 			
@@ -57,7 +57,7 @@
 					android:ellipsize="end"
 					android:singleLine="true"
 					android:text="@string/nb.review.book_score"
-					android:textColor="@color/nb.text.common_h2"
+					android:textColor="@color/textAssist"
 					android:textSize="13sp" />
 				
 				<com.copasso.cocobook.widget.EasyRatingBar
@@ -99,7 +99,7 @@
 		android:layout_height="wrap_content"
 		android:padding="15dp"
 		android:text="@string/nb.review.master_score"
-		android:textColor="@color/nb.text.common_h3" />
+		android:textColor="@color/textAssistSecondary" />
 	
 	<LinearLayout
 		android:layout_width="match_parent"
@@ -119,7 +119,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginBottom="3dp"
-				android:textColor="@color/nb.text.common_h2"
+				android:textColor="@color/textAssist"
 				tools:text="6" />
 			
 			<TextView
@@ -129,7 +129,7 @@
 				android:drawableLeft="@drawable/review_useful_yes_nor"
 				android:drawablePadding="5dp"
 				android:text="@string/nb.review.helpful"
-				android:textColor="@color/nb.text.common_h2" />
+				android:textColor="@color/textAssist" />
 		</LinearLayout>
 		
 		<LinearLayout
@@ -144,7 +144,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginBottom="3dp"
-				android:textColor="@color/nb.text.common_h2"
+				android:textColor="@color/textAssist"
 				tools:text="0" />
 			
 			<TextView
@@ -154,7 +154,7 @@
 				android:drawableLeft="@drawable/review_useful_no_nor"
 				android:drawablePadding="5dp"
 				android:text="@string/nb.review.unhelpful"
-				android:textColor="@color/nb.text.common_h2" />
+				android:textColor="@color/textAssist" />
 		</LinearLayout>
 	
 	</LinearLayout>

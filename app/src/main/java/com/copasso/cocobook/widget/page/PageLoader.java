@@ -364,8 +364,8 @@ public abstract class PageLoader{
     //绘制背景
     public void setBgColor(int theme){
         if (isNightMode && theme == ReadSettingManager.NIGHT_MODE){
-            mTextColor = ContextCompat.getColor(App.getContext(), R.color.nb_read_font_night);
-            mPageBg = ContextCompat.getColor(App.getContext(), R.color.nb_read_bg_night);
+            mTextColor = ContextCompat.getColor(App.getContext(), R.color.read_font_night);
+            mPageBg = ContextCompat.getColor(App.getContext(), R.color.read_bg_night);
         }
         else if (isNightMode){
             mBgTheme = theme;
@@ -375,28 +375,28 @@ public abstract class PageLoader{
             mSettingManager.setReadBackground(theme);
             switch (theme){
                 case ReadSettingManager.READ_BG_DEFAULT:
-                    mTextColor = ContextCompat.getColor(App.getContext(),R.color.nb_read_font_1);
-                    mPageBg = ContextCompat.getColor(App.getContext(), R.color.nb_read_bg_1);
+                    mTextColor = ContextCompat.getColor(App.getContext(),R.color.read_font_1);
+                    mPageBg = ContextCompat.getColor(App.getContext(), R.color.read_bg_1);
                     break;
                 case ReadSettingManager.READ_BG_1:
-                    mTextColor = ContextCompat.getColor(App.getContext(),R.color.nb_read_font_2);
-                    mPageBg = ContextCompat.getColor(App.getContext(), R.color.nb_read_bg_2);
+                    mTextColor = ContextCompat.getColor(App.getContext(),R.color.read_font_2);
+                    mPageBg = ContextCompat.getColor(App.getContext(), R.color.read_bg_2);
                     break;
                 case ReadSettingManager.READ_BG_2:
-                    mTextColor = ContextCompat.getColor(App.getContext(),R.color.nb_read_font_3);
-                    mPageBg = ContextCompat.getColor(App.getContext(), R.color.nb_read_bg_3);
+                    mTextColor = ContextCompat.getColor(App.getContext(),R.color.read_font_3);
+                    mPageBg = ContextCompat.getColor(App.getContext(), R.color.read_bg_3);
                     break;
                 case ReadSettingManager.READ_BG_3:
-                    mTextColor = ContextCompat.getColor(App.getContext(),R.color.nb_read_font_4);
-                    mPageBg = ContextCompat.getColor(App.getContext(), R.color.nb_read_bg_4);
+                    mTextColor = ContextCompat.getColor(App.getContext(),R.color.read_font_4);
+                    mPageBg = ContextCompat.getColor(App.getContext(), R.color.read_bg_4);
                     break;
                 case ReadSettingManager.READ_BG_4:
-                    mTextColor = ContextCompat.getColor(App.getContext(),R.color.nb_read_font_5);
-                    mPageBg = ContextCompat.getColor(App.getContext(), R.color.nb_read_bg_5);
+                    mTextColor = ContextCompat.getColor(App.getContext(),R.color.read_font_5);
+                    mPageBg = ContextCompat.getColor(App.getContext(), R.color.read_bg_5);
                     break;
                 case ReadSettingManager.READ_BG_5:
-                    mTextColor = ContextCompat.getColor(App.getContext(),R.color.nb_read_font_6);
-                    mPageBg = ContextCompat.getColor(App.getContext(), R.color.nb_read_bg_6);
+                    mTextColor = ContextCompat.getColor(App.getContext(),R.color.read_font_6);
+                    mPageBg = ContextCompat.getColor(App.getContext(), R.color.read_bg_6);
                     break;
             }
         }

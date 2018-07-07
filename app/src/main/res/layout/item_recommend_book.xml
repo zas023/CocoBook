@@ -27,7 +27,7 @@
             android:ellipsize="end"
             android:maxEms="15"
             android:maxLines="1"
-            android:textColor="@color/nb.text.common_h2"
+            android:textColor="@color/textAssist"
             android:textSize="10sp"
             tools:text="逆鳞"/>
 </LinearLayout>

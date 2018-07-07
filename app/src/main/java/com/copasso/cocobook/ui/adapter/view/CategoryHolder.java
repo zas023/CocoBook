@@ -42,7 +42,7 @@ public class CategoryHolder extends ViewHolderImpl<TxtChapter> {
         }
 
         mTvChapter.setSelected(false);
-        mTvChapter.setTextColor(ContextCompat.getColor(getContext(),R.color.nb_text_default));
+        mTvChapter.setTextColor(ContextCompat.getColor(getContext(),R.color.textPrimary));
         mTvChapter.setCompoundDrawablesWithIntrinsicBounds(drawable,null,null,null);
         mTvChapter.setText(value.getTitle());
     }

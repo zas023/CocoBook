@@ -117,7 +117,7 @@
             <!--android:layout_toRightOf="@id/cover"-->
             <!--android:ellipsize="end"-->
             <!--android:singleLine="true"-->
-            <!--android:textColor="@color/nb.text.common_h2"-->
+            <!--android:textColor="@color/textAssist"-->
             <!--android:textSize="13sp"-->
             <!--tools:text="4月前"/>-->
 

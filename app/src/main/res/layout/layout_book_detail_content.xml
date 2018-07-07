@@ -14,14 +14,14 @@
             android:ellipsize="end"
             android:maxLines="4"
             android:padding="15dp"
-            android:textColor="@color/nb.text.default"
+            android:textColor="@color/textPrimary"
             android:textSize="15sp"/>
 
     <View
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_margin="10dp"
-            android:background="@color/nb.divider.narrow"/>
+            android:background="@color/divider.narrow"/>
 
     <!--标签-->
     <me.gujun.android.taggroup.TagGroup
@@ -38,7 +38,7 @@
     <View
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:background="@color/nb.divider.wide"/>
+            android:background="@color/divider.wide"/>
 
     <!--热门评论-->
     <!--<android.support.v7.widget.RecyclerView-->
@@ -50,7 +50,7 @@
     <!--<View-->
             <!--android:layout_width="match_parent"-->
             <!--android:layout_height="10dp"-->
-            <!--android:background="@color/nb.divider.wide"/>-->
+            <!--android:background="@color/divider.wide"/>-->
 
     <!--书籍推荐-->
     <LinearLayout
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:padding="15dp"
                 android:text="@string/nb.book_detail.recommend_books"
-                android:textColor="@color/nb.text.default"
+                android:textColor="@color/textPrimary"
                 android:textSize="15sp"/>
 
         <TextView
@@ -73,7 +73,7 @@
                 android:gravity="right"
                 android:padding="15dp"
                 android:text="更多"
-                android:textColor="@color/nb.text.common_h2"
+                android:textColor="@color/textAssist"
                 android:textSize="15sp"/>
     </LinearLayout>
     <android.support.v7.widget.RecyclerView
@@ -85,7 +85,7 @@
     <View
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:background="@color/nb.divider.wide"/>
+            android:background="@color/divider.wide"/>
 
     <!--书单推荐-->
     <TextView
@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:padding="15dp"
             android:text="@string/nb.book_detail.recommend_book_list"
-            android:textColor="@color/nb.text.default"
+            android:textColor="@color/textPrimary"
             android:textSize="15sp"/>
 
     <android.support.v7.widget.RecyclerView
@@ -107,6 +107,6 @@
     <View
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@color/nb.divider.wide"/>
+            android:background="@color/divider.wide"/>
 
 </LinearLayout>

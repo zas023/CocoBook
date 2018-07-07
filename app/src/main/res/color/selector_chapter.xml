@@ -3,5 +3,5 @@
 
 	<item android:color="@color/light_red" android:state_pressed="true" />
 	<item android:color="@color/light_red" android:state_selected="true" />
-	<item android:color="@color/nb.text.default"/>
+	<item android:color="@color/textPrimary"/>
 </selector>

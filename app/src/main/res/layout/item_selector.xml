@@ -8,5 +8,5 @@
               android:paddingTop="@dimen/nb.padding.large"
               android:paddingBottom="@dimen/nb.padding.large"
               android:gravity="left|center_vertical"
-              android:textColor="@color/nb.text.default">
+              android:textColor="@color/textPrimary">
 </TextView>

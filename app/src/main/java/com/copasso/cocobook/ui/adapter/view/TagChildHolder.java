@@ -27,7 +27,7 @@ public class TagChildHolder extends ViewHolderImpl<String> {
             mTvName.setTextColor(ContextCompat.getColor(getContext(),R.color.light_red));
         }
         else {
-            mTvName.setTextColor(ContextCompat.getColor(getContext(),R.color.nb_text_default));
+            mTvName.setTextColor(ContextCompat.getColor(getContext(),R.color.textPrimary));
         }
     }
 

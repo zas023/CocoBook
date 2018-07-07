@@ -4,25 +4,37 @@
     <color name="colorPrimary">#4caf50</color>
     <color name="colorPrimaryDark">#388e3c</color>
     <color name="colorAccent">#7cb342</color>
-    <color name="colorBackground">#fff5f5f5</color><!--界面底色-->
-    <color name="colorForeground">#ffffff</color><!--界面前景色-->
-    <color name="colorDivider">#ffe0e0e0</color> <!-- 分割线颜色-->
+    <!--界面底色-->
+    <color name="colorBackground">#fff5f5f5</color>
+    <!--界面前景色-->
+    <color name="colorForeground">#ffffff</color>
+    <!-- 分割线颜色-->
+    <color name="colorDivider">#ffe0e0e0</color>
 
-    <!--文字颜色-->
-    <color name="textPrimary">#212121</color><!--用于重要级文字信息，如标题，子模块功能文字等-->
-    <color name="textSecondary">#757575</color><!--用于普通级信息-->
-    <color name="textAssist">#9e9e9e</color><!--用于普通级信息、引导词,如昵正文、弹层文案、查看更多之类-->
-    <color name="textAssistSecondary">#B0B0B0</color><!--用于辅助、次要的文字信息、普通按钮描边,如时间、来自等补充信息文案-->
+    <!--text-->
+
+    <!--用于重要级文字信息，如标题，子模块功能文字等-->
+    <color name="textPrimary">#212121</color>
+    <!--用于普通级信息-->
+    <color name="textSecondary">#757575</color>
+    <!--用于普通级信息、引导词,如昵正文、弹层文案、查看更多之类-->
+    <color name="textAssist">#9e9e9e</color>
+    <!--用于辅助、次要的文字信息、普通按钮描边,如时间、来自等补充信息文案-->
+    <color name="textAssistSecondary">#B0B0B0</color>
     <color name="textPrimaryInverted">#ffffff</color>
     <color name="textSecondaryInverted">#c8ffffff</color>
     <color name="textAssistInverted">#8affffff</color>
+
     <color name="textError">#ffe7492e</color>
+    <color name="textTranslucent">#96ffffff</color>
+
+    <!--theme-->
 
     <!--胖次蓝-->
     <color name="colorPrimaryBlue">#3F51B5</color>
     <color name="colorPrimaryDarkBlue">#3F51B5</color>
     <color name="colorAccentBlue">#3F51B5</color>
-    <color name="nb.theme.background">@color/white</color>
+    <color name="theme.background">@color/white</color>
 
     <!--少女红-->
     <color name="colorPrimaryRed">#FF5050</color>
@@ -72,26 +84,14 @@
     <color name="common_gray">#EEEEEE</color>
     
     <!--list-->
-    <color name="nb.divider.common">#727272</color>
-    <color name="nb.divider.dash">@color/colorDivider</color>
+
+    <!--通用分割线-->
+    <color name="divider.common">#727272</color>
+    <color name="divider.dash">@color/colorDivider</color>
     <!--通用分割线细-->
-    <color name="nb.divider.narrow">@color/colorDivider</color>
+    <color name="divider.narrow">@color/colorDivider</color>
     <!--通用分割线粗-->
-    <color name="nb.divider.wide">@color/colorDivider</color>
-    
-    
-    <!--text-->
-
-    <color name="nb.text.default">@color/textPrimary</color>
-    <!--通用一级标题的颜色-->
-    <color name="nb.text.common_h1">@color/textPrimary</color>
-    <!--通用二级标题的颜色-->
-    <color name="nb.text.common_h2">@color/textAssist</color>
-    <!--通用三级标题的颜色-->
-    <color name="nb.text.common_h3">@color/textAssistSecondary</color>
-
-    <color name="nb.text.user_name">@color/light_coffee</color>
-    <color name="translucent_text">#96ffffff</color>
+    <color name="divider.wide">@color/colorDivider</color>
 
     <!--性别选择颜色值-->
     <color name="gender_select_boy_normal">#B0E2FF</color>
@@ -99,37 +99,36 @@
     <color name="gender_select_girl_normal">#EEA9B8</color>
     <color name="gender_select_girl_pressed">#EEA2AD</color>
 
-    <!---->
-    <color name="nb.popup.text.selected">@color/light_pink</color>
-    <!---->
-    <color name="nb.scroll_refresh.tip">#88303F9F</color>
+    <!--scroll-->
+    <color name="scroll_refresh.tip">#88303F9F</color>
+
     <!--downlaod-->
-    <color name="nb.download.loading">#8bd715</color>
-    <color name="nb.download.pause">#f3aa41</color>
-    <color name="nb.download.wait">#afafad</color>
-    <color name="nb.download.error">#e33a35</color>
-    <color name="nb.download.finish">#8bd715</color>
+    <color name="download.loading">#8bd715</color>
+    <color name="download.pause">#f3aa41</color>
+    <color name="download.wait">#afafad</color>
+    <color name="download.error">#e33a35</color>
+    <color name="download.finish">#8bd715</color>
     
     <!--read-->
-    <color name="nb.read.bg_1">#CEC29C</color>
-    <color name="nb.read.bg_2">#CCEBCC</color>
-    <color name="nb.read.bg_3">#AAAAAA</color>
-    <color name="nb.read.bg_4">#D1CEC5</color>
-    <color name="nb.read.bg_5">#001C27</color>
-    <color name="nb.read.bg_6">#FFC29C</color>
-    
-    
-    <color name="nb.read.font_1">#2C2C2C</color>
-    <color name="nb.read.font_2">#2F332D</color>
-    <color name="nb.read.font_3">#92918C</color>
-    <color name="nb.read.font_4">#383429</color>
-    <color name="nb.read.font_5">#627176</color>
-    <color name="nb.read.font_6">#727176</color>
+    <color name="read.bg_1">#CEC29C</color>
+    <color name="read.bg_2">#CCEBCC</color>
+    <color name="read.bg_3">#AAAAAA</color>
+    <color name="read.bg_4">#D1CEC5</color>
+    <color name="read.bg_5">#001C27</color>
+    <color name="read.bg_6">#FFC29C</color>
 
-    <color name="nb.read.bg.night">#000000</color>
-    <color name="nb.read.font_night">#99ffffff</color>
+    <color name="read.font_1">#2C2C2C</color>
+    <color name="read.font_2">#2F332D</color>
+    <color name="read.font_3">#92918C</color>
+    <color name="read.font_4">#383429</color>
+    <color name="read.font_5">#627176</color>
+    <color name="read.font_6">#727176</color>
+
+    <color name="read.bg_night">#000000</color>
+    <color name="read.font_night">#99ffffff</color>
     
-    <color name="nb.read.menu.bg">#191919</color>
-    <color name="nb.read.menu.text">#CBCBCB</color>
-    <color name="nb.read.bar.translucent">#88000000</color>
+    <color name="read.menu.bg">#191919</color>
+    <color name="read.menu.text">#CBCBCB</color>
+    <color name="read.bar.translucent">#88000000</color>
+
 </resources>
