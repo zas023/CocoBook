@@ -55,27 +55,9 @@
     <string name="fragment.book_list.hot">本周最热</string>
     <string name="fragment.book_list.newest">最新发布</string>
     <string name="fragment.book_list.collect">最多收藏</string>
-
     <string name="fragment.book_list.message">共%1$d本书 |&#160; %2$d人收藏</string>
 
-    <!--评论相关-->
-    <!--<string name="nb.comment.floor">%1$d楼&#160;</string>-->
-    <!--<string name="nb.comment.like_count">❤%1$d次同感</string>-->
-    <!--<string name="nb.comment.best_comment">仰望神评论</string>-->
-    <!--<string name="nb.comment.comment_count">共%1$d条评论</string>-->
-    <!--<string name="nb.comment.reply_floor">(%1$d楼)</string>-->
-    <!--<string name="nb.comment.reply_nickname">回复 %1$s</string>-->
-    <!--<string name="nb.comment.empty_comment">暂无评论</string>-->
-    
-    <!--书评区相关-->
-    <string name="nb.review.book_type">[%1$s]</string>
-    <string name="nb.review.recommend">%1$d 人推荐</string>
-    <string name="nb.review.helpful">有用</string>
-    <string name="nb.review.unhelpful">无用</string>
-    <string name="nb.review.book_score">给书评打分</string>
-    <string name="nb.review.master_score">楼主打分：</string>
-
-    <!--node-->
+    <!--feature 书城-->
     <string name="fragment.node.nsrm">男生热门</string>
     <string name="fragment.node.nsza">女生最爱</string>
     <string name="fragment.node.nswb">男生完本</string>
@@ -85,30 +67,29 @@
     <string name="fragment.node.npxm">男频推荐</string>
     <string name="fragment.node.nvpxm">女频推荐</string>
 
-    <!--find-->
-    <string name="nb.fragment.find.top">排行榜</string>
-    <string name="nb.fragment.find.topic">主题书单</string>
-    <string name="nb.fragment.find.sort">分类</string>
-    <string name="nb.fragment.find.listen">有声小说</string>
+    <!--discover 发现-->
+    <string name="fragment.discover.top">排行榜</string>
+    <string name="fragment.discover.topic">主题书单</string>
+    <string name="fragment.discover.sort">分类</string>
 
-    <!--dialog-->
-    <string name="nb.dialog.text.introduce">我们会根据您的喜好\n推荐相对应的小说</string>
-    <string name="nb.dialog.text.choose_tip">--请选择你的喜好--</string>
-    <string name="nb.dialog.text.boy_story">男生小说</string>
-    <string name="nb.dialog.text.girl_story">女生小说</string>
+    <!--dialog 对话框-->
+    <string name="dialog.text.introduce">我们会根据您的喜好\n推荐相对应的小说</string>
+    <string name="dialog.text.choose_tip">--请选择你的喜好--</string>
+    <string name="dialog.text.boy_story">男生小说</string>
+    <string name="dialog.text.girl_story">女生小说</string>
     
-    <!--menu-->
-    <string name="nb.menu.action.search">搜索</string>
-    <string name="nb.menu.action.login">请登录</string>
-    <string name="nb.menu.action.message">我的消息</string>
-    <string name="nb.menu.action.download">下载列表</string>
-    <string name="nb.menu.action.sync">同步书架</string>
-    <string name="nb.menu.action.scan">扫描本地书籍</string>
-    <string name="nb.menu.action.transfer">WIFI传书</string>
-    <string name="nb.menu.action.feedback">意见反馈</string>
-    <string name="nb.menu.action.about">关于</string>
-    <string name="nb.menu.action.night_mode">夜间模式</string>
-    <string name="nb.menu.action.setting">设置</string>
+    <!--menu 菜单-->
+    <string name="menu.action.search">搜索</string>
+    <string name="menu.action.login">请登录</string>
+    <string name="menu.action.message">我的消息</string>
+    <string name="menu.action.download">下载列表</string>
+    <string name="menu.action.sync">同步书架</string>
+    <string name="menu.action.scan">扫描本地书籍</string>
+    <string name="menu.action.transfer">WIFI传书</string>
+    <string name="menu.action.feedback">意见反馈</string>
+    <string name="menu.action.about">关于</string>
+    <string name="menu.action.night_mode">夜间模式</string>
+    <string name="menu.action.setting">设置</string>
     
     <string name="menu.action.top">置顶</string>
     <string name="menu.action.cache">缓存</string>

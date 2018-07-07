@@ -48,7 +48,7 @@ public class BookSortActivity extends BaseBackMVPActivity<BookSortContract.Prese
     protected void setUpToolbar(Toolbar toolbar) {
         super.setUpToolbar(toolbar);
         getSupportActionBar().setTitle(
-                getResources().getString(R.string.nb_fragment_find_sort));
+                getResources().getString(R.string.fragment_discover_sort));
     }
 
     @Override

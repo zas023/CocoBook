@@ -12,11 +12,11 @@ import com.copasso.cocobook.R;
 
 public enum FindType {
     //排行
-    TOP(R.string.nb_fragment_find_top,R.drawable.ic_section_top),
+    TOP(R.string.fragment_discover_top,R.drawable.ic_section_top),
     //主题书单
-    TOPIC(R.string.nb_fragment_find_topic,R.drawable.ic_section_topic),
+    TOPIC(R.string.fragment_discover_topic,R.drawable.ic_section_topic),
     //分类
-    SORT(R.string.nb_fragment_find_sort,R.drawable.ic_section_sort);
+    SORT(R.string.fragment_discover_sort,R.drawable.ic_section_sort);
 
     private String typeName;
     private int iconId;
