@@ -94,7 +94,7 @@ public class FileHolder extends ViewHolderImpl<File> {
         mLlBrief.setVisibility(View.GONE);
         mTvSubCount.setVisibility(View.VISIBLE);
 
-        mTvSubCount.setText(getContext().getString(R.string.nb_file_sub_count,folder.list().length));
+        mTvSubCount.setText(getContext().getString(R.string.file_sub_count,folder.list().length));
     }
 
     @Override

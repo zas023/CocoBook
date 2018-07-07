@@ -123,7 +123,7 @@ public class FileCategoryFragment extends BaseFileFragment {
 
     private void toggleFileTree(File file){
         //路径名
-        mTvPath.setText(getString(R.string.nb_file_path,file.getPath()));
+        mTvPath.setText(getString(R.string.file_path,file.getPath()));
         //获取数据
         File[] files = file.listFiles(new SimpleFileFilter());
         //转换成List

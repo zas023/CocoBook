@@ -137,7 +137,7 @@ public class LocalBookActivity extends BaseBackTabActivity {
                     //改变是否可以全选
                     changeCheckedAllStatus();
                     //提示加入书架成功
-                    ToastUtils.show(getResources().getString(R.string.nb_file_add_succeed, collBooks.size()));
+                    ToastUtils.show(getResources().getString(R.string.file_add_succeed, collBooks.size()));
 
                 }
         );
@@ -207,7 +207,7 @@ public class LocalBookActivity extends BaseBackTabActivity {
 
         //点击、删除状态的设置
         if (mCurFragment.getCheckedCount() == 0) {
-            mBtnAddBook.setText(getString(R.string.nb_file_add_shelf));
+            mBtnAddBook.setText(getString(R.string.file_add_shelf));
             //设置某些按钮的是否可点击
             setMenuClickable(false);
 
@@ -217,7 +217,7 @@ public class LocalBookActivity extends BaseBackTabActivity {
             }
 
         } else {
-            mBtnAddBook.setText(getString(R.string.nb_file_add_shelves, mCurFragment.getCheckedCount()));
+            mBtnAddBook.setText(getString(R.string.file_add_shelves, mCurFragment.getCheckedCount()));
             setMenuClickable(true);
 
             //全选状态的设置

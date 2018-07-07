@@ -5,7 +5,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <!--string_array-->
+    <!--string_array start-->
 
     <!--首页fragment-->
     <string-array name="fragment_title">
@@ -34,6 +34,8 @@
         <item>@string/menu.action.delete</item>
         <item>@string/menu.action.batch_manage</item>
     </string-array>
+
+    <!--string_array end-->
     
     <!--通用-->
     <string name="common.tip">提示</string>
@@ -160,11 +162,11 @@
     <string name="nb.read.no_chapter">第 %1$d 章(%2$d)</string>
     
     <!--file system-->
-    <string name="nb.file.sub_count">%1$d 项</string>
-    <string name="nb.file.path">存储卡:%1$s</string>
-    <string name="nb.file.add_shelf">加入书架</string>
-    <string name="nb.file.add_shelves">加入书架(%1$d)</string>
-    <string name="nb.file.add_succeed">成功添加%1$d本书</string>
+    <string name="file.sub_count">%1$d 项</string>
+    <string name="file.path">存储卡:%1$s</string>
+    <string name="file.add_shelf">加入书架</string>
+    <string name="file.add_shelves">加入书架(%1$d)</string>
+    <string name="file.add_succeed">成功添加%1$d本书</string>
     
     <!--search-->
     <string name="search.book.brief">%1$d人在追 | %2$s读者留存 | %3$s著</string>
