@@ -153,13 +153,12 @@
     <string name="mode.light">日间</string>
     
     <!--read-->
-    <string name="nb.read.community">社区</string>
-    <string name="nb.read.song">朗诵</string>
-    <string name="nb.read.brief">简介</string>
-    <string name="nb.read.setting">设置</string>
-    <string name="nb.read.download">缓存</string>'
-    <string name="nb.read.category">目录</string>
-    <string name="nb.read.no_chapter">第 %1$d 章(%2$d)</string>
+    <string name="read.song">朗诵</string>
+    <string name="read.brief">简介</string>
+    <string name="read.setting">设置</string>
+    <string name="read.download">缓存</string>'
+    <string name="read.category">目录</string>
+    <string name="read.no_chapter">第 %1$d 章(%2$d)</string>
     
     <!--file system-->
     <string name="file.sub_count">%1$d 项</string>

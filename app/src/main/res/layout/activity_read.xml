@@ -36,13 +36,13 @@
 				    <TextView
 					    android:id="@+id/read_tv_brief"
 					    android:layout_alignParentRight="true"
-					    android:text="@string/nb.read.brief"
+					    android:text="@string/read.brief"
 					    style="@style/NB.Theme.TextAppearance.Read.TopMenu"/>
 				
 				    <TextView
 					    android:id="@+id/read_tv_community"
 					    android:layout_toLeftOf="@id/read_tv_brief"
-					    android:text="@string/nb.read.song"
+					    android:text="@string/read.song"
 					    style="@style/NB.Theme.TextAppearance.Read.TopMenu"/>
 			    </RelativeLayout>
 		    </android.support.v7.widget.Toolbar>
@@ -132,7 +132,7 @@
                     style="@style/NB.Theme.TextAppearance.Read.BottomMenu.Button"
                     android:id="@+id/read_tv_category"
                     android:drawableTop="@drawable/ic_read_menu_category"
-                    android:text="@string/nb.read.category" />
+                    android:text="@string/read.category" />
                 
                 <TextView
                     style="@style/NB.Theme.TextAppearance.Read.BottomMenu.Button"
@@ -144,13 +144,13 @@
                     style="@style/NB.Theme.TextAppearance.Read.BottomMenu.Button"
                     android:id="@+id/read_tv_download"
                     android:drawableTop="@drawable/ic_read_menu_download"
-                    android:text="@string/nb.read.download" />
+                    android:text="@string/read.download" />
 
                 <TextView
                     style="@style/NB.Theme.TextAppearance.Read.BottomMenu.Button"
                     android:id="@+id/read_tv_setting"
                     android:drawableTop="@drawable/ic_read_menu_font"
-                    android:text="@string/nb.read.setting" />
+                    android:text="@string/read.setting" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
