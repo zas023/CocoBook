@@ -13,7 +13,7 @@
         <item>@string/fragment.title.store</item>
         <item>@string/fragment.title.find</item>
     </string-array>
-    
+
     <!--榜单分类-->
     <string-array name="fragment_bill_book">
         <item>周榜</item>
@@ -55,17 +55,17 @@
     <string name="fragment.book_list.hot">本周最热</string>
     <string name="fragment.book_list.newest">最新发布</string>
     <string name="fragment.book_list.collect">最多收藏</string>
-    
+
     <string name="fragment.book_list.message">共%1$d本书 |&#160; %2$d人收藏</string>
-    
+
     <!--评论相关-->
-    <string name="nb.comment.floor">%1$d楼&#160;</string>
-    <string name="nb.comment.like_count">❤%1$d次同感</string>
-    <string name="nb.comment.best_comment">仰望神评论</string>
-    <string name="nb.comment.comment_count">共%1$d条评论</string>
-    <string name="nb.comment.reply_floor">(%1$d楼)</string>
-    <string name="nb.comment.reply_nickname">回复 %1$s</string>
-    <string name="nb.comment.empty_comment">暂无评论</string>
+    <!--<string name="nb.comment.floor">%1$d楼&#160;</string>-->
+    <!--<string name="nb.comment.like_count">❤%1$d次同感</string>-->
+    <!--<string name="nb.comment.best_comment">仰望神评论</string>-->
+    <!--<string name="nb.comment.comment_count">共%1$d条评论</string>-->
+    <!--<string name="nb.comment.reply_floor">(%1$d楼)</string>-->
+    <!--<string name="nb.comment.reply_nickname">回复 %1$s</string>-->
+    <!--<string name="nb.comment.empty_comment">暂无评论</string>-->
     
     <!--书评区相关-->
     <string name="nb.review.book_type">[%1$s]</string>
