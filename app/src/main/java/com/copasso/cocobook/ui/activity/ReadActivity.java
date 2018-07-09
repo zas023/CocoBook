@@ -36,7 +36,7 @@ import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.bean.BookChapterBean;
 import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.local.BookRepository;
-import com.copasso.cocobook.utils.ReadSettingManager;
+import com.copasso.cocobook.manager.ReadSettingManager;
 import com.copasso.cocobook.presenter.ReadPresenter;
 import com.copasso.cocobook.presenter.contract.ReadContract;
 import com.copasso.cocobook.ui.adapter.CategoryAdapter;

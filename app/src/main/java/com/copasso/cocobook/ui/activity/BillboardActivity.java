@@ -21,7 +21,6 @@ import butterknife.BindView;
 /**
  * Created by zhouas666 on 18-1-23.
  * 排行榜activity
- * 数据的初始化，Expand的配置
  */
 
 public class BillboardActivity extends BaseBackMVPActivity<BillboardContract.Presenter>
@@ -33,11 +32,11 @@ public class BillboardActivity extends BaseBackMVPActivity<BillboardContract.Pre
     ExpandableListView mElvBoy;
     @BindView(R.id.billboard_elv_girl)
     ExpandableListView mElvGirl;
-    /**视图**/
+    /*****************************视图********************************/
     private BillboardAdapter mBoyAdapter;
     private BillboardAdapter mGirlAdapter;
 
-    /**初始化**/
+    /*****************************初始化********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_bilboard;
@@ -79,7 +78,7 @@ public class BillboardActivity extends BaseBackMVPActivity<BillboardContract.Pre
         return new BillboardPresenter();
     }
 
-    /**逻辑区**/
+    /*****************************业务逻辑********************************/
     @Override
     protected void processLogic() {
         super.processLogic();

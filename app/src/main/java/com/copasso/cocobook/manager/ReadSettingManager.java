@@ -1,5 +1,7 @@
-package com.copasso.cocobook.utils;
+package com.copasso.cocobook.manager;
 
+import com.copasso.cocobook.utils.SharedPreUtils;
+import com.copasso.cocobook.utils.UiUtils;
 import com.copasso.cocobook.widget.page.PageView;
 
 /**

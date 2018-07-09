@@ -1,11 +1,11 @@
 package com.copasso.cocobook.presenter;
 
-import com.copasso.cocobook.utils.RxBusManager;
+import com.copasso.cocobook.manager.RxBusManager;
 import com.copasso.cocobook.model.bean.BookChapterBean;
 import com.copasso.cocobook.model.bean.ChapterInfoBean;
 import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.bean.DownloadTaskBean;
-import com.copasso.cocobook.utils.BookManager;
+import com.copasso.cocobook.manager.BookManager;
 import com.copasso.cocobook.model.local.BookRepository;
 import com.copasso.cocobook.model.server.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.ReadContract;

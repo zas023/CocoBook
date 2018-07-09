@@ -13,7 +13,7 @@ import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import butterknife.BindView;
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.utils.RxBusManager;
+import com.copasso.cocobook.manager.RxBusManager;
 import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.event.DeleteResponseEvent;
 import com.copasso.cocobook.model.event.DeleteTaskEvent;

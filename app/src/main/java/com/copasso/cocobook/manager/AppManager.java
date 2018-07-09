@@ -1,4 +1,4 @@
-package com.copasso.cocobook;
+package com.copasso.cocobook.manager;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -6,6 +6,7 @@ import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import com.copasso.cocobook.BuildConfig;
 
 import java.util.Iterator;
 import java.util.Stack;

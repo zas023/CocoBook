@@ -5,6 +5,8 @@ import android.content.Intent;
 
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
+import cn.bmob.v3.Bmob;
+import com.copasso.cocobook.manager.AppManager;
 import com.copasso.cocobook.service.DownloadService;
 
 /**
@@ -19,6 +21,8 @@ public class App extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
+        //默认初始化Bmob
+        Bmob.initialize(this, "3f3b7628bf00914940a6919da16b33bf");
         //初始化AppManager
         AppManager.init(this);
 

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 滑动刷新view
  */
 
 public class ScrollRefreshRecyclerView extends ScrollRefreshLayout {
@@ -19,7 +20,7 @@ public class ScrollRefreshRecyclerView extends ScrollRefreshLayout {
 
     private static boolean showLog = true;
 
-    /**************************public method*******************************************/
+    /**************************公共方法******************************************/
 
     public void setLayoutManager(RecyclerView.LayoutManager manager){
         mRecyclerView.setLayoutManager(manager);

@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.utils.RxBusManager;
+import com.copasso.cocobook.manager.RxBusManager;
 import com.copasso.cocobook.model.event.RecommendBookEvent;
 import com.copasso.cocobook.utils.Constant;
 import com.copasso.cocobook.utils.SharedPreUtils;

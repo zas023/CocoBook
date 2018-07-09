@@ -10,7 +10,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.CheckBox;
 
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.utils.RxBusManager;
+import com.copasso.cocobook.manager.RxBusManager;
 import com.copasso.cocobook.model.event.BookSubSortEvent;
 import com.copasso.cocobook.model.bean.BookTagBean;
 import com.copasso.cocobook.model.type.BookListType;
@@ -27,8 +27,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**

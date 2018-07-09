@@ -1,11 +1,10 @@
 package com.copasso.cocobook.model.local;
 
-import android.app.PendingIntent;
 import android.util.Log;
 
 import com.copasso.cocobook.model.bean.*;
 import com.copasso.cocobook.model.gen.*;
-import com.copasso.cocobook.utils.BookManager;
+import com.copasso.cocobook.manager.BookManager;
 import com.copasso.cocobook.utils.Constant;
 import com.copasso.cocobook.utils.FileUtils;
 import com.copasso.cocobook.utils.IOUtils;
@@ -19,13 +18,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
-import java.lang.Void;
-import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Single;
 import io.reactivex.SingleEmitter;
 import io.reactivex.SingleOnSubscribe;

@@ -1,9 +1,10 @@
-package com.copasso.cocobook.utils;
+package com.copasso.cocobook.manager;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import com.copasso.cocobook.R;
+import com.copasso.cocobook.utils.SharedPreUtils;
 
 /**
  * Created by zhouas666 on 18-1-23.

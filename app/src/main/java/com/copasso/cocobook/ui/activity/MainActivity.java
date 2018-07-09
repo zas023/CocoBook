@@ -16,12 +16,14 @@ import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
 import android.view.*;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import butterknife.BindView;
 import cn.bmob.v3.BmobUser;
 import com.bumptech.glide.Glide;
 import com.copasso.cocobook.R;
+import com.copasso.cocobook.manager.ReadSettingManager;
 import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.bean.bmob.CocoUser;
 import com.copasso.cocobook.model.local.BookRepository;
@@ -62,6 +64,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     private View drawerHeader;
     private CircleImageView drawerIv;
     private TextView drawerTvAccount, drawerTvMail;
+    private Switch swNightMode;
 
     private BookShelfFragment bookShelfFragment;
 
@@ -120,6 +123,16 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
         showSexChooseDialog();
 
         refreshDrawerHeader();
+
+        swNightMode = (Switch) navigationView.getMenu().findItem(R.id.action_night_mode).
+                getActionView().findViewById(R.id.view_switch);
+        swNightMode.setChecked(isNightMode);
+        swNightMode.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (compoundButton.isPressed()) {
+                isNightMode=b;
+                switchNightMode();
+            }
+        });
 
         //监听菜单栏头部
         drawerHeader.setOnClickListener(view -> {
@@ -251,9 +264,6 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Class<?> activityClasss = null;
         switch (item.getItemId()) {
-            case R.id.action_search:
-                activityClasss = SearchActivity.class;
-                break;
             case R.id.action_my_message:
                 SnackbarUtils.show(mContext,"暂无消息");
                 break;
@@ -282,7 +292,6 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
             case R.id.action_scan_local_book:
 
                 if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
-
                     if (mPermissionsChecker == null) {
                         mPermissionsChecker = new PermissionsChecker(this);
                     }
@@ -300,16 +309,9 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
             case R.id.action_about:
                 activityClasss=AboutActivity.class;
                 break;
-            case R.id.action_night_mode:
-                //切换夜间模式
-                if(nightMode)
-                    getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                else
-                    getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                ReadSettingManager.getInstance().setNightMode(!nightMode);
-                //重新启动当前activity
-                recreate();
-                break;
+//            case R.id.action_night_mode:
+//                switchNightMode();
+//                break;
             case R.id.action_settings:
                 activityClasss=MoreSettingActivity.class;
                 break;
@@ -321,6 +323,19 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
             startActivity(new Intent(mContext, activityClasss));
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * 切换夜间模式
+     */
+    private void switchNightMode(){
+        if(isNightMode)
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        else
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        ReadSettingManager.getInstance().setNightMode(isNightMode);
+        //重新启动当前activity
+        recreate();
     }
 
 

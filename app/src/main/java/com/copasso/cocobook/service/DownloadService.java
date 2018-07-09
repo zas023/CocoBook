@@ -8,13 +8,13 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.utils.RxBusManager;
+import com.copasso.cocobook.manager.RxBusManager;
 import com.copasso.cocobook.model.event.DeleteResponseEvent;
 import com.copasso.cocobook.model.event.DeleteTaskEvent;
 import com.copasso.cocobook.model.event.DownloadMessage;
 import com.copasso.cocobook.model.bean.BookChapterBean;
 import com.copasso.cocobook.model.bean.DownloadTaskBean;
-import com.copasso.cocobook.utils.BookManager;
+import com.copasso.cocobook.manager.BookManager;
 import com.copasso.cocobook.model.local.BookRepository;
 import com.copasso.cocobook.model.local.LocalRepository;
 import com.copasso.cocobook.model.server.RemoteRepository;

@@ -11,7 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.utils.ReadSettingManager;
+import com.copasso.cocobook.manager.ReadSettingManager;
 import com.copasso.cocobook.utils.StatusBarCompat;
 
 import butterknife.ButterKnife;
@@ -29,7 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected CompositeDisposable mDisposable;
 
-    protected boolean nightMode=ReadSettingManager.getInstance().isNightMode();
+    protected boolean isNightMode=ReadSettingManager.getInstance().isNightMode();
 
     //ButterKnife
     private Toolbar mToolbar;
@@ -60,7 +60,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 初始化主题
      */
     public void initTheme() {
-        if (nightMode) {
+        if (isNightMode) {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);

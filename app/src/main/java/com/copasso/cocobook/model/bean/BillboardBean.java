@@ -22,6 +22,7 @@ public class BillboardBean {
     private boolean collapse;
     private String monthRank;
     private String totalRank;
+    private String shortTitle;
 
     public BillboardBean(String title){
         this.title = title;
@@ -73,5 +74,13 @@ public class BillboardBean {
 
     public void setTotalRank(String totalRank) {
         this.totalRank = totalRank;
+    }
+
+    public String getShortTitle() {
+        return shortTitle;
+    }
+
+    public void setShortTitle(String shortTitle) {
+        this.shortTitle = shortTitle;
     }
 }

@@ -5,8 +5,7 @@ import android.support.v4.content.ContextCompat;
 import android.widget.TextView;
 
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.model.bean.BookChapterBean;
-import com.copasso.cocobook.utils.BookManager;
+import com.copasso.cocobook.manager.BookManager;
 import com.copasso.cocobook.base.adapter.ViewHolderImpl;
 import com.copasso.cocobook.widget.page.TxtChapter;
 

@@ -1,4 +1,4 @@
-package com.copasso.cocobook.utils;
+package com.copasso.cocobook.manager;
 
 import io.reactivex.Observable;
 import io.reactivex.subjects.PublishSubject;

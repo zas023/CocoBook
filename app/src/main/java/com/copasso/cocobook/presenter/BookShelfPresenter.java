@@ -1,6 +1,6 @@
 package com.copasso.cocobook.presenter;
 
-import com.copasso.cocobook.utils.RxBusManager;
+import com.copasso.cocobook.manager.RxBusManager;
 import com.copasso.cocobook.model.bean.BookChapterBean;
 import com.copasso.cocobook.model.bean.BookDetailBean;
 import com.copasso.cocobook.model.bean.CollBookBean;
@@ -22,7 +22,6 @@ import java.util.List;
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Function;
 
 /**
  * Created by zhouas666 on 18-2-8.
@@ -55,7 +54,7 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
     public void loadRecommendBooks(String gender) {
         Disposable disposable = RemoteRepository.getInstance()
                 .getRecommendBooks(gender)
-                .doOnSuccess((collBooks)->{
+                .doOnSuccess((collBooks) -> {
                     //更新目录
                     updateCategory(collBooks);
                     //异步存储到数据库中
@@ -78,52 +77,44 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
         addDisposable(disposable);
     }
 
-
-    //需要修改
     @Override
     public void updateCollBooks(List<CollBookBean> collBookBeans) {
         if (collBookBeans == null || collBookBeans.isEmpty()) return;
+
         List<CollBookBean> collBooks = new ArrayList<>(collBookBeans);
         List<Single<BookDetailBean>> observables = new ArrayList<>(collBooks.size());
         Iterator<CollBookBean> it = collBooks.iterator();
-        while (it.hasNext()){
+        while (it.hasNext()) {
             CollBookBean collBook = it.next();
             //删除本地文件
             if (collBook.isLocal()) {
                 it.remove();
-            }
-            else {
+            } else {
                 observables.add(RemoteRepository.getInstance()
                         .getBookDetail(collBook.get_id()));
             }
         }
         //zip可能不是一个好方法。
-        Single.zip(observables, new Function<Object[], List<CollBookBean>>() {
-            @Override
-            public List<CollBookBean> apply(Object[] objects) throws Exception {
-                List<CollBookBean> newCollBooks = new ArrayList<CollBookBean>(objects.length);
-                for (int i=0; i<collBooks.size(); ++i){
-                    CollBookBean oldCollBook = collBooks.get(i);
-                    CollBookBean newCollBook = ((BookDetailBean)objects[i]).getCollBookBean();
-                    //如果是oldBook是update状态，或者newCollBook与oldBook章节数不同
-                    if (oldCollBook.isUpdate() ||
-                            !oldCollBook.getLastChapter().equals(newCollBook.getLastChapter())){
-                        newCollBook.setUpdate(true);
-                    }
-                    else {
-                        newCollBook.setUpdate(false);
-                    }
-                    newCollBook.setLastRead(oldCollBook.getLastRead());
-                    newCollBooks.add(newCollBook);
-                    //存储到数据库中
-                    BookRepository.getInstance()
-                            .saveCollBooks(newCollBooks);
+        Single.zip(observables, objects -> {
+            List<CollBookBean> newCollBooks = new ArrayList<CollBookBean>(objects.length);
+            for (int i = 0; i < collBooks.size(); ++i) {
+                CollBookBean oldCollBook = collBooks.get(i);
+                CollBookBean newCollBook = ((BookDetailBean) objects[i]).getCollBookBean();
+                //如果是oldBook是update状态，或者newCollBook与oldBook章节数不同
+                if (oldCollBook.isUpdate() ||
+                        !oldCollBook.getLastChapter().equals(newCollBook.getLastChapter())) {
+                    newCollBook.setUpdate(true);
+                } else {
+                    newCollBook.setUpdate(false);
                 }
-                return newCollBooks;
+                newCollBook.setLastRead(oldCollBook.getLastRead());
+                newCollBooks.add(newCollBook);
+                //存储到数据库中
+                BookRepository.getInstance()
+                        .saveCollBooks(newCollBooks);
             }
-        })
-                .compose(RxUtils::toSimpleSingle)
-                .subscribe(new SingleObserver<List<CollBookBean>>() {
+            return newCollBooks;
+        }).compose(RxUtils::toSimpleSingle).subscribe(new SingleObserver<List<CollBookBean>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         addDisposable(d);
@@ -147,9 +138,9 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
     }
 
     //更新每个CollBook的目录
-    private void updateCategory(List<CollBookBean> collBookBeans){
+    private void updateCategory(List<CollBookBean> collBookBeans) {
         List<Single<List<BookChapterBean>>> observables = new ArrayList<>(collBookBeans.size());
-        for (CollBookBean bean : collBookBeans){
+        for (CollBookBean bean : collBookBeans) {
             observables.add(
                     RemoteRepository.getInstance().getBookChapters(bean.get_id())
             );
@@ -160,7 +151,7 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
                 .subscribe(
                         chapterList -> {
 
-                            for (BookChapterBean bean : chapterList){
+                            for (BookChapterBean bean : chapterList) {
                                 bean.setId(MD5Utils.strToMd5By16(bean.getLink()));
                             }
 

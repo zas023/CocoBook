@@ -13,7 +13,7 @@ import android.support.v7.widget.Toolbar;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.utils.ReadSettingManager;
+import com.copasso.cocobook.manager.ReadSettingManager;
 import com.copasso.cocobook.utils.StatusBarCompat;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;

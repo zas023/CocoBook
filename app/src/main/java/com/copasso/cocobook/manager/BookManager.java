@@ -1,4 +1,7 @@
-package com.copasso.cocobook.utils;
+package com.copasso.cocobook.manager;
+
+import com.copasso.cocobook.utils.Constant;
+import com.copasso.cocobook.utils.FileUtils;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
