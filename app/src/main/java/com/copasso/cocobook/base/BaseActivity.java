@@ -18,11 +18,13 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
 /**
  * Created by PC on 2016/9/8.
+ * 继承自SwipeBackActivity,默认开启左滑手势
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends SwipeBackActivity {
     protected static String TAG;
 
     protected Activity mContext;
@@ -32,15 +34,17 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected boolean isNightMode=ReadSettingManager.getInstance().isNightMode();
 
     //ButterKnife
-    private Toolbar mToolbar;
+    protected Unbinder unbinder;
 
-    private Unbinder unbinder;
+    protected Toolbar mToolbar;
+
     /****************************abstract area*************************************/
 
     @LayoutRes
     protected abstract int getLayoutId();
 
-    /************************init area************************************/
+
+    /************************初始化************************************/
     protected void addDisposable(Disposable d){
         if (mDisposable == null){
             mDisposable = new CompositeDisposable();
@@ -54,24 +58,16 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void setUpToolbar(Toolbar toolbar){
     }
 
+    /**
+     * 初始化数据
+     * @param savedInstanceState
+     */
     protected void initData(Bundle savedInstanceState){
     }
-    /**
-     * 初始化主题
-     */
-    public void initTheme() {
-        if (isNightMode) {
-            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        } else {
-            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        }
-    }
-
     /**
      * 初始化零件
      */
     protected void initWidget() {
-
     }
     /**
      * 初始化点击事件
@@ -84,7 +80,26 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void processLogic(){
     }
 
+    /**
+     * 是否开启左滑手势
+     * @return
+     */
+    protected boolean initSwipeBackEnable(){
+        return true;
+    }
+
     /*************************lifecycle area*****************************************************/
+
+    /**
+     * 初始化主题
+     */
+    public void initTheme() {
+        if (isNightMode) {
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -96,11 +111,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         // 设置 TAG
         TAG = this.getClass().getSimpleName();
         unbinder = ButterKnife.bind(this);
+        //左滑手势
+        setSwipeBackEnable(initSwipeBackEnable());
+        //init
         initToolbar();
         initWidget();
         initClick();
         processLogic();
-
     }
 
     private void initToolbar(){

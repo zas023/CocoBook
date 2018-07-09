@@ -1,16 +1,11 @@
 package com.copasso.cocobook.ui.activity;
 
-import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -27,8 +22,8 @@ import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadFileListener;
 import com.bumptech.glide.Glide;
 import com.copasso.cocobook.R;
+import com.copasso.cocobook.base.BaseActivity;
 import com.copasso.cocobook.model.bean.bmob.CocoUser;
-import com.copasso.cocobook.base.BaseBackActivity;
 import com.copasso.cocobook.utils.*;
 import com.copasso.cocobook.widget.CircleImageView;
 import com.copasso.cocobook.widget.CommonItemLayout;
@@ -42,7 +37,7 @@ import java.io.IOException;
  * Created by zhouas666 on 2017/12/8.
  * 用户信息管理activity
  */
-public class UserInfoActivity extends BaseBackActivity {
+public class UserInfoActivity extends BaseActivity {
     /*****************************常量********************************/
     protected static final int CHOOSE_PICTURE = 0;
     private static final int CROP_SMALL_PICTURE = 2;

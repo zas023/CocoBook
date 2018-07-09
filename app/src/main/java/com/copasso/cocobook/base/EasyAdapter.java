@@ -3,6 +3,7 @@ package com.copasso.cocobook.base;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.BaseAdapter;
 import com.copasso.cocobook.base.adapter.IViewHolder;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import java.util.List;
  * ListView 使用的Adapter
  */
 
-public abstract class EasyAdapter<T> extends android.widget.BaseAdapter {
+public abstract class EasyAdapter<T> extends BaseAdapter {
 
     private List<T> mList = new ArrayList<T>();
 

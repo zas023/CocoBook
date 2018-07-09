@@ -11,9 +11,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 
 import com.copasso.cocobook.R;
+import com.copasso.cocobook.base.BaseTabActivity;
 import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.local.BookRepository;
-import com.copasso.cocobook.base.BaseBackTabActivity;
 import com.copasso.cocobook.ui.fragment.BaseFileFragment;
 import com.copasso.cocobook.ui.fragment.FileCategoryFragment;
 import com.copasso.cocobook.ui.fragment.LocalBookFragment;
@@ -34,7 +34,7 @@ import butterknife.BindView;
  * 扫描本地书籍activity
  */
 
-public class LocalBookActivity extends BaseBackTabActivity {
+public class LocalBookActivity extends BaseTabActivity {
 
     @BindView(R.id.multi_select_cb_all)
     CheckBox mCbSelectAll;

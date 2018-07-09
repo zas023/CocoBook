@@ -22,7 +22,6 @@ import com.copasso.cocobook.presenter.SearchPresenter;
 import com.copasso.cocobook.presenter.contract.SearchContract;
 import com.copasso.cocobook.ui.adapter.KeyWordAdapter;
 import com.copasso.cocobook.ui.adapter.SearchBookAdapter;
-import com.copasso.cocobook.base.BaseBackMVPActivity;
 import com.copasso.cocobook.base.BaseMVPActivity;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
@@ -37,7 +36,7 @@ import java.util.List;
  * 搜索activity
  */
 
-public class SearchActivity extends BaseBackMVPActivity<SearchContract.Presenter>
+public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
         implements SearchContract.View {
     private static final int TAG_LIMIT = 8;
 
@@ -55,8 +54,6 @@ public class SearchActivity extends BaseBackMVPActivity<SearchContract.Presenter
     TagGroup mTgHot;
     @BindView(R.id.search_tg_record)
     TagGroup mTgRecord;
-    /*    @BindView(R.id.search_rv_history)
-        RecyclerView mRvHistory;*/
     @BindView(R.id.refresh_layout)
     RefreshLayout mRlRefresh;
     @BindView(R.id.refresh_rv_content)

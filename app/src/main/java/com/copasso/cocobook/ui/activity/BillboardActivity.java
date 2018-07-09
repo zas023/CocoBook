@@ -5,12 +5,12 @@ import android.view.View;
 import android.widget.ExpandableListView;
 
 import com.copasso.cocobook.R;
+import com.copasso.cocobook.base.BaseMVPActivity;
 import com.copasso.cocobook.model.bean.BillboardBean;
 import com.copasso.cocobook.model.bean.packages.BillboardPackage;
 import com.copasso.cocobook.presenter.BillboardPresenter;
 import com.copasso.cocobook.presenter.contract.BillboardContract;
 import com.copasso.cocobook.ui.adapter.BillboardAdapter;
-import com.copasso.cocobook.base.BaseBackMVPActivity;
 import com.copasso.cocobook.widget.RefreshLayout;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ import butterknife.BindView;
  * 排行榜activity
  */
 
-public class BillboardActivity extends BaseBackMVPActivity<BillboardContract.Presenter>
+public class BillboardActivity extends BaseMVPActivity<BillboardContract.Presenter>
         implements BillboardContract.View, ExpandableListView.OnGroupClickListener, ExpandableListView.OnChildClickListener {
 
     @BindView(R.id.billboard_rl_refresh)

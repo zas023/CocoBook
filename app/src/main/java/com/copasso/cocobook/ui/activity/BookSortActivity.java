@@ -5,13 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import com.copasso.cocobook.R;
+import com.copasso.cocobook.base.BaseMVPActivity;
 import com.copasso.cocobook.model.bean.packages.BookSortPackage;
 import com.copasso.cocobook.model.bean.BookSubSortBean;
 import com.copasso.cocobook.model.bean.packages.BookSubSortPackage;
 import com.copasso.cocobook.presenter.BookSortPresenter;
 import com.copasso.cocobook.presenter.contract.BookSortContract;
 import com.copasso.cocobook.ui.adapter.BookSortAdapter;
-import com.copasso.cocobook.base.BaseBackMVPActivity;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.itemdecoration.DividerGridItemDecoration;
 
@@ -23,7 +23,7 @@ import butterknife.BindView;
  *
  */
 
-public class BookSortActivity extends BaseBackMVPActivity<BookSortContract.Presenter> implements BookSortContract.View{
+public class BookSortActivity extends BaseMVPActivity<BookSortContract.Presenter> implements BookSortContract.View{
     /*******************Constant*********************/
     private static final int SPAN_COUNT = 3;
 

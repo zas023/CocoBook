@@ -1,6 +1,5 @@
 package com.copasso.cocobook.ui.activity;
 
-import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,8 +12,8 @@ import butterknife.OnClick;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 import com.copasso.cocobook.R;
+import com.copasso.cocobook.base.BaseActivity;
 import com.copasso.cocobook.model.bean.bmob.CocoUser;
-import com.copasso.cocobook.base.BaseBackActivity;
 import com.copasso.cocobook.utils.ProgressUtils;
 import com.copasso.cocobook.utils.SnackbarUtils;
 import com.copasso.cocobook.utils.StringUtils;
@@ -24,7 +23,7 @@ import com.copasso.cocobook.widget.OwlView;
  * Created by zhouas666 on 2018-2-3.
  * 注册activity
  */
-public class UserRegisterActivity extends BaseBackActivity {
+public class UserRegisterActivity extends BaseActivity {
     
     @BindView(R.id.register_owl_view)
     OwlView registerOwlView;

@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.CheckBox;
 
 import com.copasso.cocobook.R;
+import com.copasso.cocobook.base.BaseTabActivity;
 import com.copasso.cocobook.manager.RxBusManager;
 import com.copasso.cocobook.model.event.BookSubSortEvent;
 import com.copasso.cocobook.model.bean.BookTagBean;
@@ -17,7 +18,6 @@ import com.copasso.cocobook.model.type.BookListType;
 import com.copasso.cocobook.model.server.RemoteRepository;
 import com.copasso.cocobook.ui.adapter.HorizonTagAdapter;
 import com.copasso.cocobook.ui.adapter.TagGroupAdapter;
-import com.copasso.cocobook.base.BaseBackTabActivity;
 import com.copasso.cocobook.ui.fragment.BookListFragment;
 import com.copasso.cocobook.utils.LogUtils;
 
@@ -34,7 +34,7 @@ import io.reactivex.schedulers.Schedulers;
  * 主题书单activity
  */
 
-public class BookListActivity extends BaseBackTabActivity {
+public class BookListActivity extends BaseTabActivity {
 
     private static final int RANDOM_COUNT = 5;
     @BindView(R.id.book_list_rv_tag_horizon)

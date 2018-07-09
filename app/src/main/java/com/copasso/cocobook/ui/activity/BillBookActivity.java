@@ -7,8 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.base.BaseActivity;
-import com.copasso.cocobook.base.BaseBackTabActivity;
 import com.copasso.cocobook.base.BaseTabActivity;
 import com.copasso.cocobook.ui.fragment.BillBookFragment;
 
@@ -21,7 +19,7 @@ import java.util.List;
  * 排行榜中书籍activity
  */
 
-public class BillBookActivity extends BaseBackTabActivity {
+public class BillBookActivity extends BaseTabActivity {
     /**常量**/
     private static final String EXTRA_WEEK_ID = "extra_week_id";
     private static final String EXTRA_MONTH_ID = "extra_month_id";
@@ -40,7 +38,7 @@ public class BillBookActivity extends BaseBackTabActivity {
         intent.putExtra(EXTRA_TITLE,title);
         context.startActivity(intent);
     }
-    /**初始化**/
+    /*******************************初始化***********************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_base_tab;

@@ -10,10 +10,10 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import com.copasso.cocobook.R;
+import com.copasso.cocobook.base.BaseActivity;
 import com.copasso.cocobook.model.bean.DownloadTaskBean;
 import com.copasso.cocobook.service.DownloadService;
 import com.copasso.cocobook.ui.adapter.DownLoadAdapter;
-import com.copasso.cocobook.base.BaseBackActivity;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
 
@@ -24,7 +24,7 @@ import butterknife.BindView;
  * 下载列表activity
  */
 
-public class DownloadActivity extends BaseBackActivity implements DownloadService.OnDownloadListener{
+public class DownloadActivity extends BaseActivity implements DownloadService.OnDownloadListener{
 
     @BindView(R.id.refresh_layout)
     RefreshLayout mRefreshLayout;

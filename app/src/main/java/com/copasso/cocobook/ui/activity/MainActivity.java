@@ -82,6 +82,11 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     }
 
     @Override
+    protected boolean initSwipeBackEnable() {
+        return false;
+    }
+
+    @Override
     protected void setUpToolbar(Toolbar toolbar) {
         super.setUpToolbar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);

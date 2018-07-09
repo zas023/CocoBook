@@ -192,6 +192,11 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     }
 
     @Override
+    protected boolean initSwipeBackEnable() {
+        return false;
+    }
+
+    @Override
     protected ReadContract.Presenter bindPresenter() {
         return new ReadPresenter();
     }

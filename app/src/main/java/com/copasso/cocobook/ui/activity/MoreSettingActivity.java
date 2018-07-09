@@ -6,17 +6,17 @@ import android.support.v7.widget.Toolbar;
 import android.widget.RelativeLayout;
 
 import com.copasso.cocobook.R;
+import com.copasso.cocobook.base.BaseActivity;
 import com.copasso.cocobook.manager.ReadSettingManager;
 
 import butterknife.BindView;
-import com.copasso.cocobook.base.BaseBackActivity;
 
 /**
  * Created by zhouas666 on 17-6-6.
  * 更多设置activity
  */
 
-public class MoreSettingActivity extends BaseBackActivity {
+public class MoreSettingActivity extends BaseActivity {
     @BindView(R.id.more_setting_rl_volume)
     RelativeLayout mRlVolume;
     @BindView(R.id.more_setting_sc_volume)
@@ -28,6 +28,7 @@ public class MoreSettingActivity extends BaseBackActivity {
     private ReadSettingManager mSettingManager;
     private boolean isVolumeTurnPage;
     private boolean isFullScreen;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_more_setting;

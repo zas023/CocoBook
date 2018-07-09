@@ -9,11 +9,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import butterknife.BindView;
 import com.copasso.cocobook.R;
+import com.copasso.cocobook.base.BaseMVPActivity;
 import com.copasso.cocobook.model.bean.FeatureDetailBean;
 import com.copasso.cocobook.presenter.FeatureDetailPresenter;
 import com.copasso.cocobook.presenter.contract.FeatureDetailContract;
 import com.copasso.cocobook.ui.adapter.FeatureDetailAdapter;
-import com.copasso.cocobook.base.BaseBackMVPActivity;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
 
@@ -24,7 +24,7 @@ import java.util.List;
  * 书城栏目activity
  */
 
-public class FeatureBookActivity extends BaseBackMVPActivity<FeatureDetailContract.Presenter>
+public class FeatureBookActivity extends BaseMVPActivity<FeatureDetailContract.Presenter>
         implements FeatureDetailContract.View{
     private static final String EXTRA_FEATURE_ID = "extra_feature_id";
     private static final String EXTRA_FEATURE_NAME = "extra_feature_name";

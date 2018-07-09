@@ -15,13 +15,13 @@ import android.widget.TextView;
 import butterknife.OnClick;
 import com.bumptech.glide.Glide;
 import com.copasso.cocobook.R;
+import com.copasso.cocobook.base.BaseMVPActivity;
 import com.copasso.cocobook.model.bean.*;
 import com.copasso.cocobook.model.local.BookRepository;
 import com.copasso.cocobook.presenter.BookDetailPresenter;
 import com.copasso.cocobook.presenter.contract.BookDetailContract;
 import com.copasso.cocobook.ui.adapter.BookListAdapter;
 import com.copasso.cocobook.ui.adapter.RecommendBookAdapter;
-import com.copasso.cocobook.base.BaseBackMVPActivity;
 import com.copasso.cocobook.utils.Constant;
 import com.copasso.cocobook.utils.ToastUtils;
 import com.copasso.cocobook.utils.UiUtils;
@@ -39,7 +39,7 @@ import me.gujun.android.taggroup.TagGroup;
  * 书籍详情activity
  */
 
-public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.Presenter>
+public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Presenter>
         implements BookDetailContract.View {
     /************************************常量************************************/
     public static final String RESULT_IS_COLLECTED = "result_is_collected";
@@ -51,38 +51,20 @@ public class BookDetailActivity extends BaseBackMVPActivity<BookDetailContract.P
     RefreshLayout mRefreshLayout;
     @BindView(R.id.book_detail_iv_cover)
     ImageView mIvCover;
-    //    @BindView(R.id.book_detail_tv_title)
-//    TextView mTvTitle;
     @BindView(R.id.book_detail_tv_author)
     TextView mTvAuthor;
     @BindView(R.id.book_detail_tv_type)
     TextView mTvType;
     @BindView(R.id.book_detail_tv_word_count)
     TextView mTvWordCount;
-    //    @BindView(R.id.book_detail_tv_lately_update)
-//    TextView mTvLatelyUpdate;
-//    @BindView(R.id.book_list_tv_chase)
-//    TextView mTvChase;
-//    @BindView(R.id.book_detail_tv_read)
-//    TextView mTvRead;
-//    @BindView(R.id.book_detail_tv_follower_count)
-//    TextView mTvFollowerCount;
-//    @BindView(R.id.book_detail_tv_retention)
-//    TextView mTvRetention;
     @BindView(R.id.book_detail_tv_add)
     TextView mTvAddBook;
     @BindView(R.id.book_detail_tv_open)
     TextView mTvOpenBook;
     @BindView(R.id.book_detail_tg)
     TagGroup mTg;
-    //    @BindView(R.id.book_detail_tv_last_chapter)
-//    TextView mTvLastChapter;
     @BindView(R.id.book_detail_tv_brief)
     TextView mTvBrief;
-    //    @BindView(R.id.book_detail_tv_more_comment)
-//    TextView mTvMoreComment;
-//    @BindView(R.id.book_detail_rv_hot_comment)
-//    RecyclerView mRvHotComment;
     @BindView(R.id.book_list_tv_recommend_books)
     TextView mTvRecommendBooks;
     @BindView(R.id.book_detail_rv_recommend_books)

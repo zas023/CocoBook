@@ -6,14 +6,14 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.copasso.cocobook.R;
-import com.copasso.cocobook.base.BaseBackActivity;
+import com.copasso.cocobook.base.BaseActivity;
 import com.copasso.cocobook.widget.CircleImageView;
 
 /**
  * Created by zhouas666 on 2017/12/8.
  * 关于activity
  */
-public class AboutActivity extends BaseBackActivity {
+public class AboutActivity extends BaseActivity {
 
     /*****************************视图********************************/
     @BindView(R.id.toolbar)

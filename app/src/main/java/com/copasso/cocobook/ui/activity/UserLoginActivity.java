@@ -12,8 +12,8 @@ import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.LogInListener;
 import com.copasso.cocobook.R;
+import com.copasso.cocobook.base.BaseActivity;
 import com.copasso.cocobook.model.bean.bmob.CocoUser;
-import com.copasso.cocobook.base.BaseBackActivity;
 import com.copasso.cocobook.utils.ProgressUtils;
 import com.copasso.cocobook.utils.SnackbarUtils;
 import com.copasso.cocobook.widget.OwlView;
@@ -22,7 +22,7 @@ import com.copasso.cocobook.widget.OwlView;
  * Created by zhouas666 on 2017/12/8.
  * 登陆activity
  */
-public class UserLoginActivity extends BaseBackActivity {
+public class UserLoginActivity extends BaseActivity {
 
 
     @BindView(R.id.land_owl_view)

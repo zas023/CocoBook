@@ -10,11 +10,11 @@ import android.support.v7.widget.Toolbar;
 
 import android.view.View;
 import com.copasso.cocobook.R;
+import com.copasso.cocobook.base.BaseMVPActivity;
 import com.copasso.cocobook.model.bean.BillBookBean;
 import com.copasso.cocobook.presenter.BillBookPresenter;
 import com.copasso.cocobook.presenter.contract.BillBookContract;
 import com.copasso.cocobook.ui.adapter.BillBookAdapter;
-import com.copasso.cocobook.base.BaseBackMVPActivity;
 import com.copasso.cocobook.base.adapter.BaseListAdapter;
 import com.copasso.cocobook.widget.RefreshLayout;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
@@ -28,7 +28,7 @@ import butterknife.BindView;
  * 其他排行榜中书籍activity
  */
 
-public class OtherBillBookActivity extends BaseBackMVPActivity<BillBookContract.Presenter>
+public class OtherBillBookActivity extends BaseMVPActivity<BillBookContract.Presenter>
         implements BillBookContract.View{
     private static final String EXTRA_BILL_ID = "extra_bill_id";
     private static final String EXTRA_BILL_NAME = "extra_bill_name";

@@ -9,12 +9,12 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import com.copasso.cocobook.R;
+import com.copasso.cocobook.base.BaseTabActivity;
 import com.copasso.cocobook.manager.RxBusManager;
 import com.copasso.cocobook.model.event.BookSubSortEvent;
 import com.copasso.cocobook.model.bean.BookSubSortBean;
 import com.copasso.cocobook.model.type.BookSortListType;
 import com.copasso.cocobook.ui.adapter.HorizonTagAdapter;
-import com.copasso.cocobook.base.BaseBackTabActivity;
 import com.copasso.cocobook.ui.fragment.BookSortListFragment;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ import butterknife.BindView;
  * 分类书籍列表activity
  */
 
-public class BookSortListActivity extends BaseBackTabActivity {
+public class BookSortListActivity extends BaseTabActivity {
     private static final String EXTRA_GENDER = "extra_gender";
     private static final String EXTRA_SUB_SORT = "extra_sub_sort";
 

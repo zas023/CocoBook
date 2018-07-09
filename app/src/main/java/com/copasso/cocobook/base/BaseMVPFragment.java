@@ -1,16 +1,11 @@
 package com.copasso.cocobook.base;
 
-import android.os.Bundle;
-
-
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
-
 /**
  * Created by zhouas666 on 17-4-25.
  */
 
-public abstract class BaseMVPFragment<T extends BaseContract.BasePresenter> extends BaseFragment implements BaseContract.BaseView{
+public abstract class BaseMVPFragment<T extends BaseContract.BasePresenter> extends BaseFragment
+        implements BaseContract.BaseView{
 
     protected T mPresenter;
 

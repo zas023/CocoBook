@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * Created by zhouas666 on 17-3-21.
+ * 用于RecyclerView的Adapter
  */
 
 public abstract class BaseListAdapter <T> extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
