@@ -24,8 +24,10 @@ import cn.bmob.v3.BmobUser;
 import com.bumptech.glide.Glide;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.manager.ReadSettingManager;
+import com.copasso.cocobook.manager.RxBusManager;
 import com.copasso.cocobook.model.bean.CollBookBean;
 import com.copasso.cocobook.model.bean.bmob.CocoUser;
+import com.copasso.cocobook.model.event.DownloadMessage;
 import com.copasso.cocobook.model.local.BookRepository;
 import com.copasso.cocobook.model.server.BmobRepository;
 import com.copasso.cocobook.base.BaseTabActivity;
@@ -35,6 +37,8 @@ import com.copasso.cocobook.ui.fragment.DiscoverFragment;
 import com.copasso.cocobook.utils.*;
 import com.copasso.cocobook.ui.dialog.SexChooseDialog;
 import com.copasso.cocobook.widget.CircleImageView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -148,6 +152,20 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
         });
 
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    protected void initEvent() {
+        //下载书籍
+        addDisposable(RxBusManager.getInstance()
+                .toObservable(DownloadMessage.class)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        event -> {
+                            //使用Toast提示
+                            ToastUtils.show(event.message);
+                        }
+                ));
     }
 
     /**

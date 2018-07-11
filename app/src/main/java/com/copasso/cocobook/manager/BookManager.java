@@ -184,8 +184,7 @@ public class BookManager{
     }
 
     public static long getBookSize(String folderName){
-        return FileUtils.getDirSize(FileUtils
-                .getFolder(Constant.BOOK_CACHE_PATH + folderName));
+        return FileUtils.getDirSize(FileUtils.getFolder(Constant.BOOK_CACHE_PATH + folderName));
     }
 
     /**

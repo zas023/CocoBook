@@ -4,8 +4,8 @@ import com.copasso.cocobook.manager.RxBusManager;
 import com.copasso.cocobook.model.bean.BookChapterBean;
 import com.copasso.cocobook.model.bean.ChapterInfoBean;
 import com.copasso.cocobook.model.bean.CollBookBean;
-import com.copasso.cocobook.model.bean.DownloadTaskBean;
 import com.copasso.cocobook.manager.BookManager;
+import com.copasso.cocobook.model.event.DownloadEvent;
 import com.copasso.cocobook.model.local.BookRepository;
 import com.copasso.cocobook.model.server.RemoteRepository;
 import com.copasso.cocobook.presenter.contract.ReadContract;
@@ -25,42 +25,31 @@ import java.util.List;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by zhouas666 on 18-2-3.
  */
 
-public class ReadPresenter extends RxPresenter<ReadContract.View>
-        implements ReadContract.Presenter{
+public class ReadPresenter extends RxPresenter<ReadContract.View> implements ReadContract.Presenter{
     private static final String TAG = "ReadPresenter";
 
     private Subscription mChapterSub;
 
     @Override
     public void createDownloadTask(CollBookBean bean) {
-        DownloadTaskBean task = new DownloadTaskBean();
-        task.setTaskName(bean.getTitle());
-        task.setBookId(bean.get_id());
-        task.setBookChapters(bean.getBookChapters());
-        task.setLastChapter(bean.getBookChapters().size());
-
-        RxBusManager.getInstance().post(task);
+        RxBusManager.getInstance().post(new DownloadEvent(bean));
     }
 
     @Override
     public void loadCategory(String bookId) {
         Disposable disposable = RemoteRepository.getInstance()
                 .getBookChapters(bookId)
-                .doOnSuccess(new Consumer<List<BookChapterBean>>() {
-                    @Override
-                    public void accept(List<BookChapterBean> bookChapterBeen) throws Exception {
-                        //进行设定BookChapter所属的书的id。
-                        for (BookChapterBean bookChapter : bookChapterBeen){
-                            bookChapter.setId(MD5Utils.strToMd5By16(bookChapter.getLink()));
-                            bookChapter.setBookId(bookId);
-                        }
+                .doOnSuccess(bookChapterBeen -> {
+                    //进行设定BookChapter所属的书的id。
+                    for (BookChapterBean bookChapter : bookChapterBeen){
+                        bookChapter.setId(MD5Utils.strToMd5By16(bookChapter.getLink()));
+                        bookChapter.setBookId(bookId);
                     }
                 })
                 .compose(RxUtils::toSimpleSingle)

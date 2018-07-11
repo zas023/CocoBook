@@ -31,7 +31,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
 
     protected CompositeDisposable mDisposable;
 
-    protected boolean isNightMode=ReadSettingManager.getInstance().isNightMode();
+    protected boolean isNightMode = ReadSettingManager.getInstance().isNightMode();
 
     //ButterKnife
     protected Unbinder unbinder;
@@ -45,8 +45,8 @@ public abstract class BaseActivity extends SwipeBackActivity {
 
 
     /************************初始化************************************/
-    protected void addDisposable(Disposable d){
-        if (mDisposable == null){
+    protected void addDisposable(Disposable d) {
+        if (mDisposable == null) {
             mDisposable = new CompositeDisposable();
         }
         mDisposable.add(d);
@@ -55,36 +55,47 @@ public abstract class BaseActivity extends SwipeBackActivity {
     /**
      * 配置Toolbar
      */
-    protected void setUpToolbar(Toolbar toolbar){
+    protected void setUpToolbar(Toolbar toolbar) {
     }
 
     /**
      * 初始化数据
+     *
      * @param savedInstanceState
      */
-    protected void initData(Bundle savedInstanceState){
+    protected void initData(Bundle savedInstanceState) {
     }
+
     /**
      * 初始化零件
      */
     protected void initWidget() {
     }
+
+    /**
+     * 初始化事件
+     */
+    protected void initEvent() {
+    }
+
     /**
      * 初始化点击事件
      */
-    protected void initClick(){
+    protected void initClick() {
     }
+
     /**
      * 逻辑使用区
      */
-    protected void processLogic(){
+    protected void processLogic() {
     }
 
     /**
      * 是否开启左滑手势
+     *
      * @return
      */
-    protected boolean initSwipeBackEnable(){
+    protected boolean initSwipeBackEnable() {
         return true;
     }
 
@@ -107,7 +118,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
         initTheme();
         setContentView(getLayoutId());
         initData(savedInstanceState);
-        mContext=this;
+        mContext = this;
         // 设置 TAG
         TAG = this.getClass().getSimpleName();
         unbinder = ButterKnife.bind(this);
@@ -116,14 +127,15 @@ public abstract class BaseActivity extends SwipeBackActivity {
         //init
         initToolbar();
         initWidget();
+        initEvent();
         initClick();
         processLogic();
     }
 
-    private void initToolbar(){
+    private void initToolbar() {
         //更严谨是通过反射判断是否存在Toolbar
         mToolbar = ButterKnife.findById(this, R.id.toolbar);
-        if (mToolbar != null){
+        if (mToolbar != null) {
             supportActionBar(mToolbar);
             setUpToolbar(mToolbar);
         }
@@ -134,22 +146,22 @@ public abstract class BaseActivity extends SwipeBackActivity {
     protected void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
-        if (mDisposable != null){
+        if (mDisposable != null) {
             mDisposable.dispose();
         }
     }
 
     /**************************used method area*******************************************/
 
-    protected void startActivity(Class<? extends AppCompatActivity> activity){
-        Intent intent = new Intent(this,activity);
+    protected void startActivity(Class<? extends AppCompatActivity> activity) {
+        Intent intent = new Intent(this, activity);
         startActivity(intent);
     }
 
-    protected ActionBar supportActionBar(Toolbar toolbar){
+    protected ActionBar supportActionBar(Toolbar toolbar) {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null){
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowHomeEnabled(true);
         }
@@ -159,7 +171,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
         return actionBar;
     }
 
-    protected void setStatusBarColor(int statusColor){
+    protected void setStatusBarColor(int statusColor) {
         StatusBarCompat.compat(this, ContextCompat.getColor(this, statusColor));
     }
 }

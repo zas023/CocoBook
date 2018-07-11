@@ -32,6 +32,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import butterknife.OnClick;
+import com.copasso.cocobook.App;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.model.bean.BookChapterBean;
 import com.copasso.cocobook.model.bean.CollBookBean;
@@ -39,6 +40,7 @@ import com.copasso.cocobook.model.local.BookRepository;
 import com.copasso.cocobook.manager.ReadSettingManager;
 import com.copasso.cocobook.presenter.ReadPresenter;
 import com.copasso.cocobook.presenter.contract.ReadContract;
+import com.copasso.cocobook.service.DownloadService;
 import com.copasso.cocobook.ui.adapter.CategoryAdapter;
 import com.copasso.cocobook.base.BaseMVPActivity;
 import com.copasso.cocobook.ui.dialog.ReadSettingDialog;
@@ -481,7 +483,8 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                 mDlCatalog.openDrawer(Gravity.START);
                 break;
             case R.id.read_tv_download:  //下载
-                downloadBook(mCollBook);
+//                downloadBook(mCollBook);
+                ToastUtils.show("请加入书架下载");
                 break;
             case R.id.read_tv_setting:  //设置
                 toggleMenu(false);

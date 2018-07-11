@@ -53,6 +53,7 @@ public class BmobBook extends BmobObject{
     public BmobGeoPoint getGpsAdd() {
         return gpsAdd;
     }
+
     public void setGpsAdd(BmobGeoPoint gpsAdd) {
         this.gpsAdd = gpsAdd;
     }

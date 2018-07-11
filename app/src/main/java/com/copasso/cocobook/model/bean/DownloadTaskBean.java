@@ -1,14 +1,11 @@
 package com.copasso.cocobook.model.bean;
 
-import android.util.Log;
-
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.ToMany;
 
 import java.util.List;
-import java.util.function.Consumer;
 
 import org.greenrobot.greendao.DaoException;
 import com.copasso.cocobook.model.gen.DaoSession;
@@ -39,7 +36,6 @@ public class DownloadTaskBean{
     //最后的章节
     private int lastChapter = 0;
     //状态:正在下载、下载完成、暂停、等待、下载错误。
-
     private volatile int status = STATUS_WAIT;
     //总大小 -> (完成之后才会赋值)
     private long size = 0;

@@ -15,10 +15,7 @@ import butterknife.BindView;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.manager.RxBusManager;
 import com.copasso.cocobook.model.bean.CollBookBean;
-import com.copasso.cocobook.model.event.DeleteResponseEvent;
-import com.copasso.cocobook.model.event.DeleteTaskEvent;
-import com.copasso.cocobook.model.event.DownloadMessage;
-import com.copasso.cocobook.model.event.RecommendBookEvent;
+import com.copasso.cocobook.model.event.*;
 import com.copasso.cocobook.model.local.BookRepository;
 import com.copasso.cocobook.presenter.BookShelfPresenter;
 import com.copasso.cocobook.presenter.contract.BookShelfContract;
@@ -62,22 +59,9 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
     /***************************参数********************************/
     //是否是第一次进入
     private boolean isInit = true;
-    //是否是多选模式
-    private  boolean isMultiSelectMode = false;
-
-    public boolean isMultiSelectMode(){
-        return isMultiSelectMode;
-    }
 
     /***************************公共方法********************************/
-    /**
-     * 退出多选
-     */
-    public void cancelMultiSelectMode(){
-        isMultiSelectMode=false;
-        mCollBookAdapter.setShowCheckBox(isMultiSelectMode);
-        multiSelectRlRoot.setVisibility(View.GONE);
-    }
+
 
     public void refreshShelf(){
         mCollBookAdapter.refreshItems(BookRepository.getInstance().getCollBooks());
@@ -117,28 +101,28 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
         //推荐书籍
         addDisposable(RxBusManager.getInstance()
                 .toObservable(RecommendBookEvent.class)
+                .compose(RxUtils::toSimpleSingle)
                 .subscribe(
                         event -> {
                             mRvContent.startRefresh();
                             mPresenter.loadRecommendBooks(event.sex);
                         }
                 ));
-        //下载书籍
+        //删除书籍
+
+        //接收Read页面传来的下载消息
         addDisposable(RxBusManager.getInstance()
-                .toObservable(DownloadMessage.class)
-                .observeOn(AndroidSchedulers.mainThread())
+                .toObservable(DownloadEvent.class)
+                .compose(RxUtils::toSimpleSingle)
                 .subscribe(
-                        event -> {
-                            //使用Toast提示
-                            ToastUtils.show(event.message);
-                        }
+                        event -> mPresenter.createDownloadTask(event.collBook)
                 ));
+
         //删除书籍
         addDisposable(RxBusManager.getInstance()
                 .toObservable(DeleteResponseEvent.class)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        event -> {
+                .compose(RxUtils::toSimpleSingle)
+                .subscribe(event -> {
                             if (event.isDelete) {
                                 ProgressUtils.show(mContext, "正在删除中");
                                 addDisposable(BookRepository.getInstance().deleteCollBookInRx(event.collBook)
@@ -168,19 +152,6 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
     @Override
     protected void initClick() {
         super.initClick();
-
-        multiSelectBtnAdd.setOnClickListener(view -> {
-            isMultiSelectMode=false;
-            mCollBookAdapter.setShowCheckBox(isMultiSelectMode);
-            multiSelectRlRoot.setVisibility(View.GONE);
-            ToastUtils.show(""+mCollBookAdapter.getCheckedCount());
-        });
-
-        multiSelectBtnDelete.setOnClickListener(view -> {
-            isMultiSelectMode=false;
-            mCollBookAdapter.setShowCheckBox(isMultiSelectMode);
-            multiSelectRlRoot.setVisibility(View.GONE);
-        });
 
         mRvContent.setOnRefreshListener(
                 () -> mPresenter.updateCollBooks(mCollBookAdapter.getItems())
@@ -306,9 +277,6 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
                 deleteBook(collBook);
                 break;
             case "批量管理":
-//                isMultiSelectMode=true;
-//                mCollBookAdapter.setShowCheckBox(isMultiSelectMode);
-//                multiSelectRlRoot.setVisibility(View.VISIBLE);
                 SnackbarUtils.show(mContext,"此功能尚未完成");
                 break;
             default:
