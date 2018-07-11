@@ -136,12 +136,6 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
         swNightMode = (Switch) navigationView.getMenu().findItem(R.id.action_night_mode).
                 getActionView().findViewById(R.id.view_switch);
         swNightMode.setChecked(isNightMode);
-        swNightMode.setOnCheckedChangeListener((compoundButton, b) -> {
-            if (compoundButton.isPressed()) {
-                isNightMode=b;
-                switchNightMode();
-            }
-        });
 
         //监听菜单栏头部
         drawerHeader.setOnClickListener(view -> {
@@ -152,6 +146,17 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
         });
 
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    protected void initClick() {
+        super.initClick();
+        swNightMode.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (compoundButton.isPressed()) {
+                isNightMode=b;
+                switchNightMode();
+            }
+        });
     }
 
     @Override
@@ -332,9 +337,11 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
             case R.id.action_about:
                 activityClasss=AboutActivity.class;
                 break;
-//            case R.id.action_night_mode:
-//                switchNightMode();
-//                break;
+            case R.id.action_night_mode:
+                isNightMode=!isNightMode;
+                swNightMode.setChecked(isNightMode);
+                switchNightMode();
+                break;
             case R.id.action_settings:
                 activityClasss=MoreSettingActivity.class;
                 break;
@@ -357,7 +364,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
         else
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         ReadSettingManager.getInstance().setNightMode(isNightMode);
-        //重新启动当前activity
+        //重绘当前activity
         recreate();
     }
 

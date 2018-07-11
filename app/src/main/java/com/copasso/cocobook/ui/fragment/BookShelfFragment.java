@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -239,8 +240,8 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
     @Override
     public void finishUpdate() {
         //重新从数据库中获取数据
-        mCollBookAdapter.refreshItems(BookRepository
-                .getInstance().getCollBooks());
+        Log.e(TAG,"------------finishUpdate");
+        mCollBookAdapter.refreshItems(BookRepository.getInstance().getCollBooks());
     }
 
     @Override

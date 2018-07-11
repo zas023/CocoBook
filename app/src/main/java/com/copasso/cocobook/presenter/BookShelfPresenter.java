@@ -1,5 +1,6 @@
 package com.copasso.cocobook.presenter;
 
+import android.util.Log;
 import com.copasso.cocobook.manager.RxBusManager;
 import com.copasso.cocobook.model.bean.BookChapterBean;
 import com.copasso.cocobook.model.bean.BookDetailBean;
@@ -33,8 +34,7 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
 
     @Override
     public void refreshCollBooks() {
-        List<CollBookBean> collBooks = BookRepository
-                .getInstance().getCollBooks();
+        List<CollBookBean> collBooks = BookRepository.getInstance().getCollBooks();
         mView.finishRefresh(collBooks);
     }
 
@@ -83,26 +83,23 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
 
         List<CollBookBean> collBooks = new ArrayList<>(collBookBeans);
         List<Single<BookDetailBean>> observables = new ArrayList<>(collBooks.size());
-        Iterator<CollBookBean> it = collBooks.iterator();
-        while (it.hasNext()) {
-            CollBookBean collBook = it.next();
+        for (int i=0;i<collBooks.size();i++){
+            CollBookBean collBook = collBooks.get(i);
             //删除本地文件
             if (collBook.isLocal()) {
-                it.remove();
+                collBooks.remove(i);
             } else {
-                observables.add(RemoteRepository.getInstance()
-                        .getBookDetail(collBook.get_id()));
+                observables.add(RemoteRepository.getInstance().getBookDetail(collBook.get_id()));
             }
         }
         //zip可能不是一个好方法。
         Single.zip(observables, objects -> {
-            List<CollBookBean> newCollBooks = new ArrayList<CollBookBean>(objects.length);
+            List<CollBookBean> newCollBooks = new ArrayList<>(objects.length);
             for (int i = 0; i < collBooks.size(); ++i) {
                 CollBookBean oldCollBook = collBooks.get(i);
                 CollBookBean newCollBook = ((BookDetailBean) objects[i]).getCollBookBean();
                 //如果是oldBook是update状态，或者newCollBook与oldBook章节数不同
-                if (oldCollBook.isUpdate() ||
-                        !oldCollBook.getLastChapter().equals(newCollBook.getLastChapter())) {
+                if (oldCollBook.isUpdate() || !oldCollBook.getLastChapter().equals(newCollBook.getLastChapter())) {
                     newCollBook.setUpdate(true);
                 } else {
                     newCollBook.setUpdate(false);
@@ -110,11 +107,12 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
                 newCollBook.setLastRead(oldCollBook.getLastRead());
                 newCollBooks.add(newCollBook);
                 //存储到数据库中
-                BookRepository.getInstance()
-                        .saveCollBooks(newCollBooks);
+                BookRepository.getInstance().saveCollBooks(newCollBooks);
             }
             return newCollBooks;
-        }).compose(RxUtils::toSimpleSingle).subscribe(new SingleObserver<List<CollBookBean>>() {
+        })
+                .compose(RxUtils::toSimpleSingle)
+                .subscribe(new SingleObserver<List<CollBookBean>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         addDisposable(d);
@@ -122,9 +120,11 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
 
                     @Override
                     public void onSuccess(List<CollBookBean> value) {
-                        //跟原先比较
-                        mView.finishUpdate();
-                        mView.complete();
+                        //因为切换夜间模式会调用onCreate()
+                        if (mView!=null) {
+                            mView.finishUpdate();
+                            mView.complete();
+                        }
                     }
 
                     @Override
@@ -150,7 +150,6 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
         Single.concat(observables)
                 .subscribe(
                         chapterList -> {
-
                             for (BookChapterBean bean : chapterList) {
                                 bean.setId(MD5Utils.strToMd5By16(bean.getLink()));
                             }
