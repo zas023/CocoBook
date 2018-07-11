@@ -42,7 +42,7 @@ public class BillBookHolder extends ViewHolderImpl<BillBookBean> {
         //头像
         Glide.with(App.getContext())
                 .load(Constant.IMG_BASE_URL+value.getCover())
-                .placeholder(R.drawable.ic_default_portrait)
+                .placeholder(R.drawable.ic_default_book_cover)
                 .error(R.drawable.ic_load_error)
                 .fitCenter()
                 .into(mIvPortrait);

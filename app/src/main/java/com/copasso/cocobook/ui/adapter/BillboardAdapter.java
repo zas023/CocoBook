@@ -1,7 +1,6 @@
 package com.copasso.cocobook.ui.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +21,7 @@ import butterknife.ButterKnife;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 排行榜adapter
  */
 
 public class BillboardAdapter extends BaseExpandableListAdapter {
@@ -96,28 +96,28 @@ public class BillboardAdapter extends BaseExpandableListAdapter {
 
         BillboardBean bean = getGroup(groupPosition);
 
-        if (bean.getCover() != null){
-            Glide.with(parent.getContext())
-                    .load(Constant.IMG_BASE_URL+bean.getCover())
-                    .placeholder(R.drawable.ic_loadding)
-                    .error(R.drawable.ic_load_error)
-                    .fitCenter()
-                    .into(holder.ivSymbol);
-        }
-        else {
-            holder.ivSymbol.setImageResource(R.drawable.ic_billboard_collapse);
-        }
+//        if (bean.getCover() != null){
+//            Glide.with(parent.getContext())
+//                    .load(Constant.IMG_BASE_URL+bean.getCover())
+//                    .placeholder(R.drawable.ic_loadding)
+//                    .error(R.drawable.ic_load_error)
+//                    .fitCenter()
+//                    .into(holder.ivSymbol);
+//        }
+//        else {
+//            holder.ivSymbol.setImageResource(R.drawable.ic_billboard_collapse);
+//        }
 
+        holder.ivSymbol.setVisibility(View.GONE);
         holder.tvName.setText(bean.getTitle());
 
+        holder.ivArrow.setVisibility(View.VISIBLE);
+        holder.ivArrow.setImageResource(R.drawable.ic_arrow_right);
         if (groupPosition == mGroups.size() - 1){
-            holder.ivArrow.setVisibility(View.VISIBLE);
-            if (isExpanded){
+            if (isExpanded)
                 holder.ivArrow.setImageResource(R.drawable.ic_billboard_arrow_up);
-            }
-            else if (!isExpanded){
+            else
                 holder.ivArrow.setImageResource(R.drawable.ic_billboard_arrow_down);
-            }
         }
         else {
             holder.ivArrow.setVisibility(View.GONE);
@@ -166,14 +166,6 @@ public class BillboardAdapter extends BaseExpandableListAdapter {
     public void addChild(BillboardBean bean){
         mChildren.add(bean);
         notifyDataSetChanged();
-    }
-
-    public List<BillboardBean> getGroups(){
-        return Collections.unmodifiableList(mGroups);
-    }
-
-    public List<BillboardBean> getChildren(){
-        return Collections.unmodifiableList(mChildren);
     }
 
     private class GroupViewHolder {

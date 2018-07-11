@@ -27,7 +27,7 @@ import io.reactivex.disposables.Disposable;
 
 /**
  * Created by zhouas666 on 18-1-23.
- * 图书分类列表fragment
+ * 书籍分类列表fragment
  */
 
 public class BookSortListFragment extends BaseMVPFragment<BookSortListContract.Presenter>

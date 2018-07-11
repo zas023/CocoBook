@@ -10,7 +10,6 @@
               android:paddingBottom="@dimen/nb.padding.large"
               android:background="@color/colorBackground">
 
-    <!--最新章节-->
     <LinearLayout
             android:id="@+id/book_detail_ll"
             android:layout_width="match_parent"
@@ -30,30 +29,37 @@
 
         <TextView
                 android:id="@+id/read_tv_category_size"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:gravity="right"
+                android:text="共111章"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textColor="@color/textSecondary"
                 android:textSize="15sp"/>
+
+        <TextView
+                android:id="@+id/read_tv_category_reserve"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="倒叙"
+                android:gravity="right"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/textError"
+                android:textSize="15sp"/>
     </LinearLayout>
 
-    <RelativeLayout
+    <ListView
+            android:id="@+id/read_lv_category"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-        <ListView
-                android:id="@+id/read_lv_category"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
-                android:divider="@color/divider.common"
-                android:scrollbars="vertical"
-                android:fastScrollEnabled="true"
-                android:focusable="true">
-        </ListView>
-    </RelativeLayout>
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:divider="@color/divider.common"
+            android:scrollbars="vertical"
+            android:fastScrollEnabled="true"
+            android:focusable="true">
+    </ListView>
 </LinearLayout>

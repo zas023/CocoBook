@@ -27,7 +27,6 @@ import com.copasso.cocobook.utils.*;
 import com.copasso.cocobook.widget.adapter.WholeAdapter;
 import com.copasso.cocobook.widget.itemdecoration.DividerItemDecoration;
 import com.copasso.cocobook.widget.refresh.ScrollRefreshRecyclerView;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 
 import java.io.File;
 import java.util.List;

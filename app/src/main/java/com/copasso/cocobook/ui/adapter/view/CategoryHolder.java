@@ -11,6 +11,7 @@ import com.copasso.cocobook.widget.page.TxtChapter;
 
 /**
  * Created by zhouas666 on 18-2-3.
+ * 章节itemView
  */
 
 public class CategoryHolder extends ViewHolderImpl<TxtChapter> {

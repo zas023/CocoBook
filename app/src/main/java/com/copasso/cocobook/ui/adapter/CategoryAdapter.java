@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * Created by zhouas666 on 17-6-5.
+ * 目录adapter
  */
 
 public class CategoryAdapter extends EasyAdapter<TxtChapter> {

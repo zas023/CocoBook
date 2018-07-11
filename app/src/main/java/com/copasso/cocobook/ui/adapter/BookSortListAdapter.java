@@ -9,6 +9,7 @@ import com.copasso.cocobook.widget.adapter.WholeAdapter;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 书籍分类列表中书籍adapter
  */
 
 public class BookSortListAdapter extends WholeAdapter<SortBookBean>{

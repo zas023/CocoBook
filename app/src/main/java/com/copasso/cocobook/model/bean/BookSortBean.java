@@ -1,7 +1,5 @@
 package com.copasso.cocobook.model.bean;
 
-import org.greenrobot.greendao.annotation.Entity;
-
 /**
  * Created by zhouas666 on 18-1-23.
  */

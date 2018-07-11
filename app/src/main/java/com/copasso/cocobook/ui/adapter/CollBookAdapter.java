@@ -9,7 +9,7 @@ import java.util.*;
 
 /**
  * Created by zhouas666 on 18-2-8.
- * 书架图书adapter
+ * 书架书籍adapter
  */
 
 public class CollBookAdapter extends WholeAdapter<CollBookBean> {

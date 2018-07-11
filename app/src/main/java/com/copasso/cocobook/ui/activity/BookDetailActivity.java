@@ -181,16 +181,6 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
         mTvType.setText(bean.getMajorCate());
         //总字数
         mTvWordCount.setText(getResources().getString(R.string.book_word_count, bean.getWordCount() / 10000));
-        //更新时间
-//        mTvLatelyUpdate.setText(StringUtils.dateConvert(bean.getUpdated(), Constant.FORMAT_BOOK_DATE));
-        //追书人数
-//        mTvFollowerCount.setText(bean.getFollowerCount() + "");
-        //存留率
-        //mTvRetention.setText(bean.getRetentionRatio() + "%");
-        //日更字数
-        //mTvDayWordCount.setText(bean.getSerializeWordCount() + "");
-        //最新章节
-        //mTvLastChapter.setText(bean.getLastChapter());
         //Tags
         mTg.setTags(bean.getTags());
         //简介
@@ -313,7 +303,7 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
                     mTvBrief.setMaxLines(4);
                     isBriefOpen = false;
                 } else {
-                    mTvBrief.setMaxLines(8);
+                    mTvBrief.setMaxLines(10);
                     isBriefOpen = true;
                 }
                 break;

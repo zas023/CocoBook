@@ -55,7 +55,8 @@ public abstract class EasyAdapter<T> extends BaseAdapter {
     }
 
     public List<T> getItems(){
-        return Collections.unmodifiableList(mList);
+        return mList;
+//        return Collections.unmodifiableList(mList);
     }
 
     public int getItemSize(){

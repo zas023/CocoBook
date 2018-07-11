@@ -50,6 +50,7 @@ import com.copasso.cocobook.widget.page.PageLoader;
 import com.copasso.cocobook.widget.page.PageView;
 import com.copasso.cocobook.widget.page.TxtChapter;
 
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -64,18 +65,6 @@ import static android.view.View.VISIBLE;
 
 public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         implements ReadContract.View {
-
-    /***********************常量*************************/
-    public static final int REQUEST_MORE_SETTING = 1;
-    public static final String EXTRA_COLL_BOOK = "extra_coll_book";
-    public static final String EXTRA_IS_COLLECTED = "extra_is_collected";
-
-    //注册 Brightness 的 uri
-    private final Uri BRIGHTNESS_MODE_URI = Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS_MODE);
-    private final Uri BRIGHTNESS_URI = Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS);
-    private final Uri BRIGHTNESS_ADJ_URI = Settings.System.getUriFor("screen_auto_brightness_adj");
-
-    private boolean isRegistered = false;
 
     @BindView(R.id.read_dl_slide)
     DrawerLayout mDlCatalog;
@@ -117,6 +106,8 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     TextView mTvCatalogTitle;
     @BindView(R.id.read_tv_category_size)
     TextView mTvCatalogSize;
+    @BindView(R.id.read_tv_category_reserve)
+    TextView mTvCatalogReserve;
     @BindView(R.id.read_lv_category)
     ListView mLvCategory;
     /**********************************视图***********************************/
@@ -127,9 +118,23 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     private Animation mBottomInAnim;
     private Animation mBottomOutAnim;
     private CategoryAdapter mCategoryAdapter;
-    private CollBookBean mCollBook;
     //控制屏幕常亮
     private PowerManager.WakeLock mWakeLock;
+
+    /***********************常量*************************/
+    public static final int REQUEST_MORE_SETTING = 1;
+    public static final String EXTRA_COLL_BOOK = "extra_coll_book";
+    public static final String EXTRA_IS_COLLECTED = "extra_is_collected";
+
+    //注册 Brightness 的 uri
+    private final Uri BRIGHTNESS_MODE_URI = Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS_MODE);
+    private final Uri BRIGHTNESS_URI = Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS);
+    private final Uri BRIGHTNESS_ADJ_URI = Settings.System.getUriFor("screen_auto_brightness_adj");
+
+    private CollBookBean mCollBook;
+    private List<TxtChapter> mChapters;
+    private boolean isRegistered = false;
+    private boolean isReversed = false;
 
     // 接收电池信息和时间更新的广播
     private BroadcastReceiver mReceiver = new BroadcastReceiver() {
@@ -175,9 +180,9 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     };
 
     /********************************参数**********************************/
-    private boolean isCollected = false; //isFromSDCard
     private boolean isNightMode = false;
     private boolean isFullScreen = false;
+    private boolean isCollected = false; //isFromSDCard
     private String mBookId;
 
     /*******************************公共方法**********************************/
@@ -230,7 +235,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         //获取页面加载器
         mPageLoader = mPvPage.getPageLoader(mCollBook.isLocal());
         //禁止滑动展示DrawerLayout
-        mDlCatalog.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+//        mDlCatalog.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         mSettingDialog = new ReadSettingDialog(this, mPageLoader);
 
         initAdapter();
@@ -256,9 +261,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         mWakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "keep bright");
 
         //隐藏StatusBar
-        mPvPage.post(
-                () -> hideSystemBar()
-        );
+        mPvPage.post(() -> hideSystemBar());
 
         //初始化TopMenu
         initTopMenu();
@@ -351,6 +354,17 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     protected void initClick() {
         super.initClick();
 
+        //倒叙
+        mTvCatalogReserve.setOnClickListener(v -> {
+            if (isReversed)
+                mTvCatalogReserve.setText("倒叙");
+            else
+                mTvCatalogReserve.setText("正序");
+            isReversed=!isReversed;
+            Collections.reverse(mChapters);
+            mCategoryAdapter.refreshItems(mChapters);
+        });
+
         //换页
         mPageLoader.setOnPageChangeListener(
                 new PageLoader.OnPageChangeListener() {
@@ -378,6 +392,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
 
                     @Override
                     public void onCategoryFinish(List<TxtChapter> chapters) {
+                        mChapters=chapters;
                         mTvCatalogSize.setText("共 "+chapters.size()+" 章");
                         mCategoryAdapter.refreshItems(chapters);
                     }
