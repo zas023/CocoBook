@@ -135,7 +135,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
 
         swNightMode = (Switch) navigationView.getMenu().findItem(R.id.action_night_mode).
                 getActionView().findViewById(R.id.view_switch);
-        swNightMode.setChecked(isNightMode);
+        swNightMode.setChecked(isNightTheme());
 
         //监听菜单栏头部
         drawerHeader.setOnClickListener(view -> {
@@ -153,8 +153,8 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
         super.initClick();
         swNightMode.setOnCheckedChangeListener((compoundButton, b) -> {
             if (compoundButton.isPressed()) {
-                isNightMode=b;
-                switchNightMode();
+                setNightTheme(b);
+                recreate();
             }
         });
     }
@@ -338,9 +338,9 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
                 activityClasss=AboutActivity.class;
                 break;
             case R.id.action_night_mode:
-                isNightMode=!isNightMode;
-                swNightMode.setChecked(isNightMode);
-                switchNightMode();
+                swNightMode.setChecked(!isNightTheme());
+                setNightTheme(!isNightTheme());
+                recreate();
                 break;
             case R.id.action_settings:
                 activityClasss=MoreSettingActivity.class;
@@ -359,13 +359,13 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
      * 切换夜间模式
      */
     private void switchNightMode(){
-        if(isNightMode)
-            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        else
-            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        ReadSettingManager.getInstance().setNightMode(isNightMode);
-        //重绘当前activity
-        recreate();
+//        if(isNightMode)
+//            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//        else
+//            getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//        ReadSettingManager.getInstance().setNightMode(isNightMode);
+//        //重绘当前activity
+//        recreate();
     }
 
 

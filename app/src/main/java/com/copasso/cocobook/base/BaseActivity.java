@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import com.copasso.cocobook.R;
 import com.copasso.cocobook.manager.ReadSettingManager;
+import com.copasso.cocobook.utils.SharedPreUtils;
 import com.copasso.cocobook.utils.StatusBarCompat;
 
 import butterknife.ButterKnife;
@@ -30,8 +31,6 @@ public abstract class BaseActivity extends SwipeBackActivity {
     protected Activity mContext;
 
     protected CompositeDisposable mDisposable;
-
-    protected boolean isNightMode = ReadSettingManager.getInstance().isNightMode();
 
     //ButterKnife
     protected Unbinder unbinder;
@@ -99,13 +98,24 @@ public abstract class BaseActivity extends SwipeBackActivity {
         return true;
     }
 
+    /**
+     * @return 是否夜间模式
+     */
+    protected boolean isNightTheme() {
+        return ReadSettingManager.getInstance().isNightMode();
+    }
+
+    protected void setNightTheme(boolean isNightMode) {
+        ReadSettingManager.getInstance().setNightMode(isNightMode);
+    }
+
     /*************************lifecycle area*****************************************************/
 
     /**
      * 初始化主题
      */
     public void initTheme() {
-        if (isNightMode) {
+        if (isNightTheme()) {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
             getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
