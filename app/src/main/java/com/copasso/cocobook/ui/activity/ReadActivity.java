@@ -41,6 +41,7 @@ import com.copasso.cocobook.manager.ReadSettingManager;
 import com.copasso.cocobook.presenter.ReadPresenter;
 import com.copasso.cocobook.presenter.contract.ReadContract;
 import com.copasso.cocobook.service.DownloadService;
+import com.copasso.cocobook.service.ReadAloudService;
 import com.copasso.cocobook.ui.adapter.CategoryAdapter;
 import com.copasso.cocobook.base.BaseMVPActivity;
 import com.copasso.cocobook.ui.dialog.ReadSettingDialog;
@@ -57,6 +58,8 @@ import butterknife.BindView;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static com.copasso.cocobook.service.ReadAloudService.PAUSE;
+import static com.copasso.cocobook.service.ReadAloudService.PLAY;
 
 /**
  * Created by zhouas666 on 18-2-3.
@@ -71,8 +74,8 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     //顶部菜单
     @BindView(R.id.read_abl_top_menu)
     AppBarLayout mAblTopMenu;
-    @BindView(R.id.read_tv_community)
-    TextView mTvCommunity;
+    @BindView(R.id.read_tv_aloud)
+    TextView mTvAloud;
     @BindView(R.id.read_tv_brief)
     TextView mTvBrief;
     //章节内容
@@ -125,6 +128,8 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     public static final int REQUEST_MORE_SETTING = 1;
     public static final String EXTRA_COLL_BOOK = "extra_coll_book";
     public static final String EXTRA_IS_COLLECTED = "extra_is_collected";
+
+    public static int aloudStatus = ReadAloudService.STOP;
 
     //注册 Brightness 的 uri
     private final Uri BRIGHTNESS_MODE_URI = Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS_MODE);
@@ -352,13 +357,16 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     protected void initClick() {
         super.initClick();
 
+//        mTvAloud.setOnClickListener(v -> {
+//        });
+
         //倒叙
         mTvCatalogReserve.setOnClickListener(v -> {
             if (isReversed)
                 mTvCatalogReserve.setText("倒叙");
             else
                 mTvCatalogReserve.setText("正序");
-            isReversed=!isReversed;
+            isReversed = !isReversed;
             Collections.reverse(mChapters);
             mCategoryAdapter.refreshItems(mChapters);
         });
@@ -390,8 +398,8 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
 
                     @Override
                     public void onCategoryFinish(List<TxtChapter> chapters) {
-                        mChapters=chapters;
-                        mTvCatalogSize.setText("共 "+chapters.size()+" 章");
+                        mChapters = chapters;
+                        mTvCatalogSize.setText("共 " + chapters.size() + " 章");
                         mCategoryAdapter.refreshItems(chapters);
                     }
 
@@ -484,7 +492,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     /******************************事件处理*********************************/
     @OnClick({R.id.read_tv_category, R.id.read_tv_setting, R.id.read_tv_pre_chapter
             , R.id.read_tv_next_chapter, R.id.read_tv_night_mode, R.id.read_tv_brief
-            , R.id.read_tv_community, R.id.read_tv_download})
+            ,R.id.read_tv_download})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.read_tv_category: //目录
@@ -514,10 +522,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                 mPageLoader.setNightMode(isNightTheme());
                 break;
             case R.id.read_tv_brief:  //简介
-                BookDetailActivity.startActivity(this, mBookId,mCollBook.getTitle());
-                break;
-            case R.id.read_tv_community:  //社区
-
+                BookDetailActivity.startActivity(this, mBookId, mCollBook.getTitle());
                 break;
         }
     }
@@ -706,7 +711,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     private void exit() {
         //返回给BookDetail。
         setResult(Activity.RESULT_OK
-                ,new Intent().putExtra(BookDetailActivity.RESULT_IS_COLLECTED, isCollected));
+                , new Intent().putExtra(BookDetailActivity.RESULT_IS_COLLECTED, isCollected));
         //退出
         super.onBackPressed();
     }

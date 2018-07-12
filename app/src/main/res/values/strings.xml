@@ -159,6 +159,12 @@
     <string name="read.download">缓存</string>'
     <string name="read.category">目录</string>
     <string name="read.no_chapter">第 %1$d 章(%2$d)</string>
+
+    <string name="read_aloud">朗读</string>
+    <string name="read_aloud_t">正在朗读</string>
+    <string name="read_aloud_s">点击打开阅读界面</string>
+    <string name="read_aloud_pause">朗读暂停</string>
+    <string name="read_aloud_timer">正在朗读(还剩%d分钟)</string>
     
     <!--file system-->
     <string name="file.sub_count">%1$d 项</string>

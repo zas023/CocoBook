@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import com.copasso.cocobook.BuildConfig;
 
+import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.Stack;
 
@@ -165,8 +166,8 @@ public class AppManager {
         }
     }
 
-    public Object[] getActivityArray(){
-        return  mActivityStack.toArray();
+    public Object[] getActivityArray() {
+        return mActivityStack.toArray();
     }
 
     /**
@@ -176,6 +177,21 @@ public class AppManager {
         return mStageActivityCount > 0;
     }
 
+    /**
+     * 判断指定Activity是否存在
+     */
+    public Boolean isExist(Class<?> activityClass) {
+        Boolean result = false;
+        Iterator<Activity> iterator = mActivityStack.iterator();
+        while (iterator.hasNext()) {
+            Activity activity = iterator.next();
+            if (null != iterator && null != activity && activity.getClass() == activityClass) {
+                result = true;
+                break;
+            }
+        }
+        return result;
+    }
 
     /**
      * 重启应用程序
@@ -193,6 +209,7 @@ public class AppManager {
         android.os.Process.killProcess(android.os.Process.myPid());
     }
 
+    /**********************************************************************/
     private class MyActivityLifecycleCallbacks implements Application.ActivityLifecycleCallbacks {
 
         @Override
