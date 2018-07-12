@@ -107,6 +107,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
 
     protected void setNightTheme(boolean isNightMode) {
         ReadSettingManager.getInstance().setNightMode(isNightMode);
+        initTheme();
     }
 
     /*************************lifecycle area*****************************************************/

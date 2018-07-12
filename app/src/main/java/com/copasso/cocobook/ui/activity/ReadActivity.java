@@ -496,7 +496,6 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                 mDlCatalog.openDrawer(Gravity.START);
                 break;
             case R.id.read_tv_download:  //下载
-//                downloadBook(mCollBook);
                 ToastUtils.show("请加入书架下载");
                 break;
             case R.id.read_tv_setting:  //设置
@@ -510,9 +509,9 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                 mCategoryAdapter.setChapter(mPageLoader.skipNextChapter());
                 break;
             case R.id.read_tv_night_mode:  //夜间模式
+                toggleNightMode();
                 setNightTheme(!isNightTheme());
                 mPageLoader.setNightMode(isNightTheme());
-                toggleNightMode();
                 break;
             case R.id.read_tv_brief:  //简介
                 BookDetailActivity.startActivity(this, mBookId,mCollBook.getTitle());
