@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -169,6 +170,14 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
                             ToastUtils.show(event.message);
                         }
                 ));
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        if (swNightMode != null) {
+            swNightMode.setChecked(isNightTheme());
+        }
     }
 
     /**
