@@ -180,7 +180,6 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     };
 
     /********************************参数**********************************/
-    private boolean isNightMode = false;
     private boolean isFullScreen = false;
     private boolean isCollected = false; //isFromSDCard
     private String mBookId;
@@ -213,7 +212,6 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         super.initData(savedInstanceState);
         mCollBook = getIntent().getParcelableExtra(EXTRA_COLL_BOOK);
         isCollected = getIntent().getBooleanExtra(EXTRA_IS_COLLECTED, false);
-        isNightMode = ReadSettingManager.getInstance().isNightMode();
         isFullScreen = ReadSettingManager.getInstance().isFullScreen();
 
         mBookId = mCollBook.get_id();
@@ -294,7 +292,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
      * 夜间模式
      */
     private void toggleNightMode() {
-        if (isNightMode) {
+        if (isNightTheme()) {
             mTvNightMode.setText(StringUtils.getString(R.string.mode_light));
             Drawable drawable = ContextCompat.getDrawable(this, R.drawable.ic_read_menu_morning);
             mTvNightMode.setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
@@ -512,8 +510,8 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                 mCategoryAdapter.setChapter(mPageLoader.skipNextChapter());
                 break;
             case R.id.read_tv_night_mode:  //夜间模式
-                isNightMode = !isNightMode;
-                mPageLoader.setNightMode(isNightMode);
+                setNightTheme(!isNightTheme());
+                mPageLoader.setNightMode(isNightTheme());
                 toggleNightMode();
                 break;
             case R.id.read_tv_brief:  //简介
@@ -523,22 +521,6 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
 
                 break;
         }
-    }
-
-    private void downloadBook(CollBookBean collBook) {
-        //创建任务
-        mPresenter.createDownloadTask(collBook);
-        /******下载后加入书架********/
-        //设置为已收藏
-        isCollected = true;
-        //设置BookChapter
-        mCollBook.setBookChapters(mCollBook.getBookChapters());
-        //设置阅读时间
-        mCollBook.setLastRead(StringUtils.
-                dateConvert(System.currentTimeMillis(), Constant.FORMAT_BOOK_DATE));
-
-        BookRepository.getInstance()
-                .saveCollBookWithAsync(mCollBook);
     }
 
     /**
