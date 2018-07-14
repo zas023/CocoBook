@@ -1,7 +1,6 @@
 package com.copasso.cocobook.ui.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.AppCompatImageView;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;

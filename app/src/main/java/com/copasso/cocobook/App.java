@@ -1,11 +1,8 @@
 package com.copasso.cocobook;
 
-import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 import cn.bmob.v3.Bmob;
