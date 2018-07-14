@@ -58,8 +58,7 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
                     //更新目录
                     updateCategory(collBooks);
                     //异步存储到数据库中
-                    BookRepository.getInstance()
-                            .saveCollBooksWithAsync(collBooks);
+                    BookRepository.getInstance().saveCollBooksWithAsync(collBooks);
                 })
                 .compose(RxUtils::toSimpleSingle)
                 .subscribe(

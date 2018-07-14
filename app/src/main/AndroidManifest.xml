@@ -25,8 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.MainActivity">
-        </activity>
+        <activity android:name=".ui.activity.MainActivity"/>
+        <activity android:name=".ui.activity.WelcomeActivity"/>
         <activity android:name=".ui.activity.AboutActivity"/>
         <activity android:name=".ui.activity.UserLoginActivity"/>
         <activity android:name=".ui.activity.UserRegisterActivity"/>

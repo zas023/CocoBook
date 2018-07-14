@@ -60,14 +60,12 @@ public class SexChooseDialog extends Dialog {
         switch (view.getId()){
             case R.id.choose_btn_boy:
                 //保存到SharePreference中
-                SharedPreUtils.getInstance()
-                        .putString(Constant.SHARED_SEX,Constant.SEX_BOY);
+                SharedPreUtils.getInstance().putString(Constant.SHARED_SEX,Constant.SEX_BOY);
                 RxBusManager.getInstance().post(new RecommendBookEvent("male"));
                 break;
             case R.id.choose_btn_girl:
                 //保存到SharePreference中
-                SharedPreUtils.getInstance()
-                        .putString(Constant.SHARED_SEX,Constant.SEX_GIRL);
+                SharedPreUtils.getInstance().putString(Constant.SHARED_SEX,Constant.SEX_GIRL);
                 RxBusManager.getInstance().post(new RecommendBookEvent("female"));
                 break;
             default:

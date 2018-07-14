@@ -80,8 +80,6 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
     @Override
     protected void initWidget(Bundle savedInstanceState) {
         super.initWidget(savedInstanceState);
-        multiSelectRlRoot.setVisibility(View.GONE);
-        multiSelectBtnAdd.setText("缓存");
         initAdapter();
         initEvent();
     }
@@ -98,17 +96,6 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
      * 初始化事件
      */
     private void initEvent() {
-        //推荐书籍
-        addDisposable(RxBusManager.getInstance()
-                .toObservable(RecommendBookEvent.class)
-                .compose(RxUtils::toSimpleSingle)
-                .subscribe(
-                        event -> {
-                            mRvContent.startRefresh();
-                            mPresenter.loadRecommendBooks(event.sex);
-                        }
-                ));
-        //删除书籍
 
         //接收Read页面传来的下载消息
         addDisposable(RxBusManager.getInstance()
@@ -203,6 +190,12 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
         super.processLogic();
         if(NetworkUtils.isConnected()){
             mRvContent.startRefresh();
+            //推荐图书
+            if (!SharedPreUtils.getInstance().getBoolean(Constant.SHARED_RECOMMENDED)&&
+                    SharedPreUtils.getInstance().getString(Constant.SHARED_SEX)!=null){
+                mPresenter.loadRecommendBooks(SharedPreUtils.getInstance().getString(Constant.SHARED_SEX));
+                SharedPreUtils.getInstance().putBoolean(Constant.SHARED_RECOMMENDED,true);
+            }
         }else {
             SnackbarUtils.show(mContext,"当前网络不可用");
         }

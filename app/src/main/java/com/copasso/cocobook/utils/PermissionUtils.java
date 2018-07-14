@@ -9,10 +9,10 @@ import android.support.v4.content.ContextCompat;
  * 权限检查类
  */
 
-public class PermissionsChecker {
+public class PermissionUtils {
     private final Context mContext;
 
-    public PermissionsChecker(Context context) {
+    public PermissionUtils(Context context) {
         mContext = context.getApplicationContext();
     }
 

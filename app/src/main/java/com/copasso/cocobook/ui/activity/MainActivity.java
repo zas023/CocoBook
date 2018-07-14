@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -34,7 +35,6 @@ import com.copasso.cocobook.ui.fragment.BookShelfFragment;
 import com.copasso.cocobook.ui.fragment.BookStoreFragment;
 import com.copasso.cocobook.ui.fragment.DiscoverFragment;
 import com.copasso.cocobook.utils.*;
-import com.copasso.cocobook.ui.dialog.SexChooseDialog;
 import com.copasso.cocobook.widget.CircleImageView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
@@ -71,7 +71,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     private BookShelfFragment bookShelfFragment;
 
     private final ArrayList<Fragment> mFragmentList = new ArrayList<>();
-    private PermissionsChecker mPermissionsChecker;
+    private PermissionUtils mPermissionUtils;
     /*************************参数**************************/
     private boolean isPrepareFinish = false;
 //    private CocoUser  currentUser=BmobUser.getCurrentUser(CocoUser.class);
@@ -126,12 +126,9 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
         getWindow().setStatusBarColor(Color.TRANSPARENT);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
 
-        //性别选择框
-        showSexChooseDialog();
-
         refreshDrawerHeader();
 
-        swNightMode = (Switch) navigationView.getMenu().findItem(R.id.action_night_mode).
+        swNightMode = navigationView.getMenu().findItem(R.id.action_night_mode).
                 getActionView().findViewById(R.id.view_switch);
         swNightMode.setChecked(isNightTheme());
     }
@@ -196,18 +193,6 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
         drawerTvMail.setText(BmobUser.getCurrentUser().getEmail());
     }
 
-    /**
-     * 首次进入应用，性别选择
-     */
-    private void showSexChooseDialog() {
-        String sex = SharedPreUtils.getInstance().getString(Constant.SHARED_SEX);
-        if (sex.equals("")) {
-            mVp.postDelayed(() -> {
-                Dialog dialog = new SexChooseDialog(this);
-                dialog.show();
-            }, 500);
-        }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -327,12 +312,12 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
             case R.id.action_scan_local_book:
 
                 if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
-                    if (mPermissionsChecker == null) {
-                        mPermissionsChecker = new PermissionsChecker(this);
+                    if (mPermissionUtils == null) {
+                        mPermissionUtils = new PermissionUtils(this);
                     }
 
                     //获取读取和写入SD卡的权限
-                    if (mPermissionsChecker.lacksPermissions(PERMISSIONS)) {
+                    if (mPermissionUtils.lacksPermissions(PERMISSIONS)) {
                         //请求权限
                         ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSIONS_REQUEST_STORAGE);
                         return super.onOptionsItemSelected(item);

@@ -33,10 +33,6 @@ public class SharedPreUtils {
         return sInstance;
     }
 
-    public String getString(String key){
-        return sharedReadable.getString(key,"");
-    }
-
     public void putString(String key,String value){
         sharedWritable.putString(key,value);
         sharedWritable.commit();
@@ -52,11 +48,27 @@ public class SharedPreUtils {
         sharedWritable.commit();
     }
 
+    public String getString(String key){
+        return getString(key,"");
+    }
+
+    public String getString(String key, String def){
+        return sharedReadable.getString(key,def);
+    }
+
+    public int getInt(String key){
+        return getInt(key,0);
+    }
+
     public int getInt(String key,int def){
         return sharedReadable.getInt(key, def);
     }
 
+    public boolean getBoolean(String key){
+        return getBoolean(key,false);
+    }
+
     public boolean getBoolean(String key,boolean def){
-        return sharedReadable.getBoolean(key, def);
+        return sharedReadable.getBoolean(key, false);
     }
 }

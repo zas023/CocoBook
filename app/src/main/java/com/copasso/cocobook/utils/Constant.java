@@ -5,9 +5,7 @@ import android.support.annotation.StringDef;
 import java.io.File;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,7 +15,9 @@ import java.util.Map;
 
 public class Constant {
     /*SharedPreference*/
+    public static final String SHARED_FIRST_IN = "first_in";
     public static final String SHARED_SEX = "sex";
+    public static final String SHARED_RECOMMENDED = "recommended";
     public static final String SHARED_SAVE_BOOK_SORT = "book_sort";
     public static final String SHARED_SAVE_BILLBOARD = "billboard";
     public static final String SEX_BOY = "boy";
