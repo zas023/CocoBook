@@ -43,14 +43,14 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
     @BindView(R.id.book_shelf_rv_content)
     ScrollRefreshRecyclerView mRvContent;
     //全选
-    @BindView(R.id.multi_select_rl_root)
-    RelativeLayout multiSelectRlRoot;
-    @BindView(R.id.multi_select_cb_all)
-    CheckBox multiSelectCbAll;
-    @BindView(R.id.multi_select_btn_add)
-    Button multiSelectBtnAdd;
-    @BindView(R.id.multi_select_btn_delete)
-    Button multiSelectBtnDelete;
+//    @BindView(R.id.multi_select_rl_root)
+//    RelativeLayout multiSelectRlRoot;
+//    @BindView(R.id.multi_select_cb_all)
+//    CheckBox multiSelectCbAll;
+//    @BindView(R.id.multi_select_btn_add)
+//    Button multiSelectBtnAdd;
+//    @BindView(R.id.multi_select_btn_delete)
+//    Button multiSelectBtnDelete;
 
     /***************************视图********************************/
     private CollBookAdapter mCollBookAdapter;
