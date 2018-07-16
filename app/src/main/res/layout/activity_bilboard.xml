@@ -8,7 +8,7 @@
     
     <include layout="@layout/toolbar"/>
     
-    <com.copasso.cocobook.widget.RefreshLayout
+    <com.thmub.cocobook.widget.RefreshLayout
         android:id="@+id/billboard_rl_refresh"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -24,20 +24,20 @@
                     style="@style/AppTheme.TextAppearance.Billboard.Title"
                     android:text="男生" />
         
-                <com.copasso.cocobook.widget.CustomExpandableListView
+                <com.thmub.cocobook.widget.CustomExpandableListView
                     android:id="@+id/billboard_elv_boy"
                     style="@style/AppTheme.Widget.DefaultExpandListView">
-                </com.copasso.cocobook.widget.CustomExpandableListView>
+                </com.thmub.cocobook.widget.CustomExpandableListView>
         
                 <TextView
                     style="@style/AppTheme.TextAppearance.Billboard.Title"
                     android:text="女生" />
         
-                <com.copasso.cocobook.widget.CustomExpandableListView
+                <com.thmub.cocobook.widget.CustomExpandableListView
                     android:id="@+id/billboard_elv_girl"
                     style="@style/AppTheme.Widget.DefaultExpandListView">
-                </com.copasso.cocobook.widget.CustomExpandableListView>
+                </com.thmub.cocobook.widget.CustomExpandableListView>
             </LinearLayout>
         </ScrollView>
-    </com.copasso.cocobook.widget.RefreshLayout>
+    </com.thmub.cocobook.widget.RefreshLayout>
 </LinearLayout>

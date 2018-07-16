@@ -14,7 +14,7 @@
         android:orientation="vertical"
         android:gravity="bottom">
 
-    <com.copasso.cocobook.widget.CircleImageView
+    <com.thmub.cocobook.widget.CircleImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"

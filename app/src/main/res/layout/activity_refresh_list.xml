@@ -7,7 +7,7 @@
 	android:orientation="vertical">
 	<include layout="@layout/toolbar"/>
 	
-	<com.copasso.cocobook.widget.RefreshLayout
+	<com.thmub.cocobook.widget.RefreshLayout
 		android:id="@+id/refresh_layout"
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
@@ -17,5 +17,5 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent">
 		</android.support.v7.widget.RecyclerView>
-	</com.copasso.cocobook.widget.RefreshLayout>
+	</com.thmub.cocobook.widget.RefreshLayout>
 </LinearLayout>

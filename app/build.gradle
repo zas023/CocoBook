@@ -9,7 +9,7 @@ android {
     //兼容Android6.0系统所需
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
-        applicationId "com.copasso.cocobook"
+        applicationId "com.thmub.cocobook"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         multiDexEnabled true
@@ -32,7 +32,7 @@ android {
 
 greendao{
     schemaVersion 4
-    daoPackage 'com.copasso.cocobook.model.gen'
+    daoPackage 'com.thmub.cocobook.model.gen'
     targetGenDir 'src/main/java'
 }
 

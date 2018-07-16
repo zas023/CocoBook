@@ -31,7 +31,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/user.info.icon"/>
 
-            <com.copasso.cocobook.widget.CircleImageView
+            <com.thmub.cocobook.widget.CircleImageView
                     android:id="@+id/info_iv_icon"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
@@ -41,7 +41,7 @@
 
         <View style="@style/AppTheme.Linear.Divide.Narrow"/>
 
-        <com.copasso.cocobook.widget.CommonItemLayout
+        <com.thmub.cocobook.widget.CommonItemLayout
                 android:id="@+id/info_cil_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
 
         <View style="@style/AppTheme.Linear.Divide.Narrow"/>
 
-        <com.copasso.cocobook.widget.CommonItemLayout
+        <com.thmub.cocobook.widget.CommonItemLayout
                 android:id="@+id/info_cil_sex"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
 
         <View style="@style/AppTheme.Linear.Divide.Narrow"/>
 
-        <com.copasso.cocobook.widget.CommonItemLayout
+        <com.thmub.cocobook.widget.CommonItemLayout
                 android:id="@+id/info_cil_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
 
         <View style="@style/AppTheme.Linear.Divide.Narrow"/>
 
-        <com.copasso.cocobook.widget.CommonItemLayout
+        <com.thmub.cocobook.widget.CommonItemLayout
                 android:id="@+id/info_cil_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

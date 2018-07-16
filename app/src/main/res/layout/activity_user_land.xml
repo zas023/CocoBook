@@ -15,7 +15,7 @@
             android:gravity="center"
             android:background="?attr/colorPrimary">
 
-        <com.copasso.cocobook.widget.OwlView
+        <com.thmub.cocobook.widget.OwlView
                 android:id="@+id/land_owl_view"
                 android:layout_width="175dp"
                 android:layout_height="107dp"
