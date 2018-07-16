@@ -20,6 +20,6 @@
         android:layout_marginBottom="24dp"
         android:textSize="@dimen/nb.text.large"
         android:textColor="@color/textSecondary"
-        tools:text="览阅 v1.0.0" />
+        tools:text="览阅 v0.8" />
 
 </LinearLayout>
