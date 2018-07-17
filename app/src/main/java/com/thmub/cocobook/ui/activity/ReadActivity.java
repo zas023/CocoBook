@@ -56,6 +56,8 @@ import butterknife.BindView;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static com.thmub.cocobook.service.ReadAloudService.PAUSE;
+import static com.thmub.cocobook.service.ReadAloudService.PLAY;
 
 /**
  * Created by zhouas666 on 18-2-3.
@@ -234,7 +236,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         //获取页面加载器
         mPageLoader = mPvPage.getPageLoader(mCollBook.isLocal());
         //禁止滑动展示DrawerLayout
-//        mDlCatalog.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        //mDlCatalog.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         mSettingDialog = new ReadSettingDialog(this, mPageLoader);
 
         initAdapter();
@@ -353,8 +355,9 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     protected void initClick() {
         super.initClick();
 
-//        mTvAloud.setOnClickListener(v -> {
-//        });
+        mTvAloud.setOnClickListener(v -> {
+            ReadAloudService.resume(mContext);
+        });
 
         //倒叙
         mTvCatalogReserve.setOnClickListener(v -> {

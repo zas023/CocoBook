@@ -4,6 +4,7 @@ import android.app.Service;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by zhouas666 on 18-2-13.
@@ -12,6 +13,11 @@ import io.reactivex.disposables.Disposable;
 public abstract class BaseService extends Service {
 
     private CompositeDisposable mDisposable;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
 
     protected void addDisposable(Disposable disposable){
         if (mDisposable == null){
