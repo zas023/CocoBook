@@ -60,6 +60,7 @@ public abstract class PageLoader {
     //默认的显示参数配置
     private static final int DEFAULT_TIP_SIZE = 12;
     private static final int EXTRA_TITLE_SIZE = 4;
+
     //当前章节列表
     protected List<TxtChapter> mChapterList;
     //书籍对象
@@ -435,6 +436,14 @@ public abstract class PageLoader {
     //获取当前页的页码
     public int getPagePos() {
         return mCurPage.position;
+    }
+
+    //获取当前页内容
+    public String getPageContent(){
+        StringBuffer buffer=new StringBuffer();
+        for (String str: mCurPage.lines)
+            buffer.append(str);
+        return buffer.toString();
     }
 
     //保存阅读记录

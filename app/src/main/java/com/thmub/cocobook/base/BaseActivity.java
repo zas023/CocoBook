@@ -19,6 +19,7 @@ import butterknife.Unbinder;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by PC on 2016/9/8.
@@ -127,11 +128,11 @@ public abstract class BaseActivity extends SwipeBackActivity {
         super.onCreate(savedInstanceState);
         initTheme();
         setContentView(getLayoutId());
-        initData(savedInstanceState);
         mContext = this;
-        // 设置 TAG
         TAG = this.getClass().getSimpleName();
+        // 设置 TAG
         unbinder = ButterKnife.bind(this);
+        initData(savedInstanceState);
         //左滑手势
         setSwipeBackEnable(initSwipeBackEnable());
         //init

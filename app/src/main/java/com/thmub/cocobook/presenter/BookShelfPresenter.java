@@ -9,6 +9,7 @@ import com.thmub.cocobook.model.local.BookRepository;
 import com.thmub.cocobook.model.server.RemoteRepository;
 import com.thmub.cocobook.presenter.contract.BookShelfContract;
 import com.thmub.cocobook.base.RxPresenter;
+import com.thmub.cocobook.service.BookDownloadService;
 import com.thmub.cocobook.utils.Constant;
 import com.thmub.cocobook.utils.LogUtils;
 import com.thmub.cocobook.utils.MD5Utils;
@@ -22,6 +23,7 @@ import java.util.List;
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by zhouas666 on 18-2-8.
@@ -45,7 +47,8 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
         task.setBookChapters(collBookBean.getBookChapters());
         task.setLastChapter(collBookBean.getBookChapters().size());
 
-        RxBusManager.getInstance().post(task);
+        //下载书籍
+        BookDownloadService.post(task);
     }
 
 

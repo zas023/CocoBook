@@ -33,12 +33,16 @@ import android.widget.TextView;
 
 import butterknife.OnClick;
 import com.thmub.cocobook.R;
+import com.thmub.cocobook.manager.RxBusManager;
 import com.thmub.cocobook.model.bean.BookChapterBean;
 import com.thmub.cocobook.model.bean.CollBookBean;
+import com.thmub.cocobook.model.bean.DownloadTaskBean;
+import com.thmub.cocobook.model.event.SpeakEvent;
 import com.thmub.cocobook.model.local.BookRepository;
 import com.thmub.cocobook.manager.ReadSettingManager;
 import com.thmub.cocobook.presenter.ReadPresenter;
 import com.thmub.cocobook.presenter.contract.ReadContract;
+import com.thmub.cocobook.service.BookDownloadService;
 import com.thmub.cocobook.service.ReadAloudService;
 import com.thmub.cocobook.ui.adapter.CategoryAdapter;
 import com.thmub.cocobook.base.BaseMVPActivity;
@@ -51,13 +55,17 @@ import com.thmub.cocobook.widget.page.TxtChapter;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Observable;
 
 import butterknife.BindView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
-import static com.thmub.cocobook.service.ReadAloudService.PAUSE;
-import static com.thmub.cocobook.service.ReadAloudService.PLAY;
+import static com.thmub.cocobook.service.ReadAloudService.*;
 
 /**
  * Created by zhouas666 on 18-2-3.
@@ -127,8 +135,6 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     public static final String EXTRA_COLL_BOOK = "extra_coll_book";
     public static final String EXTRA_IS_COLLECTED = "extra_is_collected";
 
-    public static int aloudStatus = ReadAloudService.STOP;
-
     //注册 Brightness 的 uri
     private final Uri BRIGHTNESS_MODE_URI = Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS_MODE);
     private final Uri BRIGHTNESS_URI = Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS);
@@ -138,6 +144,8 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     private List<TxtChapter> mChapters;
     private boolean isRegistered = false;
     private boolean isReversed = false;
+
+    private Intent readAloudIntent;
 
     // 接收电池信息和时间更新的广播
     private BroadcastReceiver mReceiver = new BroadcastReceiver() {
@@ -216,8 +224,10 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         mCollBook = getIntent().getParcelableExtra(EXTRA_COLL_BOOK);
         isCollected = getIntent().getBooleanExtra(EXTRA_IS_COLLECTED, false);
         isFullScreen = ReadSettingManager.getInstance().isFullScreen();
-
         mBookId = mCollBook.get_id();
+
+        readAloudIntent = new Intent(this, ReadAloudService.class);
+        readAloudIntent.setAction(ActionNewReadAloud);
     }
 
     @Override
@@ -356,7 +366,9 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         super.initClick();
 
         mTvAloud.setOnClickListener(v -> {
-            ReadAloudService.resume(mContext);
+            readAloudIntent.putExtra("aloudButton", false);
+            readAloudIntent.putExtra("content", mPageLoader.getPageContent());
+            startService(readAloudIntent);
         });
 
         //倒叙
@@ -488,10 +500,33 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         );
     }
 
+    @Override
+    protected void initEvent() {
+        super.initEvent();
+        //朗诵消息的处理
+        addDisposable(RxBusManager.getInstance()
+                .toObservable(SpeakEvent.class)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(speakEvent -> {
+                    Log.e(TAG, String.valueOf(speakEvent.status));
+                    switch (speakEvent.status){
+                        case NEXT:
+                            mPageLoader.autoNextPage();
+                            readAloudIntent.putExtra("content",mPageLoader.getPageContent());
+                            startService(readAloudIntent);
+                            break;
+                        case PAUSE:
+
+                            break;
+                    }
+                })
+        );
+    }
+
     /******************************事件处理*********************************/
     @OnClick({R.id.read_tv_category, R.id.read_tv_setting, R.id.read_tv_pre_chapter
             , R.id.read_tv_next_chapter, R.id.read_tv_night_mode, R.id.read_tv_brief
-            ,R.id.read_tv_download})
+            , R.id.read_tv_download})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.read_tv_category: //目录
@@ -503,7 +538,12 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                 mDlCatalog.openDrawer(Gravity.START);
                 break;
             case R.id.read_tv_download:  //下载
-                ToastUtils.show("请加入书架下载");
+                DownloadTaskBean task = new DownloadTaskBean();
+                task.setTaskName(mCollBook.getTitle());
+                task.setBookId(mCollBook.get_id());
+                task.setBookChapters(mCollBook.getBookChapters());
+                task.setLastChapter(mCollBook.getBookChapters().size());
+                BookDownloadService.post(task);
                 break;
             case R.id.read_tv_setting:  //设置
                 toggleMenu(false);
@@ -637,8 +677,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         //如果是更新加载，那么重置PageLoader的Chapter
         if (mCollBook.isUpdate() && isCollected) {
             mPageLoader.setChapterList(bookChapters);
-            BookRepository.getInstance()
-                    .saveBookChaptersWithAsync(bookChapters);
+            BookRepository.getInstance().saveBookChaptersWithAsync(bookChapters);
         } else {
             mPageLoader.openBook(mCollBook);
         }
@@ -709,8 +748,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     //退出
     private void exit() {
         //返回给BookDetail。
-        setResult(Activity.RESULT_OK
-                , new Intent().putExtra(BookDetailActivity.RESULT_IS_COLLECTED, isCollected));
+        setResult(Activity.RESULT_OK, new Intent().putExtra(BookDetailActivity.RESULT_IS_COLLECTED, isCollected));
         //退出
         super.onBackPressed();
     }
@@ -748,6 +786,8 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         super.onDestroy();
         unregisterReceiver(mReceiver);
         mPageLoader.closeBook();
+        //销毁朗读服务
+        stopService(readAloudIntent);
     }
 
     /********************************事件处理**********************************/

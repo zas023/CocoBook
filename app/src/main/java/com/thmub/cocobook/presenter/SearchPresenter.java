@@ -19,7 +19,7 @@ public class SearchPresenter extends RxPresenter<SearchContract.View>
 
     @Override
     public void searchHotWord() {
-        Disposable disp = RemoteRepository.getInstance()
+        addDisposable(RemoteRepository.getInstance()
                 .getHotWords()
                 .compose(RxUtils::toSimpleSingle)
                 .subscribe(
@@ -29,13 +29,12 @@ public class SearchPresenter extends RxPresenter<SearchContract.View>
                         e -> {
                             LogUtils.e(e);
                         }
-                );
-        addDisposable(disp);
+                ));
     }
 
     @Override
     public void searchKeyWord(String query) {
-        Disposable disp = RemoteRepository.getInstance()
+        addDisposable(RemoteRepository.getInstance()
                 .getKeyWords(query)
                 .compose(RxUtils::toSimpleSingle)
                 .subscribe(
@@ -45,13 +44,12 @@ public class SearchPresenter extends RxPresenter<SearchContract.View>
                         e -> {
                             LogUtils.e(e);
                         }
-                );
-        addDisposable(disp);
+                ));
     }
 
     @Override
     public void searchBook(String query) {
-        Disposable disp = RemoteRepository.getInstance()
+        addDisposable(RemoteRepository.getInstance()
                 .getSearchBooks(query)
                 .compose(RxUtils::toSimpleSingle)
                 .subscribe(
@@ -62,8 +60,7 @@ public class SearchPresenter extends RxPresenter<SearchContract.View>
                             LogUtils.e(e);
                             mView.errorBooks();
                         }
-                );
-        addDisposable(disp);
+                ));
     }
 
     @Override

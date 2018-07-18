@@ -20,10 +20,12 @@ import android.util.Log;
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.base.BaseService;
 import com.thmub.cocobook.manager.RxBusManager;
+import com.thmub.cocobook.model.event.SpeakEvent;
 import com.thmub.cocobook.model.type.RxBusTag;
 import com.thmub.cocobook.ui.activity.ReadActivity;
 import com.thmub.cocobook.utils.UiUtils;
 import com.thmub.cocobook.utils.media.RunMediaPlayer;
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.*;
 
@@ -32,11 +34,11 @@ import static com.thmub.cocobook.BuildConfig.DEBUG;
 
 /**
  * Created by GKF on 2018/1/2.
- * 朗读服务
+ * 朗读service
  */
 public class ReadAloudService extends BaseService {
-    public static final int PLAY = 1;
     public static final int STOP = 0;
+    public static final int PLAY = 1;
     public static final int PAUSE = 2;
     public static final int NEXT = 3;
     public static final String ActionMediaButton = "mediaButton";
@@ -79,6 +81,7 @@ public class ReadAloudService extends BaseService {
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.i(TAG,"---------------------onCreate");
         preference = this.getSharedPreferences("CONFIG", 0);
         textToSpeech = new TextToSpeech(this, new TTSListener());
         audioFocusChangeListener = new AudioFocusChangeListener();
@@ -96,6 +99,7 @@ public class ReadAloudService extends BaseService {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.i(TAG,"---------------------onStartCommand");
         if (intent != null) {
             String action = intent.getAction();
             if (action != null) {
@@ -122,13 +126,15 @@ public class ReadAloudService extends BaseService {
     }
 
     private void newReadAloud(String content, Boolean aloudButton) {
+        Log.i(TAG,"---------------------newReadAloud:"+content);
         if (content == null) {
             stopSelf();
             return;
         }
+
         nowSpeak = 0;
         contentList.clear();
-        String[] splitSpeech = content.split("\r\n");
+        String[] splitSpeech = content.split("。|？|！");
         for (String aSplitSpeech : splitSpeech) {
             if (!isEmpty(aSplitSpeech)) {
                 contentList.add(aSplitSpeech);
@@ -143,13 +149,14 @@ public class ReadAloudService extends BaseService {
     }
 
     public void playTTS() {
+        Log.i(TAG,"---------------------playTTS:");
         if (contentList.size() < 1) {
-            RxBusManager.getInstance().post(RxBusTag.ALOUD_STATE, NEXT);
+            RxBusManager.getInstance().post(new SpeakEvent(NEXT));
             return;
         }
         if (ttsInitSuccess && !speak && requestFocus()) {
             speak = !speak;
-            RxBusManager.getInstance().post(RxBusTag.ALOUD_STATE, PLAY);
+            RxBusManager.getInstance().post(new SpeakEvent(PLAY));
             updateNotification();
             initSpeechRate();
             HashMap<String, String> map = new HashMap<>();
@@ -172,6 +179,7 @@ public class ReadAloudService extends BaseService {
         }
     }
 
+    /******************************************************************************/
     private void initSpeechRate() {
         if (speechRate != preference.getInt("speechRate", 10) && !preference.getBoolean("speechRateFollowSys", true)) {
             speechRate = preference.getInt("speechRate", 10);
@@ -477,14 +485,14 @@ public class ReadAloudService extends BaseService {
         public void onDone(String s) {
             nowSpeak = nowSpeak + 1;
             if (nowSpeak >= contentList.size()) {
-                RxBusManager.getInstance().post(RxBusTag.ALOUD_STATE, NEXT);
+                RxBusManager.getInstance().post(new SpeakEvent(NEXT));
             }
         }
 
         @Override
         public void onError(String s) {
             pauseReadAloud(true);
-            RxBusManager.getInstance().post(RxBusTag.ALOUD_STATE, PAUSE);
+            RxBusManager.getInstance().post(new SpeakEvent(PAUSE));
         }
     }
 

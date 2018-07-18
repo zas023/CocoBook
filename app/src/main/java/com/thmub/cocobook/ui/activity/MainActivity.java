@@ -155,7 +155,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
 
     @Override
     protected void initEvent() {
-        //下载书籍
+        //下载书籍通知
         addDisposable(RxBusManager.getInstance()
                 .toObservable(DownloadMessage.class)
                 .observeOn(AndroidSchedulers.mainThread())
