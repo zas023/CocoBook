@@ -91,19 +91,10 @@ public class BookListDetailActivity extends BaseMVPActivity<BookListDetailContra
     @Override
     protected void initWidget() {
         super.initWidget();
-        initAdapter();
-    }
-
-    private void initAdapter(){
+        //初始化adapter
         mDetailAdapter = new BookListDetailAdapter(this,new WholeAdapter.Options());
         mDetailHeader = new DetailHeader();
         mDetailAdapter.addHeaderView(mDetailHeader);
-        mDetailAdapter.setOnItemClickListener(
-                (view, pos) -> {
-                    String bookId = mBooksList.get(pos).getBook().get_id();
-                    BookDetailActivity.startActivity(this,bookId,mBooksList.get(pos).getBook().getTitle());
-                }
-        );
 
         mRvContent.setLayoutManager(new LinearLayoutManager(this));
         mRvContent.addItemDecoration(new DividerItemDecoration(this));
@@ -113,6 +104,13 @@ public class BookListDetailActivity extends BaseMVPActivity<BookListDetailContra
     @Override
     protected void initClick() {
         super.initClick();
+        mDetailAdapter.setOnItemClickListener(
+                (view, pos) -> {
+                    String bookId = mBooksList.get(pos).getBook().get_id();
+                    BookDetailActivity.startActivity(this,bookId,mBooksList.get(pos).getBook().getTitle());
+                }
+        );
+
         mDetailAdapter.setOnLoadMoreListener(
                 () -> loadBook()
         );

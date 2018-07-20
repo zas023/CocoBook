@@ -21,8 +21,7 @@ public class BillboardPresenter extends RxPresenter<BillboardContract.View>
     @Override
     public void loadBillboardList() {
         //这个最好是设定一个默认时间采用Remote加载，如果Remote加载失败则采用数据中的数据。我这里先写死吧
-        BillboardPackage bean = LocalRepository.getInstance()
-                .getBillboardPackage();
+        BillboardPackage bean = LocalRepository.getInstance().getBillboardPackage();
         if (bean == null){
             RemoteRepository.getInstance()
                     .getBillboardPackage()

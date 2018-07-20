@@ -88,7 +88,7 @@ public class RemoteRepository {
      * @param gender
      * @return
      */
-    public Single<List<CollBookBean>> getRecommendBooks(String gender) {
+    public Single<List<CollBookBean>> getRecommendBooksByGender(String gender) {
         return mBookApi.getRecommendBookPackage(gender)
                 .map(bean -> bean.getBooks());
     }

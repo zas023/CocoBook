@@ -13,15 +13,11 @@ public class RxPresenter<T extends BaseContract.BaseView> implements BaseContrac
     protected CompositeDisposable mDisposable;
 
     protected void unSubscribe() {
-        if (mDisposable != null) {
-            mDisposable.dispose();
-        }
+        if (mDisposable != null) mDisposable.dispose();
     }
 
     protected void addDisposable(Disposable subscription) {
-        if (mDisposable == null) {
-            mDisposable = new CompositeDisposable();
-        }
+        if (mDisposable == null) mDisposable = new CompositeDisposable();
         mDisposable.add(subscription);
     }
 

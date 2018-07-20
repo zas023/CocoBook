@@ -55,7 +55,7 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
     @Override
     public void loadRecommendBooks(String gender) {
         Disposable disposable = RemoteRepository.getInstance()
-                .getRecommendBooks(gender)
+                .getRecommendBooksByGender(gender)
                 .doOnSuccess((collBooks) -> {
                     //更新目录
                     updateCategory(collBooks);

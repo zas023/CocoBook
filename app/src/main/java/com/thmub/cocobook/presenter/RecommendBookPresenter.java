@@ -5,7 +5,6 @@ import com.thmub.cocobook.presenter.contract.RecommendBookContract;
 import com.thmub.cocobook.base.RxPresenter;
 import com.thmub.cocobook.utils.LogUtils;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -14,10 +13,12 @@ import io.reactivex.schedulers.Schedulers;
 
 public class RecommendBookPresenter extends RxPresenter<RecommendBookContract.View>
         implements RecommendBookContract.Presenter {
+
     private static final String TAG = "RecommendBookPresenter";
+
     @Override
     public void refreshBookBrief(String bookId) {
-        Disposable remoteDisp = RemoteRepository.getInstance()
+        addDisposable(RemoteRepository.getInstance()
                 .getRecommendBooksByBookId(bookId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -31,7 +32,6 @@ public class RecommendBookPresenter extends RxPresenter<RecommendBookContract.Vi
                             mView.showError();
                             LogUtils.e(e);
                         }
-                );
-        addDisposable(remoteDisp);
+                ));
     }
 }

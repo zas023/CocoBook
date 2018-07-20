@@ -16,7 +16,7 @@ import java.util.List;
 public abstract class BaseListAdapter <T> extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private static final String TAG = "BaseListAdapter";
-    /*common statement*/
+
     protected final List<T> mList = new ArrayList<>();
     protected OnItemClickListener mClickListener;
     protected OnItemLongClickListener mLongClickListener;

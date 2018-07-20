@@ -17,6 +17,8 @@ import io.reactivex.disposables.Disposable;
 public class SearchPresenter extends RxPresenter<SearchContract.View>
         implements SearchContract.Presenter{
 
+    private static final String TAG = "SearchPresenter";
+
     @Override
     public void searchHotWord() {
         addDisposable(RemoteRepository.getInstance()

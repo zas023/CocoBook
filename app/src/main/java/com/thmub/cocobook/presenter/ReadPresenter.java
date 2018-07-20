@@ -31,7 +31,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by zhouas666 on 18-2-3.
  */
 
-public class ReadPresenter extends RxPresenter<ReadContract.View> implements ReadContract.Presenter{
+public class ReadPresenter extends RxPresenter<ReadContract.View> implements ReadContract.Presenter {
     private static final String TAG = "ReadPresenter";
 
     private Subscription mChapterSub;
@@ -43,35 +43,27 @@ public class ReadPresenter extends RxPresenter<ReadContract.View> implements Rea
 
     @Override
     public void loadCategory(String bookId) {
-        Disposable disposable = RemoteRepository.getInstance()
+        addDisposable(RemoteRepository.getInstance()
                 .getBookChapters(bookId)
+                .compose(RxUtils::toSimpleSingle)
                 .doOnSuccess(bookChapterBeen -> {
                     //进行设定BookChapter所属的书的id。
-                    for (BookChapterBean bookChapter : bookChapterBeen){
+                    for (BookChapterBean bookChapter : bookChapterBeen) {
                         bookChapter.setId(MD5Utils.strToMd5By16(bookChapter.getLink()));
                         bookChapter.setBookId(bookId);
                     }
                 })
-                .compose(RxUtils::toSimpleSingle)
                 .subscribe(
-                        beans -> {
-                            mView.showCategory(beans);
-                        }
-                        ,
-                        e -> {
-                            //TODO: Haven't grate conversation method.
-                            LogUtils.e(e);
-                        }
-                );
-        addDisposable(disposable);
+                        beans -> mView.showCategory(beans)
+                ));
     }
 
     //需要重新考虑
     @Override
-    public void loadChapter(String bookId,List<TxtChapter> bookChapters){
+    public void loadChapter(String bookId, List<TxtChapter> bookChapters) {
         int size = bookChapters.size();
         //取消上次的任务，防止多次加载
-        if (mChapterSub != null){
+        if (mChapterSub != null) {
             mChapterSub.cancel();
         }
 
@@ -79,10 +71,9 @@ public class ReadPresenter extends RxPresenter<ReadContract.View> implements Rea
         ArrayDeque<String> titles = new ArrayDeque<>(bookChapters.size());
 
         //首先判断是否Chapter已经存在
-        for (int i=0; i < size; ++i){
+        for (int i = 0; i < size; ++i) {
             TxtChapter bookChapter = bookChapters.get(i);
-            if (!(BookManager
-                    .isChapterCached(bookId,bookChapter.getTitle()))){
+            if (!(BookManager.isChapterCached(bookId, bookChapter.getTitle()))) {
                 //网络中获取数据
                 Single<ChapterInfoBean> chapterInfoSingle = RemoteRepository.getInstance()
                         .getChapterInfo(bookChapter.getLink());
@@ -92,7 +83,7 @@ public class ReadPresenter extends RxPresenter<ReadContract.View> implements Rea
                 titles.add(bookChapter.getTitle());
             }
             //如果已经存在，再判断是不是我们需要的下一个章节，如果是才返回加载成功
-            else if (i == 0){
+            else if (i == 0) {
                 mView.finishChapter();
             }
         }
@@ -100,9 +91,9 @@ public class ReadPresenter extends RxPresenter<ReadContract.View> implements Rea
         Single.concat(chapterInfos)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        new Subscriber<ChapterInfoBean>() {
+                .subscribe(new Subscriber<ChapterInfoBean>() {
                             String title = titles.poll();
+
                             @Override
                             public void onSubscribe(Subscription s) {
                                 s.request(Integer.MAX_VALUE);
@@ -112,9 +103,7 @@ public class ReadPresenter extends RxPresenter<ReadContract.View> implements Rea
                             @Override
                             public void onNext(ChapterInfoBean chapterInfoBean) {
                                 //存储数据
-                                BookRepository.getInstance().saveChapterInfo(
-                                        bookId, title, chapterInfoBean.getBody()
-                                );
+                                BookRepository.getInstance().saveChapterInfo(bookId, title, chapterInfoBean.getBody());
                                 mView.finishChapter();
                                 //将获取到的数据进行存储
                                 title = titles.poll();
@@ -123,7 +112,7 @@ public class ReadPresenter extends RxPresenter<ReadContract.View> implements Rea
                             @Override
                             public void onError(Throwable t) {
                                 //只有第一个加载失败才会调用errorChapter
-                                if (bookChapters.get(0).getTitle().equals(title)){
+                                if (bookChapters.get(0).getTitle().equals(title)) {
                                     mView.errorChapter();
                                 }
                                 LogUtils.e(t);

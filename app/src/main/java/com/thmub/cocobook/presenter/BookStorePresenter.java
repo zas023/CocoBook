@@ -14,10 +14,9 @@ public class BookStorePresenter extends RxPresenter<BookStoreContract.View>
         implements BookStoreContract.Presenter {
     private static final String TAG = "BookStorePresenter";
 
-
     @Override
     public void refreshSwipePictures() {
-        Disposable disposable = RemoteRepository.getInstance()
+        addDisposable(RemoteRepository.getInstance()
                 .getSwipePictures()
                 .compose(RxUtils::toSimpleSingle)
                 .subscribe(
@@ -31,8 +30,7 @@ public class BookStorePresenter extends RxPresenter<BookStoreContract.View>
                             mView.showErrorTip(e.toString());
                             mView.complete();
                         }
-                );
-        addDisposable(disposable);
+                ));
     }
 
     @Override

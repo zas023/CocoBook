@@ -21,6 +21,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class BookListPresenter extends RxPresenter<BookListContract.View> implements BookListContract.Presenter {
 
+    private static final String TAG = "BookListPresenter";
 
     @Override
     public void refreshBookList(BookListType type, String tag, int start, int limited) {

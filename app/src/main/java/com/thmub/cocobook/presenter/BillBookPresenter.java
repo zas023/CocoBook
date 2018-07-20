@@ -18,7 +18,7 @@ public class BillBookPresenter extends RxPresenter<BillBookContract.View>
     private static final String TAG = "BillBookPresenter";
     @Override
     public void refreshBookBrief(String billId) {
-        Disposable remoteDisp = RemoteRepository.getInstance()
+        addDisposable(RemoteRepository.getInstance()
                 .getBillBooks(billId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -32,7 +32,6 @@ public class BillBookPresenter extends RxPresenter<BillBookContract.View>
                             mView.showError();
                             LogUtils.e(e);
                         }
-                );
-        addDisposable(remoteDisp);
+                ));
     }
 }

@@ -23,13 +23,11 @@ public class FeatureDetailPresenter extends RxPresenter<FeatureDetailContract.Vi
                         (beans)-> {
                             mView.finishRefresh(beans);
                             mView.complete();
-                            System.out.println("======================================="+beans.size());
                         }
                         ,
                         (e) ->{
                             mView.showError();
                             LogUtils.e(e);
-                            System.out.println("======================================"+e.getMessage());
                         }
                 ));
     }

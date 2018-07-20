@@ -18,7 +18,7 @@ public class BookListDetailPresenter extends RxPresenter<BookListDetailContract.
         implements BookListDetailContract.Presenter {
     @Override
     public void refreshBookListDetail(String detailId) {
-        Disposable refreshDispo = RemoteRepository.getInstance()
+        addDisposable(RemoteRepository.getInstance()
                 .getBookListDetail(detailId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -32,7 +32,6 @@ public class BookListDetailPresenter extends RxPresenter<BookListDetailContract.
                             mView.showError();
                             LogUtils.e(e);
                         }
-                );
-        addDisposable(refreshDispo);
+                ));
     }
 }

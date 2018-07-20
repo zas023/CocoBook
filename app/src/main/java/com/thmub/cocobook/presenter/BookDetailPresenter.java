@@ -21,7 +21,7 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 public class BookDetailPresenter extends RxPresenter<BookDetailContract.View>
-        implements BookDetailContract.Presenter{
+        implements BookDetailContract.Presenter {
     private static final String TAG = "BookDetailPresenter";
     private String bookId;
 
@@ -35,29 +35,22 @@ public class BookDetailPresenter extends RxPresenter<BookDetailContract.View>
     }
 
     @Override
-    public void addToBookShelf(CollBookBean collBookBean)  {
-        Disposable disposable = RemoteRepository.getInstance()
+    public void addToBookShelf(CollBookBean collBookBean) {
+        addDisposable(RemoteRepository.getInstance()
                 .getBookChapters(collBookBean.get_id())
                 .subscribeOn(Schedulers.io())
-                .doOnSubscribe(
-                        (d) -> mView.waitToBookShelf() //等待加载
-                )
+                .doOnSubscribe((d) -> mView.waitToBookShelf())
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        beans -> {
-
+                .subscribe(beans -> {
                             //设置 id
-                            for(BookChapterBean bean :beans){
+                            for (BookChapterBean bean : beans) {
                                 bean.setId(MD5Utils.strToMd5By16(bean.getLink()));
                             }
-
                             //设置目录
                             collBookBean.setBookChapters(beans);
                             //存储收藏
-                            BookRepository.getInstance()
-                                    .saveCollBookWithAsync(collBookBean);
-
+                            BookRepository.getInstance().saveCollBookWithAsync(collBookBean);
                             mView.succeedToBookShelf();
                         }
                         ,
@@ -65,13 +58,11 @@ public class BookDetailPresenter extends RxPresenter<BookDetailContract.View>
                             mView.errorToBookShelf();
                             LogUtils.e(e);
                         }
-                );
-        addDisposable(disposable);
+                ));
     }
 
-    private void refreshBook(){
-        RemoteRepository
-                .getInstance()
+    private void refreshBook() {
+        RemoteRepository.getInstance()
                 .getBookDetail(bookId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -82,7 +73,7 @@ public class BookDetailPresenter extends RxPresenter<BookDetailContract.View>
                     }
 
                     @Override
-                    public void onSuccess(BookDetailBean value){
+                    public void onSuccess(BookDetailBean value) {
                         mView.finishRefresh(value);
                         mView.complete();
                     }
@@ -94,27 +85,25 @@ public class BookDetailPresenter extends RxPresenter<BookDetailContract.View>
                 });
     }
 
-    private void refreshRecommendList(){
-        Disposable disposable = RemoteRepository
+    private void refreshRecommendList() {
+        addDisposable(RemoteRepository
                 .getInstance()
-                .getRecommendBookList(bookId,3)
+                .getRecommendBookList(bookId, 3)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         (value) -> mView.finishRecommendBookList(value)
-                );
-        addDisposable(disposable);
+                ));
     }
 
-    private void refreshRecommendBooks(){
-        Disposable disposable = RemoteRepository
+    private void refreshRecommendBooks() {
+        addDisposable(RemoteRepository
                 .getInstance()
                 .getRecommendBooksByBookId(bookId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         (value) -> mView.finishRecommendBooks(value)
-                );
-        addDisposable(disposable);
+                ));
     }
 }
