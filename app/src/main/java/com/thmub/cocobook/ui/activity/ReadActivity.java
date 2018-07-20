@@ -43,7 +43,7 @@ import com.thmub.cocobook.manager.ReadSettingManager;
 import com.thmub.cocobook.presenter.ReadPresenter;
 import com.thmub.cocobook.presenter.contract.ReadContract;
 import com.thmub.cocobook.service.BookDownloadService;
-import com.thmub.cocobook.service.ReadAloudService;
+import com.thmub.cocobook.service.SpeakService;
 import com.thmub.cocobook.ui.adapter.CategoryAdapter;
 import com.thmub.cocobook.base.BaseMVPActivity;
 import com.thmub.cocobook.ui.dialog.ReadSettingDialog;
@@ -55,17 +55,13 @@ import com.thmub.cocobook.widget.page.TxtChapter;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Observable;
 
 import butterknife.BindView;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
-import static com.thmub.cocobook.service.ReadAloudService.*;
+import static com.thmub.cocobook.service.SpeakService.*;
 
 /**
  * Created by zhouas666 on 18-2-3.
@@ -226,7 +222,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         isFullScreen = ReadSettingManager.getInstance().isFullScreen();
         mBookId = mCollBook.get_id();
 
-        readAloudIntent = new Intent(this, ReadAloudService.class);
+        readAloudIntent = new Intent(this, SpeakService.class);
         readAloudIntent.setAction(ActionNewReadAloud);
     }
 

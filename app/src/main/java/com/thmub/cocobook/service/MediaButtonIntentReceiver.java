@@ -34,7 +34,7 @@ public class MediaButtonIntentReceiver extends BroadcastReceiver {
                 case KeyEvent.KEYCODE_MEDIA_PLAY:
                 case KeyEvent.KEYCODE_HEADSETHOOK:
                 case KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE:
-                    command = ReadAloudService.ActionMediaButton;
+                    command = SpeakService.ActionMediaButton;
                     break;
                 default:
                     break;
@@ -52,7 +52,6 @@ public class MediaButtonIntentReceiver extends BroadcastReceiver {
     private static void readAloud(final Context context, String command) {
         if (!AppManager.getInstance().isExist(ReadActivity.class)) {
             Intent intent = new Intent(context, ReadActivity.class);
-//            intent.putExtra("from", ReadBookPresenterImpl.OPEN_FROM_APP);
             intent.putExtra("readAloud", true);
             try {
                 context.startActivity(intent);

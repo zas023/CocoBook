@@ -25,7 +25,6 @@ import com.thmub.cocobook.model.type.RxBusTag;
 import com.thmub.cocobook.ui.activity.ReadActivity;
 import com.thmub.cocobook.utils.UiUtils;
 import com.thmub.cocobook.utils.media.RunMediaPlayer;
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.*;
 
@@ -36,19 +35,23 @@ import static com.thmub.cocobook.BuildConfig.DEBUG;
  * Created by GKF on 2018/1/2.
  * 朗读service
  */
-public class ReadAloudService extends BaseService {
+public class SpeakService extends BaseService {
+
+    private static final String TAG = "SpeakService";
+
     public static final int STOP = 0;
     public static final int PLAY = 1;
     public static final int PAUSE = 2;
     public static final int NEXT = 3;
+
     public static final String ActionMediaButton = "mediaButton";
     public static final String ActionNewReadAloud = "newReadAloud";
     public static final String ActionDoneService = "doneService";
     public static final String ActionPauseService = "pauseService";
     public static final String ActionResumeService = "resumeService";
-    private static final String TAG = ReadAloudService.class.getSimpleName();
     private static final String ActionReadActivity = "readActivity";
     private static final String ActionSetTimer = "updateTimer";
+
     private static final int notificationId = 3222;
     private static final long MEDIA_SESSION_ACTIONS = PlaybackStateCompat.ACTION_PLAY
             | PlaybackStateCompat.ACTION_PAUSE
@@ -58,6 +61,7 @@ public class ReadAloudService extends BaseService {
             | PlaybackStateCompat.ACTION_STOP
             | PlaybackStateCompat.ACTION_SEEK_TO;
     public static Boolean running = false;
+
     private TextToSpeech textToSpeech;
     private Boolean ttsInitSuccess = false;
     private Boolean speak = true;
@@ -74,9 +78,6 @@ public class ReadAloudService extends BaseService {
     private BroadcastReceiver broadcastReceiver;
     private SharedPreferences preference;
     private int speechRate;
-
-    public ReadAloudService() {
-    }
 
     @Override
     public void onCreate() {
@@ -97,6 +98,13 @@ public class ReadAloudService extends BaseService {
         updateNotification();
     }
 
+    /**
+     * start已存在的service
+     * @param intent
+     * @param flags
+     * @param startId
+     * @return
+     */
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i(TAG,"---------------------onStartCommand");
@@ -108,16 +116,16 @@ public class ReadAloudService extends BaseService {
                         doneService();
                         break;
                     case ActionPauseService:
-                        pauseReadAloud(true);
+                        pauseService(true);
                         break;
                     case ActionResumeService:
-                        resumeReadAloud();
+                        resumeService();
                         break;
                     case ActionSetTimer:
                         updateTimer(intent.getIntExtra("minute", 10));
                         break;
                     case ActionNewReadAloud:
-                        newReadAloud(intent.getStringExtra("content"), intent.getBooleanExtra("aloudButton", false));
+                        newReadAloud(intent.getStringExtra("content"),false);
                         break;
                 }
             }
@@ -134,6 +142,7 @@ public class ReadAloudService extends BaseService {
 
         nowSpeak = 0;
         contentList.clear();
+        //断句
         String[] splitSpeech = content.split("。|？|！");
         for (String aSplitSpeech : splitSpeech) {
             if (!isEmpty(aSplitSpeech)) {
@@ -179,7 +188,6 @@ public class ReadAloudService extends BaseService {
         }
     }
 
-    /******************************************************************************/
     private void initSpeechRate() {
         if (speechRate != preference.getInt("speechRate", 10) && !preference.getBoolean("speechRateFollowSys", true)) {
             speechRate = preference.getInt("speechRate", 10);
@@ -188,12 +196,14 @@ public class ReadAloudService extends BaseService {
         }
     }
 
+    /******************************************************************************/
+
     /**
      * @param context 停止
      */
     public static void stop(Context context) {
         if (running) {
-            Intent intent = new Intent(context, ReadAloudService.class);
+            Intent intent = new Intent(context, SpeakService.class);
             intent.setAction(ActionDoneService);
             context.startService(intent);
         }
@@ -203,7 +213,7 @@ public class ReadAloudService extends BaseService {
      * @param context 暂停
      */
     public static void pause(Context context) {
-        Intent intent = new Intent(context, ReadAloudService.class);
+        Intent intent = new Intent(context, SpeakService.class);
         intent.setAction(ActionPauseService);
         context.startService(intent);
     }
@@ -212,17 +222,18 @@ public class ReadAloudService extends BaseService {
      * @param context 继续
      */
     public static void resume(Context context) {
-        Intent intent = new Intent(context, ReadAloudService.class);
+        Intent intent = new Intent(context, SpeakService.class);
         intent.setAction(ActionResumeService);
         context.startService(intent);
     }
 
     public static void setTimer(Context context) {
-        Intent intent = new Intent(context, ReadAloudService.class);
+        Intent intent = new Intent(context, SpeakService.class);
         intent.setAction(ActionSetTimer);
         context.startService(intent);
     }
 
+    /******************************************************************************/
     /**
      * 关闭服务
      */
@@ -235,7 +246,7 @@ public class ReadAloudService extends BaseService {
     /**
      * @param pause true 暂停, false 失去焦点
      */
-    private void pauseReadAloud(Boolean pause) {
+    private void pauseService(Boolean pause) {
         this.pause = pause;
         speak = false;
         updateNotification();
@@ -247,7 +258,7 @@ public class ReadAloudService extends BaseService {
     /**
      * 恢复朗读
      */
-    private void resumeReadAloud() {
+    private void resumeService() {
         updateTimer(0);
         pause = false;
         playTTS();
@@ -280,7 +291,7 @@ public class ReadAloudService extends BaseService {
                 @Override
                 public void run() {
                     if (!pause) {
-                        Intent setTimerIntent = new Intent(getApplicationContext(), ReadAloudService.class);
+                        Intent setTimerIntent = new Intent(getApplicationContext(), SpeakService.class);
                         setTimerIntent.setAction(ActionSetTimer);
                         setTimerIntent.putExtra("minute", -1);
                         startService(setTimerIntent);
@@ -416,7 +427,7 @@ public class ReadAloudService extends BaseService {
         mediaSessionCompat.setCallback(new MediaSessionCompat.Callback() {
             @Override
             public boolean onMediaButtonEvent(Intent mediaButtonEvent) {
-                return MediaButtonIntentReceiver.handleIntent(ReadAloudService.this, mediaButtonEvent);
+                return MediaButtonIntentReceiver.handleIntent(SpeakService.this, mediaButtonEvent);
             }
         });
         mediaSessionCompat.setMediaButtonReceiver(mediaButtonReceiverPendingIntent);
@@ -428,7 +439,7 @@ public class ReadAloudService extends BaseService {
             public void onReceive(Context context, Intent intent) {
                 String action = intent.getAction();
                 if (AudioManager.ACTION_AUDIO_BECOMING_NOISY.equals(action)) {
-                    pauseReadAloud(true);
+                    pauseService(true);
                 }
             }
         };
@@ -446,11 +457,15 @@ public class ReadAloudService extends BaseService {
     }
 
     public class MyBinder extends Binder {
-        public ReadAloudService getService() {
-            return ReadAloudService.this;
+        public SpeakService getService() {
+            return SpeakService.this;
         }
     }
 
+    /******************************************************************************/
+    /**
+     * 朗读监听
+     */
     private final class TTSListener implements TextToSpeech.OnInitListener {
         @Override
         public void onInit(int i) {
@@ -459,7 +474,26 @@ public class ReadAloudService extends BaseService {
                 if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                     RxBusManager.getInstance().post(RxBusTag.ALOUD_MSG, "LANG_MISSING_DATA  or LANG_NOT_SUPPORTED!");
                 } else {
-                    textToSpeech.setOnUtteranceProgressListener(new ttsUtteranceListener());
+                    textToSpeech.setOnUtteranceProgressListener(new UtteranceProgressListener() {
+                        @Override
+                        public void onStart(String s) {
+                            updateMediaSessionPlaybackState();
+                        }
+
+                        @Override
+                        public void onDone(String s) {
+                            nowSpeak = nowSpeak + 1;
+                            if (nowSpeak >= contentList.size()) {
+                                RxBusManager.getInstance().post(new SpeakEvent(NEXT));
+                            }
+                        }
+
+                        @Override
+                        public void onError(String s) {
+                            pauseService(true);
+                            RxBusManager.getInstance().post(new SpeakEvent(PAUSE));
+                        }
+                    });
                     ttsInitSuccess = true;
                     playTTS();
                 }
@@ -471,31 +505,8 @@ public class ReadAloudService extends BaseService {
     }
 
     /**
-     * 朗读监听
+     * 聚焦
      */
-    private class ttsUtteranceListener extends UtteranceProgressListener {
-
-        @Override
-        public void onStart(String s) {
-            RxBusManager.getInstance().post(RxBusTag.ALOUD_INDEX, nowSpeak);
-            updateMediaSessionPlaybackState();
-        }
-
-        @Override
-        public void onDone(String s) {
-            nowSpeak = nowSpeak + 1;
-            if (nowSpeak >= contentList.size()) {
-                RxBusManager.getInstance().post(new SpeakEvent(NEXT));
-            }
-        }
-
-        @Override
-        public void onError(String s) {
-            pauseReadAloud(true);
-            RxBusManager.getInstance().post(new SpeakEvent(PAUSE));
-        }
-    }
-
     class AudioFocusChangeListener implements AudioManager.OnAudioFocusChangeListener {
         @Override
         public void onAudioFocusChange(int focusChange) {
@@ -504,7 +515,7 @@ public class ReadAloudService extends BaseService {
                 case AudioManager.AUDIOFOCUS_GAIN:
                     // 重新获得焦点,  可做恢复播放，恢复后台音量的操作
                     if (!pause) {
-                        resumeReadAloud();
+                        resumeService();
                     }
                     break;
                 case AudioManager.AUDIOFOCUS_LOSS:
@@ -513,7 +524,7 @@ public class ReadAloudService extends BaseService {
                 case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
                     // 暂时丢失焦点，这种情况是被其他应用申请了短暂的焦点，可压低后台音量
                     if (!pause) {
-                        pauseReadAloud(false);
+                        pauseService(false);
                     }
                     break;
                 case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
