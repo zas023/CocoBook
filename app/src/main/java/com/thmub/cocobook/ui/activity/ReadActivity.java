@@ -387,12 +387,11 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                         mCategoryAdapter.setChapter(pos);
                     }
 
+                    //在目录中选择某一章节时:加载连续的5个章节
                     @Override
                     public void onLoadChapter(List<TxtChapter> chapters, int pos) {
                         mPresenter.loadChapter(mBookId, chapters);
-                        mLvCategory.post(
-                                () -> mLvCategory.setSelection(mPageLoader.getChapterPos())
-                        );
+                        mLvCategory.post(() -> mLvCategory.setSelection(mPageLoader.getChapterPos()));
                         if (mPageLoader.getPageStatus() == NetPageLoader.STATUS_LOADING
                                 || mPageLoader.getPageStatus() == NetPageLoader.STATUS_ERROR) {
                             //冻结使用
@@ -403,6 +402,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                         mSbChapterProgress.setProgress(0);
                     }
 
+                    //PageLoader中完成目录加载及转换
                     @Override
                     public void onCategoryFinish(List<TxtChapter> chapters) {
                         mChapters = chapters;
@@ -419,9 +419,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
 
                     @Override
                     public void onPageChange(int pos) {
-                        mSbChapterProgress.post(
-                                () -> mSbChapterProgress.setProgress(pos)
-                        );
+                        mSbChapterProgress.post(() -> mSbChapterProgress.setProgress(pos));
                     }
                 }
         );

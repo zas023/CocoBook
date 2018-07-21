@@ -439,9 +439,9 @@ public abstract class PageLoader {
     }
 
     //获取当前页内容
-    public String getPageContent(){
-        StringBuffer buffer=new StringBuffer();
-        for (String str: mCurPage.lines)
+    public String getPageContent() {
+        StringBuffer buffer = new StringBuffer();
+        for (String str : mCurPage.lines)
             buffer.append(str);
         return buffer.toString();
     }
@@ -463,14 +463,14 @@ public abstract class PageLoader {
     //打开书本，初始化书籍
     public void openBook(CollBookBean collBook) {
         mCollBook = collBook;
-        //init book record
-        mBookRecord = BookRepository.getInstance()
-                .getBookRecord(mCollBook.get_id());
-        if (mBookRecord == null) {
-            mBookRecord = new BookRecordBean();
-        }
+        //查找阅读记录
+        mBookRecord = BookRepository.getInstance().getBookRecord(mCollBook.get_id());
 
+        if (mBookRecord == null) mBookRecord = new BookRecordBean();
+
+        //当前章
         mCurChapterPos = mBookRecord.getChapter();
+        //上一章
         mLastChapter = mCurChapterPos;
     }
 

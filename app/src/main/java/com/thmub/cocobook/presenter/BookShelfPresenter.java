@@ -1,6 +1,5 @@
 package com.thmub.cocobook.presenter;
 
-import com.thmub.cocobook.manager.RxBusManager;
 import com.thmub.cocobook.model.bean.BookChapterBean;
 import com.thmub.cocobook.model.bean.BookDetailBean;
 import com.thmub.cocobook.model.bean.CollBookBean;
@@ -23,7 +22,6 @@ import java.util.List;
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
-import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by zhouas666 on 18-2-8.
@@ -46,7 +44,6 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
         task.setBookId(collBookBean.get_id());
         task.setBookChapters(collBookBean.getBookChapters());
         task.setLastChapter(collBookBean.getBookChapters().size());
-
         //下载书籍
         BookDownloadService.post(task);
     }
@@ -54,7 +51,7 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
 
     @Override
     public void loadRecommendBooks(String gender) {
-        Disposable disposable = RemoteRepository.getInstance()
+        addDisposable(RemoteRepository.getInstance()
                 .getRecommendBooksByGender(gender)
                 .doOnSuccess((collBooks) -> {
                     //更新目录
@@ -68,14 +65,13 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
                             mView.finishRefresh(beans);
                             mView.complete();
                         },
-                        (e) -> {
+                        e -> {
                             //提示没有网络
                             LogUtils.e(e);
                             mView.showErrorTip(e.toString());
                             mView.complete();
                         }
-                );
-        addDisposable(disposable);
+                ));
     }
 
     @Override
@@ -94,6 +90,7 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
             }
         }
         //zip可能不是一个好方法。
+        //https://blog.csdn.net/baidu_34012226/article/details/52438902?locationNum=5&fps=1
         Single.zip(observables, objects -> {
             List<CollBookBean> newCollBooks = new ArrayList<>(objects.length);
             for (int i = 0; i < collBooks.size(); ++i) {
@@ -142,12 +139,11 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
     private void updateCategory(List<CollBookBean> collBookBeans) {
         List<Single<List<BookChapterBean>>> observables = new ArrayList<>(collBookBeans.size());
         for (CollBookBean bean : collBookBeans) {
-            observables.add(
-                    RemoteRepository.getInstance().getBookChapters(bean.get_id())
-            );
+            observables.add(RemoteRepository.getInstance().getBookChapters(bean.get_id()));
         }
         Iterator<CollBookBean> it = collBookBeans.iterator();
         //执行在上一个方法中的子线程中
+        //连接多个Single和Observable发射的数据
         Single.concat(observables)
                 .subscribe(
                         chapterList -> {
@@ -156,8 +152,7 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
                             }
 
                             CollBookBean bean = it.next();
-                            bean.setLastRead(StringUtils.
-                                    dateConvert(System.currentTimeMillis(), Constant.FORMAT_BOOK_DATE));
+                            bean.setLastRead(StringUtils.dateConvert(System.currentTimeMillis(), Constant.FORMAT_BOOK_DATE));
                             bean.setBookChapters(chapterList);
                         }
                 );

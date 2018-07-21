@@ -30,7 +30,7 @@ import io.reactivex.SingleOnSubscribe;
  */
 
 public class BookRepository {
-    private static final String TAG = "CollBookManager";
+    private static final String TAG = "BookRepository";
     private static volatile BookRepository sInstance;
     private DaoSession mSession;
     private CollBookBeanDao mCollBookDao;
@@ -84,11 +84,9 @@ public class BookRepository {
                 .runInTx(
                         () -> {
                             for (CollBookBean bean : beans) {
-                                if (bean.getBookChapters() != null) {
+                                if (bean.getBookChapters() != null)
                                     //存储BookChapterBean(需要修改，如果存在id相同的则无视)
-                                    mSession.getBookChapterBeanDao()
-                                            .insertOrReplaceInTx(bean.getBookChapters());
-                                }
+                                    mSession.getBookChapterBeanDao().insertOrReplaceInTx(bean.getBookChapters());
                             }
                             //存储CollBook (确保先后顺序，否则出错)
                             mCollBookDao.insertOrReplaceInTx(beans);
@@ -224,16 +222,13 @@ public class BookRepository {
      * @return
      */
     public Single<List<BookChapterBean>> getBookChaptersInRx(String bookId) {
-        return Single.create(new SingleOnSubscribe<List<BookChapterBean>>() {
-            @Override
-            public void subscribe(SingleEmitter<List<BookChapterBean>> e) throws Exception {
-                List<BookChapterBean> beans = mSession
-                        .getBookChapterBeanDao()
-                        .queryBuilder()
-                        .where(BookChapterBeanDao.Properties.BookId.eq(bookId))
-                        .list();
-                e.onSuccess(beans);
-            }
+        return Single.create(e -> {
+            List<BookChapterBean> beans = mSession
+                    .getBookChapterBeanDao()
+                    .queryBuilder()
+                    .where(BookChapterBeanDao.Properties.BookId.eq(bookId))
+                    .list();
+            e.onSuccess(beans);
         });
     }
 

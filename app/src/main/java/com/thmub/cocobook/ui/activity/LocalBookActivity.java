@@ -193,8 +193,7 @@ public class LocalBookActivity extends BaseTabActivity {
             collBook.setLocal(true);
             collBook.setLastChapter("开始阅读");
             collBook.setUpdated(StringUtils.dateConvert(file.lastModified(), Constant.FORMAT_BOOK_DATE));
-            collBook.setLastRead(StringUtils.
-                    dateConvert(System.currentTimeMillis(), Constant.FORMAT_BOOK_DATE));
+            collBook.setLastRead(StringUtils.dateConvert(System.currentTimeMillis(), Constant.FORMAT_BOOK_DATE));
             collBooks.add(collBook);
         }
         return collBooks;

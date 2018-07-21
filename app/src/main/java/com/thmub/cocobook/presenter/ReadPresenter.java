@@ -41,6 +41,10 @@ public class ReadPresenter extends RxPresenter<ReadContract.View> implements Rea
         RxBusManager.getInstance().post(new DownloadEvent(bean));
     }
 
+    /**
+     * 从网络中加载目录
+     * @param bookId
+     */
     @Override
     public void loadCategory(String bookId) {
         addDisposable(RemoteRepository.getInstance()
@@ -58,7 +62,11 @@ public class ReadPresenter extends RxPresenter<ReadContract.View> implements Rea
                 ));
     }
 
-    //需要重新考虑
+    /**
+     * 加载连续的5个章节（在目录中选择某一章节时）
+     * @param bookId
+     * @param bookChapters
+     */
     @Override
     public void loadChapter(String bookId, List<TxtChapter> bookChapters) {
         int size = bookChapters.size();

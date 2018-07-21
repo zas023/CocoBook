@@ -20,7 +20,6 @@ import com.thmub.cocobook.model.event.DownloadMessage;
 import com.thmub.cocobook.model.local.BookRepository;
 import com.thmub.cocobook.model.local.LocalRepository;
 import com.thmub.cocobook.model.server.RemoteRepository;
-import com.thmub.cocobook.model.type.RxBusTag;
 import com.thmub.cocobook.ui.activity.DownloadActivity;
 import com.thmub.cocobook.utils.NetworkUtils;
 import io.reactivex.disposables.Disposable;

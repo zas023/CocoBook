@@ -31,8 +31,6 @@ import butterknife.BindView;
  */
 
 public class FileCategoryFragment extends BaseFileFragment {
-    /***************************常量********************************/
-    private static final String TAG = "FileCategoryFragment";
 
     @BindView(R.id.file_category_tv_path)
     TextView mTvPath;
@@ -78,8 +76,7 @@ public class FileCategoryFragment extends BaseFileFragment {
                         mFileStack.push(snapshot);
                         //切换下一个文件
                         toggleFileTree(file);
-                    }
-                    else {
+                    } else {
 
                         //如果是已加载的文件，则点击事件无效。
                         String id = mAdapter.getItem(pos).getAbsolutePath();
