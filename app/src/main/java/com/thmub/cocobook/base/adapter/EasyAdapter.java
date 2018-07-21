@@ -1,4 +1,4 @@
-package com.thmub.cocobook.base;
+package com.thmub.cocobook.base.adapter;
 
 import android.view.View;
 import android.view.ViewGroup;

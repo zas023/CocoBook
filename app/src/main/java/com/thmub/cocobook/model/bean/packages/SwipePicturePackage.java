@@ -4,7 +4,9 @@ import com.thmub.cocobook.model.bean.BaseBean;
 import com.thmub.cocobook.model.bean.SwipePictureBean;
 
 import java.util.List;
-
+/**
+ * Created by zhouas666 on 17-6-2.
+ */
 public class SwipePicturePackage extends BaseBean{
 
     private List<SwipePictureBean> data;

@@ -66,66 +66,6 @@ public interface BookApi {
     Single<FeatureDetailPackage> getFeatureDetailPackage(@Path("nodeId")String nodeId);
 
 
-    /*******************************社区**************************************/
-    /**
-     * 获取综合讨论区、原创区，女生区帖子列表
-     * 全部、默认排序  http://api.zhuishushenqi.com/post/by-block?block=ramble&duration=all&sort=updated&type=all&start=0&limit=20&distillate=
-     * 精品、默认排序  http://api.zhuishushenqi.com/post/by-block?block=ramble&duration=all&sort=updated&type=all&start=0&limit=20&distillate=true
-     *
-     * @param block      ramble:综合讨论区
-     *                   original：原创区
-     *                   girl:女生区
-     * @param duration   all
-     * @param sort       updated(默认排序)
-     *                   created(最新发布)
-     *                   comment-count(最多评论)
-     * @param type       all
-     * @param start      0
-     * @param limit      20
-     * @param distillate true(精品)
-     * @return
-     */
-    @GET("/post/by-block")
-    Single<BookCommentPackage> getBookCommentList(@Query("block") String block, @Query("duration") String duration, @Query("sort") String sort, @Query("type") String type, @Query("start") String start, @Query("limit") String limit, @Query("distillate") String distillate);
-
-
-    /**
-     * 获取书荒区帖子列表
-     * 全部、默认排序  http://api.zhuishushenqi.com/post/help?duration=all&sort=updated&start=0&limit=20&distillate=
-     * 精品、默认排序  http://api.zhuishushenqi.com/post/help?duration=all&sort=updated&start=0&limit=20&distillate=true
-     *
-     * @param duration   all
-     * @param sort       updated(默认排序)
-     *                   created(最新发布)
-     *                   comment-count(最多评论)
-     * @param start      0
-     * @param limit      20
-     * @param distillate true(精品) 、空字符（全部）
-     * @return
-     */
-    @GET("/post/help")
-    Single<BookHelpsPackage> getBookHelpList(@Query("duration") String duration, @Query("sort") String sort, @Query("start") String start, @Query("limit") String limit, @Query("distillate") String distillate);
-
-    /**
-     * 获取书评区帖子列表
-     * 全部、全部类型、默认排序  http://api.zhuishushenqi.com/post/review?duration=all&sort=updated&type=all&start=0&limit=20&distillate=
-     * 精品、玄幻奇幻、默认排序  http://api.zhuishushenqi.com/post/review?duration=all&sort=updated&type=xhqh&start=0&limit=20&distillate=true
-     *
-     * @param duration   all
-     * @param sort       updated(默认排序)
-     *                   created(最新发布)
-     *                   helpful(最有用的)
-     *                   comment-count(最多评论)
-     * @param type       all(全部类型)、xhqh(玄幻奇幻)、dsyn(都市异能)...
-     * @param start      0
-     * @param limit      20
-     * @param distillate true(精品) 、空字符（全部）
-     * @return
-     */
-    @GET("/post/review")
-    Single<BookReviewPackage> getBookReviewList(@Query("duration") String duration, @Query("sort") String sort, @Query("type") String type, @Query("start") String start, @Query("limit") String limit, @Query("distillate") String distillate);
-
-
     /**********************************排行榜****************************************************/
 
     /**
@@ -215,16 +155,6 @@ public interface BookApi {
 
 
     /*************************书籍详情**********************************/
-
-    /**
-     * 书籍热门评论
-     *
-     * @param book
-     * @return
-     */
-    @GET("/post/review/best-by-book")
-    Single<HotCommentPackage> getHotCommnentPackage(@Query("book") String book);
-
     /**
      * 书籍推荐书单
      * @param bookId

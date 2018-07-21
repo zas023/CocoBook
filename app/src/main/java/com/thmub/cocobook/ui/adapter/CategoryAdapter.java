@@ -4,7 +4,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.thmub.cocobook.ui.adapter.view.CategoryHolder;
-import com.thmub.cocobook.base.EasyAdapter;
+import com.thmub.cocobook.base.adapter.EasyAdapter;
 import com.thmub.cocobook.base.adapter.IViewHolder;
 import com.thmub.cocobook.widget.page.TxtChapter;
 
