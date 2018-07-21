@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 import cn.bmob.v3.Bmob;
-import com.thmub.cocobook.service.BookDownloadService;
 import com.thmub.cocobook.service.DownloadService;
 
 /**
@@ -25,7 +24,7 @@ public class App extends MultiDexApplication {
         //默认初始化Bmob
         Bmob.initialize(this, "3f3b7628bf00914940a6919da16b33bf");
         //初始化下载服务
-        startService(new Intent(getContext(), BookDownloadService.class));
+        startService(new Intent(getContext(), DownloadService.class));
     }
 
     @Override

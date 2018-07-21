@@ -48,7 +48,7 @@
         <activity android:name=".ui.activity.MoreSettingActivity"/>
 
         <service android:name=".service.SpeakService"/>
-        <service android:name=".service.BookDownloadService"/>
+        <service android:name=".service.DownloadService"/>
 
     </application>
 

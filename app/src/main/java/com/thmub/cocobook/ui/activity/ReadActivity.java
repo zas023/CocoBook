@@ -42,7 +42,7 @@ import com.thmub.cocobook.model.local.BookRepository;
 import com.thmub.cocobook.manager.ReadSettingManager;
 import com.thmub.cocobook.presenter.ReadPresenter;
 import com.thmub.cocobook.presenter.contract.ReadContract;
-import com.thmub.cocobook.service.BookDownloadService;
+import com.thmub.cocobook.service.DownloadService;
 import com.thmub.cocobook.service.SpeakService;
 import com.thmub.cocobook.ui.adapter.CategoryAdapter;
 import com.thmub.cocobook.base.BaseMVPActivity;
@@ -537,7 +537,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                 task.setBookId(mCollBook.get_id());
                 task.setBookChapters(mCollBook.getBookChapters());
                 task.setLastChapter(mCollBook.getBookChapters().size());
-                BookDownloadService.post(task);
+                DownloadService.post(task);
                 break;
             case R.id.read_tv_setting:  //设置
                 toggleMenu(false);

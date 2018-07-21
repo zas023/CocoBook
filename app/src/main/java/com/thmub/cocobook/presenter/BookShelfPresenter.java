@@ -8,7 +8,7 @@ import com.thmub.cocobook.model.local.BookRepository;
 import com.thmub.cocobook.model.server.RemoteRepository;
 import com.thmub.cocobook.presenter.contract.BookShelfContract;
 import com.thmub.cocobook.base.RxPresenter;
-import com.thmub.cocobook.service.BookDownloadService;
+import com.thmub.cocobook.service.DownloadService;
 import com.thmub.cocobook.utils.Constant;
 import com.thmub.cocobook.utils.LogUtils;
 import com.thmub.cocobook.utils.MD5Utils;
@@ -45,7 +45,7 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
         task.setBookChapters(collBookBean.getBookChapters());
         task.setLastChapter(collBookBean.getBookChapters().size());
         //下载书籍
-        BookDownloadService.post(task);
+        DownloadService.post(task);
     }
 
 
