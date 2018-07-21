@@ -7,9 +7,9 @@ import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Keep;
 import org.greenrobot.greendao.annotation.ToOne;
 import org.greenrobot.greendao.DaoException;
-import com.thmub.cocobook.model.gen.DaoSession;
-import com.thmub.cocobook.model.gen.AuthorBeanDao;
-import com.thmub.cocobook.model.gen.BookHelpsBeanDao;
+import com.thmub.cocobook.model.dao.DaoSession;
+import com.thmub.cocobook.model.dao.AuthorBeanDao;
+import com.thmub.cocobook.model.dao.BookHelpsBeanDao;
 
 /**
  * Created by zhouas666 on 17-4-20.

@@ -5,7 +5,7 @@ package com.thmub.cocobook.model.type;
  *
  */
 
-public enum BookDistillate implements BookConvert{
+public enum BookDistillate{
     ALL("全部","","normal"),
     BOUTIQUES("精品","true","distillate");
 
@@ -18,12 +18,10 @@ public enum BookDistillate implements BookConvert{
         this.dbName = dbName;
     }
 
-    @Override
     public String getTypeName(){
         return typeName;
     }
 
-    @Override
     public String getNetName(){
         return netName;
     }

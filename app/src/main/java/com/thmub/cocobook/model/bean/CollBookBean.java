@@ -11,9 +11,9 @@ import org.greenrobot.greendao.annotation.ToMany;
 
 import java.util.List;
 import org.greenrobot.greendao.DaoException;
-import com.thmub.cocobook.model.gen.DaoSession;
-import com.thmub.cocobook.model.gen.BookChapterBeanDao;
-import com.thmub.cocobook.model.gen.CollBookBeanDao;
+import com.thmub.cocobook.model.dao.DaoSession;
+import com.thmub.cocobook.model.dao.BookChapterBeanDao;
+import com.thmub.cocobook.model.dao.CollBookBeanDao;
 
 /**
  * Created by zhouas666 on 18-2-8.

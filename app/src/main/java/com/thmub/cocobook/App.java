@@ -25,8 +25,6 @@ public class App extends MultiDexApplication {
         sInstance = this;
         //默认初始化Bmob
         Bmob.initialize(this, "3f3b7628bf00914940a6919da16b33bf");
-        //初始化AppManager
-        AppManager.init(this);
         //初始化下载服务
         startService(new Intent(getContext(), BookDownloadService.class));
     }

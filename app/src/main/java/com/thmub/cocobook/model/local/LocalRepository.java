@@ -9,15 +9,15 @@ import com.thmub.cocobook.model.bean.BookHelpfulBean;
 import com.thmub.cocobook.model.bean.BookHelpsBean;
 import com.thmub.cocobook.model.bean.BookReviewBean;
 import com.thmub.cocobook.model.bean.packages.BookSortPackage;
-import com.thmub.cocobook.model.type.BookSort;
-import com.thmub.cocobook.model.gen.AuthorBeanDao;
+import com.thmub.cocobook.model.type.BookSortType;
+import com.thmub.cocobook.model.dao.AuthorBeanDao;
 
-import com.thmub.cocobook.model.gen.BookCommentBeanDao;
-import com.thmub.cocobook.model.gen.BookHelpfulBeanDao;
-import com.thmub.cocobook.model.gen.BookHelpsBeanDao;
-import com.thmub.cocobook.model.gen.BookReviewBeanDao;
-import com.thmub.cocobook.model.gen.DaoSession;
-import com.thmub.cocobook.model.gen.ReviewBookBeanDao;
+import com.thmub.cocobook.model.dao.BookCommentBeanDao;
+import com.thmub.cocobook.model.dao.BookHelpfulBeanDao;
+import com.thmub.cocobook.model.dao.BookHelpsBeanDao;
+import com.thmub.cocobook.model.dao.BookReviewBeanDao;
+import com.thmub.cocobook.model.dao.DaoSession;
+import com.thmub.cocobook.model.dao.ReviewBookBeanDao;
 import com.thmub.cocobook.utils.Constant;
 import com.thmub.cocobook.utils.LogUtils;
 import com.thmub.cocobook.utils.SharedPreUtils;
@@ -212,7 +212,7 @@ public class LocalRepository implements SaveDbHelper,GetDbHelper,DeleteDbHelper{
                 BookHelpfulBean.class,BookHelpsBeanDao.Properties._id);
 
         //排序
-        if (sort.equals(BookSort.HELPFUL.getDbName())){
+        if (sort.equals(BookSortType.HELPFUL.getDbName())){
             queryBuilder.orderDesc(BookHelpfulBeanDao.Properties.Yes);
         }
         else {

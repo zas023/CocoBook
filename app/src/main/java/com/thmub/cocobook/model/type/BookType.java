@@ -4,7 +4,7 @@ package com.thmub.cocobook.model.type;
  * 书籍类型
  */
 
-public enum BookType implements BookConvert{
+public enum BookType{
     ALL("全部类型","all"),
     XHQH("玄幻奇幻","xhqh"),
     WXXX("武侠仙侠","wxxx"),
@@ -27,12 +27,10 @@ public enum BookType implements BookConvert{
         this.netName = netName;
     }
 
-    @Override
     public String getTypeName(){
       return typeName;
     }
 
-    @Override
     public String getNetName() {
         return netName;
     }

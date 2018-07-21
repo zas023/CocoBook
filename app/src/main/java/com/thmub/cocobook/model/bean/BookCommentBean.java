@@ -1,16 +1,14 @@
 package com.thmub.cocobook.model.bean;
 
-
-import com.thmub.cocobook.model.gen.AuthorBeanDao;
-import com.thmub.cocobook.model.gen.BookCommentBeanDao;
-import com.thmub.cocobook.model.gen.DaoSession;
-
 import org.greenrobot.greendao.DaoException;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.ToOne;
+import com.thmub.cocobook.model.dao.DaoSession;
+import com.thmub.cocobook.model.dao.AuthorBeanDao;
+import com.thmub.cocobook.model.dao.BookCommentBeanDao;
 
 /**
  * Created by zhouas666 on 17-4-20.

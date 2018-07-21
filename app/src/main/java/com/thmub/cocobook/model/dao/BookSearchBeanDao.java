@@ -1,4 +1,4 @@
-package com.thmub.cocobook.model.gen;
+package com.thmub.cocobook.model.dao;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteStatement;

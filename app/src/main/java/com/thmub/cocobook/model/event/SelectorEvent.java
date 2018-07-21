@@ -1,7 +1,7 @@
 package com.thmub.cocobook.model.event;
 
 import com.thmub.cocobook.model.type.BookDistillate;
-import com.thmub.cocobook.model.type.BookSort;
+import com.thmub.cocobook.model.type.BookSortType;
 import com.thmub.cocobook.model.type.BookType;
 
 /**
@@ -14,11 +14,11 @@ public class SelectorEvent {
 
     public BookType type;
 
-    public BookSort sort;
+    public BookSortType sort;
 
     public SelectorEvent(BookDistillate distillate,
                          BookType type,
-                         BookSort sort) {
+                         BookSortType sort) {
         this.distillate = distillate;
         this.type = type;
         this.sort = sort;

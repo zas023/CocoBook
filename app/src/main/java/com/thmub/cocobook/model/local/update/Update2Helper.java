@@ -4,8 +4,8 @@ import android.database.Cursor;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.thmub.cocobook.model.gen.BookChapterBeanDao;
-import com.thmub.cocobook.model.gen.CollBookBeanDao;
+import com.thmub.cocobook.model.dao.BookChapterBeanDao;
+import com.thmub.cocobook.model.dao.CollBookBeanDao;
 import com.thmub.cocobook.utils.MD5Utils;
 
 import org.greenrobot.greendao.AbstractDao;

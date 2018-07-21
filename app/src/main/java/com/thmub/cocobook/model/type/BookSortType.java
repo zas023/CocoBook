@@ -5,7 +5,7 @@ package com.thmub.cocobook.model.type;
  * ("默认排序","最新发布","最多评论"),
  */
 
-public enum BookSort implements BookConvert{
+public enum BookSortType {
     DEFAULT("默认排序","updated","Updated"),
     CREATED("最新发布","created","Created"),
     HELPFUL("最多推荐","helpful","LikeCount"),
@@ -14,18 +14,16 @@ public enum BookSort implements BookConvert{
     String typeName;
     String netName;
     String dbName;
-    BookSort(String typeName, String netName,String dbName){
+    BookSortType(String typeName, String netName, String dbName){
         this.typeName = typeName;
         this.netName = netName;
         this.dbName = dbName;
     }
 
-    @Override
     public String getTypeName(){
         return typeName;
     }
 
-    @Override
     public String getNetName(){
         return netName;
     }

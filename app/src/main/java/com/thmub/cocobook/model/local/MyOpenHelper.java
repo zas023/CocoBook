@@ -3,7 +3,7 @@ package com.thmub.cocobook.model.local;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.thmub.cocobook.model.gen.DaoMaster;
+import com.thmub.cocobook.model.dao.DaoMaster;
 import com.thmub.cocobook.model.local.update.Update2Helper;
 
 import org.greenrobot.greendao.database.Database;

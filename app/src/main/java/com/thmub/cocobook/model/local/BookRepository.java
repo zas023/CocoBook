@@ -3,7 +3,7 @@ package com.thmub.cocobook.model.local;
 import android.util.Log;
 
 import com.thmub.cocobook.model.bean.*;
-import com.thmub.cocobook.model.gen.*;
+import com.thmub.cocobook.model.dao.*;
 import com.thmub.cocobook.manager.BookManager;
 import com.thmub.cocobook.utils.Constant;
 import com.thmub.cocobook.utils.FileUtils;

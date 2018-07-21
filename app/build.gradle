@@ -31,8 +31,8 @@ android {
 }
 
 greendao{
-    schemaVersion 4
-    daoPackage 'com.thmub.cocobook.model.gen'
+    schemaVersion 1
+    daoPackage 'com.thmub.cocobook.model.dao'
     targetGenDir 'src/main/java'
 }
 

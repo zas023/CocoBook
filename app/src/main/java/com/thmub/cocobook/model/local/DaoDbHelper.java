@@ -3,8 +3,8 @@ package com.thmub.cocobook.model.local;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.thmub.cocobook.App;
-import com.thmub.cocobook.model.gen.DaoMaster;
-import com.thmub.cocobook.model.gen.DaoSession;
+import com.thmub.cocobook.model.dao.DaoMaster;
+import com.thmub.cocobook.model.dao.DaoSession;
 
 /**
  * Created by zhouas666 on 17-4-26.

@@ -1,4 +1,4 @@
-package com.thmub.cocobook.model.gen;
+package com.thmub.cocobook.model.dao;
 
 import java.util.List;
 import android.database.Cursor;
