@@ -4,6 +4,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.model.bean.SortBookBean;
 import com.thmub.cocobook.base.adapter.ViewHolderImpl;
@@ -40,9 +41,10 @@ public class BookSortListHolder extends ViewHolderImpl<SortBookBean>{
         //头像
         Glide.with(getContext())
                 .load(Constant.IMG_BASE_URL+value.getCover())
-                .placeholder(R.drawable.ic_default_book_cover)
-                .error(R.drawable.ic_load_error)
-                .fitCenter()
+                .apply(new RequestOptions()
+                        .placeholder(R.drawable.ic_default_book_cover)
+                        .error(R.drawable.ic_load_error)
+                        .centerCrop())
                 .into(mIvPortrait);
         //书单名
         mTvTitle.setText(value.getTitle());

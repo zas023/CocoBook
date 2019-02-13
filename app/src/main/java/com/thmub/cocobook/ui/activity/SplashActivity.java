@@ -1,20 +1,20 @@
 package com.thmub.cocobook.ui.activity;
 
 import android.content.Intent;
-import android.support.v7.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatImageView;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.BindView;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+
 import com.thmub.cocobook.BuildConfig;
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.base.BaseActivity;
 import com.thmub.cocobook.utils.Constant;
 import com.thmub.cocobook.utils.SharedPreUtils;
-import com.thmub.cocobook.utils.SystemBarUtils;
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -56,7 +56,6 @@ public class SplashActivity extends BaseActivity {
     @Override
     public void initTheme() {
         super.initTheme();
-        SystemBarUtils.hideStableStatusBar(this);
     }
 
     @Override
@@ -103,7 +102,7 @@ public class SplashActivity extends BaseActivity {
     private  void skipToMain() {
         if (!isSkip) {
             isSkip = true;
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(mContext, MainActivity.class));
             finish();
         }
     }

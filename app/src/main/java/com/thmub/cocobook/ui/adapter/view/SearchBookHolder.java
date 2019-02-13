@@ -4,6 +4,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.model.bean.packages.SearchBookPackage;
 import com.thmub.cocobook.base.adapter.ViewHolderImpl;
@@ -31,8 +32,10 @@ public class SearchBookHolder extends ViewHolderImpl<SearchBookPackage.BooksBean
         //显示图片
         Glide.with(getContext())
                 .load(Constant.IMG_BASE_URL + data.getCover())
-                .placeholder(R.drawable.ic_default_book_cover)
-                .error(R.drawable.ic_load_error)
+                .apply(new RequestOptions()
+                        .placeholder(R.drawable.ic_default_book_cover)
+                        .error(R.drawable.ic_load_error)
+                        .fitCenter())
                 .into(mIvCover);
 
         mTvName.setText(data.getTitle());

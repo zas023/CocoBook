@@ -2,7 +2,7 @@ package com.thmub.cocobook.utils;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 
 /**
  * Created by zhouas666 on 2017/10/8.

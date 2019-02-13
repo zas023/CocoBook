@@ -3,10 +3,10 @@ package com.thmub.cocobook.ui.activity;
 import static com.thmub.cocobook.ui.fragment.BaseFileFragment.*;
 
 import android.content.DialogInterface;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
 import android.widget.Button;
 import android.widget.CheckBox;
 

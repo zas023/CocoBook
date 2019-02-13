@@ -1,6 +1,6 @@
 package com.thmub.cocobook.widget.page;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.thmub.cocobook.model.bean.BookChapterBean;
 import com.thmub.cocobook.model.bean.CollBookBean;

@@ -50,6 +50,11 @@
         <service android:name=".service.SpeakService"/>
         <service android:name=".service.DownloadService"/>
 
+        <provider
+            android:name="cn.bmob.v3.util.BmobContentProvider"
+            android:authorities="com.thmub.cocobook.BmobContentProvider">
+        </provider>
+
     </application>
 
 </manifest>

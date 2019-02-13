@@ -1,7 +1,7 @@
 package com.thmub.cocobook.model.type;
 
-import android.support.annotation.DrawableRes;
-import android.support.annotation.StringRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.StringRes;
 
 import com.thmub.cocobook.App;
 import com.thmub.cocobook.R;

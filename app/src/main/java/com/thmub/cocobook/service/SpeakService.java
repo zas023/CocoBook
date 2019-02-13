@@ -11,9 +11,9 @@ import android.os.Build;
 import android.os.IBinder;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.NotificationCompat;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.NotificationCompat;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
 import android.util.Log;
@@ -345,7 +345,7 @@ public class SpeakService extends BaseService {
             builder.addAction(R.drawable.ic_pause1, "暂停", getThisServicePendingIntent(ActionPauseService));
         }
         builder.addAction(R.drawable.ic_timer_black_24dp, "定时", getThisServicePendingIntent(ActionSetTimer));
-        builder.setStyle(new android.support.v4.media.app.NotificationCompat.MediaStyle()
+        builder.setStyle(new androidx.media.app.NotificationCompat.MediaStyle()
                 .setMediaSession(mediaSessionCompat.getSessionToken()).setShowActionsInCompactView(0, 1, 2));
         builder.setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
         Notification notification = builder.build();

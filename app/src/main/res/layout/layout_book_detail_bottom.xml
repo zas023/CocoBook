@@ -10,7 +10,7 @@
             android:visibility="gone"
             style="@style/BottomNavigation.ItemView">
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
                 style="@style/BottomNavigation.ItemView.Icon"
                 android:background="@drawable/ic_vector_download_book"/>
 
@@ -25,7 +25,7 @@
             android:id="@+id/fl_add_bookcase"
             style="@style/BottomNavigation.ItemView">
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
                 style="@style/BottomNavigation.ItemView.Icon"
                 android:background="@drawable/ic_vector_add_bookcase"/>
 
@@ -42,7 +42,7 @@
             style="@style/BottomNavigation.ItemView"
             android:background="?colorPrimary">
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
                 style="@style/BottomNavigation.ItemView.Icon"
                 android:background="@drawable/ic_vector_book_read"/>
 

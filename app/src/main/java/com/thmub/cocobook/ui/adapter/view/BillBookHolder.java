@@ -4,11 +4,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.thmub.cocobook.App;
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.model.bean.BillBookBean;
 import com.thmub.cocobook.base.adapter.ViewHolderImpl;
 import com.thmub.cocobook.utils.Constant;
+import com.thmub.cocobook.widget.transform.CircleTransform;
 
 /**
  * Created by zhouas666 on 18-1-23.
@@ -42,9 +44,10 @@ public class BillBookHolder extends ViewHolderImpl<BillBookBean> {
         //头像
         Glide.with(App.getContext())
                 .load(Constant.IMG_BASE_URL+value.getCover())
-                .placeholder(R.drawable.ic_default_book_cover)
-                .error(R.drawable.ic_load_error)
-                .fitCenter()
+                .apply(new RequestOptions()
+                        .placeholder(R.drawable.ic_default_book_cover)
+                        .error(R.drawable.ic_load_error)
+                        .fitCenter())
                 .into(mIvPortrait);
         //书单名
         mTvTitle.setText(value.getTitle());

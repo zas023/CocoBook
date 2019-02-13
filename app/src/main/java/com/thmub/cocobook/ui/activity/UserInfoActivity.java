@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -309,7 +309,12 @@ public class UserInfoActivity extends BaseActivity {
             public void done(BmobException e) {
                 if (e==null){
                     currentUser.setPortrait(icon.getFileUrl());
-                    currentUser.update();
+                    currentUser.update(new UpdateListener() {
+                        @Override
+                        public void done(BmobException e) {
+
+                        }
+                    });
                 }else {
                     System.out.println("++++++++++++++++++++++++++"+e.getMessage());
                 }

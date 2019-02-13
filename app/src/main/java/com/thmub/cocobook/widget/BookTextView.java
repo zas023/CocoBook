@@ -2,7 +2,7 @@ package com.thmub.cocobook.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
@@ -20,7 +20,7 @@ import com.thmub.cocobook.R;
  * 4. 添加点击事件
  */
 
-public class BookTextView extends android.support.v7.widget.AppCompatTextView{
+public class BookTextView extends androidx.appcompat.widget.AppCompatTextView{
 
     private OnBookClickListener mBookListener;
 

@@ -2,8 +2,8 @@ package com.thmub.cocobook.widget.refresh;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.LayoutRes;
-import android.support.v4.widget.SwipeRefreshLayout;
+import androidx.annotation.LayoutRes;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -124,10 +124,10 @@ public abstract class ScrollRefreshLayout extends SwipeRefreshLayout {
                 .inflate(R.layout.layout_scroll_refresh,this,false);
         addView(view);
         //init View
-        mFlContent = ButterKnife.findById(view,R.id.scroll_refresh_fl_content);
+        mFlContent = view.findViewById(R.id.scroll_refresh_fl_content);
 
 
-        mTvTip = ButterKnife.findById(view,R.id.scroll_refresh_tv_tip);
+        mTvTip = view.findViewById(R.id.scroll_refresh_tv_tip);
 
         mEmptyView = inflateId(mFlContent,mEmptyId);
         mFlContent.addView(mEmptyView);

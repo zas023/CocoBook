@@ -1,7 +1,7 @@
 package com.thmub.cocobook.ui.adapter.view;
 
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.widget.TextView;
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.model.bean.FeatureBean;

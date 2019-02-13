@@ -1,8 +1,8 @@
 package com.thmub.cocobook.ui.activity;
 
 import android.os.Bundle;
-import android.support.v7.widget.SwitchCompat;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.SwitchCompat;
+import androidx.appcompat.widget.Toolbar;
 import android.widget.RelativeLayout;
 
 import com.thmub.cocobook.R;

@@ -21,7 +21,7 @@
 			android:layout_centerVertical="true"
 			android:text="音量键翻页"/>
 		
-		<android.support.v7.widget.SwitchCompat
+		<androidx.appcompat.widget.SwitchCompat
 			android:id="@+id/more_setting_sc_volume"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
 			android:layout_centerVertical="true"
 			android:text="全屏模式"/>
 		
-		<android.support.v7.widget.SwitchCompat
+		<androidx.appcompat.widget.SwitchCompat
 			android:id="@+id/more_setting_sc_full_screen"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"

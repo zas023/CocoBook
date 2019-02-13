@@ -2,23 +2,24 @@
 
 buildscript {
     repositories {
-        jcenter()
-        dependencies {
-            classpath 'com.android.tools.build:gradle:2.3.0'
-            // 添加插件
-            classpath 'me.tatarka:gradle-retrolambda:3.6.0'
-            classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
-            //classpath 'com.google.gms:google-services:3.0.0'
-        }
         google()
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+        // 添加插件
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
+        //classpath 'com.google.gms:google-services:3.0.0'
     }
 }
 
 allprojects {
     repositories {
-        jcenter()
-        maven { url "https://raw.github.com/bmob/bmob-android-sdk/master" }
         google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+        maven { url "https://raw.github.com/bmob/bmob-android-sdk/master" }
     }
 }
 

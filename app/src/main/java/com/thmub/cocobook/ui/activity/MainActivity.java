@@ -6,14 +6,14 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.view.menu.MenuBuilder;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import com.google.android.material.navigation.NavigationView;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.appcompat.widget.Toolbar;
 import android.view.*;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -136,7 +136,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
         super.initClick();
         //监听菜单栏头部
         drawerHeader.setOnClickListener(view -> {
-            if (BmobUser.getCurrentUser()==null)
+            if (BmobUser.getCurrentUser(CocoUser.class)==null)
                 startActivityForResult(new Intent(mContext,UserLoginActivity.class),REQUEST_LAND);
             else
                 startActivityForResult(new Intent(mContext,UserInfoActivity.class),REQUEST_USER_INFO);
@@ -187,8 +187,8 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
         }
         if (currentUser.getPortrait()!=null)
             Glide.with(mContext).load(currentUser.getPortrait()).into(drawerIv);
-        drawerTvAccount.setText(BmobUser.getCurrentUser().getUsername());
-        drawerTvMail.setText(BmobUser.getCurrentUser().getEmail());
+        drawerTvAccount.setText(BmobUser.getCurrentUser(CocoUser.class).getUsername());
+        drawerTvMail.setText(BmobUser.getCurrentUser(CocoUser.class).getEmail());
     }
 
 
@@ -291,7 +291,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
             case R.id.action_sync_bookshelf:
                 if (currentUser==null) break;
                 ProgressUtils.show(mContext,"正在同步");
-                BmobRepository.getInstance().syncBooks(BmobUser.getCurrentUser()
+                BmobRepository.getInstance().syncBooks(BmobUser.getCurrentUser(CocoUser.class)
                         , new BmobRepository.SyncBookListener() {
                             @Override
                             public void onSuccess(List<CollBookBean> list) {

@@ -1,6 +1,6 @@
 package com.thmub.cocobook.ui.adapter;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.thmub.cocobook.model.bean.BookTagBean;
 import com.thmub.cocobook.ui.adapter.view.TagChildHolder;

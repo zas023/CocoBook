@@ -4,16 +4,20 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.OnClick;
+
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.base.BaseMVPActivity;
 import com.thmub.cocobook.model.bean.*;
@@ -171,9 +175,10 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
         //封面
         Glide.with(this)
                 .load(Constant.IMG_BASE_URL + bean.getCover())
-                .placeholder(R.drawable.ic_default_book_cover)
-                .error(R.drawable.ic_load_error)
-                .centerCrop()
+                .apply(new RequestOptions()
+                        .placeholder(R.drawable.ic_default_book_cover)
+                        .error(R.drawable.ic_load_error)
+                        .centerCrop())
                 .into(mIvCover);
         //作者
         mTvAuthor.setText(bean.getAuthor());

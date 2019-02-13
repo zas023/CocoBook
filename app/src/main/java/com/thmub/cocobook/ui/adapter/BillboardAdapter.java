@@ -82,9 +82,9 @@ public class BillboardAdapter extends BaseExpandableListAdapter {
             holder = new GroupViewHolder();
             convertView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_billboard_group,parent,false);
-            holder.ivSymbol = ButterKnife.findById(convertView,R.id.billboard_group_iv_symbol);
-            holder.tvName = ButterKnife.findById(convertView,R.id.billboard_group_tv_name);
-            holder.ivArrow = ButterKnife.findById(convertView,R.id.billboard_group_iv_arrow);
+            holder.ivSymbol = convertView.findViewById(R.id.billboard_group_iv_symbol);
+            holder.tvName = convertView.findViewById(R.id.billboard_group_tv_name);
+            holder.ivArrow = convertView.findViewById(R.id.billboard_group_iv_arrow);
             convertView.setTag(holder);
         }
         else {
@@ -130,7 +130,7 @@ public class BillboardAdapter extends BaseExpandableListAdapter {
             holder = new ChildViewHolder();
             convertView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_billborad_child,parent,false);
-            holder.tvName = ButterKnife.findById(convertView,R.id.billboard_child_tv_name);
+            holder.tvName = convertView.findViewById(R.id.billboard_child_tv_name);
             convertView.setTag(holder);
         }
         else {

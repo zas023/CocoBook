@@ -1,9 +1,9 @@
 package com.thmub.cocobook.widget.adapter;
 
 import android.content.Context;
-import android.support.annotation.LayoutRes;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.LayoutRes;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -48,7 +48,7 @@ public abstract class WholeAdapter<T> extends BaseListAdapter<T>{
         }
     }
 
-    private RecyclerView.ViewHolder createOtherViewHolder(ViewGroup parent,int viewType){
+    private RecyclerView.ViewHolder createOtherViewHolder(ViewGroup parent, int viewType){
         View view = null;
         for (int i=0; i<mHeaderList.size(); ++i){
             ItemView itemView = mHeaderList.get(i);

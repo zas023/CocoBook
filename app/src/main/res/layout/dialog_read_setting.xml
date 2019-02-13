@@ -194,7 +194,7 @@
                 style="@style/AppTheme.TextAppearance.Read.BottomMenu"/>
     </RadioGroup>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/read_setting_rv_bg"
             android:layout_width="match_parent"
             android:layout_height="40dp"

@@ -1,7 +1,7 @@
 package com.thmub.cocobook.ui.adapter.view;
 
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.widget.TextView;
 
 import com.thmub.cocobook.R;

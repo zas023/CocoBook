@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.model.bean.CollBookBean;
 import com.thmub.cocobook.base.adapter.ViewHolderImpl;
@@ -66,16 +67,18 @@ public class CollBookHolder extends ViewHolderImpl<CollBookBean>{
             //本地文件的图片
             Glide.with(getContext())
                     .load(R.drawable.ic_local_file)
-                    .fitCenter()
+                    .apply(new RequestOptions()
+                            .fitCenter())
                     .into(mIvCover);
         }
         else {
             //书的图片
             Glide.with(getContext())
                     .load(Constant.IMG_BASE_URL+value.getCover())
-                    .placeholder(R.drawable.ic_default_book_cover)
-                    .error(R.drawable.ic_load_error)
-                    .fitCenter()
+                    .apply(new RequestOptions()
+                            .placeholder(R.drawable.ic_default_book_cover)
+                            .error(R.drawable.ic_load_error)
+                            .fitCenter())
                     .into(mIvCover);
         }
         //书名

@@ -14,7 +14,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/splash_iv_smile"
                 android:layout_width="128dp"
                 android:layout_height="128dp"

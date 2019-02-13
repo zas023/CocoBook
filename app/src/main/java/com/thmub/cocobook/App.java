@@ -3,8 +3,8 @@ package com.thmub.cocobook;
 import android.content.Context;
 import android.content.Intent;
 
-import android.support.multidex.MultiDex;
-import android.support.multidex.MultiDexApplication;
+import androidx.multidex.MultiDex;
+import androidx.multidex.MultiDexApplication;
 import cn.bmob.v3.Bmob;
 import com.thmub.cocobook.service.DownloadService;
 

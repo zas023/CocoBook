@@ -27,21 +27,21 @@
 					style="@style/AppTheme.TextAppearance.Billboard.Title"
 					android:text="男生" />
 				
-				<android.support.v7.widget.RecyclerView
+				<androidx.recyclerview.widget.RecyclerView
 					android:id="@+id/book_sort_rv_boy"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content">
-				</android.support.v7.widget.RecyclerView>
+				</androidx.recyclerview.widget.RecyclerView>
 				
 				<TextView
 					style="@style/AppTheme.TextAppearance.Billboard.Title"
 					android:text="女生" />
 				
-				<android.support.v7.widget.RecyclerView
+				<androidx.recyclerview.widget.RecyclerView
 					android:id="@+id/book_sort_rv_girl"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content">
-				</android.support.v7.widget.RecyclerView>
+				</androidx.recyclerview.widget.RecyclerView>
 			</LinearLayout>
 		</com.thmub.cocobook.widget.ReboundScrollView>
 	</com.thmub.cocobook.widget.RefreshLayout>

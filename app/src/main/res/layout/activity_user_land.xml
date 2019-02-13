@@ -29,7 +29,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/land_til_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -37,15 +37,15 @@
                 app:counterEnabled="true"
                 app:counterMaxLength="12">
 
-            <android.support.design.widget.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/land.hint.name"
                     android:inputType="text"/>
 
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/land_til_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -56,13 +56,13 @@
                 app:passwordToggleDrawable="@mipmap/ic_pwd_look"
                 app:passwordToggleTintMode="src_in">
 
-            <android.support.design.widget.TextInputEditText
+            <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/land.hint.password"
                     android:inputType="textPassword"/>
 
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
                 android:id="@+id/land_btn_login"

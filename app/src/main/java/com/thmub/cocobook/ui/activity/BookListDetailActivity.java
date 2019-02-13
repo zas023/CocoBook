@@ -3,9 +3,9 @@ package com.thmub.cocobook.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.thmub.cocobook.App;
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.base.BaseMVPActivity;
@@ -213,9 +214,10 @@ public class BookListDetailActivity extends BaseMVPActivity<BookListDetailContra
             //头像
             Glide.with(App.getContext())
                     .load(Constant.IMG_BASE_URL+detailBean.getAuthor().getAvatar())
-                    .placeholder(R.drawable.ic_loadding)
-                    .error(R.drawable.ic_load_error)
-                    .transform(new CircleTransform(App.getContext()))
+                    .apply(new RequestOptions()
+                            .placeholder(R.drawable.ic_default_book_cover)
+                            .error(R.drawable.ic_load_error)
+                            .transform(new CircleTransform(App.getContext())))
                     .into(ivPortrait);
             //作者
             tvAuthor.setText(detailBean.getAuthor().getNickname());

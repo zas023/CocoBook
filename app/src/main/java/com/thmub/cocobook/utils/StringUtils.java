@@ -1,6 +1,6 @@
 package com.thmub.cocobook.utils;
 
-import android.support.annotation.StringRes;
+import androidx.annotation.StringRes;
 
 import com.thmub.cocobook.App;
 

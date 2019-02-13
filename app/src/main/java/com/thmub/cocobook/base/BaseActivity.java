@@ -3,13 +3,13 @@ package com.thmub.cocobook.base;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatDelegate;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.Toolbar;
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.manager.ReadSettingManager;
 import com.thmub.cocobook.utils.StatusBarCompat;
@@ -19,7 +19,6 @@ import butterknife.Unbinder;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
-import org.greenrobot.eventbus.EventBus;
 
 /**
  * Created by PC on 2016/9/8.
@@ -145,7 +144,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
 
     private void initToolbar() {
         //更严谨是通过反射判断是否存在Toolbar
-        mToolbar = ButterKnife.findById(this, R.id.toolbar);
+        mToolbar = (Toolbar) findViewById( R.id.toolbar);
         if (mToolbar != null) {
             supportActionBar(mToolbar);
             setUpToolbar(mToolbar);

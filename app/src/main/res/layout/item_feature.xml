@@ -31,12 +31,12 @@
                 android:src="@drawable/ic_arrow_enter"/>
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/feature_rv_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
     <View
             android:layout_width="match_parent"

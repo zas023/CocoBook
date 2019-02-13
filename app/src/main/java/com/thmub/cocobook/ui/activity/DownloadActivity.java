@@ -5,9 +5,9 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.base.BaseActivity;
@@ -33,7 +33,7 @@ public class DownloadActivity extends BaseActivity implements DownloadService.On
 
     private DownLoadAdapter mDownloadAdapter;
 
-    private ServiceConnection mConn;
+    private ServiceConnection mConnection;
     private DownloadService.IDownloadManager mService;
     @Override
     protected int getLayoutId() {
@@ -92,7 +92,7 @@ public class DownloadActivity extends BaseActivity implements DownloadService.On
     protected void processLogic() {
         super.processLogic();
 
-        mConn = new ServiceConnection() {
+        mConnection = new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
                 mService = (DownloadService.IDownloadManager) service;
@@ -109,13 +109,13 @@ public class DownloadActivity extends BaseActivity implements DownloadService.On
             }
         };
         //绑定
-        bindService(new Intent(this, DownloadService.class), mConn, Service.BIND_AUTO_CREATE);
+        bindService(new Intent(this, DownloadService.class), mConnection, Service.BIND_AUTO_CREATE);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unbindService(mConn);
+        unbindService(mConnection);
     }
 
     @Override
