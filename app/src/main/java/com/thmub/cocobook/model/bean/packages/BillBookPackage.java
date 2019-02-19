@@ -1,7 +1,7 @@
 package com.thmub.cocobook.model.bean.packages;
 
 import com.thmub.cocobook.model.bean.BaseBean;
-import com.thmub.cocobook.model.bean.BillBookBean;
+import com.thmub.cocobook.model.bean.RankBookBean;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -53,7 +53,7 @@ public class BillBookPackage extends BaseBean {
         private int priority;
         private String id;
         private int total;
-        private List<BillBookBean> books;
+        private List<RankBookBean> books;
 
         public String get_id() {
             return _id;
@@ -167,11 +167,11 @@ public class BillBookPackage extends BaseBean {
             this.total = total;
         }
 
-        public List<BillBookBean> getBooks() {
+        public List<RankBookBean> getBooks() {
             return books;
         }
 
-        public void setBooks(List<BillBookBean> books) {
+        public void setBooks(List<RankBookBean> books) {
             this.books = books;
         }
     }

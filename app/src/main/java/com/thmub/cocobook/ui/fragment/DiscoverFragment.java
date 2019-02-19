@@ -11,7 +11,7 @@ import com.thmub.cocobook.base.BaseFragment;
 import com.thmub.cocobook.base.adapter.BaseListAdapter;
 import com.thmub.cocobook.model.bean.SectionBean;
 import com.thmub.cocobook.model.type.FindType;
-import com.thmub.cocobook.ui.activity.BillboardActivity;
+import com.thmub.cocobook.ui.activity.BookRankActivity;
 import com.thmub.cocobook.ui.activity.BookListActivity;
 import com.thmub.cocobook.ui.activity.BookSortActivity;
 import com.thmub.cocobook.ui.adapter.SectionAdapter;
@@ -71,7 +71,7 @@ public class DiscoverFragment extends BaseFragment implements BaseListAdapter.On
         //跳转
         switch (type){
             case TOP:
-                intent = new Intent(getContext(),BillboardActivity.class);
+                intent = new Intent(getContext(),BookRankActivity.class);
                 startActivity(intent);
                 break;
             case SORT:

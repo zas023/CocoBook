@@ -11,7 +11,7 @@ import android.view.View;
 import butterknife.BindView;
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.base.BaseMVPActivity;
-import com.thmub.cocobook.model.bean.BillBookBean;
+import com.thmub.cocobook.model.bean.RankBookBean;
 import com.thmub.cocobook.presenter.RecommendBookPresenter;
 import com.thmub.cocobook.presenter.contract.RecommendBookContract;
 import com.thmub.cocobook.ui.adapter.BillBookAdapter;
@@ -101,7 +101,7 @@ public class RecommendBookActivity extends BaseMVPActivity<RecommendBookContract
     }
 
     @Override
-    public void finishRefresh(List<BillBookBean> beans) {
+    public void finishRefresh(List<RankBookBean> beans) {
         mBooksAdapter.refreshItems(beans);
     }
 

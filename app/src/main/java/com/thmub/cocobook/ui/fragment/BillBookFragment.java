@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.thmub.cocobook.R;
-import com.thmub.cocobook.model.bean.BillBookBean;
+import com.thmub.cocobook.model.bean.RankBookBean;
 import com.thmub.cocobook.presenter.BillBookPresenter;
 import com.thmub.cocobook.presenter.contract.BillBookContract;
 import com.thmub.cocobook.ui.activity.BookDetailActivity;
@@ -95,7 +95,7 @@ public class BillBookFragment extends BaseMVPFragment<BillBookContract.Presenter
     }
 
     @Override
-    public void finishRefresh(List<BillBookBean> beans) {
+    public void finishRefresh(List<RankBookBean> beans) {
         mBillBookAdapter.refreshItems(beans);
     }
 

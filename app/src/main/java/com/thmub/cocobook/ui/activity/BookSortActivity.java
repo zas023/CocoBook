@@ -84,14 +84,14 @@ public class BookSortActivity extends BaseMVPActivity<BookSortContract.Presenter
                 (view,pos) -> {
                     BookSubSortBean subSortBean = mSubSortPackage.getMale().get(pos);
                     //上传
-                    BookSortListActivity.startActivity(this,"male",subSortBean);
+                    BookSortDetailActivity.startActivity(this,"male",subSortBean);
                 }
         );
         mGirlAdapter.setOnItemClickListener(
                 (view,pos) -> {
                     BookSubSortBean subSortBean = mSubSortPackage.getFemale().get(pos);
                     //上传
-                    BookSortListActivity.startActivity(this,"female",subSortBean);
+                    BookSortDetailActivity.startActivity(this,"female",subSortBean);
                 }
         );
     }

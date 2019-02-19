@@ -9,12 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.thmub.cocobook.R;
-import com.thmub.cocobook.model.bean.BillboardBean;
+import com.thmub.cocobook.model.bean.BookRankBean;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.ButterKnife;
 
 /**
  * Created by zhouas666 on 18-1-23.
@@ -23,8 +21,8 @@ import butterknife.ButterKnife;
 
 public class BillboardAdapter extends BaseExpandableListAdapter {
     private static final String TAG = "BillboardAdapter";
-    private List<BillboardBean> mGroups = new ArrayList<>();
-    private List<BillboardBean> mChildren = new ArrayList<>();
+    private List<BookRankBean> mGroups = new ArrayList<>();
+    private List<BookRankBean> mChildren = new ArrayList<>();
 
     private Context mContext;
 
@@ -46,12 +44,12 @@ public class BillboardAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public BillboardBean getGroup(int groupPosition) {
+    public BookRankBean getGroup(int groupPosition) {
         return mGroups.get(groupPosition);
     }
 
     @Override
-    public BillboardBean getChild(int groupPosition, int childPosition) {
+    public BookRankBean getChild(int groupPosition, int childPosition) {
         //只有最后一个groups才有child
         if (groupPosition == mGroups.size() - 1){
             return mChildren.get(childPosition);
@@ -91,7 +89,7 @@ public class BillboardAdapter extends BaseExpandableListAdapter {
             holder = (GroupViewHolder) convertView.getTag();
         }
 
-        BillboardBean bean = getGroup(groupPosition);
+        BookRankBean bean = getGroup(groupPosition);
 
 //        if (bean.getCover() != null){
 //            Glide.with(parent.getContext())
@@ -145,22 +143,22 @@ public class BillboardAdapter extends BaseExpandableListAdapter {
         return true;
     }
 
-    public void addGroups(List<BillboardBean> beans){
+    public void addGroups(List<BookRankBean> beans){
         mGroups.addAll(beans);
         notifyDataSetChanged();
     }
 
-    public void addGroup(BillboardBean bean){
+    public void addGroup(BookRankBean bean){
         mGroups.add(bean);
         notifyDataSetChanged();
     }
 
-    public void addChildren(List<BillboardBean> beans){
+    public void addChildren(List<BookRankBean> beans){
         mChildren.addAll(beans);
         notifyDataSetChanged();
     }
 
-    public void addChild(BillboardBean bean){
+    public void addChild(BookRankBean bean){
         mChildren.add(bean);
         notifyDataSetChanged();
     }

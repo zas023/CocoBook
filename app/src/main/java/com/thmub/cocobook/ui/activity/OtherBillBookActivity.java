@@ -11,7 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.base.BaseMVPActivity;
-import com.thmub.cocobook.model.bean.BillBookBean;
+import com.thmub.cocobook.model.bean.RankBookBean;
 import com.thmub.cocobook.presenter.BillBookPresenter;
 import com.thmub.cocobook.presenter.contract.BillBookContract;
 import com.thmub.cocobook.ui.adapter.BillBookAdapter;
@@ -107,7 +107,7 @@ public class OtherBillBookActivity extends BaseMVPActivity<BillBookContract.Pres
     }
 
     @Override
-    public void finishRefresh(List<BillBookBean> beans) {
+    public void finishRefresh(List<RankBookBean> beans) {
         mBillBookAdapter.refreshItems(beans);
     }
 

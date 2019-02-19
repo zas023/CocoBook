@@ -13,7 +13,7 @@ public interface BookDetailContract {
     interface View extends BaseContract.BaseView{
         void finishRefresh(BookDetailBean bean);
         void finishRecommendBookList(List<BookListBean> beans);
-        void finishRecommendBooks(List<BillBookBean> beans);
+        void finishRecommendBooks(List<RankBookBean> beans);
 
         void waitToBookShelf();
         void errorToBookShelf();

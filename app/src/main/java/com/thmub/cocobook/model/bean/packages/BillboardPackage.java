@@ -1,7 +1,7 @@
 package com.thmub.cocobook.model.bean.packages;
 
 import com.thmub.cocobook.model.bean.BaseBean;
-import com.thmub.cocobook.model.bean.BillboardBean;
+import com.thmub.cocobook.model.bean.BookRankBean;
 
 import java.util.List;
 
@@ -15,22 +15,22 @@ public class BillboardPackage extends BaseBean {
      * female : [{"_id":"54d43437d47d13ff21cad58b","title":"追书最热榜 Top100","cover":"/ranking-cover/142319314350435","collapse":false,"monthRank":"564d853484665f97662d0810","totalRank":"564d85b6dd2bd1ec660ea8e2"},{"_id":"5645482405b052fe70aeb1b5","title":"读者留存率 Top100","cover":"/ranking-cover/144738102858782","collapse":false,"monthRank":"564d8b6b36d10ccd6951195d","totalRank":"564d8c37752bcca16a976168"},{"_id":"564eb8a9cf77e9b25056162d","title":"追书完结榜 Top100","cover":"/ranking-cover/144799965747841","collapse":false,"monthRank":"564ee8ec146f8f1739777740","totalRank":"564eeae6c3345baa6bf06e38"},{"_id":"57eb959df60eb7e21fb3a8b7","title":"包月排行榜","cover":"/ranking-cover/147505705336267","collapse":false,"monthRank":"57eb98afcf7ddb81588947b4","totalRank":"57eb98fe1ae40b985292051e"},{"_id":"54d43709fd6ec9ae04184aa5","title":"本周潜力榜","cover":"/ranking-cover/142319383473238","collapse":false,"monthRank":"564eee77e3a44c9f0e5fd7ae","totalRank":"564eeeca5e6ba6ae074f10ec"},{"_id":"582fb5c412a401a20ea50275","title":"圣诞热搜榜","cover":"/ranking-cover/14795217326220","collapse":true},{"_id":"564d80d0e8c613016446c5aa","title":"掌阅热销榜","cover":"/ranking-cover/142319217152210","collapse":true},{"_id":"564d81151109835664770ad7","title":"书旗热搜榜","cover":"/ranking-cover/142319217152210","collapse":true},{"_id":"550b841715db45cd4b022107","title":"17K订阅榜","cover":"/ranking-cover/142319217152210","collapse":true},{"_id":"550b836229cd462830ff4d1d","title":"起点粉红票榜","cover":"/ranking-cover/142319217152210","collapse":true},{"_id":"550b8397de12381038ad8c0b","title":"潇湘月票榜","cover":"/ranking-cover/142319217152210","collapse":true}]
      * ok : true
      */
-    private List<BillboardBean> male;
-    private List<BillboardBean> female;
+    private List<BookRankBean> male;
+    private List<BookRankBean> female;
 
-    public List<BillboardBean> getMale() {
+    public List<BookRankBean> getMale() {
         return male;
     }
 
-    public void setMale(List<BillboardBean> male) {
+    public void setMale(List<BookRankBean> male) {
         this.male = male;
     }
 
-    public List<BillboardBean> getFemale() {
+    public List<BookRankBean> getFemale() {
         return female;
     }
 
-    public void setFemale(List<BillboardBean> female) {
+    public void setFemale(List<BookRankBean> female) {
         this.female = female;
     }
 }

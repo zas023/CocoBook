@@ -1,7 +1,7 @@
 package com.thmub.cocobook.model.bean.packages;
 
 import com.thmub.cocobook.model.bean.BaseBean;
-import com.thmub.cocobook.model.bean.BillBookBean;
+import com.thmub.cocobook.model.bean.RankBookBean;
 
 import java.util.List;
 
@@ -11,13 +11,13 @@ import java.util.List;
 
 public class RecommendBookPackage2 extends BaseBean {
 
-    private List<BillBookBean> books;
+    private List<RankBookBean> books;
 
-    public List<BillBookBean> getBooks() {
+    public List<RankBookBean> getBooks() {
         return books;
     }
 
-    public void setBooks(List<BillBookBean> books) {
+    public void setBooks(List<RankBookBean> books) {
         this.books = books;
     }
 }

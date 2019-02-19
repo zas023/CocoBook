@@ -27,7 +27,7 @@ import butterknife.BindView;
  * 分类书籍列表activity
  */
 
-public class BookSortListActivity extends BaseTabActivity {
+public class BookSortDetailActivity extends BaseTabActivity {
     private static final String EXTRA_GENDER = "extra_gender";
     private static final String EXTRA_SUB_SORT = "extra_sub_sort";
 
@@ -41,7 +41,7 @@ public class BookSortListActivity extends BaseTabActivity {
     private String mGender;
 
     public static void startActivity(Context context, String gender, BookSubSortBean subSortBean){
-        Intent intent = new Intent(context,BookSortListActivity.class);
+        Intent intent = new Intent(context,BookSortDetailActivity.class);
         intent.putExtra(EXTRA_GENDER,gender);
         intent.putExtra(EXTRA_SUB_SORT, subSortBean);
         context.startActivity(intent);

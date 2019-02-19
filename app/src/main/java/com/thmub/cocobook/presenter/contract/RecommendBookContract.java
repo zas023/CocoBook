@@ -1,6 +1,6 @@
 package com.thmub.cocobook.presenter.contract;
 
-import com.thmub.cocobook.model.bean.BillBookBean;
+import com.thmub.cocobook.model.bean.RankBookBean;
 import com.thmub.cocobook.base.BaseContract;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface RecommendBookContract {
     interface View extends BaseContract.BaseView{
-        void finishRefresh(List<BillBookBean> beans);
+        void finishRefresh(List<RankBookBean> beans);
     }
 
     interface Presenter extends BaseContract.BasePresenter<View>{

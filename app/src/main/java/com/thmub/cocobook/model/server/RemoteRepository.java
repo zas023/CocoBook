@@ -99,7 +99,7 @@ public class RemoteRepository {
      * @param bookId
      * @return
      */
-    public Single<List<BillBookBean>> getRecommendBooksByBookId(String bookId) {
+    public Single<List<RankBookBean>> getRecommendBooksByBookId(String bookId) {
         return mBookApi.getRecommendBookPackageByBookId(bookId)
                 .map(bean -> bean.getBooks());
     }
@@ -185,7 +185,7 @@ public class RemoteRepository {
      * @param billId
      * @return
      */
-    public Single<List<BillBookBean>> getBillBooks(String billId) {
+    public Single<List<RankBookBean>> getBillBooks(String billId) {
         return mBookApi.getBillBookPackage(billId)
                 .map(bean -> bean.getRanking().getBooks());
     }

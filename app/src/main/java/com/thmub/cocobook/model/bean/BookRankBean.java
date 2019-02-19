@@ -5,7 +5,7 @@ package com.thmub.cocobook.model.bean;
  * 排行榜
  */
 
-public class BillboardBean {
+public class BookRankBean {
     /**
      *
      * _id : 54d42d92321052167dfb75e3
@@ -24,7 +24,7 @@ public class BillboardBean {
     private String totalRank;
     private String shortTitle;
 
-    public BillboardBean(String title){
+    public BookRankBean(String title){
         this.title = title;
     }
 

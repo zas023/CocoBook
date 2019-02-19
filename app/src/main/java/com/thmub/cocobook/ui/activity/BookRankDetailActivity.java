@@ -19,7 +19,7 @@ import java.util.List;
  * 排行榜中书籍activity
  */
 
-public class BillBookActivity extends BaseTabActivity {
+public class BookRankDetailActivity extends BaseTabActivity {
     /**常量**/
     private static final String EXTRA_WEEK_ID = "extra_week_id";
     private static final String EXTRA_MONTH_ID = "extra_month_id";
@@ -31,7 +31,7 @@ public class BillBookActivity extends BaseTabActivity {
     private String mTotalId;
     /**公共方法**/
     public static void startActivity(Context context,String title ,String weekId, String monthId, String totalId){
-        Intent intent = new Intent(context,BillBookActivity.class);
+        Intent intent = new Intent(context,BookRankDetailActivity.class);
         intent.putExtra(EXTRA_WEEK_ID,weekId);
         intent.putExtra(EXTRA_MONTH_ID,monthId);
         intent.putExtra(EXTRA_TOTAL_ID,totalId);

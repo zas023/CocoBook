@@ -210,7 +210,7 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
      * @param beans
      */
     @Override
-    public void finishRecommendBooks(List<BillBookBean> beans) {
+    public void finishRecommendBooks(List<RankBookBean> beans) {
         if (beans.isEmpty()) return;
         mBooksAdapter.addItems(beans.subList(0, 6));
     }

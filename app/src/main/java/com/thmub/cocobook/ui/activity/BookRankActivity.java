@@ -6,7 +6,7 @@ import android.widget.ExpandableListView;
 
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.base.BaseMVPActivity;
-import com.thmub.cocobook.model.bean.BillboardBean;
+import com.thmub.cocobook.model.bean.BookRankBean;
 import com.thmub.cocobook.model.bean.packages.BillboardPackage;
 import com.thmub.cocobook.presenter.BillboardPresenter;
 import com.thmub.cocobook.presenter.contract.BillboardContract;
@@ -23,7 +23,7 @@ import butterknife.BindView;
  * 排行榜activity
  */
 
-public class BillboardActivity extends BaseMVPActivity<BillboardContract.Presenter>
+public class BookRankActivity extends BaseMVPActivity<BillboardContract.Presenter>
         implements BillboardContract.View, ExpandableListView.OnGroupClickListener, ExpandableListView.OnChildClickListener {
 
     @BindView(R.id.billboard_rl_refresh)
@@ -98,17 +98,17 @@ public class BillboardActivity extends BaseMVPActivity<BillboardContract.Present
         updateBillboard(mGirlAdapter, beans.getFemale());
     }
 
-    private void updateBillboard(BillboardAdapter adapter, List<BillboardBean> disposes) {
-        List<BillboardBean> maleGroups = new ArrayList<>();
-        List<BillboardBean> maleChildren = new ArrayList<>();
-        for (BillboardBean bean : disposes) {
+    private void updateBillboard(BillboardAdapter adapter, List<BookRankBean> disposes) {
+        List<BookRankBean> maleGroups = new ArrayList<>();
+        List<BookRankBean> maleChildren = new ArrayList<>();
+        for (BookRankBean bean : disposes) {
             if (bean.isCollapse()) {
                 maleChildren.add(bean);
             } else {
                 maleGroups.add(bean);
             }
         }
-        maleGroups.add(new BillboardBean("别人家的排行榜"));
+        maleGroups.add(new BookRankBean("别人家的排行榜"));
         adapter.addGroups(maleGroups);
         adapter.addChildren(maleChildren);
     }
@@ -128,16 +128,16 @@ public class BillboardActivity extends BaseMVPActivity<BillboardContract.Present
         switch (parent.getId()) {
             case R.id.billboard_elv_boy:
                 if (groupPosition != mBoyAdapter.getGroupCount() - 1) {
-                    BillboardBean bean = mBoyAdapter.getGroup(groupPosition);
-                    BillBookActivity.startActivity(this, bean.getTitle(), bean.get_id(),
+                    BookRankBean bean = mBoyAdapter.getGroup(groupPosition);
+                    BookRankDetailActivity.startActivity(this, bean.getTitle(), bean.get_id(),
                             bean.getMonthRank(), bean.getTotalRank());
                     return true;
                 }
                 break;
             case R.id.billboard_elv_girl:
                 if (groupPosition != mGirlAdapter.getGroupCount() - 1) {
-                    BillboardBean bean = mGirlAdapter.getGroup(groupPosition);
-                    BillBookActivity.startActivity(this, bean.getTitle(), bean.get_id(),
+                    BookRankBean bean = mGirlAdapter.getGroup(groupPosition);
+                    BookRankDetailActivity.startActivity(this, bean.getTitle(), bean.get_id(),
                             bean.getMonthRank(), bean.getTotalRank());
                     return true;
                 }
@@ -153,14 +153,14 @@ public class BillboardActivity extends BaseMVPActivity<BillboardContract.Present
         switch (expandableListView.getId()) {
             case R.id.billboard_elv_boy:
                 if (groupPosition == mBoyAdapter.getGroupCount() - 1) {
-                    BillboardBean bean = mBoyAdapter.getChild(groupPosition, childPosition);
+                    BookRankBean bean = mBoyAdapter.getChild(groupPosition, childPosition);
                     OtherBillBookActivity.startActivity(this, bean.getTitle(), bean.get_id());
                     return true;
                 }
                 break;
             case R.id.billboard_elv_girl:
                 if (groupPosition == mGirlAdapter.getGroupCount() - 1) {
-                    BillboardBean bean = mGirlAdapter.getChild(groupPosition, childPosition);
+                    BookRankBean bean = mGirlAdapter.getChild(groupPosition, childPosition);
                     OtherBillBookActivity.startActivity(this, bean.getTitle(), bean.get_id());
                     return true;
                 }

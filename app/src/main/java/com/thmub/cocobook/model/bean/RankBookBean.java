@@ -5,7 +5,7 @@ package com.thmub.cocobook.model.bean;
  * 排行榜的书籍 (不被公用的直接作为内部类)
  */
 
-public class BillBookBean {
+public class RankBookBean {
     /**
      * _id : 57206c3539a913ad65d35c7b
      * title : 一念永恒

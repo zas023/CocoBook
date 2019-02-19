@@ -5,7 +5,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.thmub.cocobook.R;
-import com.thmub.cocobook.model.bean.BillBookBean;
+import com.thmub.cocobook.model.bean.RankBookBean;
 import com.thmub.cocobook.base.adapter.ViewHolderImpl;
 import com.thmub.cocobook.utils.Constant;
 
@@ -14,7 +14,7 @@ import com.thmub.cocobook.utils.Constant;
  * CollectionBookView
  */
 
-public class RecommendBookHolder extends ViewHolderImpl<BillBookBean>{
+public class RecommendBookHolder extends ViewHolderImpl<RankBookBean>{
 
     private static final String TAG = "RecommendBookView";
     private ImageView mIvCover;
@@ -28,7 +28,7 @@ public class RecommendBookHolder extends ViewHolderImpl<BillBookBean>{
     }
 
     @Override
-    public void onBind(BillBookBean value, int pos) {
+    public void onBind(RankBookBean value, int pos) {
         //书的图片
         Glide.with(getContext())
                 .load(Constant.IMG_BASE_URL+value.getCover())

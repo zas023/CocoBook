@@ -7,16 +7,15 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.thmub.cocobook.App;
 import com.thmub.cocobook.R;
-import com.thmub.cocobook.model.bean.BillBookBean;
+import com.thmub.cocobook.model.bean.RankBookBean;
 import com.thmub.cocobook.base.adapter.ViewHolderImpl;
 import com.thmub.cocobook.utils.Constant;
-import com.thmub.cocobook.widget.transform.CircleTransform;
 
 /**
  * Created by zhouas666 on 18-1-23.
  */
 
-public class BillBookHolder extends ViewHolderImpl<BillBookBean> {
+public class BillBookHolder extends ViewHolderImpl<RankBookBean> {
 
     private ImageView mIvPortrait;
     private TextView mTvTitle;
@@ -39,7 +38,7 @@ public class BillBookHolder extends ViewHolderImpl<BillBookBean> {
     }
 
     @Override
-    public void onBind(BillBookBean value, int pos) {
+    public void onBind(RankBookBean value, int pos) {
 
         //头像
         Glide.with(App.getContext())

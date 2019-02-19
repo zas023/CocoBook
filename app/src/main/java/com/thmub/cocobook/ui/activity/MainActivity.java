@@ -121,8 +121,8 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     protected void initWidget() {
         super.initWidget();
         //实现侧滑菜单状态栏透明
-        getWindow().setStatusBarColor(Color.TRANSPARENT);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+//        getWindow().setStatusBarColor(Color.TRANSPARENT);
+//        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
 
         refreshDrawerHeader();
 
