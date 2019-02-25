@@ -41,5 +41,5 @@
     <View
             android:layout_width="match_parent"
             android:layout_height="8dp"
-            android:background="@color/divider.wide"/>
+            android:background="@color/divider_wide"/>
 </LinearLayout>

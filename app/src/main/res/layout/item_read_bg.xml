@@ -8,7 +8,7 @@
 		android:id="@+id/read_bg_view"
 		android:layout_width="50dp"
 		android:layout_height="40dp"
-		android:background="@color/read.bg_1"/>
+		android:background="@color/read_bg_1"/>
 	
 	<ImageView
 		android:id="@+id/read_bg_iv_checked"

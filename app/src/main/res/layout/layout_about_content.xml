@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="@string/about.introduce"
+                android:text="@string/about_introduce"
                 android:textColor="@color/textSecondary"
                 android:textSize="@dimen/nb.text.normal" />
 
@@ -67,7 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="@string/about.license"
+                    android:text="@string/about_license"
                     android:textColor="@color/textSecondary"
                     android:textSize="@dimen/nb.text.normal" />
 
@@ -149,7 +149,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="@string/about.open_source"
+                android:text="@string/about_open_source"
                 android:textColor="@color/textSecondary"
                 android:textSize="@dimen/nb.text.normal" />
 

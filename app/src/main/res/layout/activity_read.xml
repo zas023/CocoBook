@@ -16,7 +16,7 @@
 		    android:id="@+id/read_abl_top_menu"
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:background="@color/read.menu.bg"
+		    android:background="@color/read_menu_bg"
 		    android:visibility="gone"
 		    tools:visibility="visible">
 		
@@ -30,17 +30,17 @@
 				    android:layout_width="120dp"
 				    android:layout_height="50dp"
 				    android:layout_gravity="right"
-				    android:background="@color/read.menu.bg">
+				    android:background="@color/read_menu_bg">
 				    <TextView
 					    android:id="@+id/read_tv_brief"
 					    android:layout_alignParentRight="true"
-					    android:text="@string/read.brief"
+					    android:text="@string/read_brief"
 					    style="@style/AppTheme.TextAppearance.Read.TopMenu"/>
 				
 				    <TextView
 					    android:id="@+id/read_tv_aloud"
 					    android:layout_toLeftOf="@id/read_tv_brief"
-					    android:text="@string/read.song"
+					    android:text="@string/read_song"
 					    style="@style/AppTheme.TextAppearance.Read.TopMenu"/>
 			    </RelativeLayout>
 		    </androidx.appcompat.widget.Toolbar>
@@ -62,7 +62,7 @@
             android:layout_above="@+id/read_ll_bottom_menu"
             android:layout_marginBottom="10dp"
             android:layout_centerHorizontal="true"
-            android:background="@color/read.menu.bg"
+            android:background="@color/read_menu_bg"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
             android:paddingTop="8dp"
@@ -80,7 +80,7 @@
             android:orientation="vertical"
             android:clickable="true"
             android:layout_alignParentBottom="true"
-            android:background="@color/read.menu.bg"
+            android:background="@color/read_menu_bg"
             android:visibility="gone"
             tools:visibility="visible">
             
@@ -130,25 +130,25 @@
                     style="@style/AppTheme.TextAppearance.Read.BottomMenu.Button"
                     android:id="@+id/read_tv_category"
                     android:drawableTop="@drawable/ic_read_menu_category"
-                    android:text="@string/read.category" />
+                    android:text="@string/read_category" />
                 
                 <TextView
                     style="@style/AppTheme.TextAppearance.Read.BottomMenu.Button"
                     android:id="@+id/read_tv_night_mode"
                     android:drawableTop="@drawable/ic_read_menu_night"
-                    android:text="@string/mode.night" />
+                    android:text="@string/mode_night" />
                 
                 <TextView
                     style="@style/AppTheme.TextAppearance.Read.BottomMenu.Button"
                     android:id="@+id/read_tv_download"
                     android:drawableTop="@drawable/ic_read_menu_download"
-                    android:text="@string/read.download" />
+                    android:text="@string/read_download" />
 
                 <TextView
                     style="@style/AppTheme.TextAppearance.Read.BottomMenu.Button"
                     android:id="@+id/read_tv_setting"
                     android:drawableTop="@drawable/ic_read_menu_font"
-                    android:text="@string/read.setting" />
+                    android:text="@string/read_setting" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

@@ -90,7 +90,7 @@
             android:layout_height="1dp"
             android:layout_below="@+id/book_list_info_rl"
             android:layout_marginTop="10dp"
-            android:background="@color/divider.wide" />
+            android:background="@color/divider_wide" />
 
         <LinearLayout
             android:layout_width="match_parent"

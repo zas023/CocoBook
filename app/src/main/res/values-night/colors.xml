@@ -26,8 +26,8 @@
     <color name="textError">#ffe7492e</color>
 
     <!--button-->
-    <color name="widget.button.normal">@color/colorForeground</color>
-    <color name="widget.button.selected">@color/colorBackground</color>
+    <color name="widget_button_normal">@color/colorForeground</color>
+    <color name="widget_button_selected">@color/colorBackground</color>
 
 
 </resources>

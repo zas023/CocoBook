@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
-            android:divider="@color/divider.common"
+            android:divider="@color/divider_common"
             android:scrollbars="vertical"
             android:fastScrollEnabled="true"
             android:focusable="true">

@@ -19,7 +19,7 @@
               android:layout_height="280dp"
               android:clickable="true"
               android:layout_alignParentBottom="true"
-              android:background="@color/read.menu.bg"
+              android:background="@color/read_menu_bg"
               android:orientation="vertical"
               android:paddingLeft="12dp"
               android:paddingRight="12dp">
@@ -208,7 +208,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="更多设置 >>"
-            android:textColor="@color/read.menu.text"
+            android:textColor="@color/read_menu_text"
             android:gravity="center_horizontal"
             android:layout_marginTop="20dp"/>
 </LinearLayout>

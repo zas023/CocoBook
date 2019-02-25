@@ -131,7 +131,7 @@
     <!--Toolbar-->
     <style name="Theme.ToolBar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <!-- 设置-弹窗的背景-颜色-->
-        <item name="android:colorBackground">@color/theme.background</item>
+        <item name="android:colorBackground">@color/theme_background</item>
         <!-- 字体的颜色-->
         <item name="android:textColor">@color/textPrimary</item>
         <!-- 字体大小-->
@@ -140,7 +140,7 @@
     </style>
     <style name="Theme.ToolBar.Menu" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <!-- 设置-弹窗的背景-颜色-->
-        <item name="android:colorBackground">@color/theme.background</item>
+        <item name="android:colorBackground">@color/theme_background</item>
         <!-- 字体的颜色-->
         <item name="android:textColor">@color/textPrimary</item>
         <!-- 字体大小-->
@@ -164,7 +164,7 @@
     <!--用于修改popmenu的分割线-->
     <style name="dropDownStyle" parent="android:style/Widget.Holo.ListView.DropDown">
         <item name="android:listSelector">@drawable/selector_common_bg</item>
-        <item name="android:divider">@color/divider.common</item>
+        <item name="android:divider">@color/divider_common</item>
         <item name="android:dividerHeight">@dimen/nb.divider.line</item>
     </style>
 
@@ -177,7 +177,7 @@
         <item name="android:layout_height">1px</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
-        <item name="android:background">@color/divider.narrow</item>
+        <item name="android:background">@color/divider_narrow</item>
     </style>
 
     <style name="AppTheme.Linear.Divide.Wide" parent="AppTheme.Linear">
@@ -185,7 +185,7 @@
         <item name="android:layout_height">1px</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
-        <item name="android:background">@color/divider.wide</item>
+        <item name="android:background">@color/divider_wide</item>
     </style>
 
     <!--Linear-->

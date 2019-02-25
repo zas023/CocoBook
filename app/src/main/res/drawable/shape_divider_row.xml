@@ -3,5 +3,5 @@
 	android:shape="line">
 
 	<size android:height="2dp"/>
-	<solid android:color="@color/divider.common"/>
+	<solid android:color="@color/divider_common"/>
 </shape>

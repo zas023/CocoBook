@@ -26,7 +26,7 @@
 			android:layout_height="match_parent"
 			android:layout_marginTop="5dp"
 			android:layout_marginBottom="5dp"
-			android:background="@color/divider.narrow"/>
+			android:background="@color/divider_narrow"/>
 		
 		<TextView
 			android:id="@+id/file_category_tv_back_last"

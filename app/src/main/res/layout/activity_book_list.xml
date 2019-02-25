@@ -41,7 +41,7 @@
 		<View
 			android:layout_width="match_parent"
 			android:layout_height="@dimen/nb.divider.line"
-			android:background="@color/divider.common"/>
+			android:background="@color/divider_common"/>
 		<FrameLayout
 			android:id="@+id/book_list_fl"
 			android:layout_width="match_parent"

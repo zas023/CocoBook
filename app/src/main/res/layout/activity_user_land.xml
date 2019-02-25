@@ -40,7 +40,7 @@
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/land.hint.name"
+                    android:hint="@string/land_hint_name"
                     android:inputType="text"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -59,7 +59,7 @@
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/land.hint.password"
+                    android:hint="@string/land_hint_password"
                     android:inputType="textPassword"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -67,7 +67,7 @@
         <Button
                 android:id="@+id/land_btn_login"
                 style="@style/AppTheme.Widget.Button.Default"
-                android:text="@string/land.login"/>
+                android:text="@string/land_login"/>
 
         <RelativeLayout
                 android:layout_width="match_parent"
@@ -81,14 +81,14 @@
                     android:id="@+id/land_tv_forget"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/land.forget"/>
+                    android:text="@string/land_forget"/>
 
             <TextView
                     android:id="@+id/land_tv_register"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="@string/land.register"
+                    android:text="@string/land_register"
                     android:textColor="?attr/colorAccent"/>
         </RelativeLayout>
     </LinearLayout>

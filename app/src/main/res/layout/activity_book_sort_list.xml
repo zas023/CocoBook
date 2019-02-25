@@ -22,7 +22,7 @@
 		<View
 			android:layout_width="match_parent"
 			android:layout_height="@dimen/nb.divider.line"
-			android:background="@color/divider.common"/>
+			android:background="@color/divider_common"/>
 		
 		<androidx.viewpager.widget.ViewPager
 			android:id="@+id/tab_vp"

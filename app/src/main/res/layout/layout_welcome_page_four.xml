@@ -26,14 +26,14 @@
                 android:gravity="center_horizontal"
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/black"
-                android:text="@string/dialog.text.introduce"/>
+                android:text="@string/dialog_text_introduce"/>
 
         <TextView
                 android:id="@+id/choose_tv_tip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:text="@string/dialog.text.choose_tip"
+                android:text="@string/dialog_text_choose_tip"
                 android:textColor="@color/black"
                 android:layout_below="@+id/choose_tv_introduce"
                 android:layout_centerHorizontal="true"/>
@@ -54,7 +54,7 @@
                     android:layout_gravity="start"
                     android:textColor="@color/white"
                     android:gravity="center"
-                    android:text="@string/dialog.text.boy_story"
+                    android:text="@string/dialog_text_boy_story"
                     android:background="@drawable/btn_sex_choose_boy"/>
 
             <Button
@@ -66,7 +66,7 @@
                     android:layout_gravity="end"
                     android:textColor="@color/white"
                     android:gravity="center"
-                    android:text="@string/dialog.text.girl_story"
+                    android:text="@string/dialog_text_girl_story"
                     android:background="@drawable/btn_sex_choose_girl"/>
         </LinearLayout>
     </RelativeLayout>
