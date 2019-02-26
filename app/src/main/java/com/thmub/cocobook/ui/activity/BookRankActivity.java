@@ -6,16 +6,21 @@ import android.widget.ExpandableListView;
 
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.base.BaseMVPActivity;
+import com.thmub.cocobook.base.BaseTabActivity;
 import com.thmub.cocobook.model.bean.BookRankBean;
 import com.thmub.cocobook.model.bean.packages.BillboardPackage;
+import com.thmub.cocobook.model.type.BookListType;
+import com.thmub.cocobook.model.type.BookRankType;
 import com.thmub.cocobook.presenter.BillboardPresenter;
 import com.thmub.cocobook.presenter.contract.BillboardContract;
 import com.thmub.cocobook.ui.adapter.BillboardAdapter;
+import com.thmub.cocobook.ui.fragment.BookRankFragment;
 import com.thmub.cocobook.widget.RefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.fragment.app.Fragment;
 import butterknife.BindView;
 
 /**
@@ -23,151 +28,47 @@ import butterknife.BindView;
  * 排行榜activity
  */
 
-public class BookRankActivity extends BaseMVPActivity<BillboardContract.Presenter>
-        implements BillboardContract.View, ExpandableListView.OnGroupClickListener, ExpandableListView.OnChildClickListener {
-
-    @BindView(R.id.billboard_rl_refresh)
-    RefreshLayout mRlRefresh;
-    @BindView(R.id.billboard_elv_boy)
-    ExpandableListView mElvBoy;
-    @BindView(R.id.billboard_elv_girl)
-    ExpandableListView mElvGirl;
-    /*****************************视图********************************/
-    private BillboardAdapter mBoyAdapter;
-    private BillboardAdapter mGirlAdapter;
+public class BookRankActivity extends BaseTabActivity {
 
     /*****************************初始化********************************/
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_bilboard;
+        return R.layout.activity_base_tab;
+    }
+
+    @Override
+    protected List<Fragment> createTabFragments() {
+        List<Fragment> fragments = new ArrayList<>(BookRankType.values().length);
+        for (BookRankType type : BookRankType.values()) {
+            fragments.add(BookRankFragment.newInstance(type));
+        }
+        return fragments;
+    }
+
+    @Override
+    protected List<String> createTabTitles() {
+        List<String> titles = new ArrayList<>(BookRankType.values().length);
+        for (BookRankType type : BookRankType.values()) {
+            titles.add(type.getTypeName());
+        }
+        return titles;
     }
 
     @Override
     protected void initWidget() {
         super.initWidget();
-        initAdapter();
     }
 
     @Override
     protected void setUpToolbar(Toolbar toolbar) {
+        super.setUpToolbar(toolbar);
         getSupportActionBar().setTitle("排行榜");
     }
 
-    private void initAdapter() {
-        mBoyAdapter = new BillboardAdapter(this);
-        mGirlAdapter = new BillboardAdapter(this);
-        mElvBoy.setAdapter(mBoyAdapter);
-        mElvGirl.setAdapter(mGirlAdapter);
-    }
 
     @Override
     protected void initClick() {
         super.initClick();
-        mRlRefresh.setOnReloadingListener(()->{
-            mPresenter.loadBillboardList();
-        });
-        mElvBoy.setOnGroupClickListener(this);
-        mElvBoy.setOnChildClickListener(this);
-
-        mElvGirl.setOnGroupClickListener(this);
-        mElvGirl.setOnChildClickListener(this);
     }
 
-    @Override
-    protected BillboardContract.Presenter bindPresenter() {
-        return new BillboardPresenter();
-    }
-
-    /*****************************业务逻辑********************************/
-    @Override
-    protected void processLogic() {
-        super.processLogic();
-
-        mRlRefresh.showLoading();
-        mPresenter.loadBillboardList();
-    }
-
-    @Override
-    public void finishRefresh(BillboardPackage beans) {
-        if (beans == null || beans.getMale() == null || beans.getFemale() == null
-                || beans.getMale().size() == 0 || beans.getFemale().size() == 0) {
-            mRlRefresh.showEmpty();
-            return;
-        }
-        updateBillboard(mBoyAdapter, beans.getMale());
-        updateBillboard(mGirlAdapter, beans.getFemale());
-    }
-
-    private void updateBillboard(BillboardAdapter adapter, List<BookRankBean> disposes) {
-        List<BookRankBean> maleGroups = new ArrayList<>();
-        List<BookRankBean> maleChildren = new ArrayList<>();
-        for (BookRankBean bean : disposes) {
-            if (bean.isCollapse()) {
-                maleChildren.add(bean);
-            } else {
-                maleGroups.add(bean);
-            }
-        }
-        maleGroups.add(new BookRankBean("别人家的排行榜"));
-        adapter.addGroups(maleGroups);
-        adapter.addChildren(maleChildren);
-    }
-
-    @Override
-    public void showError() {
-        mRlRefresh.showError();
-    }
-
-    @Override
-    public void complete() {
-        mRlRefresh.showFinish();
-    }
-
-    @Override
-    public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-        switch (parent.getId()) {
-            case R.id.billboard_elv_boy:
-                if (groupPosition != mBoyAdapter.getGroupCount() - 1) {
-                    BookRankBean bean = mBoyAdapter.getGroup(groupPosition);
-                    BookRankDetailActivity.startActivity(this, bean.getTitle(), bean.get_id(),
-                            bean.getMonthRank(), bean.getTotalRank());
-                    return true;
-                }
-                break;
-            case R.id.billboard_elv_girl:
-                if (groupPosition != mGirlAdapter.getGroupCount() - 1) {
-                    BookRankBean bean = mGirlAdapter.getGroup(groupPosition);
-                    BookRankDetailActivity.startActivity(this, bean.getTitle(), bean.get_id(),
-                            bean.getMonthRank(), bean.getTotalRank());
-                    return true;
-                }
-                break;
-            default:
-                break;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPosition, int childPosition, long id) {
-        switch (expandableListView.getId()) {
-            case R.id.billboard_elv_boy:
-                if (groupPosition == mBoyAdapter.getGroupCount() - 1) {
-                    BookRankBean bean = mBoyAdapter.getChild(groupPosition, childPosition);
-                    OtherBillBookActivity.startActivity(this, bean.getTitle(), bean.get_id());
-                    return true;
-                }
-                break;
-            case R.id.billboard_elv_girl:
-                if (groupPosition == mGirlAdapter.getGroupCount() - 1) {
-                    BookRankBean bean = mGirlAdapter.getChild(groupPosition, childPosition);
-                    OtherBillBookActivity.startActivity(this, bean.getTitle(), bean.get_id());
-                    return true;
-                }
-                break;
-            default:
-                break;
-        }
-        return false;
-    }
 }

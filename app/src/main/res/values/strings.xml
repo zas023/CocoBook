@@ -52,7 +52,6 @@
     <string name="fragment_title_find">发现</string>
     <string name="fragment_title_community">社区</string>
 
-    
     <!--fragment 主题书单-->
     <string name="fragment_book_list_hot">本周最热</string>
     <string name="fragment_book_list_newest">最新发布</string>
