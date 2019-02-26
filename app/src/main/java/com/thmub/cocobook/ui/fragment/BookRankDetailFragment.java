@@ -24,7 +24,7 @@ import butterknife.BindView;
  * 分类fragment
  */
 
-public class BillBookFragment extends BaseMVPFragment<BookRankDetailContract.Presenter>
+public class BookRankDetailFragment extends BaseMVPFragment<BookRankDetailContract.Presenter>
         implements BookRankDetailContract.View{
     /***************************常量********************************/
     private static final String EXTRA_BILL_ID = "extra_bill_id";
@@ -43,7 +43,7 @@ public class BillBookFragment extends BaseMVPFragment<BookRankDetailContract.Pre
     public static Fragment newInstance(String billId){
         Bundle bundle = new Bundle();
         bundle.putString(EXTRA_BILL_ID,billId);
-        Fragment fragment = new BillBookFragment();
+        Fragment fragment = new BookRankDetailFragment();
         fragment.setArguments(bundle);
         return fragment;
     }

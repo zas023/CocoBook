@@ -15,7 +15,7 @@ import com.thmub.cocobook.model.event.BookSubSortEvent;
 import com.thmub.cocobook.model.bean.BookSubSortBean;
 import com.thmub.cocobook.model.type.BookSortListType;
 import com.thmub.cocobook.ui.adapter.HorizonTagAdapter;
-import com.thmub.cocobook.ui.fragment.BookSortListFragment;
+import com.thmub.cocobook.ui.fragment.BookSortDetailFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,7 +75,7 @@ public class BookSortDetailActivity extends BaseTabActivity {
     protected List<Fragment> createTabFragments() {
         List<Fragment> fragments = new ArrayList<>();
         for (BookSortListType type : BookSortListType.values()){
-            fragments.add(BookSortListFragment.newInstance(mGender,mSubSortBean.getMajor(),type));
+            fragments.add(BookSortDetailFragment.newInstance(mGender,mSubSortBean.getMajor(),type));
         }
         return fragments;
     }

@@ -8,7 +8,7 @@ import com.thmub.cocobook.R;
 import com.thmub.cocobook.base.BaseMVPFragment;
 import com.thmub.cocobook.model.bean.BookRankBean;
 import com.thmub.cocobook.model.bean.packages.BookRankPackage;
-import com.thmub.cocobook.model.type.BookRankType;
+import com.thmub.cocobook.model.type.BookGenderType;
 import com.thmub.cocobook.presenter.BookRankPresenter;
 import com.thmub.cocobook.presenter.contract.BookRankContract;
 import com.thmub.cocobook.ui.activity.BookRankDetailActivity;
@@ -40,12 +40,12 @@ public class BookRankFragment extends BaseMVPFragment<BookRankContract.Presenter
     private BillboardAdapter mAdapter;
 
     /***************************参数********************************/
-    private BookRankType mBookRankType;
+    private BookGenderType mBookGenderType;
 
     /***************************公共方法********************************/
-    public static Fragment newInstance(BookRankType bookRankType) {
+    public static Fragment newInstance(BookGenderType bookGenderType) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(EXTRA_BOOK_RANK_TYPE, bookRankType);
+        bundle.putSerializable(EXTRA_BOOK_RANK_TYPE, bookGenderType);
         Fragment fragment = new BookRankFragment();
         fragment.setArguments(bundle);
         return fragment;
@@ -54,7 +54,7 @@ public class BookRankFragment extends BaseMVPFragment<BookRankContract.Presenter
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putSerializable(EXTRA_BOOK_RANK_TYPE, mBookRankType);
+        outState.putSerializable(EXTRA_BOOK_RANK_TYPE, mBookGenderType);
     }
 
     /***************************初始化********************************/
@@ -72,9 +72,9 @@ public class BookRankFragment extends BaseMVPFragment<BookRankContract.Presenter
     protected void initData(Bundle savedInstanceState) {
         super.initData(savedInstanceState);
         if (savedInstanceState != null) {
-            mBookRankType = (BookRankType) savedInstanceState.getSerializable(EXTRA_BOOK_RANK_TYPE);
+            mBookGenderType = (BookGenderType) savedInstanceState.getSerializable(EXTRA_BOOK_RANK_TYPE);
         } else {
-            mBookRankType = (BookRankType) getArguments().getSerializable(EXTRA_BOOK_RANK_TYPE);
+            mBookGenderType = (BookGenderType) getArguments().getSerializable(EXTRA_BOOK_RANK_TYPE);
         }
     }
 
@@ -141,7 +141,7 @@ public class BookRankFragment extends BaseMVPFragment<BookRankContract.Presenter
             mRefreshLayout.showEmpty();
             return;
         }
-        if (mBookRankType == BookRankType.MALE)
+        if (mBookGenderType == BookGenderType.MALE)
             updateBillboard(mAdapter, beans.getMale());
         else
             updateBillboard(mAdapter, beans.getFemale());

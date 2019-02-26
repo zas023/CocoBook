@@ -10,14 +10,14 @@ import androidx.annotation.StringRes;
  * 排行榜类型
  */
 
-public enum BookRankType {
+public enum BookGenderType {
     MALE(R.string.tag_boy,"male"),
     FRMALE(R.string.tag_girl,"female");
 
     private String typeName;
     private String netName;
 
-    BookRankType(@StringRes int typeName, String netName){
+    BookGenderType(@StringRes int typeName, String netName){
         this.typeName = App.getContext().getString(typeName);
         this.netName = netName;
     }

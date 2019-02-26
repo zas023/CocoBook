@@ -10,7 +10,7 @@ import java.util.List;
  * Created by zhouas666 on 18-1-23.
  */
 
-public interface BookSortListContract {
+public interface BookSortDetailContract {
     interface View extends BaseContract.BaseView{
         void finishRefresh(List<SortBookBean> beans);
         void finishLoad(List<SortBookBean> beans);

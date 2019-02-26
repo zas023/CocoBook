@@ -10,8 +10,8 @@ import com.thmub.cocobook.manager.RxBusManager;
 import com.thmub.cocobook.model.event.BookSubSortEvent;
 import com.thmub.cocobook.model.bean.SortBookBean;
 import com.thmub.cocobook.model.type.BookSortListType;
-import com.thmub.cocobook.presenter.BookSortListPresenter;
-import com.thmub.cocobook.presenter.contract.BookSortListContract;
+import com.thmub.cocobook.presenter.BookSortDetailPresenter;
+import com.thmub.cocobook.presenter.contract.BookSortDetailContract;
 import com.thmub.cocobook.ui.activity.BookDetailActivity;
 import com.thmub.cocobook.ui.adapter.BookSortListAdapter;
 import com.thmub.cocobook.base.BaseMVPFragment;
@@ -30,8 +30,8 @@ import io.reactivex.disposables.Disposable;
  * 书籍分类列表fragment
  */
 
-public class BookSortListFragment extends BaseMVPFragment<BookSortListContract.Presenter>
-        implements BookSortListContract.View{
+public class BookSortDetailFragment extends BaseMVPFragment<BookSortDetailContract.Presenter>
+        implements BookSortDetailContract.View{
     /***************************常量********************************/
     private static final String EXTRA_GENDER = "extra_gender";
     private static final String EXTRA_TYPE = "extra_type";
@@ -58,7 +58,7 @@ public class BookSortListFragment extends BaseMVPFragment<BookSortListContract.P
         bundle.putString(EXTRA_GENDER,gender);
         bundle.putString(EXTRA_MAJOR,major);
         bundle.putSerializable(EXTRA_TYPE,type);
-        Fragment fragment = new BookSortListFragment();
+        Fragment fragment = new BookSortDetailFragment();
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -78,8 +78,8 @@ public class BookSortListFragment extends BaseMVPFragment<BookSortListContract.P
     }
 
     @Override
-    protected BookSortListContract.Presenter bindPresenter() {
-        return new BookSortListPresenter();
+    protected BookSortDetailContract.Presenter bindPresenter() {
+        return new BookSortDetailPresenter();
     }
 
     @Override

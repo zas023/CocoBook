@@ -8,7 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.base.BaseTabActivity;
-import com.thmub.cocobook.ui.fragment.BillBookFragment;
+import com.thmub.cocobook.ui.fragment.BookRankDetailFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -62,9 +62,9 @@ public class BookRankDetailActivity extends BaseTabActivity {
     @Override
     protected List<Fragment> createTabFragments() {
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(BillBookFragment.newInstance(mWeekId));
-        fragments.add(BillBookFragment.newInstance(mMonthId));
-        fragments.add(BillBookFragment.newInstance(mTotalId));
+        fragments.add(BookRankDetailFragment.newInstance(mWeekId));
+        fragments.add(BookRankDetailFragment.newInstance(mMonthId));
+        fragments.add(BookRankDetailFragment.newInstance(mTotalId));
         return fragments;
     }
 

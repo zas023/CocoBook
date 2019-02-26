@@ -22,7 +22,7 @@ public class BookSortPresenter extends RxPresenter<BookSortContract.View>
     private static final String TAG = "BookSortPresenter";
     @Override
     public void refreshSortBean() {
-        //这个最好是设定一个默认时间采用Remote加载，如果Remote加载失败则采用数据中的数据。我这里先写死吧
+        //这个最好是设定一个默认时间采用Remote加载，如果Remote加载失败则采用数据中的数据。
         Single<BookSortPackage> sortSingle = RemoteRepository.getInstance()
                 .getBookSortPackage();
         Single<BookSubSortPackage> subSortSingle = RemoteRepository.getInstance()

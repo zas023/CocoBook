@@ -4,7 +4,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.base.BaseTabActivity;
-import com.thmub.cocobook.model.type.BookRankType;
+import com.thmub.cocobook.model.type.BookGenderType;
 import com.thmub.cocobook.ui.fragment.BookRankFragment;
 
 import java.util.ArrayList;
@@ -26,9 +26,15 @@ public class BookRankActivity extends BaseTabActivity {
     }
 
     @Override
+    protected void setUpToolbar(Toolbar toolbar) {
+        super.setUpToolbar(toolbar);
+        getSupportActionBar().setTitle("排行榜");
+    }
+
+    @Override
     protected List<Fragment> createTabFragments() {
-        List<Fragment> fragments = new ArrayList<>(BookRankType.values().length);
-        for (BookRankType type : BookRankType.values()) {
+        List<Fragment> fragments = new ArrayList<>(BookGenderType.values().length);
+        for (BookGenderType type : BookGenderType.values()) {
             fragments.add(BookRankFragment.newInstance(type));
         }
         return fragments;
@@ -36,28 +42,10 @@ public class BookRankActivity extends BaseTabActivity {
 
     @Override
     protected List<String> createTabTitles() {
-        List<String> titles = new ArrayList<>(BookRankType.values().length);
-        for (BookRankType type : BookRankType.values()) {
+        List<String> titles = new ArrayList<>(BookGenderType.values().length);
+        for (BookGenderType type : BookGenderType.values()) {
             titles.add(type.getTypeName());
         }
         return titles;
     }
-
-    @Override
-    protected void initWidget() {
-        super.initWidget();
-    }
-
-    @Override
-    protected void setUpToolbar(Toolbar toolbar) {
-        super.setUpToolbar(toolbar);
-        getSupportActionBar().setTitle("排行榜");
-    }
-
-
-    @Override
-    protected void initClick() {
-        super.initClick();
-    }
-
 }
