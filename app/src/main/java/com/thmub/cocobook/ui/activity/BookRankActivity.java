@@ -1,27 +1,16 @@
 package com.thmub.cocobook.ui.activity;
 
 import androidx.appcompat.widget.Toolbar;
-import android.view.View;
-import android.widget.ExpandableListView;
 
 import com.thmub.cocobook.R;
-import com.thmub.cocobook.base.BaseMVPActivity;
 import com.thmub.cocobook.base.BaseTabActivity;
-import com.thmub.cocobook.model.bean.BookRankBean;
-import com.thmub.cocobook.model.bean.packages.BillboardPackage;
-import com.thmub.cocobook.model.type.BookListType;
 import com.thmub.cocobook.model.type.BookRankType;
-import com.thmub.cocobook.presenter.BillboardPresenter;
-import com.thmub.cocobook.presenter.contract.BillboardContract;
-import com.thmub.cocobook.ui.adapter.BillboardAdapter;
 import com.thmub.cocobook.ui.fragment.BookRankFragment;
-import com.thmub.cocobook.widget.RefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.fragment.app.Fragment;
-import butterknife.BindView;
 
 /**
  * Created by zhouas666 on 18-1-23.

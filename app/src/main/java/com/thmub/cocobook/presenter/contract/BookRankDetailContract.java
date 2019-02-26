@@ -9,7 +9,7 @@ import java.util.List;
  * Created by zhouas666 on 18-1-23.
  */
 
-public interface BillBookContract {
+public interface BookRankDetailContract {
     interface View extends BaseContract.BaseView{
         void finishRefresh(List<RankBookBean> beans);
     }

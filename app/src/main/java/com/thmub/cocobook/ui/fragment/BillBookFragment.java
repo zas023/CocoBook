@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.model.bean.RankBookBean;
-import com.thmub.cocobook.presenter.BillBookPresenter;
-import com.thmub.cocobook.presenter.contract.BillBookContract;
+import com.thmub.cocobook.presenter.BookRankDetailPresenter;
+import com.thmub.cocobook.presenter.contract.BookRankDetailContract;
 import com.thmub.cocobook.ui.activity.BookDetailActivity;
 import com.thmub.cocobook.ui.adapter.BillBookAdapter;
 import com.thmub.cocobook.base.BaseMVPFragment;
@@ -24,8 +24,8 @@ import butterknife.BindView;
  * 分类fragment
  */
 
-public class BillBookFragment extends BaseMVPFragment<BillBookContract.Presenter>
-        implements BillBookContract.View{
+public class BillBookFragment extends BaseMVPFragment<BookRankDetailContract.Presenter>
+        implements BookRankDetailContract.View{
     /***************************常量********************************/
     private static final String EXTRA_BILL_ID = "extra_bill_id";
 
@@ -55,8 +55,8 @@ public class BillBookFragment extends BaseMVPFragment<BillBookContract.Presenter
     }
 
     @Override
-    protected BillBookContract.Presenter bindPresenter() {
-        return new BillBookPresenter();
+    protected BookRankDetailContract.Presenter bindPresenter() {
+        return new BookRankDetailPresenter();
     }
 
     @Override

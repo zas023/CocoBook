@@ -1,7 +1,7 @@
 package com.thmub.cocobook.presenter;
 
 import com.thmub.cocobook.base.RxPresenter;
-import com.thmub.cocobook.model.bean.packages.BillboardPackage;
+import com.thmub.cocobook.model.bean.packages.BookRankPackage;
 import com.thmub.cocobook.model.local.LocalRepository;
 import com.thmub.cocobook.model.server.RemoteRepository;
 import com.thmub.cocobook.presenter.contract.BookRankContract;
@@ -21,7 +21,7 @@ public class BookRankPresenter extends RxPresenter<BookRankContract.View>
     @Override
     public void loadBookRank() {
         //这个最好是设定一个默认时间采用Remote加载，如果Remote加载失败则采用数据中的数据。
-        BillboardPackage bean = LocalRepository.getInstance().getBillboardPackage();
+        BookRankPackage bean = LocalRepository.getInstance().getBillboardPackage();
         if (bean == null) {
             RemoteRepository.getInstance()
                     .getBillboardPackage()
@@ -38,14 +38,14 @@ public class BookRankPresenter extends RxPresenter<BookRankContract.View>
                                         );
                             }
                     )
-                    .subscribe(new SingleObserver<BillboardPackage>() {
+                    .subscribe(new SingleObserver<BookRankPackage>() {
                         @Override
                         public void onSubscribe(Disposable d) {
                             addDisposable(d);
                         }
 
                         @Override
-                        public void onSuccess(BillboardPackage value) {
+                        public void onSuccess(BookRankPackage value) {
                             mView.finishRefresh(value);
                             mView.complete();
                         }

@@ -12,8 +12,8 @@ import android.view.View;
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.base.BaseMVPActivity;
 import com.thmub.cocobook.model.bean.RankBookBean;
-import com.thmub.cocobook.presenter.BillBookPresenter;
-import com.thmub.cocobook.presenter.contract.BillBookContract;
+import com.thmub.cocobook.presenter.BookRankDetailPresenter;
+import com.thmub.cocobook.presenter.contract.BookRankDetailContract;
 import com.thmub.cocobook.ui.adapter.BillBookAdapter;
 import com.thmub.cocobook.base.adapter.BaseListAdapter;
 import com.thmub.cocobook.widget.RefreshLayout;
@@ -28,8 +28,8 @@ import butterknife.BindView;
  * 其他排行榜中书籍activity
  */
 
-public class OtherBillBookActivity extends BaseMVPActivity<BillBookContract.Presenter>
-        implements BillBookContract.View{
+public class OtherBillBookActivity extends BaseMVPActivity<BookRankDetailContract.Presenter>
+        implements BookRankDetailContract.View{
     private static final String EXTRA_BILL_ID = "extra_bill_id";
     private static final String EXTRA_BILL_NAME = "extra_bill_name";
     /********************/
@@ -56,8 +56,8 @@ public class OtherBillBookActivity extends BaseMVPActivity<BillBookContract.Pres
     }
 
     @Override
-    protected BillBookContract.Presenter bindPresenter() {
-        return new BillBookPresenter();
+    protected BookRankDetailContract.Presenter bindPresenter() {
+        return new BookRankDetailPresenter();
     }
 
     @Override

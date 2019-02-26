@@ -7,8 +7,7 @@ import android.widget.ExpandableListView;
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.base.BaseMVPFragment;
 import com.thmub.cocobook.model.bean.BookRankBean;
-import com.thmub.cocobook.model.bean.packages.BillboardPackage;
-import com.thmub.cocobook.model.type.BookListType;
+import com.thmub.cocobook.model.bean.packages.BookRankPackage;
 import com.thmub.cocobook.model.type.BookRankType;
 import com.thmub.cocobook.presenter.BookRankPresenter;
 import com.thmub.cocobook.presenter.contract.BookRankContract;
@@ -136,7 +135,7 @@ public class BookRankFragment extends BaseMVPFragment<BookRankContract.Presenter
     }
 
     @Override
-    public void finishRefresh(BillboardPackage beans) {
+    public void finishRefresh(BookRankPackage beans) {
         if (beans == null || beans.getMale() == null || beans.getFemale() == null
                 || beans.getMale().size() == 0 || beans.getFemale().size() == 0) {
             mRefreshLayout.showEmpty();

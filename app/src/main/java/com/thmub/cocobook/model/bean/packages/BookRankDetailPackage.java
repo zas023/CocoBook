@@ -11,7 +11,7 @@ import java.util.List;
  * BillboardBookPackage
  */
 
-public class BillBookPackage extends BaseBean {
+public class BookRankDetailPackage extends BaseBean {
 
     private RankingBean ranking;
 

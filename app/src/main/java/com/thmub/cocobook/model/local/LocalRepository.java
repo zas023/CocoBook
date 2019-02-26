@@ -2,7 +2,7 @@ package com.thmub.cocobook.model.local;
 
 import com.thmub.cocobook.model.bean.AuthorBean;
 import com.thmub.cocobook.model.bean.DownloadTaskBean;
-import com.thmub.cocobook.model.bean.packages.BillboardPackage;
+import com.thmub.cocobook.model.bean.packages.BookRankPackage;
 import com.thmub.cocobook.model.bean.packages.BookSortPackage;
 import com.thmub.cocobook.model.dao.AuthorBeanDao;
 
@@ -64,7 +64,7 @@ public class LocalRepository implements SaveDbHelper,GetDbHelper,DeleteDbHelper{
     }
 
     @Override
-    public void saveBillboardPackage(BillboardPackage bean) {
+    public void saveBillboardPackage(BookRankPackage bean) {
         String json = new Gson().toJson(bean);
         SharedPreUtils.getInstance()
                 .putString(Constant.SHARED_SAVE_BILLBOARD,json);
@@ -93,14 +93,14 @@ public class LocalRepository implements SaveDbHelper,GetDbHelper,DeleteDbHelper{
     }
 
     @Override
-    public BillboardPackage getBillboardPackage() {
+    public BookRankPackage getBillboardPackage() {
         String json = SharedPreUtils.getInstance()
                 .getString(Constant.SHARED_SAVE_BILLBOARD);
         if (json == null){
             return null;
         }
         else {
-            return new Gson().fromJson(json,BillboardPackage.class);
+            return new Gson().fromJson(json,BookRankPackage.class);
         }
     }
 

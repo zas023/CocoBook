@@ -175,7 +175,7 @@ public class RemoteRepository {
      *
      * @return
      */
-    public Single<BillboardPackage> getBillboardPackage() {
+    public Single<BookRankPackage> getBillboardPackage() {
         return mBookApi.getBillboardPackage();
     }
 

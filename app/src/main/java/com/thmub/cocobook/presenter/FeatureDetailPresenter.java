@@ -12,7 +12,7 @@ import com.thmub.cocobook.utils.RxUtils;
 
 public class FeatureDetailPresenter extends RxPresenter<FeatureDetailContract.View>
         implements FeatureDetailContract.Presenter {
-    private static final String TAG = "BillBookPresenter";
+    private static final String TAG = "FeatureDetailPresenter";
 
     @Override
     public void refreshFeatureDetail(String nodeId) {

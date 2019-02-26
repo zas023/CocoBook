@@ -2,7 +2,7 @@ package com.thmub.cocobook.model.local;
 
 import com.thmub.cocobook.model.bean.AuthorBean;
 import com.thmub.cocobook.model.bean.DownloadTaskBean;
-import com.thmub.cocobook.model.bean.packages.BillboardPackage;
+import com.thmub.cocobook.model.bean.packages.BookRankPackage;
 import com.thmub.cocobook.model.bean.packages.BookSortPackage;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
 
 public interface GetDbHelper {
     BookSortPackage getBookSortPackage();
-    BillboardPackage getBillboardPackage();
+    BookRankPackage getBillboardPackage();
 
     AuthorBean getAuthor(String id);
 

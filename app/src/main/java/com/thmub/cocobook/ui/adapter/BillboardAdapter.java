@@ -79,7 +79,7 @@ public class BillboardAdapter extends BaseExpandableListAdapter {
         if (convertView == null){
             holder = new GroupViewHolder();
             convertView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_billboard_group,parent,false);
+                    .inflate(R.layout.item_book_rank_group,parent,false);
             holder.ivSymbol = convertView.findViewById(R.id.billboard_group_iv_symbol);
             holder.tvName = convertView.findViewById(R.id.billboard_group_tv_name);
             holder.ivArrow = convertView.findViewById(R.id.billboard_group_iv_arrow);
@@ -127,7 +127,7 @@ public class BillboardAdapter extends BaseExpandableListAdapter {
         if (convertView == null){
             holder = new ChildViewHolder();
             convertView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_billborad_child,parent,false);
+                    .inflate(R.layout.item_book_rank_child,parent,false);
             holder.tvName = convertView.findViewById(R.id.billboard_child_tv_name);
             convertView.setTag(holder);
         }

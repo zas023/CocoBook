@@ -74,7 +74,7 @@ public interface BookApi {
      * @return
      */
     @GET("/ranking/gender")
-    Single<BillboardPackage> getBillboardPackage();
+    Single<BookRankPackage> getBillboardPackage();
 
     /**
      * 获取单一排行榜
@@ -85,7 +85,7 @@ public interface BookApi {
      * @return
      */
     @GET("/ranking/{rankingId}")
-    Single<BillBookPackage> getBillBookPackage(@Path("rankingId") String rankingId);
+    Single<BookRankDetailPackage> getBillBookPackage(@Path("rankingId") String rankingId);
 
 
     /*******************************分类***************************************/
