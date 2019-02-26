@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/colorBackground"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/nb.padding.large"
+    android:paddingRight="@dimen/nb.padding.large">
+
+    <TextView
+        android:id="@+id/sort_tv_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="玄幻"
+        android:textColor="@color/textPrimary"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/sort_tv_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/textAssist"
+        android:textSize="13sp"
+        tools:text="@string/sort.book_count" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/sort_tv_type"
+        android:layout_toRightOf="@+id/sort_tv_type"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="9dp"
+        android:background="@color/divider_narrow" />
+</RelativeLayout>

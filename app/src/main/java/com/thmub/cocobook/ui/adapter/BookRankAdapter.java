@@ -19,14 +19,14 @@ import java.util.List;
  * 排行榜adapter
  */
 
-public class BillboardAdapter extends BaseExpandableListAdapter {
-    private static final String TAG = "BillboardAdapter";
+public class BookRankAdapter extends BaseExpandableListAdapter {
+    private static final String TAG = "BookRankAdapter";
     private List<BookRankBean> mGroups = new ArrayList<>();
     private List<BookRankBean> mChildren = new ArrayList<>();
 
     private Context mContext;
 
-    public BillboardAdapter(Context context){
+    public BookRankAdapter(Context context){
         mContext = context;
     }
 

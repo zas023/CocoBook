@@ -29,6 +29,6 @@ public class BookSortHolder extends ViewHolderImpl<BookSortBean>{
 
     @Override
     protected int getItemLayoutId() {
-        return R.layout.item_sort;
+        return R.layout.item_book_sort;
     }
 }

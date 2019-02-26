@@ -13,7 +13,7 @@ import com.thmub.cocobook.presenter.BookRankPresenter;
 import com.thmub.cocobook.presenter.contract.BookRankContract;
 import com.thmub.cocobook.ui.activity.BookRankDetailActivity;
 import com.thmub.cocobook.ui.activity.OtherBillBookActivity;
-import com.thmub.cocobook.ui.adapter.BillboardAdapter;
+import com.thmub.cocobook.ui.adapter.BookRankAdapter;
 import com.thmub.cocobook.widget.RefreshLayout;
 
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class BookRankFragment extends BaseMVPFragment<BookRankContract.Presenter
     @BindView(R.id.book_rank_elv)
     ExpandableListView mElv;
     /***************************视图********************************/
-    private BillboardAdapter mAdapter;
+    private BookRankAdapter mAdapter;
 
     /***************************参数********************************/
     private BookGenderType mBookGenderType;
@@ -81,7 +81,7 @@ public class BookRankFragment extends BaseMVPFragment<BookRankContract.Presenter
     @Override
     protected void initWidget(Bundle savedInstanceState) {
         super.initWidget(savedInstanceState);
-        mAdapter = new BillboardAdapter(mContext);
+        mAdapter = new BookRankAdapter(mContext);
         mElv.setAdapter(mAdapter);
     }
 
@@ -147,7 +147,7 @@ public class BookRankFragment extends BaseMVPFragment<BookRankContract.Presenter
             updateBillboard(mAdapter, beans.getFemale());
     }
 
-    private void updateBillboard(BillboardAdapter adapter, List<BookRankBean> disposes) {
+    private void updateBillboard(BookRankAdapter adapter, List<BookRankBean> disposes) {
         List<BookRankBean> groups = new ArrayList<>();
         List<BookRankBean> children = new ArrayList<>();
         for (BookRankBean bean : disposes) {

@@ -13,7 +13,7 @@ import com.thmub.cocobook.model.type.BookSortListType;
 import com.thmub.cocobook.presenter.BookSortDetailPresenter;
 import com.thmub.cocobook.presenter.contract.BookSortDetailContract;
 import com.thmub.cocobook.ui.activity.BookDetailActivity;
-import com.thmub.cocobook.ui.adapter.BookSortListAdapter;
+import com.thmub.cocobook.ui.adapter.BookSortDetailAdapter;
 import com.thmub.cocobook.base.BaseMVPFragment;
 import com.thmub.cocobook.widget.RefreshLayout;
 import com.thmub.cocobook.widget.adapter.WholeAdapter;
@@ -42,7 +42,7 @@ public class BookSortDetailFragment extends BaseMVPFragment<BookSortDetailContra
     @BindView(R.id.refresh_rv_content)
     RecyclerView mRvContent;
     /***************************视图********************************/
-    BookSortListAdapter mBookSortListAdapter;
+    BookSortDetailAdapter mBookSortDetailAdapter;
 
     /***************************参数********************************/
     private String mGender;
@@ -100,14 +100,14 @@ public class BookSortDetailFragment extends BaseMVPFragment<BookSortDetailContra
     @Override
     protected void initClick() {
         super.initClick();
-        mBookSortListAdapter.setOnItemClickListener(
+        mBookSortDetailAdapter.setOnItemClickListener(
                 (view, pos) -> {
-                    String bookId = mBookSortListAdapter.getItem(pos).get_id();
-                    BookDetailActivity.startActivity(getContext(),bookId,mBookSortListAdapter.getItem(pos).getTitle());
+                    String bookId = mBookSortDetailAdapter.getItem(pos).get_id();
+                    BookDetailActivity.startActivity(getContext(),bookId, mBookSortDetailAdapter.getItem(pos).getTitle());
                 }
         );
 
-        mBookSortListAdapter.setOnLoadMoreListener(
+        mBookSortDetailAdapter.setOnLoadMoreListener(
                 () -> mPresenter.loadSortBook(mGender,mType,mMajor,mMinor,mStart,mLimit)
         );
 
@@ -133,11 +133,11 @@ public class BookSortDetailFragment extends BaseMVPFragment<BookSortDetailContra
     }
 
     private void initAdapter(){
-        mBookSortListAdapter = new BookSortListAdapter(getContext(),new WholeAdapter.Options());
+        mBookSortDetailAdapter = new BookSortDetailAdapter(getContext(),new WholeAdapter.Options());
 
         mRvContent.setLayoutManager(new LinearLayoutManager(getContext()));
         mRvContent.addItemDecoration(new DividerItemDecoration(getContext()));
-        mRvContent.setAdapter(mBookSortListAdapter);
+        mRvContent.setAdapter(mBookSortDetailAdapter);
     }
 
     /***************************业务逻辑********************************/
@@ -154,13 +154,13 @@ public class BookSortDetailFragment extends BaseMVPFragment<BookSortDetailContra
             mRefreshLayout.showEmpty();
             return;
         }
-        mBookSortListAdapter.refreshItems(beans);
+        mBookSortDetailAdapter.refreshItems(beans);
         mStart = beans.size();
     }
 
     @Override
     public void finishLoad(List<SortBookBean> beans) {
-        mBookSortListAdapter.addItems(beans);
+        mBookSortDetailAdapter.addItems(beans);
         mStart += beans.size();
     }
 
@@ -171,7 +171,7 @@ public class BookSortDetailFragment extends BaseMVPFragment<BookSortDetailContra
 
     @Override
     public void showLoadError() {
-        mBookSortListAdapter.showLoadError();
+        mBookSortDetailAdapter.showLoadError();
     }
 
     @Override

@@ -13,11 +13,11 @@ import com.thmub.cocobook.presenter.contract.BookSortContract;
 import com.thmub.cocobook.ui.activity.BookSortDetailActivity;
 import com.thmub.cocobook.ui.adapter.BookSortAdapter;
 import com.thmub.cocobook.widget.RefreshLayout;
-import com.thmub.cocobook.widget.itemdecoration.DividerGridItemDecoration;
+import com.thmub.cocobook.widget.itemdecoration.DividerItemDecoration;
 
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 
@@ -82,9 +82,9 @@ public class BookSortFragment extends BaseMVPFragment<BookSortContract.Presenter
     protected void initWidget(Bundle savedInstanceState) {
         super.initWidget(savedInstanceState);
         mAdapter = new BookSortAdapter();
-        RecyclerView.ItemDecoration itemDecoration = new DividerGridItemDecoration(mContext, R.drawable.shape_divider_row, R.drawable.shape_divider_col);
+        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(mContext);
 
-        mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 3));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mRecyclerView.addItemDecoration(itemDecoration);
         mRecyclerView.setAdapter(mAdapter);
     }

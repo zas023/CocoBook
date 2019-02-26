@@ -14,7 +14,7 @@ import com.thmub.cocobook.utils.Constant;
  * Created by zhouas666 on 18-1-23.
  */
 
-public class BookSortListHolder extends ViewHolderImpl<SortBookBean>{
+public class BookSortDetailHolder extends ViewHolderImpl<SortBookBean>{
 
     private ImageView mIvPortrait;
     private TextView mTvTitle;

@@ -7,7 +7,7 @@ import com.thmub.cocobook.base.adapter.IViewHolder;
 
 /**
  * Created by zhouas666 on 18-1-23.
- * 排行榜书籍adapter
+ * 通用书籍列表adapter
  */
 
 public class BillBookAdapter extends BaseListAdapter<RankBookBean> {
