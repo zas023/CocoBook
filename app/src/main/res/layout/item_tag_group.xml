@@ -13,7 +13,7 @@
 		android:layout_height="wrap_content"
 		android:layout_marginTop="10dp"
 		android:layout_marginBottom="10dp"
-		android:textSize="@dimen/nb.text.small"
+		android:textSize="@dimen/text_small"
 		android:textColor="@color/textAssist"
 		tools:text="性别"/>
 </LinearLayout>

@@ -2,10 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:paddingLeft="@dimen/nb.padding.normal"
-	android:paddingRight="@dimen/nb.padding.normal"
-	android:paddingTop="@dimen/nb.padding.small"
-	android:paddingBottom="@dimen/nb.padding.small"
+	android:paddingLeft="@dimen/padding_normal"
+	android:paddingRight="@dimen/padding_normal"
+	android:paddingTop="@dimen/padding_small"
+	android:paddingBottom="@dimen/padding_small"
 	android:background="@drawable/shape_frame_tag"
 	android:gravity="center">
 
@@ -14,5 +14,5 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:textColor="@color/tag_child"
-		android:textSize="@dimen/nb.text.small"/>
+		android:textSize="@dimen/text_small"/>
 </RelativeLayout>

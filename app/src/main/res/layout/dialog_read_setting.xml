@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/nb.read_setting.divider">
+            android:layout_marginTop="@dimen/read_setting_divider">
 
         <ImageView
                 android:id="@+id/read_setting_iv_brightness_minus"
@@ -75,12 +75,12 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/nb.read_setting.divider">
+            android:layout_marginTop="@dimen/read_setting_divider">
 
         <TextView
                 android:id="@+id/read_setting_tv_font_minus"
                 android:layout_width="100dp"
-                android:layout_height="@dimen/nb.read_setting.btn_height"
+                android:layout_height="@dimen/read_setting_btn_height"
                 android:gravity="center"
                 android:text="Aa-"
                 android:textSize="14dp"
@@ -100,7 +100,7 @@
         <TextView
                 android:id="@+id/read_setting_tv_font_plus"
                 android:layout_width="100dp"
-                android:layout_height="@dimen/nb.read_setting.btn_height"
+                android:layout_height="@dimen/read_setting_btn_height"
                 android:layout_marginRight="20dp"
                 android:gravity="center"
                 android:padding="5dp"
@@ -112,7 +112,7 @@
         <CheckBox
                 android:id="@+id/read_setting_cb_font_default"
                 android:layout_width="40dp"
-                android:layout_height="@dimen/nb.read_setting.btn_height"
+                android:layout_height="@dimen/read_setting_btn_height"
                 android:gravity="center"
                 android:text="默认"
                 android:button="@null"
@@ -126,12 +126,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/nb.read_setting.divider">
+            android:layout_marginTop="@dimen/read_setting_divider">
 
         <RadioButton
                 android:id="@+id/read_setting_rb_simulation"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/nb.read_setting.btn_height"
+                android:layout_height="@dimen/read_setting_btn_height"
                 android:layout_weight="1"
                 android:text="仿真"
                 android:textSize="14dp"
@@ -144,7 +144,7 @@
         <RadioButton
                 android:id="@+id/read_setting_rb_cover"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/nb.read_setting.btn_height"
+                android:layout_height="@dimen/read_setting_btn_height"
                 android:layout_weight="1"
                 android:text="覆盖"
                 android:textSize="14dp"
@@ -157,7 +157,7 @@
         <RadioButton
                 android:id="@+id/read_setting_rb_slide"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/nb.read_setting.btn_height"
+                android:layout_height="@dimen/read_setting_btn_height"
                 android:layout_weight="1"
                 android:text="滑动"
                 android:textSize="14dp"
@@ -171,7 +171,7 @@
         <RadioButton
                 android:id="@+id/read_setting_rb_scroll"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/nb.read_setting.btn_height"
+                android:layout_height="@dimen/read_setting_btn_height"
                 android:layout_weight="1"
                 android:text="滚动"
                 android:textSize="14dp"
@@ -184,7 +184,7 @@
         <RadioButton
                 android:id="@+id/read_setting_rb_none"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/nb.read_setting.btn_height"
+                android:layout_height="@dimen/read_setting_btn_height"
                 android:layout_weight="1"
                 android:text="无"
                 android:textSize="14dp"
@@ -200,7 +200,7 @@
             android:layout_height="40dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginTop="@dimen/nb.read_setting.divider"
+            android:layout_marginTop="@dimen/read_setting_divider"
             android:scrollbars="none"/>
 
     <TextView

@@ -30,7 +30,7 @@
                 android:layout_marginTop="16dp"
                 android:text="介绍和帮助"
                 android:textColor="@color/textPrimary"
-                android:textSize="@dimen/nb.text.large" />
+                android:textSize="@dimen/text_large" />
 
             <TextView
                 android:id="@+id/about_tv_introduce"
@@ -39,7 +39,7 @@
                 android:layout_marginBottom="10dp"
                 android:text="@string/about_introduce"
                 android:textColor="@color/textSecondary"
-                android:textSize="@dimen/nb.text.normal" />
+                android:textSize="@dimen/text_normal" />
 
         </LinearLayout>
 
@@ -60,7 +60,7 @@
                     android:layout_marginTop="16dp"
                     android:text="免责声明"
                     android:textColor="@color/textPrimary"
-                    android:textSize="@dimen/nb.text.large" />
+                    android:textSize="@dimen/text_large" />
 
             <TextView
                     android:id="@+id/about_tv_copyright"
@@ -69,7 +69,7 @@
                     android:layout_marginBottom="10dp"
                     android:text="@string/about_license"
                     android:textColor="@color/textSecondary"
-                    android:textSize="@dimen/nb.text.normal" />
+                    android:textSize="@dimen/text_normal" />
 
         </LinearLayout>
 
@@ -90,7 +90,7 @@
                 android:layout_marginTop="16dp"
                 android:text="开发人员"
                 android:textColor="@color/textPrimary"
-                android:textSize="@dimen/nb.text.large" />
+                android:textSize="@dimen/text_large" />
 
 
             <RelativeLayout
@@ -143,7 +143,7 @@
                 android:layout_marginTop="16dp"
                 android:text="开源相关"
                 android:textColor="@color/textPrimary"
-                android:textSize="@dimen/nb.text.large" />
+                android:textSize="@dimen/text_large" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -151,7 +151,7 @@
                 android:layout_marginBottom="10dp"
                 android:text="@string/about_open_source"
                 android:textColor="@color/textSecondary"
-                android:textSize="@dimen/nb.text.normal" />
+                android:textSize="@dimen/text_normal" />
 
         </LinearLayout>
     </LinearLayout>

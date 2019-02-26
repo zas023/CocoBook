@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:background="?attr/selectableItemBackground"
                 android:orientation="horizontal"
-                android:padding="@dimen/nb.padding.large">
+                android:padding="@dimen/padding_large">
 
             <TextView
                     android:layout_width="match_parent"
@@ -88,7 +88,7 @@
     <Button
             android:id="@+id/info_btn_logout"
             android:text="@string/user_info_logout"
-            android:layout_marginTop="@dimen/nb.margin.large"
+            android:layout_marginTop="@dimen/margin_large"
             style="@style/AppTheme.Widget.Button.Logout"/>
 
 </LinearLayout>

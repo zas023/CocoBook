@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="24dp"
-        android:textSize="@dimen/nb.text.large"
+        android:textSize="@dimen/text_large"
         android:textColor="@color/textSecondary"
         tools:text="览阅 v0.8" />
 

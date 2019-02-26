@@ -6,8 +6,8 @@
               android:orientation="vertical"
               android:clickable="true"
               android:layout_gravity="start"
-              android:paddingTop="@dimen/nb.padding.large"
-              android:paddingBottom="@dimen/nb.padding.large"
+              android:paddingTop="@dimen/padding_large"
+              android:paddingBottom="@dimen/padding_large"
               android:background="@color/colorBackground">
 
     <LinearLayout

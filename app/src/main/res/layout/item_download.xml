@@ -6,7 +6,7 @@
 	android:layout_width="match_parent"
 	android:gravity="center_vertical"
 	android:background="@color/colorBackground"
-	android:padding="@dimen/nb.padding.normal"
+	android:padding="@dimen/padding_normal"
 	android:layout_height="85dp">
 
 	<RelativeLayout
@@ -21,14 +21,14 @@
 			android:singleLine="true"
 			android:maxLines="1"
 			android:textColor="@color/textPrimary"
-			android:textSize="@dimen/nb.text.normal"
+			android:textSize="@dimen/text_normal"
 			tools:text="飞龙在天"/>
 		
 		<TextView
 			android:id="@+id/download_tv_msg"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:textSize="@dimen/nb.text.normal"
+			android:textSize="@dimen/text_normal"
 			android:layout_alignParentRight="true"
 			tools:text="10/100"/>
 		
@@ -38,7 +38,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_above="@+id/download_pb_show"
-			android:layout_marginBottom="@dimen/nb.margin.small"
+			android:layout_marginBottom="@dimen/margin_small"
 			tools:text="已暂停"/>
 		
 		<ProgressBar

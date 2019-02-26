@@ -3,10 +3,10 @@
               android:id="@+id/selector_tv_type"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:paddingLeft="@dimen/nb.padding.normal"
-              android:paddingRight="@dimen/nb.padding.normal"
-              android:paddingTop="@dimen/nb.padding.large"
-              android:paddingBottom="@dimen/nb.padding.large"
+              android:paddingLeft="@dimen/padding_normal"
+              android:paddingRight="@dimen/padding_normal"
+              android:paddingTop="@dimen/padding_large"
+              android:paddingBottom="@dimen/padding_large"
               android:gravity="left|center_vertical"
               android:textColor="@color/textPrimary">
 </TextView>

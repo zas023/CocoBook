@@ -16,7 +16,7 @@
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:padding">10dp</item>
 		<item name="android:textColor">@color/textPrimary</item>
-		<item name="android:textSize">@dimen/nb.text.large</item>
+		<item name="android:textSize">@dimen/text_large</item>
 	</style>
 	
 	<!--书籍-->
@@ -37,11 +37,11 @@
 		<item name="android:layout_height">match_parent</item>
 		<item name="android:gravity">center</item>
 		<item name="android:textColor">@color/read_menu_text</item>
-		<item name="android:textSize">@dimen/nb.read.text.top</item>
+		<item name="android:textSize">@dimen/text_normal</item>
 	</style>
 	<style name="AppTheme.TextAppearance.Read.BottomMenu">
 		<item name="android:textColor">@color/read_menu_text</item>
-		<item name="android:textSize">@dimen/nb.read.text.bottom</item>
+		<item name="android:textSize">@dimen/text_small</item>
 	</style>
 	
 	

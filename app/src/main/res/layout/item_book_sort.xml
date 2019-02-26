@@ -5,8 +5,8 @@
     android:layout_height="50dp"
     android:background="@color/colorBackground"
     android:orientation="horizontal"
-    android:paddingLeft="@dimen/nb.padding.large"
-    android:paddingRight="@dimen/nb.padding.large">
+    android:paddingLeft="@dimen/padding_large"
+    android:paddingRight="@dimen/padding_large">
 
     <TextView
         android:id="@+id/sort_tv_type"
@@ -33,6 +33,6 @@
         android:layout_below="@+id/sort_tv_type"
         android:layout_toRightOf="@+id/sort_tv_type"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="9dp"
-        android:background="@color/divider_narrow" />
+        android:layout_marginTop="8dp"
+        android:background="@color/divider_wide" />
 </RelativeLayout>

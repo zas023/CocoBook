@@ -9,8 +9,8 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:paddingLeft="@dimen/nb.padding.large"
-            android:paddingRight="@dimen/nb.padding.large"
+            android:paddingLeft="@dimen/padding_large"
+            android:paddingRight="@dimen/padding_large"
             android:background="@color/colorBackground">
 
         <TextView

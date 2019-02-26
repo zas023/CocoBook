@@ -165,7 +165,7 @@
     <style name="dropDownStyle" parent="android:style/Widget.Holo.ListView.DropDown">
         <item name="android:listSelector">@drawable/selector_common_bg</item>
         <item name="android:divider">@color/divider_common</item>
-        <item name="android:dividerHeight">@dimen/nb.divider.line</item>
+        <item name="android:dividerHeight">@dimen/divider_line</item>
     </style>
 
     <!--Common-->
@@ -233,16 +233,16 @@
 
     <style name="AppTheme.Widget.Button.Logout">
         <item name="android:background">@drawable/bg_button_default_logout</item>
-        <item name="android:layout_margin">@dimen/nb.padding.large</item>
+        <item name="android:layout_margin">@dimen/padding_large</item>
     </style>
 
     <style name="AppTheme.Widget.Button.Default">
         <item name="android:background">@drawable/bg_button_default</item>
-        <item name="android:layout_margin">@dimen/nb.padding.large</item>
+        <item name="android:layout_margin">@dimen/padding_large</item>
     </style>
 
     <!--<style name="AppTheme.Widget.Button.Default.Margin">-->
-        <!--<item name="android:layout_margin">@dimen/nb.padding.large</item>-->
+        <!--<item name="android:layout_margin">@dimen/padding_large</item>-->
     <!--</style>-->
     
     <!--图片-->
@@ -250,8 +250,8 @@
     
     <!--书籍的显示封面-->
     <style name="AppTheme.Widget.ImageView.Book">
-        <item name="android:layout_width">@dimen/nb.book.cover.width</item>
-        <item name="android:layout_height">@dimen/nb.book.cover.height</item>
+        <item name="android:layout_width">@dimen/book_cover_width</item>
+        <item name="android:layout_height">@dimen/book_cover_height</item>
         <item name="android:src">@drawable/ic_default_book_cover</item>
         <item name="android:scaleType">centerCrop</item>
     </style>

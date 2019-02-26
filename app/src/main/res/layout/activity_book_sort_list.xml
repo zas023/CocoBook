@@ -21,7 +21,7 @@
 		
 		<View
 			android:layout_width="match_parent"
-			android:layout_height="@dimen/nb.divider.line"
+			android:layout_height="@dimen/divider_line"
 			android:background="@color/divider_common"/>
 		
 		<androidx.viewpager.widget.ViewPager

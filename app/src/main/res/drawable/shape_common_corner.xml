@@ -4,6 +4,6 @@
 
 	<corners android:radius="10dp"/>
 	<solid android:color="@color/colorBackground"/>
-	<stroke android:width="@dimen/nb.divider.line"
+	<stroke android:width="@dimen/divider_line"
 		android:color="@color/colorPrimary"/>
 </shape>

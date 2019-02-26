@@ -33,7 +33,7 @@
                 android:id="@+id/land_til_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/nb.margin.large"
+                android:layout_margin="@dimen/margin_large"
                 app:counterEnabled="true"
                 app:counterMaxLength="12">
 
@@ -49,8 +49,8 @@
                 android:id="@+id/land_til_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/nb.margin.large"
-                android:layout_marginRight="@dimen/nb.margin.large"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginRight="@dimen/margin_large"
                 app:counterEnabled="true"
                 app:counterMaxLength="16"
                 app:passwordToggleDrawable="@mipmap/ic_pwd_look"
@@ -72,9 +72,9 @@
         <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/nb.margin.large"
-                android:layout_marginLeft="@dimen/nb.margin.large"
-                android:layout_marginRight="@dimen/nb.margin.large"
+                android:layout_marginBottom="@dimen/margin_large"
+                android:layout_marginLeft="@dimen/margin_large"
+                android:layout_marginRight="@dimen/margin_large"
                 android:layout_marginTop="5dp">
 
             <TextView

@@ -9,7 +9,7 @@
 		android:text="加入书架"
 		android:gravity="center"
 		android:layout_alignParentTop="true"
-		android:textSize="@dimen/nb.text.large"
+		android:textSize="@dimen/text_large"
 		android:layout_marginTop="20dp"
 		android:textColor="@color/textPrimary"/>
 	

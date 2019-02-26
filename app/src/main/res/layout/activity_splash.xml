@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:textColor="@color/white"
-                android:textSize="@dimen/nb.text.normal"
+                android:textSize="@dimen/text_normal"
                 tools:text="2018年2月3日,星期六" />
 
         <TextView
@@ -36,7 +36,7 @@
                 android:layout_marginTop="10dp"
                 android:text="遇见你,真美好"
                 android:textColor="@color/white"
-                android:textSize="@dimen/nb.text.xlarge" />
+                android:textSize="@dimen/text_xlarge" />
 
 
         <RelativeLayout
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
                 android:textColor="@color/textSecondaryInverted"
-                android:textSize="@dimen/nb.text.xsmall"
+                android:textSize="@dimen/text_xsmall"
                 tools:text="v1.0" />
     </LinearLayout>
 
@@ -77,8 +77,8 @@
             android:id="@+id/splash_tv_skip"
             android:layout_width="60dp"
             android:layout_height="30dp"
-            android:layout_marginTop="@dimen/nb.margin.large"
-            android:layout_marginRight="@dimen/nb.margin.large"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
             android:layout_gravity="right"
             android:gravity="center"
             android:textColor="@color/white"
