@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.copasso.cocobook.ui.activity.MainActivity">
+    tools:context="com.thmub.cocobook.ui.activity.MainActivity">
 
     <include layout="@layout/toolbar"/>
 

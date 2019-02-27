@@ -105,7 +105,7 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
 
         //删除书籍
         addDisposable(RxBusManager.getInstance()
-                .toObservable(DeleteResponseEvent.class)
+                .toObservable(DeleteBookEvent.class)
                 .compose(RxUtils::toSimpleSingle)
                 .subscribe(event -> {
                             if (event.isDelete) {

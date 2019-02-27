@@ -7,10 +7,10 @@ import com.thmub.cocobook.model.bean.CollBookBean;
  * 移出书架event
  */
 
-public class DeleteResponseEvent {
+public class DeleteBookEvent {
     public boolean isDelete;
     public CollBookBean collBook;
-    public DeleteResponseEvent(boolean isDelete,CollBookBean collBook){
+    public DeleteBookEvent(boolean isDelete, CollBookBean collBook){
         this.isDelete = isDelete;
         this.collBook = collBook;
     }

@@ -1,5 +1,6 @@
 package com.thmub.cocobook.presenter;
 
+import com.thmub.cocobook.manager.RxBusManager;
 import com.thmub.cocobook.model.bean.BookChapterBean;
 import com.thmub.cocobook.model.bean.BookDetailBean;
 import com.thmub.cocobook.model.bean.CollBookBean;
@@ -45,7 +46,7 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
         task.setBookChapters(collBookBean.getBookChapters());
         task.setLastChapter(collBookBean.getBookChapters().size());
         //下载书籍
-        DownloadService.post(task);
+        RxBusManager.getInstance().post(task);
     }
 
 

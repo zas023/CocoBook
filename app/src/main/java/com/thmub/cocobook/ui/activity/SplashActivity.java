@@ -68,7 +68,7 @@ public class SplashActivity extends BaseActivity {
         String sex = SharedPreUtils.getInstance().getString(Constant.SHARED_SEX);
         if (sex.equals("")){
             startActivity(new Intent(mContext,WelcomeActivity.class));
-//            finish();
+            finish();
         }else {
             splashTvDate.setText(new SimpleDateFormat("yyyy年MM月dd日，EEEE").format(new Date()));
             splashTvVersion.setText(BuildConfig.VERSION_NAME);

@@ -537,7 +537,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                 task.setBookId(mCollBook.get_id());
                 task.setBookChapters(mCollBook.getBookChapters());
                 task.setLastChapter(mCollBook.getBookChapters().size());
-                DownloadService.post(task);
+                RxBusManager.getInstance().post(task);
                 break;
             case R.id.read_tv_setting:  //设置
                 toggleMenu(false);
