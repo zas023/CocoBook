@@ -2,29 +2,39 @@ package com.thmub.cocobook.ui.activity;
 
 import android.content.Context;
 import android.os.Bundle;
+
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 import com.thmub.cocobook.R;
+import com.thmub.cocobook.base.adapter.BaseListAdapter;
 import com.thmub.cocobook.model.bean.BookSearchBean;
 import com.thmub.cocobook.model.bean.packages.SearchBookPackage;
 import com.thmub.cocobook.model.local.BookRepository;
 import com.thmub.cocobook.presenter.SearchPresenter;
 import com.thmub.cocobook.presenter.contract.SearchContract;
+import com.thmub.cocobook.ui.adapter.HotKeyWordAdapter;
 import com.thmub.cocobook.ui.adapter.KeyWordAdapter;
 import com.thmub.cocobook.ui.adapter.SearchBookAdapter;
 import com.thmub.cocobook.base.BaseMVPActivity;
+import com.thmub.cocobook.ui.adapter.SearchRecordAdapter;
 import com.thmub.cocobook.widget.RefreshLayout;
 import com.thmub.cocobook.widget.itemdecoration.DividerItemDecoration;
+
 import me.gujun.android.taggroup.TagGroup;
 
 import java.util.ArrayList;
@@ -38,8 +48,10 @@ import java.util.List;
 
 public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
         implements SearchContract.View {
+    /******************************常量*************************************/
     private static final int TAG_LIMIT = 8;
 
+    /******************************视图*************************************/
     @BindView(R.id.search_iv_back)
     ImageView mIvBack;
     @BindView(R.id.search_et_input)
@@ -50,10 +62,10 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
     ImageView mIvSearch;
     @BindView(R.id.search_book_tv_refresh_hot)
     TextView mTvRefreshHot;
-    @BindView(R.id.search_tg_hot)
-    TagGroup mTgHot;
-    @BindView(R.id.search_tg_record)
-    TagGroup mTgRecord;
+    @BindView(R.id.search_rv_hot)
+    RecyclerView mRvHot;
+    @BindView(R.id.search_rv_record)
+    RecyclerView mRvRecord;
     @BindView(R.id.refresh_layout)
     RefreshLayout mRlRefresh;
     @BindView(R.id.refresh_rv_content)
@@ -62,22 +74,23 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
     TextView searchBookTvRefreshRecord;
 
     private KeyWordAdapter mKeyWordAdapter;
+    private HotKeyWordAdapter mHotKeyWordAdapter;
+    private SearchRecordAdapter mSearchRecordAdapter;
     private SearchBookAdapter mSearchAdapter;
 
+    /******************************变量*************************************/
     private boolean isTag;
     private List<String> mHotTagList;
+    private List<String> tags;
     private List<String> mRecordTagList;
     private int mTagStart = 0;
 
+    /******************************初始化*************************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_search;
     }
 
-    @Override
-    protected SearchContract.Presenter bindPresenter() {
-        return new SearchPresenter();
-    }
 
     @Override
     protected void initWidget() {
@@ -88,10 +101,19 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
 
     private void initAdapter() {
         mKeyWordAdapter = new KeyWordAdapter();
+        mHotKeyWordAdapter = new HotKeyWordAdapter();
+        mSearchRecordAdapter = new SearchRecordAdapter();
         mSearchAdapter = new SearchBookAdapter();
 
-        mRvSearch.setLayoutManager(new LinearLayoutManager(this));
-        mRvSearch.addItemDecoration(new DividerItemDecoration(this));
+        mRvHot.setLayoutManager(new GridLayoutManager(mContext, 2));
+        mRvHot.setAdapter(mHotKeyWordAdapter);
+
+        mRvRecord.setLayoutManager(new LinearLayoutManager(mContext));
+        mRvSearch.addItemDecoration(new DividerItemDecoration(mContext));
+        mRvRecord.setAdapter(mSearchRecordAdapter);
+
+        mRvSearch.setLayoutManager(new LinearLayoutManager(mContext));
+        mRvSearch.addItemDecoration(new DividerItemDecoration(mContext));
     }
 
     @Override
@@ -151,16 +173,13 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
         });
 
         //键盘的搜索
-        mEtInput.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                //修改回车键功能
-                if (keyCode == KeyEvent.KEYCODE_ENTER) {
-                    searchBook();
-                    return true;
-                }
-                return false;
+        mEtInput.setOnKeyListener((v, keyCode, event) -> {
+            //修改回车键功能
+            if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                searchBook();
+                return true;
             }
+            return false;
         });
 
         //进行搜索
@@ -189,31 +208,28 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
         );
 
         //热搜 Tag的点击事件
-        mTgHot.setOnTagClickListener(
-                tag -> {
-                    isTag = true;
-                    mEtInput.setText(tag);
-                }
-        );
+        mHotKeyWordAdapter.setOnItemClickListener((view, pos) -> {
+            isTag = true;
+            mEtInput.setText(tags.get(pos));
+        });
 
         //历史记录Tag的点击事件
-        mTgRecord.setOnTagClickListener(
-                tag -> {
-                    isTag = true;
-                    mEtInput.setText(tag);
+        mSearchRecordAdapter.setOnItemClickListener((view, pos) -> {
+            isTag = true;
+            mEtInput.setText(mRecordTagList.get(pos));
+        });
+        //Tag的刷新(换一批)事件
+        mTvRefreshHot.setOnClickListener((v) -> {
+                    mHotKeyWordAdapter.clear();
+                    refreshTag();
                 }
-        );
-
-        //Tag的刷新事件
-        mTvRefreshHot.setOnClickListener(
-                (v) -> refreshTag()
         );
 
         //书本的点击事件
         mSearchAdapter.setOnItemClickListener(
                 (view, pos) -> {
                     String bookId = mSearchAdapter.getItem(pos).get_id();
-                    BookDetailActivity.startActivity(this, bookId,mSearchAdapter.getItem(pos).getTitle());
+                    BookDetailActivity.startActivity(this, bookId, mSearchAdapter.getItem(pos).getTitle());
                 }
         );
         //清空历史
@@ -221,7 +237,8 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
                 view -> {
                     BookRepository.getInstance().deleteSearchRecords();
                     mRecordTagList.clear();
-                    mTgRecord.setTags(mRecordTagList);
+                    mSearchRecordAdapter.clear();
+                    mSearchRecordAdapter.addItems(mRecordTagList);
                 }
         );
     }
@@ -246,6 +263,13 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
     private void toggleKeyboard() {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+    }
+
+    /******************************业务逻辑*************************************/
+
+    @Override
+    protected SearchContract.Presenter bindPresenter() {
+        return new SearchPresenter();
     }
 
     @Override
@@ -280,8 +304,8 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
             mTagStart = 0;
             last = TAG_LIMIT;
         }
-        List<String> tags = mHotTagList.subList(mTagStart, last);
-        mTgHot.setTags(tags);
+        tags = mHotTagList.subList(mTagStart, last);
+        mHotKeyWordAdapter.addItems(tags);
         mTagStart += TAG_LIMIT;
     }
 
@@ -316,9 +340,9 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
         mRecordTagList = new ArrayList<>();
         for (BookSearchBean bean : records)
             mRecordTagList.add(bean.getKeyword());
-
         Collections.reverse(mRecordTagList);
-        mTgRecord.setTags(mRecordTagList);
+        mSearchRecordAdapter.clear();
+        mSearchRecordAdapter.addItems(mRecordTagList);
     }
 
     @Override
@@ -338,12 +362,5 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
         } else {
             super.onBackPressed();
         }
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
     }
 }

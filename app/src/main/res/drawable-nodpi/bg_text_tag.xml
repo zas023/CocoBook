@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--书籍标签的边框-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#00000000"/>
+    <stroke android:width="1dp" android:color="@color/textPrimary" />
+    <corners android:radius="2dp"/>
+</shape>

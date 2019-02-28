@@ -21,6 +21,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import cn.bmob.v3.BmobUser;
 import com.bumptech.glide.Glide;
+import com.lapism.searchview.widget.SearchView;
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.manager.RxBusManager;
 import com.thmub.cocobook.model.bean.CollBookBean;
@@ -72,7 +73,6 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     private PermissionUtils mPermissionUtils;
     /*************************参数**************************/
     private boolean isPrepareFinish = false;
-//    private CocoUser  currentUser=BmobUser.getCurrentUser(CocoUser.class);
     private CocoUser  currentUser;
 
     /*************************初始化**************************/
@@ -97,9 +97,9 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
         toggle.syncState();
 
         drawerHeader = navigationView.inflateHeaderView(R.layout.drawer_header);
-        drawerIv = (CircleImageView) drawerHeader.findViewById(R.id.drawer_iv);
-        drawerTvAccount = (TextView) drawerHeader.findViewById(R.id.drawer_tv_name);
-        drawerTvMail = (TextView) drawerHeader.findViewById(R.id.drawer_tv_mail);
+        drawerIv =  drawerHeader.findViewById(R.id.drawer_iv);
+        drawerTvAccount =  drawerHeader.findViewById(R.id.drawer_tv_name);
+        drawerTvMail =  drawerHeader.findViewById(R.id.drawer_tv_mail);
     }
 
     @Override

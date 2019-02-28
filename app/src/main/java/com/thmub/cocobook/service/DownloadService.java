@@ -369,6 +369,11 @@ public class DownloadService extends BaseService {
         return super.onUnbind(intent);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
     class TaskBuilder extends Binder implements IDownloadManager {
         @Override
         public List<DownloadTaskBean> getDownloadTaskList() {
@@ -427,11 +432,6 @@ public class DownloadService extends BaseService {
         //首先判断是否在加载队列中。
         //如果在加载队列中首先判断是否正在下载，
         //然后判断是否在完成队列中。
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
     }
 
 
