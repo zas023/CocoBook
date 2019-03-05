@@ -53,7 +53,7 @@
                 android:layout_height="75dp"
                 android:layout_gravity="start"
                 android:layout_marginRight="10dp"
-                android:background="@mipmap/man"
+                android:background="@mipmap/btn_man"
                 android:gravity="center"
                 android:textColor="@color/white" />
 
@@ -67,7 +67,7 @@
                 android:layout_height="75dp"
                 android:layout_gravity="end"
                 android:layout_marginLeft="10dp"
-                android:background="@mipmap/women"
+                android:background="@mipmap/btn_women"
                 android:gravity="center"
                 android:textColor="@color/white" />
         </LinearLayout>

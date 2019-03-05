@@ -36,7 +36,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:scaleType="center"
-                android:src="@drawable/ic_brightness_minus"/>
+                android:src="@mipmap/ic_brightness_minus"/>
 
         <SeekBar
                 android:id="@+id/read_setting_sb_brightness"
@@ -56,7 +56,7 @@
                 android:layout_height="30dp"
                 android:layout_marginRight="20dp"
                 android:scaleType="center"
-                android:src="@drawable/ic_brightness_plus"/>
+                android:src="@mipmap/ic_brightness_plus"/>
 
         <CheckBox
                 android:id="@+id/read_setting_cb_brightness_auto"

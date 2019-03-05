@@ -18,7 +18,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
-            app:srcCompat="@mipmap/ic_def_icon"
+            app:srcCompat="@mipmap/ic_def_portrait"
             android:id="@+id/drawer_iv"/>
 
     <TextView

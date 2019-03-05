@@ -3,7 +3,6 @@ package com.thmub.cocobook.ui.activity;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -21,7 +20,6 @@ import android.widget.TextView;
 import butterknife.BindView;
 import cn.bmob.v3.BmobUser;
 import com.bumptech.glide.Glide;
-import com.lapism.searchview.widget.SearchView;
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.manager.RxBusManager;
 import com.thmub.cocobook.model.bean.CollBookBean;
@@ -180,7 +178,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
      */
     private void refreshDrawerHeader() {
         if (currentUser==null) {
-            drawerIv.setImageDrawable(UiUtils.getDrawable(R.mipmap.ic_def_icon));
+            drawerIv.setImageDrawable(UiUtils.getDrawable(R.mipmap.ic_def_portrait));
             drawerTvAccount.setText("账户");
             drawerTvMail.setText("点我登陆");
             return;

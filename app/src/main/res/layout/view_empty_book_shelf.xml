@@ -17,7 +17,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
-			android:background="@drawable/ic_book_shelf_empty"/>
+			android:background="@mipmap/ic_book_shelf_empty"/>
 		
 		<TextView
 			android:layout_width="wrap_content"
