@@ -25,7 +25,7 @@
             android:layout_marginRight="@dimen/margin_normal"
             android:padding="6dp"
             android:scaleType="centerInside"
-            android:src="@drawable/ic_search_back_normal" />
+            android:src="@mipmap/ic_search_back_normal" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -67,7 +67,7 @@
             android:layout_marginRight="@dimen/margin_normal"
             android:padding="6dp"
             android:scaleType="centerInside"
-            android:src="@drawable/ic_search_normal" />
+            android:src="@mipmap/ic_search_normal" />
     </LinearLayout>
 
     <View

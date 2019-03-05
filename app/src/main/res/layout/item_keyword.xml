@@ -13,7 +13,7 @@
 		android:layout_height="wrap_content"
 		android:layout_marginLeft="10dp"
 		android:layout_marginRight="25dp"
-		android:src="@drawable/ic_search_selected"/>
+		android:src="@mipmap/ic_search_selected"/>
 	
 	<TextView
 		style="@style/AppTheme.TextAppearance.Common.SingleLine"

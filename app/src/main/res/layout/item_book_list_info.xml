@@ -102,7 +102,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_below="@+id/divider_line"
-                android:src="@drawable/ic_reader_quote" />
+                android:src="@mipmap/ic_reader_quote" />
 
             <TextView
                 android:id="@+id/book_list_info_tv_content"
