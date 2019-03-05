@@ -36,7 +36,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_alignParentEnd="true"
-                    android:src="@mipmap/ic_def_portrait"/>
+                    android:src="@mipmap/ic_default_portrait"/>
         </RelativeLayout>
 
         <View style="@style/AppTheme.Linear.Divide.Narrow"/>

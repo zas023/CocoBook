@@ -178,7 +178,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
      */
     private void refreshDrawerHeader() {
         if (currentUser==null) {
-            drawerIv.setImageDrawable(UiUtils.getDrawable(R.mipmap.ic_def_portrait));
+            drawerIv.setImageDrawable(UiUtils.getDrawable(R.mipmap.ic_default_portrait));
             drawerTvAccount.setText("账户");
             drawerTvMail.setText("点我登陆");
             return;
