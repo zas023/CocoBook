@@ -64,8 +64,8 @@ public class EasyRatingBar extends View {
     private void initAttrs(AttributeSet attrs){
         TypedArray a = mContext.obtainStyledAttributes(attrs, R.styleable.EasyRatingBar);
         mRateCount = a.getInteger(R.styleable.EasyRatingBar_rateNum,5);
-        mNormalRes = a.getResourceId(R.styleable.EasyRatingBar_rateNormal,R.drawable.rating_star_nor);
-        mSelectRes = a.getResourceId(R.styleable.EasyRatingBar_rateSelect,R.drawable.rating_star_sel);
+        mNormalRes = a.getResourceId(R.styleable.EasyRatingBar_rateNormal,R.mipmap.rating_star_nor);
+        mSelectRes = a.getResourceId(R.styleable.EasyRatingBar_rateSelect,R.mipmap.rating_star_sel);
         mInterval = (int) a.getDimension(R.styleable.EasyRatingBar_rateInterval,UiUtils.dpToPx(4));
         isIndicator = a.getBoolean(R.styleable.EasyRatingBar_isIndicator,true);
 

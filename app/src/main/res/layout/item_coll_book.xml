@@ -66,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:src="@drawable/label_book_top"
+            android:src="@mipmap/label_book_top"
             android:visibility="gone"
             tools:visibility="visible"/>
 
@@ -87,7 +87,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="15dp"
-            android:src="@drawable/notif_red_dot"
+            android:src="@mipmap/notif_red_dot"
             android:visibility="gone"
             tools:visibility="visible"/>
 </RelativeLayout>

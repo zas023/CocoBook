@@ -78,9 +78,9 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
 
             //默认选中的是第一张图片，此时第一个小圆点是选中状态，其他不是
             if (i == 0) {
-                imageViews[i].setBackgroundResource(R.drawable.page_indicator_focused);
+                imageViews[i].setBackgroundResource(R.mipmap.page_indicator_focused);
             } else {
-                imageViews[i].setBackgroundResource(R.drawable.page_indicator_unfocused);
+                imageViews[i].setBackgroundResource(R.mipmap.page_indicator_unfocused);
             }
 
             //添加到小圆点视图组
@@ -150,10 +150,10 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
     @Override
     public void onPageSelected(int position) {
         for(int i=0;i<imageViews.length;i++){
-            imageViews[position].setBackgroundResource(R.drawable.page_indicator_focused);
+            imageViews[position].setBackgroundResource(R.mipmap.page_indicator_focused);
             //不是当前选中的page，其小圆点设置为未选中的状态
             if(position !=i){
-                imageViews[i].setBackgroundResource(R.drawable.page_indicator_unfocused);
+                imageViews[i].setBackgroundResource(R.mipmap.page_indicator_unfocused);
             }
         }
     }
