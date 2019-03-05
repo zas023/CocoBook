@@ -17,7 +17,7 @@
 			android:layout_height="match_parent"
 			android:scaleType="center"
 			android:visibility="gone"
-			tools:src="@drawable/ic_dir"/>
+			tools:src="@mipmap/ic_dir"/>
 		<!--选择是否添加文件-->
 		<CheckBox
 			android:id="@+id/file_cb_select"

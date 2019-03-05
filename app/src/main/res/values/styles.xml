@@ -155,7 +155,7 @@
         <item name="dropDownListViewStyle">@style/dropDownStyle</item>
     </style>
     <style name="ActionButton.Overflow.Menu" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
-        <item name="android:src">@drawable/ic_menu_overflow</item>
+        <item name="android:src">@mipmap/ic_menu_overflow</item>
     </style>
     <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
         <item name="overlapAnchor">false</item>
@@ -252,7 +252,7 @@
     <style name="AppTheme.Widget.ImageView.Book">
         <item name="android:layout_width">@dimen/book_cover_width</item>
         <item name="android:layout_height">@dimen/book_cover_height</item>
-        <item name="android:src">@drawable/ic_default_book_cover</item>
+        <item name="android:src">@mipmap/ic_default_book_cover</item>
         <item name="android:scaleType">centerCrop</item>
     </style>
     

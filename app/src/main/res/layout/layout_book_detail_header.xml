@@ -25,7 +25,7 @@
                 android:layout_width="82dp"
                 android:layout_height="110dp"
                 android:scaleType="centerCrop"
-                tools:src="@drawable/ic_default_book_cover"/>
+                tools:src="@mipmap/ic_default_book_cover"/>
 
     </androidx.cardview.widget.CardView>
 

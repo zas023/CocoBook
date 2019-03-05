@@ -64,7 +64,7 @@ public class FileHolder extends ViewHolderImpl<File> {
         String id = MD5Utils.strToMd5By16(file.getAbsolutePath());
 
         if (BookRepository.getInstance().getCollBook(id) != null){
-            mIvIcon.setImageResource(R.drawable.ic_file_loaded);
+            mIvIcon.setImageResource(R.mipmap.ic_file_loaded);
             mIvIcon.setVisibility(View.VISIBLE);
             mCbSelect.setVisibility(View.GONE);
         }
@@ -87,7 +87,7 @@ public class FileHolder extends ViewHolderImpl<File> {
         //图片
         mIvIcon.setVisibility(View.VISIBLE);
         mCbSelect.setVisibility(View.GONE);
-        mIvIcon.setImageResource(R.drawable.ic_dir);
+        mIvIcon.setImageResource(R.mipmap.ic_dir);
         //名字
         mTvName.setText(folder.getName());
         //介绍

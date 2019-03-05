@@ -54,7 +54,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginLeft="6dp"
-                android:src="@drawable/ic_delete"
+                android:src="@mipmap/ic_delete"
                 android:visibility="invisible"
                 tools:visibility="visible" />
         </LinearLayout>

@@ -12,7 +12,7 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_default_book_cover" />
+        android:src="@mipmap/ic_default_book_cover" />
 
     <LinearLayout
         android:id="@+id/book_brief_ll"

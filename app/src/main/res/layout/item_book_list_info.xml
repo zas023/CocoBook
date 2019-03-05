@@ -28,7 +28,7 @@
                 android:id="@+id/book_list_info_iv_cover"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                tools:src="@drawable/ic_default_book_cover" />
+                tools:src="@mipmap/ic_default_book_cover" />
 
             <RelativeLayout
                 android:id="@+id/book_list_info_rl"

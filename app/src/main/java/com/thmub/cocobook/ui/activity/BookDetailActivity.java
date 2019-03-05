@@ -176,8 +176,8 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
         Glide.with(this)
                 .load(Constant.IMG_BASE_URL + bean.getCover())
                 .apply(new RequestOptions()
-                        .placeholder(R.drawable.ic_default_book_cover)
-                        .error(R.drawable.ic_load_error)
+                        .placeholder(R.mipmap.ic_default_book_cover)
+                        .error(R.mipmap.ic_load_error)
                         .centerCrop())
                 .into(mIvCover);
         //作者

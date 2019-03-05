@@ -129,25 +129,25 @@
                 <TextView
                     style="@style/AppTheme.TextAppearance.Read.BottomMenu.Button"
                     android:id="@+id/read_tv_category"
-                    android:drawableTop="@drawable/ic_read_menu_category"
+                    android:drawableTop="@mipmap/ic_read_menu_category"
                     android:text="@string/read_category" />
                 
                 <TextView
                     style="@style/AppTheme.TextAppearance.Read.BottomMenu.Button"
                     android:id="@+id/read_tv_night_mode"
-                    android:drawableTop="@drawable/ic_read_menu_night"
+                    android:drawableTop="@mipmap/ic_read_menu_night"
                     android:text="@string/mode_night" />
                 
                 <TextView
                     style="@style/AppTheme.TextAppearance.Read.BottomMenu.Button"
                     android:id="@+id/read_tv_download"
-                    android:drawableTop="@drawable/ic_read_menu_download"
+                    android:drawableTop="@mipmap/ic_read_menu_download"
                     android:text="@string/read_download" />
 
                 <TextView
                     style="@style/AppTheme.TextAppearance.Read.BottomMenu.Button"
                     android:id="@+id/read_tv_setting"
-                    android:drawableTop="@drawable/ic_read_menu_font"
+                    android:drawableTop="@mipmap/ic_read_menu_font"
                     android:text="@string/read_setting" />
             </LinearLayout>
         </LinearLayout>

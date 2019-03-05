@@ -16,7 +16,7 @@
             android:layout_width="66dp"
             android:layout_height="88dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_default_book_cover"/>
+            android:src="@mipmap/ic_default_book_cover"/>
 
     <TextView
             android:id="@+id/recommend_book_tv_name"

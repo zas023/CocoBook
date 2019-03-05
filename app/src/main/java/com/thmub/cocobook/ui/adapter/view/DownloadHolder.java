@@ -47,7 +47,7 @@ public class DownloadHolder extends ViewHolderImpl<DownloadTaskBean> {
         switch (value.getStatus()){
             case DownloadTaskBean.STATUS_LOADING:
                 changeBtnStyle(R.string.download_pause,
-                        R.color.download_pause,R.drawable.ic_download_pause);
+                        R.color.download_pause,R.mipmap.ic_download_pause);
 
                 //进度状态
                 setProgressMax(value);
@@ -61,7 +61,7 @@ public class DownloadHolder extends ViewHolderImpl<DownloadTaskBean> {
             case DownloadTaskBean.STATUS_PAUSE:
                 //按钮状态
                 changeBtnStyle(R.string.download_start,
-                        R.color.download_loading,R.drawable.ic_download_loading);
+                        R.color.download_loading,R.mipmap.ic_download_loading);
 
                 //进度状态
                 setProgressMax(value);
@@ -74,7 +74,7 @@ public class DownloadHolder extends ViewHolderImpl<DownloadTaskBean> {
             case DownloadTaskBean.STATUS_WAIT:
                 //按钮状态
                 changeBtnStyle(R.string.download_wait,
-                        R.color.download_wait,R.drawable.ic_download_wait);
+                        R.color.download_wait,R.mipmap.ic_download_wait);
 
                 //进度状态
                 setProgressMax(value);
@@ -87,7 +87,7 @@ public class DownloadHolder extends ViewHolderImpl<DownloadTaskBean> {
             case DownloadTaskBean.STATUS_ERROR:
                 //按钮状态
                 changeBtnStyle(R.string.download_error,
-                        R.color.download_error,R.drawable.ic_download_error);
+                        R.color.download_error,R.mipmap.ic_download_error);
                 setTip(R.string.download_source_error);
                 mPbShow.setVisibility(View.INVISIBLE);
                 mTvMsg.setVisibility(View.GONE);
@@ -95,7 +95,7 @@ public class DownloadHolder extends ViewHolderImpl<DownloadTaskBean> {
             case DownloadTaskBean.STATUS_FINISH:
                 //按钮状态
                 changeBtnStyle(R.string.download_finish,
-                        R.color.download_finish,R.drawable.ic_download_complete);
+                        R.color.download_finish,R.mipmap.ic_download_complete);
                 setTip(R.string.download_complete);
                 mPbShow.setVisibility(View.INVISIBLE);
 

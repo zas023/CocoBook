@@ -33,8 +33,8 @@ public class RecommendBookHolder extends ViewHolderImpl<RankBookBean>{
         Glide.with(getContext())
                 .load(Constant.IMG_BASE_URL+value.getCover())
                 .apply(new RequestOptions()
-                        .placeholder(R.drawable.ic_default_book_cover)
-                        .error(R.drawable.ic_load_error)
+                        .placeholder(R.mipmap.ic_default_book_cover)
+                        .error(R.mipmap.ic_load_error)
                         .fitCenter())
                 .into(mIvCover);
         //书名

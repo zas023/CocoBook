@@ -66,7 +66,7 @@ public class CollBookHolder extends ViewHolderImpl<CollBookBean>{
         if (value.isLocal()){
             //本地文件的图片
             Glide.with(getContext())
-                    .load(R.drawable.ic_local_file)
+                    .load(R.mipmap.ic_local_file)
                     .apply(new RequestOptions()
                             .fitCenter())
                     .into(mIvCover);
@@ -76,8 +76,8 @@ public class CollBookHolder extends ViewHolderImpl<CollBookBean>{
             Glide.with(getContext())
                     .load(Constant.IMG_BASE_URL+value.getCover())
                     .apply(new RequestOptions()
-                            .placeholder(R.drawable.ic_default_book_cover)
-                            .error(R.drawable.ic_load_error)
+                            .placeholder(R.mipmap.ic_default_book_cover)
+                            .error(R.mipmap.ic_load_error)
                             .fitCenter())
                     .into(mIvCover);
         }

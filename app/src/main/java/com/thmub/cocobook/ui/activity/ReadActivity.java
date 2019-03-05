@@ -303,11 +303,11 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     private void toggleNightMode() {
         if (isNightTheme()) {
             mTvNightMode.setText(StringUtils.getString(R.string.mode_light));
-            Drawable drawable = ContextCompat.getDrawable(this, R.drawable.ic_read_menu_morning);
+            Drawable drawable = ContextCompat.getDrawable(this, R.mipmap.ic_read_menu_morning);
             mTvNightMode.setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
         } else {
             mTvNightMode.setText(StringUtils.getString(R.string.mode_night));
-            Drawable drawable = ContextCompat.getDrawable(this, R.drawable.ic_read_menu_night);
+            Drawable drawable = ContextCompat.getDrawable(this, R.mipmap.ic_read_menu_night);
             mTvNightMode.setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
         }
     }

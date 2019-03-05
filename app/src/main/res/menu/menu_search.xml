@@ -10,6 +10,6 @@
 			android:id="@+id/action_search"
 			android:orderInCategory="80"
 			android:title="@string/menu_action_search"
-			android:icon="@drawable/ic_menu_search"
+			android:icon="@mipmap/ic_menu_search"
 			app:showAsAction="ifRoom"/>
 </menu>
