@@ -35,7 +35,7 @@
 			android:gravity="center"
 			android:text="上一级"
 			android:textSize="12dp"
-			android:drawableLeft="@drawable/ic_back_last"
+			android:drawableLeft="@mipmap/ic_back_last"
 			android:textColor="@color/textAssist"/>
 	</LinearLayout>
 	

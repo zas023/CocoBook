@@ -100,19 +100,19 @@ public class BookRankAdapter extends BaseExpandableListAdapter {
 //                    .into(holder.ivSymbol);
 //        }
 //        else {
-//            holder.ivSymbol.setImageResource(R.drawable.ic_billboard_collapse);
+//            holder.ivSymbol.setImageResource(R.drawable.ic_book_rank_collapse);
 //        }
 
         holder.ivSymbol.setVisibility(View.GONE);
         holder.tvName.setText(bean.getTitle());
 
         holder.ivArrow.setVisibility(View.VISIBLE);
-        holder.ivArrow.setImageResource(R.drawable.ic_arrow_right);
+        holder.ivArrow.setImageResource(R.mipmap.ic_arrow_right);
         if (groupPosition == mGroups.size() - 1){
             if (isExpanded)
-                holder.ivArrow.setImageResource(R.drawable.ic_billboard_arrow_up);
+                holder.ivArrow.setImageResource(R.mipmap.ic_book_rank_arrow_up);
             else
-                holder.ivArrow.setImageResource(R.drawable.ic_billboard_arrow_down);
+                holder.ivArrow.setImageResource(R.mipmap.ic_book_rank_arrow_down);
         }
         else {
             holder.ivArrow.setVisibility(View.GONE);

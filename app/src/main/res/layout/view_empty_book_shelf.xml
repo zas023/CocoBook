@@ -35,7 +35,7 @@
 			android:layout_height="wrap_content"
 			android:background="@drawable/shape_common_text_corner"
 			android:clickable="true"
-			android:drawableLeft="@drawable/ic_book_list_add"
+			android:drawableLeft="@mipmap/ic_book_list_add"
 			android:drawablePadding="15dp"
 			android:padding="10dp"
 			android:text="去添加"
