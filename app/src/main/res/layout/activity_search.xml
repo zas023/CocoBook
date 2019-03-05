@@ -31,7 +31,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/shape_common_gray_corner"
+            android:background="@drawable/shape_common_search_corner"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="8dp">
@@ -41,7 +41,7 @@
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"
-                android:background="@color/common_gray"
+                android:background="@color/colorBackground"
                 android:hint="请输入书名 | 作者"
                 android:imeOptions="actionSearch"
                 android:maxLines="1"

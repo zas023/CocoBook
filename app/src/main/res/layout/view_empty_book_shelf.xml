@@ -33,7 +33,7 @@
 			android:id="@+id/book_shelf_tv_add"
 			android:layout_width="150dp"
 			android:layout_height="wrap_content"
-			android:background="@drawable/shape_common_green_corner"
+			android:background="@drawable/shape_common_text_corner"
 			android:clickable="true"
 			android:drawableLeft="@drawable/ic_book_list_add"
 			android:drawablePadding="15dp"
