@@ -28,7 +28,7 @@ import butterknife.BindView;
  * 其他排行榜中书籍activity
  */
 
-public class OtherBillBookActivity extends BaseMVPActivity<BookRankDetailContract.Presenter>
+public class OtherBookRankActivity extends BaseMVPActivity<BookRankDetailContract.Presenter>
         implements BookRankDetailContract.View{
     private static final String EXTRA_BILL_ID = "extra_bill_id";
     private static final String EXTRA_BILL_NAME = "extra_bill_name";
@@ -43,7 +43,7 @@ public class OtherBillBookActivity extends BaseMVPActivity<BookRankDetailContrac
     private String mBillId;
     private String mBillName;
     public static void startActivity(Context context,String billName, String billId){
-        Intent intent = new Intent(context,OtherBillBookActivity.class);
+        Intent intent = new Intent(context,OtherBookRankActivity.class);
         intent.putExtra(EXTRA_BILL_ID,billId);
         intent.putExtra(EXTRA_BILL_NAME,billName);
 

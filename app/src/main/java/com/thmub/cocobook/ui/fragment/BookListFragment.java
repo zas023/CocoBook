@@ -16,7 +16,7 @@ import com.thmub.cocobook.ui.activity.BookListDetailActivity;
 import com.thmub.cocobook.ui.adapter.BookListAdapter;
 import com.thmub.cocobook.base.BaseMVPFragment;
 import com.thmub.cocobook.widget.RefreshLayout;
-import com.thmub.cocobook.widget.adapter.WholeAdapter;
+import com.thmub.cocobook.base.adapter.WholeAdapter;
 import com.thmub.cocobook.widget.itemdecoration.DividerItemDecoration;
 
 import java.util.List;

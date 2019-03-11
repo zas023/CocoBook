@@ -23,7 +23,7 @@ import com.thmub.cocobook.ui.activity.SearchActivity;
 import com.thmub.cocobook.ui.adapter.CollBookAdapter;
 import com.thmub.cocobook.base.BaseMVPFragment;
 import com.thmub.cocobook.utils.*;
-import com.thmub.cocobook.widget.adapter.WholeAdapter;
+import com.thmub.cocobook.base.adapter.WholeAdapter;
 import com.thmub.cocobook.widget.itemdecoration.DividerItemDecoration;
 import com.thmub.cocobook.widget.refresh.ScrollRefreshRecyclerView;
 
@@ -38,19 +38,10 @@ import java.util.List;
 public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Presenter>
         implements BookShelfContract.View {
 
+    /***************************视图********************************/
     @BindView(R.id.book_shelf_rv_content)
     ScrollRefreshRecyclerView mRvContent;
-    //全选
-//    @BindView(R.id.multi_select_rl_root)
-//    RelativeLayout multiSelectRlRoot;
-//    @BindView(R.id.multi_select_cb_all)
-//    CheckBox multiSelectCbAll;
-//    @BindView(R.id.multi_select_btn_add)
-//    Button multiSelectBtnAdd;
-//    @BindView(R.id.multi_select_btn_delete)
-//    Button multiSelectBtnDelete;
 
-    /***************************视图********************************/
     private CollBookAdapter mCollBookAdapter;
     private FooterItemView mFooterItem;
 

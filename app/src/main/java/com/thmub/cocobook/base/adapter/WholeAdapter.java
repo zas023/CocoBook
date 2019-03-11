@@ -1,4 +1,4 @@
-package com.thmub.cocobook.widget.adapter;
+package com.thmub.cocobook.base.adapter;
 
 import android.content.Context;
 import androidx.annotation.LayoutRes;
@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.thmub.cocobook.R;
-import com.thmub.cocobook.base.adapter.BaseListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

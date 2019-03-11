@@ -57,13 +57,13 @@ public interface BookApi {
     Single<SwipePicturePackage> getSwipePicturePackage();
 
     @GET("/recommendPage/nodes/5910018c8094b1e228e5868f")
-    Single<FeaturePackage> getFeaturePackage();
+    Single<PageNodePackage> getFeaturePackage();
 
     @GET("/recommendPage/books/{nodeId}")
-    Single<FeatureBookPackage> getFeatureBookPackage(@Path("nodeId")String nodeId);
+    Single<PageNodeBookPackage> getFeatureBookPackage(@Path("nodeId")String nodeId);
 
     @GET("/recommendPage/node/books/all/{nodeId}")
-    Single<FeatureDetailPackage> getFeatureDetailPackage(@Path("nodeId")String nodeId);
+    Single<PageNodeDetailPackage> getFeatureDetailPackage(@Path("nodeId")String nodeId);
 
 
     /**********************************排行榜****************************************************/

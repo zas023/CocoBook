@@ -155,7 +155,8 @@
         <item name="dropDownListViewStyle">@style/dropDownStyle</item>
     </style>
     <style name="ActionButton.Overflow.Menu" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
-        <item name="android:src">@mipmap/ic_menu_overflow</item>
+        <!--<item name="android:src">@mipmap/ic_menu_overflow</item>-->
+        <item name="android:src">@mipmap/ic_search_normal</item>
     </style>
     <style name="OverflowMenuStyle" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
         <item name="overlapAnchor">false</item>

@@ -2,7 +2,7 @@ package com.thmub.cocobook.model.bean;
 
 import java.util.List;
 
-public class FeatureBookBean {
+public class PageNodeBookBean {
     /**
      * _id : 5a6a8753e5d557a76400033a
      * __v : 0

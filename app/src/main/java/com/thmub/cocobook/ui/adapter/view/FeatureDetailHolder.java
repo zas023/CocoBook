@@ -6,14 +6,14 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.thmub.cocobook.App;
 import com.thmub.cocobook.R;
-import com.thmub.cocobook.model.bean.FeatureDetailBean;
+import com.thmub.cocobook.model.bean.PageNodeDetailBean;
 import com.thmub.cocobook.base.adapter.ViewHolderImpl;
 
 /**
  * Created by zhouas666 on 18-1-23.
  */
 
-public class FeatureDetailHolder extends ViewHolderImpl<FeatureDetailBean> {
+public class FeatureDetailHolder extends ViewHolderImpl<PageNodeDetailBean> {
 
     private ImageView mIvPortrait;
     private TextView mTvTitle;
@@ -36,7 +36,7 @@ public class FeatureDetailHolder extends ViewHolderImpl<FeatureDetailBean> {
     }
 
     @Override
-    public void onBind(FeatureDetailBean value, int pos) {
+    public void onBind(PageNodeDetailBean value, int pos) {
 
         //头像
         Glide.with(App.getContext())

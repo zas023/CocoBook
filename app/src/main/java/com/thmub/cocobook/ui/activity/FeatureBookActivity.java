@@ -10,10 +10,10 @@ import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.base.BaseMVPActivity;
-import com.thmub.cocobook.model.bean.FeatureDetailBean;
+import com.thmub.cocobook.model.bean.PageNodeDetailBean;
 import com.thmub.cocobook.presenter.FeatureDetailPresenter;
 import com.thmub.cocobook.presenter.contract.FeatureDetailContract;
-import com.thmub.cocobook.ui.adapter.FeatureDetailAdapter;
+import com.thmub.cocobook.ui.adapter.PageNodeDetailAdapter;
 import com.thmub.cocobook.widget.RefreshLayout;
 import com.thmub.cocobook.widget.itemdecoration.DividerItemDecoration;
 
@@ -34,7 +34,7 @@ public class FeatureBookActivity extends BaseMVPActivity<FeatureDetailContract.P
     @BindView(R.id.refresh_rv_content)
     RecyclerView mRvContent;
     /*******************/
-    private FeatureDetailAdapter mAdapter;
+    private PageNodeDetailAdapter mAdapter;
     /*****************/
     private String mFeatureId;
     private String mFeatureName;
@@ -91,7 +91,7 @@ public class FeatureBookActivity extends BaseMVPActivity<FeatureDetailContract.P
     private void initAdapter(){
         mRvContent.setLayoutManager(new LinearLayoutManager(this));
         mRvContent.addItemDecoration(new DividerItemDecoration(this));
-        mAdapter = new FeatureDetailAdapter();
+        mAdapter = new PageNodeDetailAdapter();
         mRvContent.setAdapter(mAdapter);
 
         mAdapter.setOnItemClickListener((view, pos) -> {
@@ -101,7 +101,7 @@ public class FeatureBookActivity extends BaseMVPActivity<FeatureDetailContract.P
     }
 
     @Override
-    public void finishRefresh(List<FeatureDetailBean> beans) {
+    public void finishRefresh(List<PageNodeDetailBean> beans) {
         mAdapter.addItems(beans);
     }
 

@@ -1,6 +1,6 @@
 package com.thmub.cocobook.presenter.contract;
 
-import com.thmub.cocobook.model.bean.FeatureDetailBean;
+import com.thmub.cocobook.model.bean.PageNodeDetailBean;
 import com.thmub.cocobook.base.BaseContract;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface FeatureDetailContract {
     interface View extends BaseContract.BaseView{
-        void finishRefresh(List<FeatureDetailBean> beans);
+        void finishRefresh(List<PageNodeDetailBean> beans);
     }
 
     interface Presenter extends BaseContract.BasePresenter<View>{

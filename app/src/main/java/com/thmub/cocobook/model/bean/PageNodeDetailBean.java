@@ -1,6 +1,6 @@
 package com.thmub.cocobook.model.bean;
 
-public class FeatureDetailBean {
+public class PageNodeDetailBean {
     /**
      * _id : 5a6a87013e7d02eb63822f21
      * __v : 0

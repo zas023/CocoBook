@@ -12,7 +12,7 @@ import com.thmub.cocobook.model.type.BookGenderType;
 import com.thmub.cocobook.presenter.BookRankPresenter;
 import com.thmub.cocobook.presenter.contract.BookRankContract;
 import com.thmub.cocobook.ui.activity.BookRankDetailActivity;
-import com.thmub.cocobook.ui.activity.OtherBillBookActivity;
+import com.thmub.cocobook.ui.activity.OtherBookRankActivity;
 import com.thmub.cocobook.ui.adapter.BookRankAdapter;
 import com.thmub.cocobook.widget.RefreshLayout;
 
@@ -110,7 +110,7 @@ public class BookRankFragment extends BaseMVPFragment<BookRankContract.Presenter
     public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPosition, int childPosition, long id) {
         if (groupPosition == mAdapter.getGroupCount() - 1) {
             BookRankBean bean = mAdapter.getChild(groupPosition, childPosition);
-            OtherBillBookActivity.startActivity(mContext, bean.getTitle(), bean.get_id());
+            OtherBookRankActivity.startActivity(mContext, bean.getTitle(), bean.get_id());
             return true;
         }
         return false;

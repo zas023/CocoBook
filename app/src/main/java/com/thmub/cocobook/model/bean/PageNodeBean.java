@@ -1,6 +1,6 @@
 package com.thmub.cocobook.model.bean;
 
-public class FeatureBean {
+public class PageNodeBean {
     /**
      * _id : 5912825ba1dbf3ad33ee7ffe
      * __v : 0
@@ -33,7 +33,7 @@ public class FeatureBean {
     private String sex;
     private String secondTitle;
 
-    public FeatureBean(String _id, String title) {
+    public PageNodeBean(String _id, String title) {
         this._id = _id;
         this.title = title;
     }

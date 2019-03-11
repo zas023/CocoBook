@@ -5,7 +5,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.thmub.cocobook.R;
-import com.thmub.cocobook.model.bean.FeatureBookBean;
+import com.thmub.cocobook.model.bean.PageNodeBookBean;
 import com.thmub.cocobook.base.adapter.ViewHolderImpl;
 
 /**
@@ -14,7 +14,7 @@ import com.thmub.cocobook.base.adapter.ViewHolderImpl;
  * 书城书籍view
  */
 
-public class FeatureBookHolder extends ViewHolderImpl<FeatureBookBean>{
+public class FeatureBookHolder extends ViewHolderImpl<PageNodeBookBean>{
 
     private static final String TAG = "RecommendBookView";
     private ImageView mIvCover;
@@ -28,7 +28,7 @@ public class FeatureBookHolder extends ViewHolderImpl<FeatureBookBean>{
     }
 
     @Override
-    public void onBind(FeatureBookBean value, int pos) {
+    public void onBind(PageNodeBookBean value, int pos) {
         //书的图片
         Glide.with(getContext())
                 .load(value.getBook().getCover())

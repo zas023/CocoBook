@@ -1,4 +1,4 @@
-package com.thmub.cocobook.widget.adapter;
+package com.thmub.cocobook.base.adapter;
 
 import android.content.Context;
 import android.view.View;

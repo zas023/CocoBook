@@ -1,22 +1,22 @@
 package com.thmub.cocobook.model.bean.packages;
 
 import com.thmub.cocobook.model.bean.BaseBean;
-import com.thmub.cocobook.model.bean.FeatureBean;
+import com.thmub.cocobook.model.bean.PageNodeBean;
 
 import java.util.List;
 
 /**
  * Created by zhouas666 on 17-6-2.
  */
-public class FeaturePackage extends BaseBean {
+public class PageNodePackage extends BaseBean {
 
-    private List<FeatureBean> data;
+    private List<PageNodeBean> data;
 
-    public List<FeatureBean> getData() {
+    public List<PageNodeBean> getData() {
         return data;
     }
 
-    public void setData(List<FeatureBean> data) {
+    public void setData(List<PageNodeBean> data) {
         this.data = data;
     }
 

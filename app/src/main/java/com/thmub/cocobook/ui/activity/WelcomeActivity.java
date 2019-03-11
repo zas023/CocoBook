@@ -61,10 +61,7 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
         LayoutInflater inflater = getLayoutInflater();
         pageViews = new ArrayList<>();
 
-//        pageViews.add(inflater.inflate(R.layout.layout_welcome_page_one, null));
-//        pageViews.add(inflater.inflate(R.layout.layout_welcome_page_two, null));
-//        pageViews.add(inflater.inflate(R.layout.layout_welcome_page_three, null));
-        pageViews.add(inflater.inflate(R.layout.layout_welcome_page_four, null));
+        pageViews.add(inflater.inflate(R.layout.layout_welcome_page, null));
 
         //创建指示器数组，大小是要显示的图片的数量
         imageViews = new ImageView[pageViews.size()];

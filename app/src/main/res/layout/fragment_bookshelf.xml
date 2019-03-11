@@ -15,9 +15,4 @@
             app:layout_scroll_empty="@layout/view_empty_book_shelf">
     </com.thmub.cocobook.widget.refresh.ScrollRefreshRecyclerView>
 
-    <!--<include layout="@layout/layout_multi_select"-->
-             <!--android:layout_width="match_parent"-->
-             <!--android:layout_height="wrap_content"-->
-             <!--android:layout_alignParentBottom="true"-->
-             <!--android:layout_alignParentStart="true" />-->
 </RelativeLayout>

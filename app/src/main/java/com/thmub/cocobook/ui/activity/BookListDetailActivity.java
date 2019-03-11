@@ -23,7 +23,7 @@ import com.thmub.cocobook.presenter.contract.BookListDetailContract;
 import com.thmub.cocobook.ui.adapter.BookListDetailAdapter;
 import com.thmub.cocobook.utils.Constant;
 import com.thmub.cocobook.widget.RefreshLayout;
-import com.thmub.cocobook.widget.adapter.WholeAdapter;
+import com.thmub.cocobook.base.adapter.WholeAdapter;
 import com.thmub.cocobook.widget.itemdecoration.DividerItemDecoration;
 import com.thmub.cocobook.widget.transform.CircleTransform;
 

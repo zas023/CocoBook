@@ -26,24 +26,6 @@
                 android:theme="@style/Theme.ToolBar.Menu"
                 app:layout_scrollFlags="scroll|enterAlways">
 
-                <!--<androidx.cardview.widget.CardView-->
-                    <!--android:id="@+id/card_search"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_marginRight="@dimen/margin_large"-->
-                    <!--android:layout_height="30dp"-->
-                    <!--app:cardBackgroundColor="@color/colorBackground"-->
-                    <!--app:cardElevation="0dp">-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_marginLeft="11dp"-->
-                        <!--android:gravity="center_vertical"-->
-                        <!--android:text="请输入书名 | 作者"-->
-                        <!--tools:ignore="RtlHardcoded" />-->
-
-                <!--</androidx.cardview.widget.CardView>-->
-
             </androidx.appcompat.widget.Toolbar>
 
             <com.google.android.material.tabs.TabLayout
@@ -66,10 +48,12 @@
         </androidx.viewpager.widget.ViewPager>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+    <!--左滑菜单栏-->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:menu="@menu/menu_main" />
+
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -55,7 +55,7 @@ public class RemoteRepository {
      *
      * @return
      */
-    public Single<List<FeatureBean>> getFeature() {
+    public Single<List<PageNodeBean>> getFeature() {
         return mBookApi.getFeaturePackage()
                 .map(bean -> bean.getData());
     }
@@ -66,7 +66,7 @@ public class RemoteRepository {
      * @param nodeId
      * @return
      */
-    public Single<List<FeatureBookBean>> getFeatureBooks(String nodeId) {
+    public Single<List<PageNodeBookBean>> getFeatureBooks(String nodeId) {
         return mBookApi.getFeatureBookPackage(nodeId)
                 .map(bean -> bean.getData());
     }
@@ -77,7 +77,7 @@ public class RemoteRepository {
      * @param nodeId
      * @return
      */
-    public Single<List<FeatureDetailBean>> getFeatureDetail(String nodeId) {
+    public Single<List<PageNodeDetailBean>> getFeatureDetail(String nodeId) {
         return mBookApi.getFeatureDetailPackage(nodeId)
                 .map(bean -> bean.getData());
     }

@@ -3,7 +3,7 @@ package com.thmub.cocobook.ui.adapter;
 import com.thmub.cocobook.model.bean.CollBookBean;
 import com.thmub.cocobook.ui.adapter.view.CollBookHolder;
 import com.thmub.cocobook.base.adapter.IViewHolder;
-import com.thmub.cocobook.widget.adapter.WholeAdapter;
+import com.thmub.cocobook.base.adapter.WholeAdapter;
 
 import java.util.*;
 
@@ -13,6 +13,7 @@ import java.util.*;
  */
 
 public class CollBookAdapter extends WholeAdapter<CollBookBean> {
+    private static final String TAG = "CollBookAdapter";
 
     //记录item是否被选中的Map
     public static HashMap<CollBookBean,Boolean> mCheckMap = new HashMap<>();

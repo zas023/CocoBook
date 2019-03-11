@@ -5,7 +5,7 @@ import android.content.Context;
 import com.thmub.cocobook.model.bean.BookListDetailBean;
 import com.thmub.cocobook.ui.adapter.view.BookListInfoHolder;
 import com.thmub.cocobook.base.adapter.IViewHolder;
-import com.thmub.cocobook.widget.adapter.WholeAdapter;
+import com.thmub.cocobook.base.adapter.WholeAdapter;
 
 /**
  * Created by zhouas666 on 18-2-2.
