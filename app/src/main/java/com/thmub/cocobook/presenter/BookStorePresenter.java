@@ -9,6 +9,7 @@ import io.reactivex.disposables.Disposable;
 
 /**
  * Created by zhouas666 on 18-2-8.
+ * 书城presenter
  */
 
 public class BookStorePresenter extends RxPresenter<BookStoreContract.View>

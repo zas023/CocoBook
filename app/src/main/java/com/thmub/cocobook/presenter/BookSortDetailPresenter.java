@@ -11,10 +11,12 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 分类详情presenter
  */
 
 public class BookSortDetailPresenter extends RxPresenter<BookSortDetailContract.View>
         implements BookSortDetailContract.Presenter {
+    private static final String TAG = "BookSortDetailPresenter";
     @Override
     public void refreshSortBook(String gender, BookSortListType type, String major, String minor, int start, int limit) {
 

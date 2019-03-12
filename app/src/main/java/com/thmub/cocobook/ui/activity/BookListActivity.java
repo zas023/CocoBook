@@ -36,10 +36,10 @@ import io.reactivex.schedulers.Schedulers;
 
 public class BookListActivity extends BaseTabActivity {
 
-    /****************************常量************************************/
+    /****************************Constant************************************/
     private static final int RANDOM_COUNT = 5;
 
-    /****************************试图************************************/
+    /****************************View************************************/
     @BindView(R.id.book_list_rv_tag_horizon)
     RecyclerView mRvTag;
     @BindView(R.id.book_list_cb_filter)
@@ -52,7 +52,7 @@ public class BookListActivity extends BaseTabActivity {
     private Animation mTopInAnim;
     private Animation mTopOutAnim;
 
-    /****************************初始化************************************/
+    /****************************Initialization************************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_book_list;
@@ -151,7 +151,7 @@ public class BookListActivity extends BaseTabActivity {
         );
     }
 
-    /****************************业务逻辑************************************/
+    /****************************Transaction************************************/
     @Override
     protected void processLogic() {
         super.processLogic();

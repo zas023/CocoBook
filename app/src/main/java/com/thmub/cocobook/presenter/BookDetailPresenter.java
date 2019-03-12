@@ -7,7 +7,6 @@ import com.thmub.cocobook.model.local.BookRepository;
 import com.thmub.cocobook.model.server.RemoteRepository;
 import com.thmub.cocobook.presenter.contract.BookDetailContract;
 import com.thmub.cocobook.base.RxPresenter;
-import com.thmub.cocobook.utils.LogUtils;
 import com.thmub.cocobook.utils.MD5Utils;
 
 import io.reactivex.SingleObserver;
@@ -22,7 +21,9 @@ import io.reactivex.schedulers.Schedulers;
 
 public class BookDetailPresenter extends RxPresenter<BookDetailContract.View>
         implements BookDetailContract.Presenter {
+
     private static final String TAG = "BookDetailPresenter";
+
     private String bookId;
 
     @Override
@@ -56,7 +57,6 @@ public class BookDetailPresenter extends RxPresenter<BookDetailContract.View>
                         ,
                         e -> {
                             mView.errorToBookShelf();
-                            LogUtils.e(e);
                         }
                 ));
     }

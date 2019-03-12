@@ -15,6 +15,7 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 书籍分类presenter
  */
 
 public class BookSortPresenter extends RxPresenter<BookSortContract.View>

@@ -29,6 +29,7 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by zhouas666 on 18-2-3.
+ * 阅读页面presenter
  */
 
 public class ReadPresenter extends RxPresenter<ReadContract.View> implements ReadContract.Presenter {

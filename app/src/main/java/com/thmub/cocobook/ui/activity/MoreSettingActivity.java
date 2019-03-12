@@ -17,6 +17,7 @@ import butterknife.BindView;
  */
 
 public class MoreSettingActivity extends BaseActivity {
+    /*****************************View********************************/
     @BindView(R.id.more_setting_rl_volume)
     RelativeLayout mRlVolume;
     @BindView(R.id.more_setting_sc_volume)
@@ -25,10 +26,13 @@ public class MoreSettingActivity extends BaseActivity {
     RelativeLayout mRlFullScreen;
     @BindView(R.id.more_setting_sc_full_screen)
     SwitchCompat mScFullScreen;
+
+    /*****************************Variable********************************/
     private ReadSettingManager mSettingManager;
     private boolean isVolumeTurnPage;
     private boolean isFullScreen;
 
+    /*****************************Initialization********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_more_setting;

@@ -9,6 +9,7 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 推荐书籍详情列表页面presenter
  */
 
 public class RecommendBookPresenter extends RxPresenter<RecommendBookContract.View>

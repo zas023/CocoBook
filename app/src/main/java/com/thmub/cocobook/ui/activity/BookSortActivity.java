@@ -15,10 +15,9 @@ import java.util.List;
 /**
  * Created by zhouas666 on 18-1-23.
  * 分类选择activity
- *
  */
 public class BookSortActivity extends BaseTabActivity {
-    /*****************************初始化********************************/
+    /*****************************Initialization********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_base_tab;

@@ -11,8 +11,8 @@ import butterknife.BindView;
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.base.BaseMVPActivity;
 import com.thmub.cocobook.model.bean.PageNodeDetailBean;
-import com.thmub.cocobook.presenter.FeatureDetailPresenter;
-import com.thmub.cocobook.presenter.contract.FeatureDetailContract;
+import com.thmub.cocobook.presenter.PageNodePresenter;
+import com.thmub.cocobook.presenter.contract.PageNodeContract;
 import com.thmub.cocobook.ui.adapter.PageNodeDetailAdapter;
 import com.thmub.cocobook.widget.RefreshLayout;
 import com.thmub.cocobook.widget.itemdecoration.DividerItemDecoration;
@@ -21,39 +21,47 @@ import java.util.List;
 
 /**
  * Created by zhouas666 on 18-1-23.
- * 书城栏目activity
+ * 书城页面站点详情activity
  */
 
-public class FeatureBookActivity extends BaseMVPActivity<FeatureDetailContract.Presenter>
-        implements FeatureDetailContract.View{
+public class PageNodeActivity extends BaseMVPActivity<PageNodeContract.Presenter>
+        implements PageNodeContract.View{
+
+    /*****************************Constant**************************************/
     private static final String EXTRA_FEATURE_ID = "extra_feature_id";
     private static final String EXTRA_FEATURE_NAME = "extra_feature_name";
-    /********************/
+
+    /*****************************View**************************************/
     @BindView(R.id.refresh_layout)
     RefreshLayout mRefreshLayout;
     @BindView(R.id.refresh_rv_content)
     RecyclerView mRvContent;
-    /*******************/
+
     private PageNodeDetailAdapter mAdapter;
-    /*****************/
+
+    /*****************************Variable**************************************/
     private String mFeatureId;
     private String mFeatureName;
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        outState.putString(EXTRA_FEATURE_ID,mFeatureId);
+        outState.putString(EXTRA_FEATURE_NAME,mFeatureName);
+    }
+
     public static void startActivity(Context context,String billName, String billId){
-        Intent intent = new Intent(context,FeatureBookActivity.class);
+        Intent intent = new Intent(context,PageNodeActivity.class);
         intent.putExtra(EXTRA_FEATURE_ID,billId);
         intent.putExtra(EXTRA_FEATURE_NAME,billName);
 
         context.startActivity(intent);
     }
 
+    /*******************************Initialization************************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_refresh_list;
-    }
-
-    @Override
-    protected FeatureDetailContract.Presenter bindPresenter() {
-        return new FeatureDetailPresenter();
     }
 
     @Override
@@ -100,6 +108,13 @@ public class FeatureBookActivity extends BaseMVPActivity<FeatureDetailContract.P
         });
     }
 
+    /*******************************Transaction************************************/
+
+    @Override
+    protected PageNodeContract.Presenter bindPresenter() {
+        return new PageNodePresenter();
+    }
+
     @Override
     public void finishRefresh(List<PageNodeDetailBean> beans) {
         mAdapter.addItems(beans);
@@ -114,12 +129,6 @@ public class FeatureBookActivity extends BaseMVPActivity<FeatureDetailContract.P
     public void complete() {
         mRefreshLayout.showFinish();
     }
-    /***************************************************/
-    @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
-        outState.putString(EXTRA_FEATURE_ID,mFeatureId);
-        outState.putString(EXTRA_FEATURE_NAME,mFeatureName);
-    }
+
 
 }

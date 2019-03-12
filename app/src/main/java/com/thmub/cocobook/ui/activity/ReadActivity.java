@@ -71,6 +71,7 @@ import static com.thmub.cocobook.service.SpeakService.*;
 public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         implements ReadContract.View {
 
+    /*****************************View********************************/
     @BindView(R.id.read_dl_slide)
     DrawerLayout mDlCatalog;
     //顶部菜单
@@ -115,7 +116,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     TextView mTvCatalogReserve;
     @BindView(R.id.read_lv_category)
     ListView mLvCategory;
-    /**********************************视图***********************************/
+
     private ReadSettingDialog mSettingDialog;
     private PageLoader mPageLoader;
     private Animation mTopInAnim;
@@ -126,7 +127,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     //控制屏幕常亮
     private PowerManager.WakeLock mWakeLock;
 
-    /***********************常量*************************/
+    /*****************************Constant********************************/
     public static final int REQUEST_MORE_SETTING = 1;
     public static final String EXTRA_COLL_BOOK = "extra_coll_book";
     public static final String EXTRA_IS_COLLECTED = "extra_is_collected";
@@ -136,10 +137,14 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     private final Uri BRIGHTNESS_URI = Settings.System.getUriFor(Settings.System.SCREEN_BRIGHTNESS);
     private final Uri BRIGHTNESS_ADJ_URI = Settings.System.getUriFor("screen_auto_brightness_adj");
 
+    /*****************************Variable********************************/
     private CollBookBean mCollBook;
     private List<TxtChapter> mChapters;
     private boolean isRegistered = false;
     private boolean isReversed = false;
+    private boolean isFullScreen = false;
+    private boolean isCollected = false; //isFromSDCard
+    private String mBookId;
 
     private Intent readAloudIntent;
 
@@ -186,19 +191,15 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         }
     };
 
-    /********************************参数**********************************/
-    private boolean isFullScreen = false;
-    private boolean isCollected = false; //isFromSDCard
-    private String mBookId;
 
-    /*******************************公共方法**********************************/
+    /*******************************Public Method**********************************/
     public static void startActivity(Context context, CollBookBean collBook, boolean isCollected) {
         context.startActivity(new Intent(context, ReadActivity.class)
                 .putExtra(EXTRA_IS_COLLECTED, isCollected)
                 .putExtra(EXTRA_COLL_BOOK, collBook));
     }
 
-    /********************************初始化**********************************/
+    /*****************************Initialization********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_read;
@@ -517,7 +518,159 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         );
     }
 
-    /******************************事件处理*********************************/
+    /*****************************Transaction********************************/
+    @Override
+    protected void processLogic() {
+        super.processLogic();
+        //如果是已经收藏的，那么就从数据库中获取目录
+        if (isCollected) {
+            addDisposable(BookRepository.getInstance()
+                    .getBookChaptersInRx(mBookId)
+                    .compose(RxUtils::toSimpleSingle)
+                    .subscribe((bookChapterBeen, throwable) -> {
+                                mCollBook.setBookChapters(bookChapterBeen);
+                                mPageLoader.openBook(mCollBook);
+                                //如果是网络小说并被标记更新的，则从网络下载目录
+                                if (!mCollBook.isLocal() && mCollBook.isUpdate()) {
+                                    mPresenter.loadCategory(mBookId);
+                                }
+                            }
+                    ));
+        } else {
+            //从网络中获取目录
+            mPresenter.loadCategory(mBookId);
+        }
+    }
+
+    @Override
+    public void showError() {
+
+    }
+
+    @Override
+    public void complete() {
+
+    }
+
+    @Override
+    public void showCategory(List<BookChapterBean> bookChapters) {
+        mCollBook.setBookChapters(bookChapters);
+        //如果是更新加载，那么重置PageLoader的Chapter
+        if (mCollBook.isUpdate() && isCollected) {
+            mPageLoader.setChapterList(bookChapters);
+            BookRepository.getInstance().saveBookChaptersWithAsync(bookChapters);
+        } else {
+            mPageLoader.openBook(mCollBook);
+        }
+    }
+
+    @Override
+    public void finishChapter() {
+        if (mPageLoader.getPageStatus() == PageLoader.STATUS_LOADING) {
+            mPvPage.post(
+                    () -> mPageLoader.openChapter()
+            );
+        }
+        //当完成章节的时候，刷新列表
+        mCategoryAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void errorChapter() {
+        if (mPageLoader.getPageStatus() == PageLoader.STATUS_LOADING) {
+            mPageLoader.chapterError();
+        }
+    }
+
+    /********************************Life Cycle**********************************/
+    @Override
+    protected void onStart() {
+        super.onStart();
+        registerBrightObserver();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mWakeLock.acquire();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mWakeLock.release();
+        if (isCollected) {
+            mPageLoader.saveRecord();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unregisterBrightObserver();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(mReceiver);
+        mPageLoader.closeBook();
+        //销毁朗读服务
+        stopService(readAloudIntent);
+    }
+
+    /*****************************Event********************************/
+    @Override
+    public void onBackPressed() {
+        if (mAblTopMenu.getVisibility() == View.VISIBLE) {
+            //非全屏下才收缩，全屏下直接退出
+            if (!ReadSettingManager.getInstance().isFullScreen()) {
+                toggleMenu(true);
+                return;
+            }
+        } else if (mSettingDialog.isShowing()) {
+            mSettingDialog.dismiss();
+            return;
+        } else if (mDlCatalog.isDrawerOpen(Gravity.START)) {
+            mDlCatalog.closeDrawer(Gravity.START);
+            return;
+        }
+
+        if (!mCollBook.isLocal() && !isCollected) {
+            AlertDialog alertDialog = new AlertDialog.Builder(this)
+                    .setTitle("加入书架")
+                    .setMessage("喜欢本书就加入书架吧")
+                    .setPositiveButton("确定", (dialog, which) -> {
+                        //设置为已收藏
+                        isCollected = true;
+                        //设置BookChapter
+                        mCollBook.setBookChapters(mCollBook.getBookChapters());
+                        //设置阅读时间
+                        mCollBook.setLastRead(StringUtils.
+                                dateConvert(System.currentTimeMillis(), Constant.FORMAT_BOOK_DATE));
+
+                        BookRepository.getInstance()
+                                .saveCollBookWithAsync(mCollBook);
+
+                        exit();
+                    })
+                    .setNegativeButton("取消", (dialog, which) -> {
+                        exit();
+                    }).create();
+            alertDialog.show();
+        } else {
+            exit();
+        }
+    }
+
+    //退出
+    private void exit() {
+        //返回给BookDetail。
+        setResult(Activity.RESULT_OK, new Intent().putExtra(BookDetailActivity.RESULT_IS_COLLECTED, isCollected));
+        //退出
+        super.onBackPressed();
+    }
+
     @OnClick({R.id.read_tv_category, R.id.read_tv_setting, R.id.read_tv_pre_chapter
             , R.id.read_tv_next_chapter, R.id.read_tv_night_mode, R.id.read_tv_brief
             , R.id.read_tv_download})
@@ -630,161 +783,6 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         mBottomInAnim = AnimationUtils.loadAnimation(mContext, R.anim.slide_bottom_in);
         mBottomOutAnim = AnimationUtils.loadAnimation(mContext, R.anim.slide_bottom_out);
     }
-
-    /***************************数据处理************************************/
-    @Override
-    protected void processLogic() {
-        super.processLogic();
-        //如果是已经收藏的，那么就从数据库中获取目录
-        if (isCollected) {
-            addDisposable(BookRepository.getInstance()
-                    .getBookChaptersInRx(mBookId)
-                    .compose(RxUtils::toSimpleSingle)
-                    .subscribe((bookChapterBeen, throwable) -> {
-                                mCollBook.setBookChapters(bookChapterBeen);
-                                mPageLoader.openBook(mCollBook);
-                                //如果是网络小说并被标记更新的，则从网络下载目录
-                                if (!mCollBook.isLocal() && mCollBook.isUpdate()) {
-                                    mPresenter.loadCategory(mBookId);
-                                }
-                            }
-                    ));
-        } else {
-            //从网络中获取目录
-            mPresenter.loadCategory(mBookId);
-        }
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
-    public void complete() {
-
-    }
-
-    @Override
-    public void showCategory(List<BookChapterBean> bookChapters) {
-        mCollBook.setBookChapters(bookChapters);
-        //如果是更新加载，那么重置PageLoader的Chapter
-        if (mCollBook.isUpdate() && isCollected) {
-            mPageLoader.setChapterList(bookChapters);
-            BookRepository.getInstance().saveBookChaptersWithAsync(bookChapters);
-        } else {
-            mPageLoader.openBook(mCollBook);
-        }
-    }
-
-    @Override
-    public void finishChapter() {
-        if (mPageLoader.getPageStatus() == PageLoader.STATUS_LOADING) {
-            mPvPage.post(
-                    () -> mPageLoader.openChapter()
-            );
-        }
-        //当完成章节的时候，刷新列表
-        mCategoryAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void errorChapter() {
-        if (mPageLoader.getPageStatus() == PageLoader.STATUS_LOADING) {
-            mPageLoader.chapterError();
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (mAblTopMenu.getVisibility() == View.VISIBLE) {
-            //非全屏下才收缩，全屏下直接退出
-            if (!ReadSettingManager.getInstance().isFullScreen()) {
-                toggleMenu(true);
-                return;
-            }
-        } else if (mSettingDialog.isShowing()) {
-            mSettingDialog.dismiss();
-            return;
-        } else if (mDlCatalog.isDrawerOpen(Gravity.START)) {
-            mDlCatalog.closeDrawer(Gravity.START);
-            return;
-        }
-
-        if (!mCollBook.isLocal() && !isCollected) {
-            AlertDialog alertDialog = new AlertDialog.Builder(this)
-                    .setTitle("加入书架")
-                    .setMessage("喜欢本书就加入书架吧")
-                    .setPositiveButton("确定", (dialog, which) -> {
-                        //设置为已收藏
-                        isCollected = true;
-                        //设置BookChapter
-                        mCollBook.setBookChapters(mCollBook.getBookChapters());
-                        //设置阅读时间
-                        mCollBook.setLastRead(StringUtils.
-                                dateConvert(System.currentTimeMillis(), Constant.FORMAT_BOOK_DATE));
-
-                        BookRepository.getInstance()
-                                .saveCollBookWithAsync(mCollBook);
-
-                        exit();
-                    })
-                    .setNegativeButton("取消", (dialog, which) -> {
-                        exit();
-                    }).create();
-            alertDialog.show();
-        } else {
-            exit();
-        }
-    }
-
-
-    //退出
-    private void exit() {
-        //返回给BookDetail。
-        setResult(Activity.RESULT_OK, new Intent().putExtra(BookDetailActivity.RESULT_IS_COLLECTED, isCollected));
-        //退出
-        super.onBackPressed();
-    }
-
-    /********************************状态处理**********************************/
-    @Override
-    protected void onStart() {
-        super.onStart();
-        registerBrightObserver();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mWakeLock.acquire();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mWakeLock.release();
-        if (isCollected) {
-            mPageLoader.saveRecord();
-        }
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        unregisterBrightObserver();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unregisterReceiver(mReceiver);
-        mPageLoader.closeBook();
-        //销毁朗读服务
-        stopService(readAloudIntent);
-    }
-
-    /********************************事件处理**********************************/
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         boolean isVolumeTurnPage = ReadSettingManager

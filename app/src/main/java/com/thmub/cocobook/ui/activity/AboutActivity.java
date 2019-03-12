@@ -15,7 +15,7 @@ import com.thmub.cocobook.widget.CircleImageView;
  */
 public class AboutActivity extends BaseActivity {
 
-    /*****************************视图********************************/
+    /*****************************View********************************/
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.tv_version_name)
@@ -28,7 +28,7 @@ public class AboutActivity extends BaseActivity {
     TextView aboutTvName;
 
 
-    /*****************************初始化********************************/
+    /*****************************Initialization********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_about;
@@ -45,7 +45,7 @@ public class AboutActivity extends BaseActivity {
         getSupportActionBar().setTitle("关于");
     }
 
-    /*****************************事件处理********************************/
+    /*****************************Transaction********************************/
     /**
      * 监听点击事件
      *

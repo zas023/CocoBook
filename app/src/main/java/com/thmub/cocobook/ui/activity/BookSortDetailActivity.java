@@ -28,15 +28,18 @@ import butterknife.BindView;
  */
 
 public class BookSortDetailActivity extends BaseTabActivity {
+
+    /*****************************Constant********************************/
     private static final String EXTRA_GENDER = "extra_gender";
     private static final String EXTRA_SUB_SORT = "extra_sub_sort";
 
-    /*******************/
+    /*****************************View********************************/
     @BindView(R.id.book_sort_list_rv_tag)
     RecyclerView mRvTag;
-    /************************************/
+
     private HorizonTagAdapter mTagAdapter;
-    /**********************************/
+
+    /*****************************Variable********************************/
     private BookSubSortBean mSubSortBean;
     private String mGender;
 
@@ -47,6 +50,7 @@ public class BookSortDetailActivity extends BaseTabActivity {
         context.startActivity(intent);
     }
 
+    /*****************************Initialization********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_book_sort_list;
@@ -116,7 +120,7 @@ public class BookSortDetailActivity extends BaseTabActivity {
         mSubSortBean.getMins().add(0,"全部");
         mTagAdapter.addItems(mSubSortBean.getMins());
     }
-    /*****************************************************/
+    /*****************************Life Cycle********************************/
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);

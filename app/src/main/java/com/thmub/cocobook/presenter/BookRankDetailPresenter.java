@@ -10,6 +10,7 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by zhouas666 on 18-1-23.
+ * 排行榜书籍详情presenter
  */
 
 public class BookRankDetailPresenter extends RxPresenter<BookRankDetailContract.View>

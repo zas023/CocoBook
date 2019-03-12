@@ -26,6 +26,7 @@ import butterknife.BindView;
 
 public class DownloadActivity extends BaseActivity implements DownloadService.OnDownloadListener{
 
+    /*****************************View********************************/
     @BindView(R.id.refresh_layout)
     RefreshLayout mRefreshLayout;
     @BindView(R.id.refresh_rv_content)
@@ -33,8 +34,11 @@ public class DownloadActivity extends BaseActivity implements DownloadService.On
 
     private DownLoadAdapter mDownloadAdapter;
 
+    /*****************************Variable********************************/
     private ServiceConnection mConnection;
     private DownloadService.IDownloadManager mService;
+
+    /*****************************Initialization********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_refresh_list;
@@ -88,6 +92,8 @@ public class DownloadActivity extends BaseActivity implements DownloadService.On
         );
     }
 
+
+    /*****************************Transaction********************************/
     @Override
     protected void processLogic() {
         super.processLogic();

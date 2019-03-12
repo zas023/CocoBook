@@ -67,7 +67,7 @@ public class BookStoreFragment extends BaseMVPFragment<BookStoreContract.Present
     protected void initClick() {
         mBookStoreAdapter.setOnItemClickListener((view, pos) -> {
             PageNodeBean bean=mBookStoreAdapter.getItem(pos);
-            FeatureBookActivity.startActivity(mContext,bean.getTitle(),bean.get_id());
+            PageNodeActivity.startActivity(mContext,bean.getTitle(),bean.get_id());
         });
     }
 
@@ -140,7 +140,7 @@ public class BookStoreFragment extends BaseMVPFragment<BookStoreContract.Present
             //设置banner动画效果
             banner.setBannerAnimation(Transformer.DepthPage);
             //设置自动轮播，默认为true
-            banner.isAutoPlay(true);
+            banner.isAutoPlay(false);
             //设置轮播时间
             banner.setDelayTime(5000);
             //设置指示器位置（当banner模式中有指示器时）

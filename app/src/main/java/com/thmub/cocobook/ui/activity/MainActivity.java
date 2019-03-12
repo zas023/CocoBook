@@ -45,7 +45,7 @@ import java.util.List;
  */
 public class MainActivity extends BaseTabActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    /*************************常量**************************/
+    /*************************Constant**************************/
     private static final int WAIT_INTERVAL = 2000;
     private static final int PERMISSIONS_REQUEST_STORAGE = 1;
     static final String[] PERMISSIONS = {
@@ -55,11 +55,12 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     public static final int REQUEST_LAND = 1;
     public static final int REQUEST_USER_INFO = 2;
 
+    /*****************************View********************************/
     @BindView(R.id.drawer)
     DrawerLayout drawer;
     @BindView(R.id.nav_view)
     NavigationView navigationView;
-    /*************************视图**************************/
+
     private View drawerHeader;
     private CircleImageView drawerIv;
     private TextView drawerTvAccount, drawerTvMail;
@@ -68,12 +69,13 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     private BookShelfFragment bookShelfFragment;
 
     private final ArrayList<Fragment> mFragmentList = new ArrayList<>();
+
+    /*****************************Variable********************************/
     private PermissionUtils mPermissionUtils;
-    /*************************参数**************************/
     private boolean isPrepareFinish = false;
     private CocoUser  currentUser;
 
-    /*************************初始化**************************/
+    /*****************************Initialization********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main_tab;
@@ -240,6 +242,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
         }
     }
 
+    /*****************************Event********************************/
     /**
      * 双击退出
      */

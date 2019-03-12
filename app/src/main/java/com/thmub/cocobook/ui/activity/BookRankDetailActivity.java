@@ -20,16 +20,17 @@ import java.util.List;
  */
 
 public class BookRankDetailActivity extends BaseTabActivity {
-    /**常量**/
+
+    /*****************************Constant********************************/
     private static final String EXTRA_WEEK_ID = "extra_week_id";
     private static final String EXTRA_MONTH_ID = "extra_month_id";
     private static final String EXTRA_TOTAL_ID = "extra_total_id";
     private static final String EXTRA_TITLE = "title";
-    /**参数**/
+    /*****************************Variable********************************/
     private String mWeekId;
     private String mMonthId;
     private String mTotalId;
-    /**公共方法**/
+    /*****************************Public Method********************************/
     public static void startActivity(Context context,String title ,String weekId, String monthId, String totalId){
         Intent intent = new Intent(context,BookRankDetailActivity.class);
         intent.putExtra(EXTRA_WEEK_ID,weekId);
@@ -38,7 +39,7 @@ public class BookRankDetailActivity extends BaseTabActivity {
         intent.putExtra(EXTRA_TITLE,title);
         context.startActivity(intent);
     }
-    /*******************************初始化***********************/
+    /*******************************Initialization***********************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_base_tab;
@@ -80,6 +81,7 @@ public class BookRankDetailActivity extends BaseTabActivity {
         getSupportActionBar().setTitle(getIntent().getStringExtra(EXTRA_TITLE));
     }
 
+    /*******************************Life Cycle***********************/
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);

@@ -38,10 +38,11 @@ import java.io.IOException;
  * 用户信息管理activity
  */
 public class UserInfoActivity extends BaseActivity {
-    /*****************************常量********************************/
+    /*****************************Constant********************************/
     protected static final int CHOOSE_PICTURE = 0;
     private static final int CROP_SMALL_PICTURE = 2;
-    /*****************************视图********************************/
+
+    /*****************************View********************************/
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.info_iv_icon)
@@ -59,12 +60,12 @@ public class UserInfoActivity extends BaseActivity {
     @BindView((R.id.info_btn_logout))
     Button infoBtnLogout;
 
-    /*****************************参数********************************/
+    /*****************************Variable********************************/
     private CocoUser currentUser = BmobUser.getCurrentUser(CocoUser.class);
     //图片路径
     protected static Uri tempUri = null;
 
-    /*****************************初始化********************************/
+    /*****************************initialization********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_user_info;
@@ -94,7 +95,7 @@ public class UserInfoActivity extends BaseActivity {
         getSupportActionBar().setTitle("用户信息");
     }
 
-    /*****************************事件处理********************************/
+    /*****************************Event********************************/
     /**
      * 监听点击事件
      *
@@ -322,6 +323,7 @@ public class UserInfoActivity extends BaseActivity {
         });
     }
 
+    /*****************************Life Cycle********************************/
 
     @Override
     protected void onDestroy() {

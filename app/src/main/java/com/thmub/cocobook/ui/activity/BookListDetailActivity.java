@@ -42,35 +42,40 @@ import butterknife.Unbinder;
 public class BookListDetailActivity extends BaseMVPActivity<BookListDetailContract.Presenter>
         implements BookListDetailContract.View {
 
+    /***************************Constant********************************/
     private static final String EXTRA_DETAIL_ID = "extra_detail_id";
+
+    /***************************View********************************/
     @BindView(R.id.refresh_layout)
     RefreshLayout mRefreshLayout;
     @BindView(R.id.refresh_rv_content)
     RecyclerView mRvContent;
-    /************************************************************/
+
     private BookListDetailAdapter mDetailAdapter;
     private DetailHeader mDetailHeader;
     private List<BookListDetailBean.BooksBean> mBooksList;
-    /***************************变量********************************/
+
+    /***************************Variable********************************/
     private String mDetailId;
     private int start = 0;
     private int limit = 20;
 
+    /******************************initialization******************************/
     public static void startActivity(Context context,String detailId){
         Intent intent  =new Intent(context,BookListDetailActivity.class);
         intent.putExtra(EXTRA_DETAIL_ID,detailId);
         context.startActivity(intent);
     }
 
-    /******************************初始化******************************/
     @Override
-    protected int getLayoutId() {
-        return R.layout.activity_refresh_list;
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(EXTRA_DETAIL_ID, mDetailId);
     }
 
     @Override
-    protected BookListDetailContract.Presenter bindPresenter() {
-        return new BookListDetailPresenter();
+    protected int getLayoutId() {
+        return R.layout.activity_refresh_list;
     }
 
     @Override
@@ -117,7 +122,12 @@ public class BookListDetailActivity extends BaseMVPActivity<BookListDetailContra
         );
     }
 
-    /*****************************业务逻辑*******************************/
+    /*****************************Transaction*******************************/
+    @Override
+    protected BookListDetailContract.Presenter bindPresenter() {
+        return new BookListDetailPresenter();
+    }
+
     @Override
     protected void processLogic() {
         super.processLogic();
@@ -167,13 +177,16 @@ public class BookListDetailActivity extends BaseMVPActivity<BookListDetailContra
         mRefreshLayout.showFinish();
     }
 
+    /*****************************Life Cycle*******************************/
     @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString(EXTRA_DETAIL_ID, mDetailId);
+    public void onDestroy() {
+        super.onDestroy();
+        if (mDetailHeader.detailUnbinder != null){
+            mDetailHeader.detailUnbinder.unbind();
+        }
     }
 
-
+    /*****************************Header*******************************/
     class DetailHeader implements WholeAdapter.ItemView{
         @BindView(R.id.book_list_info_tv_title)
         TextView tvTitle;
@@ -228,11 +241,5 @@ public class BookListDetailActivity extends BaseMVPActivity<BookListDetailContra
         }
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (mDetailHeader.detailUnbinder != null){
-            mDetailHeader.detailUnbinder.unbind();
-        }
-    }
+
 }

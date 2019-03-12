@@ -16,6 +16,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class BookListDetailPresenter extends RxPresenter<BookListDetailContract.View>
         implements BookListDetailContract.Presenter {
+    private static final String TAG = "BookListDetailPresenter";
     @Override
     public void refreshBookListDetail(String detailId) {
         addDisposable(RemoteRepository.getInstance()

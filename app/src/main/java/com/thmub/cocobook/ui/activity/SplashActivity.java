@@ -26,9 +26,10 @@ import java.util.concurrent.TimeUnit;
  */
 
 public class SplashActivity extends BaseActivity {
-    /*************************常量******************************/
+    /*****************************Constant********************************/
     private static final int WAIT_TIME = 3;
 
+    /*****************************View********************************/
     @BindView(R.id.splash_tv_skip)
     TextView splashTvSkip;
     @BindView(R.id.splash_iv_smile)
@@ -41,12 +42,11 @@ public class SplashActivity extends BaseActivity {
     TextView splashTvVersion;
     @BindView(R.id.splash_flt_content)
     FrameLayout splashFltContent;
-    /*************************视图******************************/
 
-    /*************************参数******************************/
+    /*****************************Variable********************************/
     private boolean isSkip = false;
 
-    /*************************初始化******************************/
+    /*****************************Initialization********************************/
 
     @Override
     protected int getLayoutId() {

@@ -45,12 +45,13 @@ import me.gujun.android.taggroup.TagGroup;
 
 public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Presenter>
         implements BookDetailContract.View {
-    /************************************常量************************************/
+    /************************************Constant************************************/
     public static final String RESULT_IS_COLLECTED = "result_is_collected";
     private static final String EXTRA_BOOK_ID = "extra_book_id";
     private static final String EXTRA_BOOK_TITLE = "extra_book_title";
     private static final int REQUEST_READ = 1;
 
+    /************************************View************************************/
     @BindView(R.id.refresh_layout)
     RefreshLayout mRefreshLayout;
     @BindView(R.id.book_detail_iv_cover)
@@ -77,18 +78,19 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
     TextView mTvRecommendBookList;
     @BindView(R.id.book_detail_rv_recommend_book_list)
     RecyclerView mRvRecommendBookList;
-    /************************************视图***********************************/
+
     private RecommendBookAdapter mBooksAdapter;
     private BookListAdapter mBookListAdapter;
     private CollBookBean mCollBookBean;
     private ProgressDialog mProgressDialog;
-    /************************************参数************************************/
+
+    /************************************Variable************************************/
     private String mBookId;
     private String mBookTitle;
     private boolean isBriefOpen = false;
     private boolean isCollected = false;
 
-    /**********************************公共方法**********************************/
+    /**********************************Public Method**********************************/
     public static void startActivity(Context context, String bookId, String bookTitle) {
         Intent intent = new Intent(context, BookDetailActivity.class);
         intent.putExtra(EXTRA_BOOK_ID, bookId);
@@ -96,7 +98,7 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
         context.startActivity(intent);
     }
 
-    /************************************初始化***********************************/
+    /************************************Initialization***********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_book_detail;
@@ -152,7 +154,7 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
         });
     }
 
-    /************************************业务逻辑************************************/
+    /************************************Transaction************************************/
     @Override
     protected BookDetailContract.Presenter bindPresenter() {
         return new BookDetailPresenter();
@@ -264,7 +266,7 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
         mRefreshLayout.showFinish();
     }
 
-    /**************************事件处理*****************************/
+    /**************************Event*****************************/
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);

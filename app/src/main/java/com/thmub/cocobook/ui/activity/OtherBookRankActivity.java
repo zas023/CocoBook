@@ -30,16 +30,20 @@ import butterknife.BindView;
 
 public class OtherBookRankActivity extends BaseMVPActivity<BookRankDetailContract.Presenter>
         implements BookRankDetailContract.View{
+
+    /*****************************Constant********************************/
     private static final String EXTRA_BILL_ID = "extra_bill_id";
     private static final String EXTRA_BILL_NAME = "extra_bill_name";
-    /********************/
+
+    /*****************************View********************************/
     @BindView(R.id.refresh_layout)
     RefreshLayout mRefreshLayout;
     @BindView(R.id.refresh_rv_content)
     RecyclerView mRvContent;
-    /*******************/
+
     private BillBookAdapter mBillBookAdapter;
-    /*****************/
+
+    /*****************************Variable********************************/
     private String mBillId;
     private String mBillName;
     public static void startActivity(Context context,String billName, String billId){
@@ -50,14 +54,10 @@ public class OtherBookRankActivity extends BaseMVPActivity<BookRankDetailContrac
         context.startActivity(intent);
     }
 
+    /*****************************Initialization********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_refresh_list;
-    }
-
-    @Override
-    protected BookRankDetailContract.Presenter bindPresenter() {
-        return new BookRankDetailPresenter();
     }
 
     @Override
@@ -83,6 +83,12 @@ public class OtherBookRankActivity extends BaseMVPActivity<BookRankDetailContrac
     protected void initWidget() {
         super.initWidget();
         initAdapter();
+    }
+
+    /*****************************Transaction********************************/
+    @Override
+    protected BookRankDetailContract.Presenter bindPresenter() {
+        return new BookRankDetailPresenter();
     }
 
     @Override
@@ -120,7 +126,8 @@ public class OtherBookRankActivity extends BaseMVPActivity<BookRankDetailContrac
     public void complete() {
         mRefreshLayout.showFinish();
     }
-    /***************************************************/
+
+    /*****************************Life Cycle********************************/
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);

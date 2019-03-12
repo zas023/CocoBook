@@ -24,7 +24,8 @@ import com.thmub.cocobook.widget.OwlView;
  * 注册activity
  */
 public class UserRegisterActivity extends BaseActivity {
-    
+
+    /*****************************View********************************/
     @BindView(R.id.register_owl_view)
     OwlView registerOwlView;
     @BindView(R.id.register_til_email)
@@ -39,12 +40,12 @@ public class UserRegisterActivity extends BaseActivity {
     TextView registerTvForget;
     @BindView(R.id.register_tv_login)
     TextView registerTvRegister;
-    /*************************视图****************************/
+
     private EditText mEdtEmail;
     private EditText mEdtUsername;
     private EditText mEdtPassword;
 
-    /*************************初始化****************************/
+    /*****************************Initialization********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_user_register;
@@ -86,7 +87,7 @@ public class UserRegisterActivity extends BaseActivity {
         });
     }
 
-    /*************************事件处理****************************/
+    /*****************************Event********************************/
     /**
      * 监听点击事件
      *

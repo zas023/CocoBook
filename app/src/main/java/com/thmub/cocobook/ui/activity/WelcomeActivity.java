@@ -27,6 +27,7 @@ import java.util.List;
 
 public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageChangeListener {
 
+    /*****************************View********************************/
     @BindView(R.id.welcome_vp)
     ViewPager viewPager;
     @BindView(R.id.welcome_ll_point)
@@ -34,10 +35,12 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
 
     private ImageView imageView;
 
+    /*****************************Variable********************************/
     private List<View> pageViews; //装载各页面的视图
     private ImageView[] imageViews;//装载导航小圆点
 
 
+    /*****************************Initialization********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_welcome;
@@ -139,6 +142,7 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
         viewPager.addOnPageChangeListener(this);
     }
 
+    /*****************************Event********************************/
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 

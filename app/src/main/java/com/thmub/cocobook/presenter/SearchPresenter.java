@@ -12,6 +12,7 @@ import io.reactivex.disposables.Disposable;
 
 /**
  * Created by zhouas666 on 17-6-2.
+ * 搜书presenter
  */
 
 public class SearchPresenter extends RxPresenter<SearchContract.View>

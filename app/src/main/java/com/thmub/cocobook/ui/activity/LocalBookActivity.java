@@ -36,6 +36,7 @@ import butterknife.BindView;
 
 public class LocalBookActivity extends BaseTabActivity {
 
+    /*****************************View********************************/
     @BindView(R.id.multi_select_cb_all)
     CheckBox mCbSelectAll;
     @BindView(R.id.multi_select_btn_delete)
@@ -47,6 +48,7 @@ public class LocalBookActivity extends BaseTabActivity {
     private FileCategoryFragment mCategoryFragment;
     private BaseFileFragment mCurFragment;
 
+    /*****************************Variable********************************/
     private OnFileCheckedListener mListener = new OnFileCheckedListener() {
         @Override
         public void onItemCheckedChange(boolean isChecked) {
@@ -64,6 +66,7 @@ public class LocalBookActivity extends BaseTabActivity {
         }
     };
 
+    /*****************************Initialization********************************/
     @Override
     protected List<Fragment> createTabFragments() {
         mLocalFragment = new LocalBookFragment();
@@ -166,6 +169,7 @@ public class LocalBookActivity extends BaseTabActivity {
         mCategoryFragment.setOnFileCheckedListener(mListener);
     }
 
+    /*****************************Transaction********************************/
     @Override
     protected void processLogic() {
         super.processLogic();

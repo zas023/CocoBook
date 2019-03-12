@@ -24,7 +24,7 @@ import com.thmub.cocobook.widget.OwlView;
  */
 public class UserLoginActivity extends BaseActivity {
 
-
+    /*****************************View********************************/
     @BindView(R.id.land_owl_view)
     OwlView landOwlView;
     @BindView(R.id.land_til_username)
@@ -37,11 +37,11 @@ public class UserLoginActivity extends BaseActivity {
     TextView landTvForget;
     @BindView(R.id.land_tv_register)
     TextView landTvRegister;
-    /*****************************视图********************************/
+
     private EditText mEdtUsername;
     private EditText mEdtPassword;
 
-    /*****************************初始化********************************/
+    /*****************************Initialization********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_user_land;
@@ -62,6 +62,7 @@ public class UserLoginActivity extends BaseActivity {
         });
     }
 
+    /*****************************Event********************************/
     /**
      * 监听点击事件
      *

@@ -28,16 +28,21 @@ import java.util.List;
 
 public class RecommendBookActivity extends BaseMVPActivity<RecommendBookContract.Presenter>
         implements RecommendBookContract.View{
+    /*****************************Constant********************************/
     private static final String EXTRA_BOOK_ID = "extra_book_id";
-    /********************/
+
+    /*****************************View********************************/
     @BindView(R.id.refresh_layout)
     RefreshLayout mRefreshLayout;
     @BindView(R.id.refresh_rv_content)
     RecyclerView mRvContent;
-    /*******************/
+
     private BillBookAdapter mBooksAdapter;
-    /*****************/
+
+    /*****************************Variable********************************/
     private String mBookId;
+
+    /*****************************Initialization********************************/
     public static void startActivity(Context context,String bookId){
         Intent intent = new Intent(context,RecommendBookActivity.class);
         intent.putExtra(EXTRA_BOOK_ID,bookId);
@@ -78,26 +83,22 @@ public class RecommendBookActivity extends BaseMVPActivity<RecommendBookContract
         initAdapter();
     }
 
-    @Override
-    protected void processLogic() {
-        super.processLogic();
-        mRefreshLayout.showLoading();
-        mPresenter.refreshBookBrief(mBookId);
-    }
-
     private void initAdapter(){
         mRvContent.setLayoutManager(new LinearLayoutManager(this));
         mRvContent.addItemDecoration(new DividerItemDecoration(this));
         mBooksAdapter = new BillBookAdapter();
         mRvContent.setAdapter(mBooksAdapter);
 
-        mBooksAdapter.setOnItemClickListener(new BaseListAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int pos) {
-                BookDetailActivity.startActivity(mContext,
-                        mBooksAdapter.getItem(pos).get_id(),mBooksAdapter.getItem(pos).getTitle());
-            }
-        });
+        mBooksAdapter.setOnItemClickListener((view, pos) -> BookDetailActivity.startActivity(mContext,
+                mBooksAdapter.getItem(pos).get_id(),mBooksAdapter.getItem(pos).getTitle()));
+    }
+
+    /*****************************Transaction********************************/
+    @Override
+    protected void processLogic() {
+        super.processLogic();
+        mRefreshLayout.showLoading();
+        mPresenter.refreshBookBrief(mBookId);
     }
 
     @Override
@@ -114,7 +115,8 @@ public class RecommendBookActivity extends BaseMVPActivity<RecommendBookContract
     public void complete() {
         mRefreshLayout.showFinish();
     }
-    /***************************************************/
+
+    /*****************************Life Cycle********************************/
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);

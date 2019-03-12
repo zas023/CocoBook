@@ -48,10 +48,10 @@ import java.util.List;
 
 public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
         implements SearchContract.View {
-    /******************************常量*************************************/
+    /*****************************Constant********************************/
     private static final int TAG_LIMIT = 8;
 
-    /******************************视图*************************************/
+    /******************************View*************************************/
     @BindView(R.id.search_iv_back)
     ImageView mIvBack;
     @BindView(R.id.search_et_input)
@@ -78,14 +78,14 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
     private SearchRecordAdapter mSearchRecordAdapter;
     private SearchBookAdapter mSearchAdapter;
 
-    /******************************变量*************************************/
+    /*****************************Variable********************************/
     private boolean isTag;
     private List<String> mHotTagList;
     private List<String> tags;
     private List<String> mRecordTagList;
     private int mTagStart = 0;
 
-    /******************************初始化*************************************/
+    /*****************************Initialization********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_search;
@@ -265,7 +265,7 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
         imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
-    /******************************业务逻辑*************************************/
+    /*****************************Transaction********************************/
 
     @Override
     protected SearchContract.Presenter bindPresenter() {
@@ -355,6 +355,7 @@ public class SearchActivity extends BaseMVPActivity<SearchContract.Presenter>
         mRlRefresh.showEmpty();
     }
 
+    /*****************************Event********************************/
     @Override
     public void onBackPressed() {
         if (mRlRefresh.getVisibility() == View.VISIBLE) {

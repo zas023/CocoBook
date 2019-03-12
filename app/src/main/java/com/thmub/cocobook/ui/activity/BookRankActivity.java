@@ -19,7 +19,7 @@ import androidx.fragment.app.Fragment;
 
 public class BookRankActivity extends BaseTabActivity {
 
-    /*****************************初始化********************************/
+    /*****************************Initialization********************************/
     @Override
     protected int getLayoutId() {
         return R.layout.activity_base_tab;
