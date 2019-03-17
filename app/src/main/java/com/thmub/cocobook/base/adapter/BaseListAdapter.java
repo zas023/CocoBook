@@ -21,10 +21,10 @@ public abstract class BaseListAdapter <T> extends RecyclerView.Adapter<RecyclerV
     protected OnItemClickListener mClickListener;
     protected OnItemLongClickListener mLongClickListener;
 
-    /************************abstract area************************/
+    /************************Abstract************************/
     protected abstract IViewHolder<T> createViewHolder(int viewType);
 
-    /*************************rewrite logic area***************************************/
+    /*************************Override***************************************/
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         IViewHolder<T> viewHolder = createViewHolder(viewType);
@@ -78,7 +78,7 @@ public abstract class BaseListAdapter <T> extends RecyclerView.Adapter<RecyclerV
     protected void onItemLongClick(View v,int pos){
     }
 
-    /******************************public area***********************************/
+    /******************************Public***********************************/
 
     public void setOnItemClickListener(OnItemClickListener mListener) {
         this.mClickListener = mListener;
@@ -135,7 +135,7 @@ public abstract class BaseListAdapter <T> extends RecyclerView.Adapter<RecyclerV
         mList.clear();
     }
 
-    /***************************inner class area***********************************/
+    /***************************Inner class***********************************/
     public interface OnItemClickListener{
         void onItemClick(View view, int pos);
     }

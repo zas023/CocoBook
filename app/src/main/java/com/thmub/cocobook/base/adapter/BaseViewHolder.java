@@ -8,6 +8,9 @@ import android.view.View;
  */
 
 public class BaseViewHolder<T> extends RecyclerView.ViewHolder{
+
+    private static final String TAG = "BaseViewHolder";
+
     public IViewHolder<T> holder;
 
     public BaseViewHolder(View itemView, IViewHolder<T> holder) {

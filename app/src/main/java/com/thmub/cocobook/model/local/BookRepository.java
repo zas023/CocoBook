@@ -21,8 +21,6 @@ import java.io.Writer;
 import java.util.List;
 
 import io.reactivex.Single;
-import io.reactivex.SingleEmitter;
-import io.reactivex.SingleOnSubscribe;
 
 /**
  * Created by zhouas666 on 18-1-23.

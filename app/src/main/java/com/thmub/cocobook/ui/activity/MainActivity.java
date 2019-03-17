@@ -118,6 +118,12 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     }
 
     @Override
+    protected void initData(Bundle savedInstanceState) {
+        super.initData(savedInstanceState);
+        currentUser=BmobUser.getCurrentUser(CocoUser.class);
+    }
+
+    @Override
     protected void initWidget() {
         super.initWidget();
         //实现侧滑菜单状态栏透明
@@ -136,7 +142,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
         super.initClick();
         //监听菜单栏头部
         drawerHeader.setOnClickListener(view -> {
-            if (BmobUser.getCurrentUser(CocoUser.class)==null)
+            if (currentUser==null)
                 startActivityForResult(new Intent(mContext,UserLoginActivity.class),REQUEST_LAND);
             else
                 startActivityForResult(new Intent(mContext,UserInfoActivity.class),REQUEST_USER_INFO);

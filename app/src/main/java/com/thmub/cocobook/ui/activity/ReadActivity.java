@@ -16,11 +16,11 @@ import android.os.PowerManager;
 import android.provider.Settings;
 import com.google.android.material.appbar.AppBarLayout;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,12 +37,12 @@ import com.thmub.cocobook.manager.RxBusManager;
 import com.thmub.cocobook.model.bean.BookChapterBean;
 import com.thmub.cocobook.model.bean.CollBookBean;
 import com.thmub.cocobook.model.bean.DownloadTaskBean;
+import com.thmub.cocobook.model.event.DownloadEvent;
 import com.thmub.cocobook.model.event.SpeakEvent;
 import com.thmub.cocobook.model.local.BookRepository;
 import com.thmub.cocobook.manager.ReadSettingManager;
 import com.thmub.cocobook.presenter.ReadPresenter;
 import com.thmub.cocobook.presenter.contract.ReadContract;
-import com.thmub.cocobook.service.DownloadService;
 import com.thmub.cocobook.service.SpeakService;
 import com.thmub.cocobook.ui.adapter.CategoryAdapter;
 import com.thmub.cocobook.base.BaseMVPActivity;
@@ -484,7 +484,8 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         //监听菜单选择
         mLvCategory.setOnItemClickListener(
                 (parent, view, position, id) -> {
-                    mDlCatalog.closeDrawer(Gravity.START);
+                    //androidx将Gravity替换成GravityCompat
+                    mDlCatalog.closeDrawer(GravityCompat.START);
                     mPageLoader.skipToChapter(position);
                 }
         );
@@ -631,8 +632,8 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         } else if (mSettingDialog.isShowing()) {
             mSettingDialog.dismiss();
             return;
-        } else if (mDlCatalog.isDrawerOpen(Gravity.START)) {
-            mDlCatalog.closeDrawer(Gravity.START);
+        } else if (mDlCatalog.isDrawerOpen(GravityCompat.START)) {
+            mDlCatalog.closeDrawer(GravityCompat.START);
             return;
         }
 
@@ -651,7 +652,6 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
 
                         BookRepository.getInstance()
                                 .saveCollBookWithAsync(mCollBook);
-
                         exit();
                     })
                     .setNegativeButton("取消", (dialog, which) -> {
@@ -682,15 +682,16 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                 //切换菜单
                 toggleMenu(true);
                 //打开侧滑动栏
-                mDlCatalog.openDrawer(Gravity.START);
+                mDlCatalog.openDrawer(GravityCompat.START);
                 break;
             case R.id.read_tv_download:  //下载
-                DownloadTaskBean task = new DownloadTaskBean();
-                task.setTaskName(mCollBook.getTitle());
-                task.setBookId(mCollBook.get_id());
-                task.setBookChapters(mCollBook.getBookChapters());
-                task.setLastChapter(mCollBook.getBookChapters().size());
-                RxBusManager.getInstance().post(task);
+//                DownloadTaskBean task = new DownloadTaskBean();
+//                task.setTaskName(mCollBook.getTitle());
+//                task.setBookId(mCollBook.get_id());
+//                task.setBookChapters(mCollBook.getBookChapters());
+//                task.setLastChapter(mCollBook.getBookChapters().size());
+                DownloadEvent event=new DownloadEvent(mCollBook);
+                RxBusManager.getInstance().post(event);
                 break;
             case R.id.read_tv_setting:  //设置
                 toggleMenu(false);

@@ -29,6 +29,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
 
     protected Activity mContext;
 
+    //RxJava
     protected CompositeDisposable mDisposable;
 
     //ButterKnife
@@ -36,13 +37,13 @@ public abstract class BaseActivity extends SwipeBackActivity {
 
     protected Toolbar mToolbar;
 
-    /****************************abstract area*************************************/
+    /****************************Abstract area*************************************/
 
     @LayoutRes
     protected abstract int getLayoutId();
 
 
-    /************************初始化************************************/
+    /************************Initialization************************************/
     protected void addDisposable(Disposable d) {
         if (mDisposable == null) {
             mDisposable = new CompositeDisposable();
@@ -109,7 +110,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
         initTheme();
     }
 
-    /*************************lifecycle area*****************************************************/
+    /*************************Lifecycle*****************************************************/
 
     /**
      * 初始化主题
@@ -161,7 +162,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
         }
     }
 
-    /**************************used method area*******************************************/
+    /**************************Used method*******************************************/
 
     protected void startActivity(Class<? extends AppCompatActivity> activity) {
         Intent intent = new Intent(this, activity);

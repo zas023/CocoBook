@@ -15,6 +15,8 @@ import java.util.List;
 
 public abstract class EasyAdapter<T> extends BaseAdapter {
 
+    private static String TAG="EasyAdapter";
+
     private List<T> mList = new ArrayList<T>();
 
     @Override
