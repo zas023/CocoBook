@@ -16,7 +16,7 @@ import com.thmub.cocobook.ui.activity.BookListDetailActivity;
 import com.thmub.cocobook.ui.adapter.BookListAdapter;
 import com.thmub.cocobook.base.BaseMVPFragment;
 import com.thmub.cocobook.widget.RefreshLayout;
-import com.thmub.cocobook.base.adapter.WholeAdapter;
+import com.thmub.cocobook.base.adapter.QuickAdapter;
 import com.thmub.cocobook.widget.itemdecoration.DividerItemDecoration;
 
 import java.util.List;
@@ -138,7 +138,7 @@ public class BookListFragment extends BaseMVPFragment<BookListContract.Presenter
     private void initAdapter(){
         mRvContent.setLayoutManager(new LinearLayoutManager(getContext()));
         mRvContent.addItemDecoration(new DividerItemDecoration(getContext()));
-        mBookListAdapter = new BookListAdapter(getContext(),new WholeAdapter.Options());
+        mBookListAdapter = new BookListAdapter(getContext(),new QuickAdapter.Options());
         mRvContent.setAdapter(mBookListAdapter);
     }
 

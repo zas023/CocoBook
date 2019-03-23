@@ -1,8 +1,8 @@
 package com.thmub.cocobook.ui.adapter;
 
+import com.thmub.cocobook.base.adapter.BaseRecyclerAdapter;
 import com.thmub.cocobook.model.bean.BookSortBean;
-import com.thmub.cocobook.ui.adapter.view.BookSortHolder;
-import com.thmub.cocobook.base.adapter.BaseListAdapter;
+import com.thmub.cocobook.ui.adapter.holder.BookSortHolder;
 import com.thmub.cocobook.base.adapter.IViewHolder;
 
 /**
@@ -10,7 +10,7 @@ import com.thmub.cocobook.base.adapter.IViewHolder;
  * 书籍分类adapter
  */
 
-public class BookSortAdapter extends BaseListAdapter<BookSortBean>{
+public class BookSortAdapter extends BaseRecyclerAdapter<BookSortBean> {
 
     @Override
     protected IViewHolder<BookSortBean> createViewHolder(int viewType) {

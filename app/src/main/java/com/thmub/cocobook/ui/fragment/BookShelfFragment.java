@@ -1,13 +1,11 @@
 package com.thmub.cocobook.ui.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import butterknife.BindView;
@@ -19,11 +17,10 @@ import com.thmub.cocobook.model.local.BookRepository;
 import com.thmub.cocobook.presenter.BookShelfPresenter;
 import com.thmub.cocobook.presenter.contract.BookShelfContract;
 import com.thmub.cocobook.ui.activity.ReadActivity;
-import com.thmub.cocobook.ui.activity.SearchActivity;
 import com.thmub.cocobook.ui.adapter.CollBookAdapter;
 import com.thmub.cocobook.base.BaseMVPFragment;
+import com.thmub.cocobook.ui.view.BookShelfFooter;
 import com.thmub.cocobook.utils.*;
-import com.thmub.cocobook.base.adapter.WholeAdapter;
 import com.thmub.cocobook.widget.itemdecoration.DividerItemDecoration;
 import com.thmub.cocobook.widget.refresh.ScrollRefreshRecyclerView;
 
@@ -43,7 +40,7 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
     ScrollRefreshRecyclerView mRvContent;
 
     private CollBookAdapter mCollBookAdapter;
-    private FooterItemView mFooterItem;
+    private BookShelfFooter mFooter;
 
     /***************************参数********************************/
     //是否是第一次进入
@@ -197,9 +194,9 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
 
     @Override
     public void complete() {
-        if (mCollBookAdapter.getItemCount() > 0 && mFooterItem == null) {
-            mFooterItem = new FooterItemView();
-            mCollBookAdapter.addFooterView(mFooterItem);
+        if (mCollBookAdapter.getItemCount() > 0 && mFooter == null) {
+            mFooter = new BookShelfFooter(mContext);
+            mCollBookAdapter.addFooterView(mFooter);
         }
 
         if (mRvContent.isRefreshing()) {
@@ -312,23 +309,7 @@ public class BookShelfFragment extends BaseMVPFragment<BookShelfContract.Present
         }
     }
 
-    /*****************************************************************/
-    class FooterItemView implements WholeAdapter.ItemView {
-        @Override
-        public View onCreateView(ViewGroup parent) {
-            View view = LayoutInflater.from(mContext)
-                    .inflate(R.layout.footer_book_shelf, parent, false);
-            view.setOnClickListener((v) -> {
-                        startActivity(new Intent(mContext, SearchActivity.class));
-                    }
-            );
-            return view;
-        }
-
-        @Override
-        public void onBindView(View view) {
-        }
-    }
+    /*****************************Life Cycle************************************/
 
     @Override
     public void onResume() {

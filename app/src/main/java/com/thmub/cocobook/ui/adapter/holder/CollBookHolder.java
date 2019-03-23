@@ -1,4 +1,4 @@
-package com.thmub.cocobook.ui.adapter.view;
+package com.thmub.cocobook.ui.adapter.holder;
 
 import android.view.View;
 import android.widget.CheckBox;

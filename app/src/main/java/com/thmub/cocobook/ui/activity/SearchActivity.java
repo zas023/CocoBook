@@ -1,7 +1,6 @@
 package com.thmub.cocobook.ui.activity;
 
 import android.content.Context;
-import android.os.Bundle;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -18,10 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 import com.thmub.cocobook.R;
-import com.thmub.cocobook.base.adapter.BaseListAdapter;
 import com.thmub.cocobook.model.bean.BookSearchBean;
 import com.thmub.cocobook.model.bean.packages.SearchBookPackage;
 import com.thmub.cocobook.model.local.BookRepository;
@@ -34,8 +30,6 @@ import com.thmub.cocobook.base.BaseMVPActivity;
 import com.thmub.cocobook.ui.adapter.SearchRecordAdapter;
 import com.thmub.cocobook.widget.RefreshLayout;
 import com.thmub.cocobook.widget.itemdecoration.DividerItemDecoration;
-
-import me.gujun.android.taggroup.TagGroup;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,38 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="60dp"
     android:background="@color/colorBackground"
     android:orientation="horizontal"
-    android:paddingLeft="@dimen/padding_large"
-    android:paddingRight="@dimen/padding_large">
+    android:layout_margin="@dimen/margin_normal"
+    app:cardCornerRadius="8dp">
 
-    <TextView
-        android:id="@+id/sort_tv_type"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:text="玄幻"
-        android:textColor="@color/textPrimary"
-        android:textSize="16sp" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/sort_tv_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:textColor="@color/textAssist"
-        android:textSize="13sp"
-        tools:text="@string/sort.book_count" />
+        <ImageView
+            android:id="@+id/sort_iv_cover"
+            android:layout_width="45dp"
+            android:layout_height="60dp" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/sort_tv_type"
-        android:layout_toRightOf="@+id/sort_tv_type"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
-        android:background="@color/divider_wide" />
-</RelativeLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/sort_tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="玄幻"
+                android:textColor="@color/textPrimary"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/sort_tv_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/textAssist"
+                android:textSize="13sp"
+                tools:text="@string/sort.book_count" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

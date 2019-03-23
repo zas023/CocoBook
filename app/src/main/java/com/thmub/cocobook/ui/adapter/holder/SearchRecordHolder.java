@@ -1,6 +1,5 @@
-package com.thmub.cocobook.ui.adapter.view;
+package com.thmub.cocobook.ui.adapter.holder;
 
-import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,19 +11,20 @@ import com.thmub.cocobook.base.adapter.ViewHolderImpl;
  * Created by zhouas666 on 17-6-2.
  */
 
-public class HotKeyWordHolder extends ViewHolderImpl<String>{
+public class SearchRecordHolder extends ViewHolderImpl<String>{
 
     private TextView mTvName;
     private ImageView mIvSearch;
+    private ImageView mIvDelete;
 
     @Override
     public void initView() {
         mTvName = findById(R.id.keyword_tv_name);
         mIvSearch = findById(R.id.keyword_iv_search);
+        mIvDelete = findById(R.id.keyword_iv_delete);
 
-        mTvName.setGravity(Gravity.CENTER);
         mIvSearch.setVisibility(View.GONE);
-
+        mIvDelete.setVisibility(View.VISIBLE);
     }
 
     @Override

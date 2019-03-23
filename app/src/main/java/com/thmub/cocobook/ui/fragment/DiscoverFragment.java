@@ -8,7 +8,7 @@ import android.view.View;
 import butterknife.BindView;
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.base.BaseFragment;
-import com.thmub.cocobook.base.adapter.BaseListAdapter;
+import com.thmub.cocobook.base.adapter.BaseRecyclerAdapter;
 import com.thmub.cocobook.model.bean.SectionBean;
 import com.thmub.cocobook.model.type.FindType;
 import com.thmub.cocobook.ui.activity.BookRankActivity;
@@ -24,7 +24,7 @@ import java.util.ArrayList;
  * 社区fragment
  */
 
-public class DiscoverFragment extends BaseFragment implements BaseListAdapter.OnItemClickListener{
+public class DiscoverFragment extends BaseFragment implements BaseRecyclerAdapter.OnItemClickListener{
 
     @BindView(R.id.discover_rv_content)
     RecyclerView mRvContent;

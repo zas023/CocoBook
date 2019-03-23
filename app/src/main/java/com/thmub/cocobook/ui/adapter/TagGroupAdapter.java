@@ -3,8 +3,8 @@ package com.thmub.cocobook.ui.adapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.thmub.cocobook.model.bean.BookTagBean;
-import com.thmub.cocobook.ui.adapter.view.TagChildHolder;
-import com.thmub.cocobook.ui.adapter.view.TagGroupHolder;
+import com.thmub.cocobook.ui.adapter.holder.TagChildHolder;
+import com.thmub.cocobook.ui.adapter.holder.TagGroupHolder;
 import com.thmub.cocobook.base.adapter.IViewHolder;
 import com.thmub.cocobook.base.adapter.GroupAdapter;
 

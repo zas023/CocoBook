@@ -15,7 +15,7 @@ import com.thmub.cocobook.model.bean.RankBookBean;
 import com.thmub.cocobook.presenter.BookRankDetailPresenter;
 import com.thmub.cocobook.presenter.contract.BookRankDetailContract;
 import com.thmub.cocobook.ui.adapter.BillBookAdapter;
-import com.thmub.cocobook.base.adapter.BaseListAdapter;
+import com.thmub.cocobook.base.adapter.BaseRecyclerAdapter;
 import com.thmub.cocobook.widget.RefreshLayout;
 import com.thmub.cocobook.widget.itemdecoration.DividerItemDecoration;
 
@@ -104,7 +104,7 @@ public class OtherBookRankActivity extends BaseMVPActivity<BookRankDetailContrac
         mBillBookAdapter = new BillBookAdapter();
         mRvContent.setAdapter(mBillBookAdapter);
 
-        mBillBookAdapter.setOnItemClickListener(new BaseListAdapter.OnItemClickListener() {
+        mBillBookAdapter.setOnItemClickListener(new BaseRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int pos) {
                 BookDetailActivity.startActivity(mContext,mBillBookAdapter.getItem(pos).get_id(),mBillBookAdapter.getItem(pos).getTitle());

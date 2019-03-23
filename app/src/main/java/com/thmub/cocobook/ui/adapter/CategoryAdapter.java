@@ -3,8 +3,8 @@ package com.thmub.cocobook.ui.adapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.thmub.cocobook.ui.adapter.view.CategoryHolder;
-import com.thmub.cocobook.base.adapter.EasyAdapter;
+import com.thmub.cocobook.ui.adapter.holder.CategoryHolder;
+import com.thmub.cocobook.base.adapter.BaseListAdapter;
 import com.thmub.cocobook.base.adapter.IViewHolder;
 import com.thmub.cocobook.widget.page.TxtChapter;
 
@@ -13,7 +13,7 @@ import com.thmub.cocobook.widget.page.TxtChapter;
  * 目录adapter
  */
 
-public class CategoryAdapter extends EasyAdapter<TxtChapter> {
+public class CategoryAdapter extends BaseListAdapter<TxtChapter> {
     private int currentSelected = 0;
     @Override
     protected IViewHolder<TxtChapter> onCreateViewHolder(int viewType) {

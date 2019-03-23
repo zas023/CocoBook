@@ -9,10 +9,10 @@ import android.widget.FrameLayout;
  * Created by zhouas666 on 17-4-20.
  */
 
-public class LoadMoreDelegate implements WholeAdapter.ItemView {
+public class LoadMoreDelegate implements QuickAdapter.ItemView {
     private LoadMoreView mLoadMoreView;
 
-    public LoadMoreDelegate(Context context, WholeAdapter.Options options){
+    public LoadMoreDelegate(Context context, QuickAdapter.Options options){
         LoadMoreView view = new LoadMoreView(context,
                 options.loadMoreId,options.errorId,options.noMoreId);
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(

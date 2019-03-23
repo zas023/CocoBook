@@ -6,33 +6,22 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
-import com.thmub.cocobook.App;
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.base.BaseMVPActivity;
 import com.thmub.cocobook.model.bean.BookListDetailBean;
 import com.thmub.cocobook.presenter.BookListDetailPresenter;
 import com.thmub.cocobook.presenter.contract.BookListDetailContract;
 import com.thmub.cocobook.ui.adapter.BookListDetailAdapter;
-import com.thmub.cocobook.utils.Constant;
+import com.thmub.cocobook.ui.view.BookListDetailHeader;
 import com.thmub.cocobook.widget.RefreshLayout;
-import com.thmub.cocobook.base.adapter.WholeAdapter;
+import com.thmub.cocobook.base.adapter.QuickAdapter;
 import com.thmub.cocobook.widget.itemdecoration.DividerItemDecoration;
-import com.thmub.cocobook.widget.transform.CircleTransform;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * Created by zhouas666 on 18-2-1.
@@ -52,7 +41,7 @@ public class BookListDetailActivity extends BaseMVPActivity<BookListDetailContra
     RecyclerView mRvContent;
 
     private BookListDetailAdapter mDetailAdapter;
-    private DetailHeader mDetailHeader;
+    private BookListDetailHeader mHeader;
     private List<BookListDetailBean.BooksBean> mBooksList;
 
     /***************************Variable********************************/
@@ -98,9 +87,9 @@ public class BookListDetailActivity extends BaseMVPActivity<BookListDetailContra
     protected void initWidget() {
         super.initWidget();
         //初始化adapter
-        mDetailAdapter = new BookListDetailAdapter(this,new WholeAdapter.Options());
-        mDetailHeader = new DetailHeader();
-        mDetailAdapter.addHeaderView(mDetailHeader);
+        mDetailAdapter = new BookListDetailAdapter(this,new QuickAdapter.Options());
+        mHeader = new BookListDetailHeader();
+        mDetailAdapter.addHeaderView(mHeader);
 
         mRvContent.setLayoutManager(new LinearLayoutManager(this));
         mRvContent.addItemDecoration(new DividerItemDecoration(this));
@@ -137,7 +126,7 @@ public class BookListDetailActivity extends BaseMVPActivity<BookListDetailContra
 
     @Override
     public void finishRefresh(BookListDetailBean bean) {
-        mDetailHeader.setBookListDetail(bean);
+        mHeader.setBookListDetail(bean);
         mBooksList = bean.getBooks();
         refreshBook();
     }
@@ -175,70 +164,6 @@ public class BookListDetailActivity extends BaseMVPActivity<BookListDetailContra
     @Override
     public void complete() {
         mRefreshLayout.showFinish();
-    }
-
-    /*****************************Life Cycle*******************************/
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (mDetailHeader.detailUnbinder != null){
-            mDetailHeader.detailUnbinder.unbind();
-        }
-    }
-
-    /*****************************Header*******************************/
-    class DetailHeader implements WholeAdapter.ItemView{
-        @BindView(R.id.book_list_info_tv_title)
-        TextView tvTitle;
-        @BindView(R.id.book_list_detail_tv_desc)
-        TextView tvDesc;
-        @BindView(R.id.book_list_info_iv_cover)
-        ImageView ivPortrait;
-        @BindView(R.id.book_list_detail_tv_create)
-        TextView tvCreate;
-        @BindView(R.id.book_list_info_tv_author)
-        TextView tvAuthor;
-        @BindView(R.id.book_list_detail_tv_share)
-        TextView tvShare;
-
-        BookListDetailBean detailBean;
-
-        Unbinder detailUnbinder = null;
-        @Override
-        public View onCreateView(ViewGroup parent) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.header_book_list_detail,parent,false);
-            return view;
-        }
-
-        @Override
-        public void onBindView(View view) {
-            if (detailUnbinder == null){
-                detailUnbinder = ButterKnife.bind(this,view);
-            }
-            //如果没有值就直接返回
-            if (detailBean == null){
-                return;
-            }
-            //标题
-            tvTitle.setText(detailBean.getTitle());
-            //描述
-            tvDesc.setText(detailBean.getDesc());
-            //头像
-            Glide.with(App.getContext())
-                    .load(Constant.IMG_BASE_URL+detailBean.getAuthor().getAvatar())
-                    .apply(new RequestOptions()
-                            .placeholder(R.mipmap.ic_default_book_cover)
-                            .error(R.mipmap.ic_load_error)
-                            .transform(new CircleTransform(App.getContext())))
-                    .into(ivPortrait);
-            //作者
-            tvAuthor.setText(detailBean.getAuthor().getNickname());
-        }
-
-        public void setBookListDetail(BookListDetailBean bean){
-            detailBean = bean;
-        }
     }
 
 

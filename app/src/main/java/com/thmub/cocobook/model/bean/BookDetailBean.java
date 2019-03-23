@@ -46,6 +46,7 @@ public class BookDetailBean{
      * tags : ["热血","洪荒封神","洪荒","架空","修炼","仙侠"]
      * donate : false
      * copyright : 阅文集团正版授权
+     * contentType : "txt"
      */
 
     private String _id;
@@ -76,6 +77,7 @@ public class BookDetailBean{
     private String copyright;
     private List<String> gender;
     private List<String> tags;
+    private String contentType;
 
 
     private CollBookBean collBookBean;
@@ -302,6 +304,14 @@ public class BookDetailBean{
 
     public void setTags(List<String> tags) {
         this.tags = tags;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 
     public CollBookBean getCollBookBean(){

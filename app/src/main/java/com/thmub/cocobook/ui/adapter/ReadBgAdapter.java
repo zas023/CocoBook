@@ -4,8 +4,8 @@ import android.graphics.drawable.Drawable;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
-import com.thmub.cocobook.ui.adapter.view.ReadBgHolder;
-import com.thmub.cocobook.base.adapter.BaseListAdapter;
+import com.thmub.cocobook.base.adapter.BaseRecyclerAdapter;
+import com.thmub.cocobook.ui.adapter.holder.ReadBgHolder;
 import com.thmub.cocobook.base.adapter.BaseViewHolder;
 import com.thmub.cocobook.base.adapter.IViewHolder;
 
@@ -13,7 +13,7 @@ import com.thmub.cocobook.base.adapter.IViewHolder;
  * Created by zhouas666 on 18-1-23.
  */
 
-public class ReadBgAdapter extends BaseListAdapter<Drawable> {
+public class ReadBgAdapter extends BaseRecyclerAdapter<Drawable> {
     private int currentChecked;
 
     @Override

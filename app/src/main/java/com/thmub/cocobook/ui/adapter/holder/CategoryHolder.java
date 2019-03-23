@@ -1,4 +1,4 @@
-package com.thmub.cocobook.ui.adapter.view;
+package com.thmub.cocobook.ui.adapter.holder;
 
 import android.graphics.drawable.Drawable;
 import androidx.core.content.ContextCompat;

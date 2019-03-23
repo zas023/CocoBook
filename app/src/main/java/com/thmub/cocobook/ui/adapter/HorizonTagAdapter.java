@@ -3,8 +3,8 @@ package com.thmub.cocobook.ui.adapter;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
-import com.thmub.cocobook.ui.adapter.view.HorizonTagHolder;
-import com.thmub.cocobook.base.adapter.BaseListAdapter;
+import com.thmub.cocobook.base.adapter.BaseRecyclerAdapter;
+import com.thmub.cocobook.ui.adapter.holder.HorizonTagHolder;
 import com.thmub.cocobook.base.adapter.IViewHolder;
 import com.thmub.cocobook.base.adapter.BaseViewHolder;
 
@@ -12,7 +12,7 @@ import com.thmub.cocobook.base.adapter.BaseViewHolder;
  * Created by zhouas666 on 18-2-2.
  */
 
-public class HorizonTagAdapter extends BaseListAdapter<String>{
+public class HorizonTagAdapter extends BaseRecyclerAdapter<String> {
     private int currentSelected = 0;
 
     @Override

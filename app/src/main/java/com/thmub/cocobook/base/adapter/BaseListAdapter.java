@@ -1,91 +1,37 @@
 package com.thmub.cocobook.base.adapter;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.BaseAdapter;
+
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by zhouas666 on 17-3-21.
- * 用于RecyclerView的Adapter
+ * Created by zhouas666 on 17-6-5.
+ * ListView 使用的Adapter
  */
 
-public abstract class BaseListAdapter <T> extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public abstract class BaseListAdapter<T> extends BaseAdapter {
 
-    private static final String TAG = "BaseListAdapter";
+    private static String TAG="BaseListAdapter";
 
-    protected final List<T> mList = new ArrayList<>();
-    protected OnItemClickListener mClickListener;
-    protected OnItemLongClickListener mLongClickListener;
-
-    /************************Abstract************************/
-    protected abstract IViewHolder<T> createViewHolder(int viewType);
-
-    /*************************Override***************************************/
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        IViewHolder<T> viewHolder = createViewHolder(viewType);
-
-        View view = viewHolder.createItemView(parent);
-        //初始化
-        RecyclerView.ViewHolder holder = new BaseViewHolder(view, viewHolder);
-        return holder;
-    }
+    private List<T> mList = new ArrayList<T>();
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        //防止别人直接使用RecyclerView.ViewHolder调用该方法
-        if (!(holder instanceof BaseViewHolder))
-            throw new IllegalArgumentException("The ViewHolder item must extend BaseViewHolder");
-
-        IViewHolder<T> iHolder = ((BaseViewHolder) holder).holder;
-        iHolder.onBind(getItem(position),position);
-
-        //设置点击事件
-        holder.itemView.setOnClickListener((v)->{
-            if (mClickListener != null){
-                mClickListener.onItemClick(v,position);
-            }
-            //adapter监听点击事件
-            iHolder.onClick();
-            onItemClick(v,position);
-        });
-        //设置长点击事件
-        holder.itemView.setOnLongClickListener(
-                (v) -> {
-                    boolean isClicked = false;
-                    if (mLongClickListener != null){
-                        isClicked =  mLongClickListener.onItemLongClick(v,position);
-                    }
-                    //Adapter监听长点击事件
-                    onItemLongClick(v,position);
-                    return isClicked;
-                }
-        );
-    }
-
-    @Override
-    public int getItemCount() {
+    public int getCount() {
         return mList.size();
     }
 
-    protected void onItemClick(View v,int pos){
+    @Override
+    public T getItem(int position) {
+        return mList.get(position);
     }
 
-    protected void onItemLongClick(View v,int pos){
-    }
-
-    /******************************Public***********************************/
-
-    public void setOnItemClickListener(OnItemClickListener mListener) {
-        this.mClickListener = mListener;
-    }
-
-    public void setOnItemLongClickListener(OnItemLongClickListener mListener){
-        this.mLongClickListener = mListener;
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     public void addItem(T value){
@@ -108,17 +54,9 @@ public abstract class BaseListAdapter <T> extends RecyclerView.Adapter<RecyclerV
         notifyDataSetChanged();
     }
 
-    public void removeItems(List<T> value){
-        mList.removeAll(value);
-        notifyDataSetChanged();
-    }
-
-    public T getItem(int position){
-        return mList.get(position);
-    }
-
     public List<T> getItems(){
-        return Collections.unmodifiableList(mList);
+        return mList;
+//        return Collections.unmodifiableList(mList);
     }
 
     public int getItemSize(){
@@ -135,12 +73,23 @@ public abstract class BaseListAdapter <T> extends RecyclerView.Adapter<RecyclerV
         mList.clear();
     }
 
-    /***************************Inner class***********************************/
-    public interface OnItemClickListener{
-        void onItemClick(View view, int pos);
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        IViewHolder holder = null;
+        if (convertView == null){
+            holder = onCreateViewHolder(getItemViewType(position));
+            convertView = holder.createItemView(parent);
+            convertView.setTag(holder);
+            //初始化
+            holder.initView();
+        }
+        else {
+            holder = (IViewHolder)convertView.getTag();
+        }
+        //执行绑定
+        holder.onBind(getItem(position),position);
+        return convertView;
     }
 
-    public interface OnItemLongClickListener{
-        boolean onItemLongClick(View view, int pos);
-    }
+    protected abstract IViewHolder<T> onCreateViewHolder(int viewType);
 }

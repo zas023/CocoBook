@@ -1,17 +1,15 @@
-package com.thmub.cocobook.ui.adapter.view;
+package com.thmub.cocobook.ui.adapter.holder;
 
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.widget.TextView;
-
 import com.thmub.cocobook.R;
-import com.thmub.cocobook.base.adapter.ViewHolderImpl;
 import com.thmub.cocobook.model.bean.PageNodeBean;
 import com.thmub.cocobook.model.server.RemoteRepository;
 import com.thmub.cocobook.ui.activity.BookDetailActivity;
 import com.thmub.cocobook.ui.adapter.PageNodeBookAdapter;
+import com.thmub.cocobook.base.adapter.ViewHolderImpl;
 import com.thmub.cocobook.utils.RxUtils;
-
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
@@ -19,7 +17,7 @@ import io.reactivex.disposables.CompositeDisposable;
  * 书城分块view
  */
 
-public class PageNodeHolder extends ViewHolderImpl<PageNodeBean>{
+public class FeatureHolder extends ViewHolderImpl<PageNodeBean>{
 
     private RecyclerView mRvContent;
     private TextView mTvName;

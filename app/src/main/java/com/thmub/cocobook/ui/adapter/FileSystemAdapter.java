@@ -1,8 +1,8 @@
 package com.thmub.cocobook.ui.adapter;
 
 import com.thmub.cocobook.model.local.BookRepository;
-import com.thmub.cocobook.ui.adapter.view.FileHolder;
-import com.thmub.cocobook.base.adapter.BaseListAdapter;
+import com.thmub.cocobook.ui.adapter.holder.FileHolder;
+import com.thmub.cocobook.base.adapter.BaseRecyclerAdapter;
 import com.thmub.cocobook.base.adapter.IViewHolder;
 
 import java.io.File;
@@ -17,7 +17,7 @@ import java.util.Set;
  * 智能扫描
  */
 
-public class FileSystemAdapter extends BaseListAdapter<File>{
+public class FileSystemAdapter extends BaseRecyclerAdapter<File> {
     //记录item是否被选中的Map
     private HashMap<File,Boolean> mCheckMap = new HashMap<>();
     private int mCheckedCount = 0;

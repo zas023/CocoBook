@@ -7,7 +7,6 @@ import android.os.PersistableBundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
-import android.view.View;
 import butterknife.BindView;
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.base.BaseMVPActivity;
@@ -15,7 +14,6 @@ import com.thmub.cocobook.model.bean.RankBookBean;
 import com.thmub.cocobook.presenter.RecommendBookPresenter;
 import com.thmub.cocobook.presenter.contract.RecommendBookContract;
 import com.thmub.cocobook.ui.adapter.BillBookAdapter;
-import com.thmub.cocobook.base.adapter.BaseListAdapter;
 import com.thmub.cocobook.widget.RefreshLayout;
 import com.thmub.cocobook.widget.itemdecoration.DividerItemDecoration;
 

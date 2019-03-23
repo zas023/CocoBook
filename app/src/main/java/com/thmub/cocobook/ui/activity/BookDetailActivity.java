@@ -89,6 +89,7 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
     private String mBookTitle;
     private boolean isBriefOpen = false;
     private boolean isCollected = false;
+    private boolean isTxt = false;
 
     /**********************************Public Method**********************************/
     public static void startActivity(Context context, String bookId, String bookTitle) {
@@ -194,6 +195,10 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
         mTvBrief.setText(bean.getLongIntro());
 
         mCollBookBean = BookRepository.getInstance().getCollBook(bean.get_id());
+
+        //判断是不是txt格式,默认false
+        if (bean.getContentType().equals("txt"))
+            isTxt = true;
 
         //判断是否收藏
         if (mCollBookBean != null) {
@@ -318,9 +323,13 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
                 addShelf();
                 break;
             case R.id.fl_open_book:  //开始阅读
-                startActivityForResult(new Intent(this, ReadActivity.class)
-                        .putExtra(ReadActivity.EXTRA_IS_COLLECTED, isCollected)
-                        .putExtra(ReadActivity.EXTRA_COLL_BOOK, mCollBookBean), REQUEST_READ);
+                if (isTxt) {
+                    startActivityForResult(new Intent(this, ReadActivity.class)
+                            .putExtra(ReadActivity.EXTRA_IS_COLLECTED, isCollected)
+                            .putExtra(ReadActivity.EXTRA_COLL_BOOK, mCollBookBean), REQUEST_READ);
+                } else {
+                    ToastUtils.show("暂不支持本书格式");
+                }
                 break;
             case R.id.book_detail_tv_more_books:  //更多推荐图书
                 RecommendBookActivity.startActivity(mContext, mBookId);

@@ -16,8 +16,8 @@ import java.util.List;
  * 通用adapter
  */
 
-public abstract class WholeAdapter<T> extends BaseListAdapter<T>{
-    private static final String TAG = "WholeAdapter";
+public abstract class QuickAdapter<T> extends BaseRecyclerAdapter<T> {
+    private static final String TAG = "QuickAdapter";
     private static final int TYPE_ITEM = 0;
 
     //刷新类
@@ -27,10 +27,10 @@ public abstract class WholeAdapter<T> extends BaseListAdapter<T>{
     private final ArrayList<ItemView> mFooterList = new ArrayList<>(2);
 
 
-    public WholeAdapter(){
+    public QuickAdapter(){
     }
 
-    public WholeAdapter(Context context,Options options){
+    public QuickAdapter(Context context, Options options){
         if (options != null){
             mLoadDelegate = new LoadMoreDelegate(context,options);
             mFooterList.add(mLoadDelegate);
@@ -150,10 +150,10 @@ public abstract class WholeAdapter<T> extends BaseListAdapter<T>{
 
 
     //设置当GridLayout的情况下
-    class WholeGridSpanSizeLookUp extends GridLayoutManager.SpanSizeLookup{
+    class QiuckGridSpanSizeLookUp extends GridLayoutManager.SpanSizeLookup{
         int maxSize = 1;
 
-        public WholeGridSpanSizeLookUp(int maxSize){
+        public QiuckGridSpanSizeLookUp(int maxSize){
             this.maxSize = maxSize;
         }
 

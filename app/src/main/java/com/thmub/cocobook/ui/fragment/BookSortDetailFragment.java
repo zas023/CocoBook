@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.thmub.cocobook.R;
+import com.thmub.cocobook.base.adapter.QuickAdapter;
 import com.thmub.cocobook.manager.RxBusManager;
 import com.thmub.cocobook.model.event.BookSubSortEvent;
 import com.thmub.cocobook.model.bean.SortBookBean;
@@ -16,7 +17,6 @@ import com.thmub.cocobook.ui.activity.BookDetailActivity;
 import com.thmub.cocobook.ui.adapter.BookSortDetailAdapter;
 import com.thmub.cocobook.base.BaseMVPFragment;
 import com.thmub.cocobook.widget.RefreshLayout;
-import com.thmub.cocobook.base.adapter.WholeAdapter;
 import com.thmub.cocobook.widget.itemdecoration.DividerItemDecoration;
 
 import java.util.List;
@@ -133,7 +133,7 @@ public class BookSortDetailFragment extends BaseMVPFragment<BookSortDetailContra
     }
 
     private void initAdapter(){
-        mBookSortDetailAdapter = new BookSortDetailAdapter(getContext(),new WholeAdapter.Options());
+        mBookSortDetailAdapter = new BookSortDetailAdapter(getContext(),new QuickAdapter.Options());
 
         mRvContent.setLayoutManager(new LinearLayoutManager(getContext()));
         mRvContent.addItemDecoration(new DividerItemDecoration(getContext()));

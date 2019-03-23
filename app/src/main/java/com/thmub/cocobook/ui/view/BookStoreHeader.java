@@ -1,12 +1,14 @@
-package com.thmub.cocobook.ui.adapter.view;
+package com.thmub.cocobook.ui.view;
 
 import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.thmub.cocobook.R;
-import com.thmub.cocobook.base.adapter.ViewHolderImpl;
-import com.thmub.cocobook.model.bean.PageNodeBean;
+import com.thmub.cocobook.base.adapter.QuickAdapter;
 import com.thmub.cocobook.model.bean.SwipePictureBean;
 import com.thmub.cocobook.model.server.RemoteRepository;
 import com.thmub.cocobook.ui.activity.BookDetailActivity;
@@ -20,24 +22,26 @@ import com.youth.banner.loader.ImageLoader;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.disposables.CompositeDisposable;
-
 /**
- * Created by zhouas666 on 18-1-23.
- * 书城轮播view
+ * Created by Zhouas666 on 2019-03-23
+ * Github: https://github.com/zas023
  */
-
-public class PageSpreadHolder extends ViewHolderImpl<PageNodeBean>{
-
+public class BookStoreHeader implements QuickAdapter.ItemView {
+    private Context mContext;
     private Banner banner;
-
-    List<SwipePictureBean> mSwipePictures;
+    private List<SwipePictureBean> mSwipePictures;
     private List<String> mImages = new ArrayList<>();
     private List<String> mTitles = new ArrayList<>();
 
+    public BookStoreHeader(Context context) {
+        this.mContext = context;
+    }
+
     @Override
-    public void initView(){
-        banner =findById(R.id.banner);
+    public View onCreateView(ViewGroup parent) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_book_store_spread, parent, false);
+        banner = view.findViewById(R.id.banner);
         //设置banner样式
         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
         //设置图片加载器
@@ -51,7 +55,7 @@ public class PageSpreadHolder extends ViewHolderImpl<PageNodeBean>{
         //设置banner动画效果
         banner.setBannerAnimation(Transformer.DepthPage);
         //设置自动轮播，默认为true
-        banner.isAutoPlay(true);
+        banner.isAutoPlay(false);
         //设置轮播时间
         banner.setDelayTime(5000);
         //设置指示器位置（当banner模式中有指示器时）
@@ -60,16 +64,16 @@ public class PageSpreadHolder extends ViewHolderImpl<PageNodeBean>{
                 (pos) -> {
                     SwipePictureBean bean = mSwipePictures.get(pos);
                     if (bean.getType().equals("c-bookdetail"))
-                        BookDetailActivity.startActivity(getContext(), bean.getLink(),bean.getTitle());
+                        BookDetailActivity.startActivity(mContext, bean.getLink(), bean.getTitle());
                     if (bean.getType().equals("c-booklist"))
-                        BookListDetailActivity.startActivity(getContext(), bean.getLink());
+                        BookListDetailActivity.startActivity(mContext, bean.getLink());
                 });
+        return view;
     }
 
     @Override
-    public void onBind(PageNodeBean data, int pos) {
-        CompositeDisposable mDisposable=new CompositeDisposable();
-        mDisposable.add(RemoteRepository.getInstance()
+    public void onBindView(View view) {
+        RemoteRepository.getInstance()
                 .getSwipePictures()
                 .compose(RxUtils::toSimpleSingle)
                 .subscribe(beans -> {
@@ -84,11 +88,6 @@ public class PageSpreadHolder extends ViewHolderImpl<PageNodeBean>{
                     banner.setBannerTitles(mTitles);
 
                     banner.start();
-                }));
-    }
-
-    @Override
-    protected int getItemLayoutId() {
-        return R.layout.item_book_store_spread;
+                });
     }
 }
