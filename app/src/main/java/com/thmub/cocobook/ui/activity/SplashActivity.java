@@ -1,14 +1,17 @@
 package com.thmub.cocobook.ui.activity;
 
 import android.content.Intent;
+
 import androidx.appcompat.widget.AppCompatImageView;
+
+import android.os.Handler;
+import android.os.Message;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import butterknife.BindView;
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 
 import com.thmub.cocobook.BuildConfig;
 import com.thmub.cocobook.R;
@@ -18,7 +21,6 @@ import com.thmub.cocobook.utils.SharedPreUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by zhouas666 on 18-2-3.
@@ -45,6 +47,30 @@ public class SplashActivity extends BaseActivity {
 
     /*****************************Variable********************************/
     private boolean isSkip = false;
+    private int timer = 3;
+
+//    private Handler handler=new Handler(){
+//        @Override
+//        public void handleMessage(Message msg) {
+//            super.handleMessage(msg);
+//        }
+//    };
+
+    //上面的用法可能会造成内存泄漏
+    //https://blog.csdn.net/m0_37678565/article/details/79623620
+    private Handler mHandler = new Handler(new Handler.Callback() {
+
+        @Override
+        public boolean handleMessage(Message msg) {
+            if (timer > 0) {
+                splashTvSkip.setText("跳过(" + timer + ")");
+                timer--;
+            } else {
+                skipToMain();
+            }
+            return true;
+        }
+    });
 
     /*****************************Initialization********************************/
 
@@ -66,40 +92,48 @@ public class SplashActivity extends BaseActivity {
     protected void initWidget() {
         //判断是否为第一次
         String sex = SharedPreUtils.getInstance().getString(Constant.SHARED_SEX);
-        if (sex.equals("")){
-            startActivity(new Intent(mContext,WelcomeActivity.class));
+        if (sex.equals("")) {
+            startActivity(new Intent(mContext, WelcomeActivity.class));
             finish();
-        }else {
+        } else {
             splashTvDate.setText(new SimpleDateFormat("yyyy年MM月dd日，EEEE").format(new Date()));
             splashTvVersion.setText(BuildConfig.VERSION_NAME);
             splashLltWelcome.setAnimation(AnimationUtils.loadAnimation(this, R.anim.alpha_in));
-
-            //开始倒计时
-            startCount(WAIT_TIME);
+            //开始计时
+            startTimer();
         }
     }
 
-    private void startCount(int second) {
-        //开始计时后监听是否跳过
+    @Override
+    protected void initClick() {
+        super.initClick();
+        //监听是否跳过
         splashTvSkip.setOnClickListener((view) -> skipToMain());
+    }
 
-        Observable.interval(0, 1, TimeUnit.SECONDS)
-                .map(increaseTime -> second - increaseTime.intValue())
-                .take(second + 1)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(integer -> {
-                    if (integer == 0) {
-                        skipToMain();
-                    } else {
-                        splashTvSkip.setText("跳过(" + integer + ")");
-                    }
-                });
+    /**
+     * 计时
+     */
+    private void startTimer() {
+        //每隔1s执行一次
+        new Thread(() -> {
+            while (true){
+                try {
+                    Message msg = new Message();
+                    msg.what = 1;
+                    mHandler.sendMessage(msg);
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
     /**
      * 跳转
      */
-    private  void skipToMain() {
+    private void skipToMain() {
         if (!isSkip) {
             isSkip = true;
             startActivity(new Intent(mContext, MainActivity.class));
