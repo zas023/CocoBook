@@ -3,13 +3,13 @@ package com.thmub.cocobook.presenter;
 import com.thmub.cocobook.manager.RxBusManager;
 import com.thmub.cocobook.model.bean.BookChapterBean;
 import com.thmub.cocobook.model.bean.BookDetailBean;
+import com.thmub.cocobook.model.bean.BookUpdateBean;
 import com.thmub.cocobook.model.bean.CollBookBean;
 import com.thmub.cocobook.model.bean.DownloadTaskBean;
 import com.thmub.cocobook.model.local.BookRepository;
 import com.thmub.cocobook.model.server.RemoteRepository;
 import com.thmub.cocobook.presenter.contract.BookShelfContract;
 import com.thmub.cocobook.base.RxPresenter;
-import com.thmub.cocobook.service.DownloadService;
 import com.thmub.cocobook.utils.Constant;
 import com.thmub.cocobook.utils.LogUtils;
 import com.thmub.cocobook.utils.MD5Utils;
@@ -21,8 +21,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import io.reactivex.Single;
-import io.reactivex.SingleObserver;
-import io.reactivex.disposables.Disposable;
 
 /**
  * Created by zhouas666 on 18-2-8.
@@ -81,60 +79,51 @@ public class BookShelfPresenter extends RxPresenter<BookShelfContract.View>
         if (collBookBeans == null || collBookBeans.isEmpty()) return;
 
         List<CollBookBean> collBooks = new ArrayList<>(collBookBeans);
-        List<Single<BookDetailBean>> observables = new ArrayList<>(collBooks.size());
-        for (int i=0;i<collBooks.size();i++){
+        String id = "";
+        //剔除本地文件书籍，因为不需要更新
+        for (int i = 0, n = collBooks.size(); i < n; i++) {
             CollBookBean collBook = collBooks.get(i);
-            //删除本地文件
             if (collBook.isLocal()) {
                 collBooks.remove(i);
             } else {
-                observables.add(RemoteRepository.getInstance().getBookDetail(collBook.get_id()));
+                id = id + collBook.get_id();
             }
+            //最后一个不需要分隔符
+            if (i < n - 1)
+                id += ",";
         }
-        //zip可能不是一个好方法。
-        //https://blog.csdn.net/baidu_34012226/article/details/52438902?locationNum=5&fps=1
-        Single.zip(observables, objects -> {
-            List<CollBookBean> newCollBooks = new ArrayList<>(objects.length);
-            for (int i = 0; i < collBooks.size(); ++i) {
-                CollBookBean oldCollBook = collBooks.get(i);
-                CollBookBean newCollBook = ((BookDetailBean) objects[i]).getCollBookBean();
-                //如果是oldBook是update状态，或者newCollBook与oldBook章节数不同
-                if (oldCollBook.isUpdate() || !oldCollBook.getLastChapter().equals(newCollBook.getLastChapter())) {
-                    newCollBook.setUpdate(true);
-                } else {
-                    newCollBook.setUpdate(false);
-                }
-                newCollBook.setLastRead(oldCollBook.getLastRead());
-                newCollBooks.add(newCollBook);
-                //存储到数据库中
-                BookRepository.getInstance().saveCollBooks(newCollBooks);
-            }
-            return newCollBooks;
-        })
+
+        addDisposable(RemoteRepository.getInstance()
+                .getBookUpdateList(id)
                 .compose(RxUtils::toSimpleSingle)
-                .subscribe(new SingleObserver<List<CollBookBean>>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        addDisposable(d);
-                    }
-
-                    @Override
-                    public void onSuccess(List<CollBookBean> value) {
-                        //因为切换夜间模式会调用onCreate()
-                        if (mView!=null) {
-                            mView.finishUpdate();
-                            mView.complete();
+                .subscribe((beans) -> {
+                            int size = beans.size();
+                            //List<CollBookBean> newCollBooks = new ArrayList<>(size);
+                            for (int i = 0; i < size; ++i) {
+                                CollBookBean collBook = collBooks.get(i);
+                                //如果是collBook是update状态，或者bookUpdate与oldBook章节数不同
+                                if (collBook.isUpdate() || !collBook.getLastChapter().equals(beans.get(i).getLastChapter())) {
+                                    collBook.setUpdate(true);
+                                    collBook.setLastChapter(beans.get(i).getLastChapter());
+                                } else {
+                                    collBook.setUpdate(false);
+                                }
+                            }
+                            //存储到数据库中
+                            BookRepository.getInstance().saveCollBooks(collBooks);
+                            //因为切换夜间模式会调用onCreate()
+                            if (mView != null) {
+                                mView.finishUpdate();
+                                mView.complete();
+                            }
                         }
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        //提示没有网络
-                        mView.showErrorTip(e.toString());
-                        mView.complete();
-                        LogUtils.e(e);
-                    }
-                });
+                        ,
+                        (e) -> {
+                            //提示没有网络
+                            mView.showErrorTip(e.toString());
+                            mView.complete();
+                            LogUtils.e(e);
+                        }));
     }
 
     //更新每个CollBook的目录

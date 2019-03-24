@@ -2,6 +2,7 @@ package com.thmub.cocobook.model.server;
 
 import com.thmub.cocobook.model.bean.BookDetailBean;
 import com.thmub.cocobook.model.bean.BookSourceBean;
+import com.thmub.cocobook.model.bean.BookUpdateBean;
 import com.thmub.cocobook.model.bean.packages.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public interface BookApi {
     /**====================书籍====================**/
     /**
      * 由性别推荐书籍
+     *
      * @param gender
      * @return
      */
@@ -28,6 +30,7 @@ public interface BookApi {
 
     /**
      * 由某一本书推荐书籍
+     *
      * @param bookId
      * @return
      */
@@ -36,6 +39,7 @@ public interface BookApi {
 
     /**
      * 书籍推荐书单
+     *
      * @param bookId
      * @param limit
      * @return
@@ -45,6 +49,7 @@ public interface BookApi {
 
     /**
      * 书籍详情
+     *
      * @param bookId
      * @return
      */
@@ -53,6 +58,7 @@ public interface BookApi {
 
     /**
      * 根据书籍的 Tag 进行检索
+     *
      * @param tags
      * @param start
      * @param limit
@@ -63,6 +69,7 @@ public interface BookApi {
 
     /**
      * 根据书籍Id获取书源
+     *
      * @param view
      * @param bookId
      * @return
@@ -72,17 +79,19 @@ public interface BookApi {
 
     /**
      * 根据书源Id获取书籍章节列表
+     *
      * @param sourceId
      * @param view
      * @return
      */
     @GET("/atoc/{sourceId}")
-    Single<BookAtocChapterPackage> getBookAtocChapterPackage(@Path("sourceId") String sourceId,@Query("view") String view);
+    Single<BookAtocChapterPackage> getBookAtocChapterPackage(@Path("sourceId") String sourceId, @Query("view") String view);
 
     /**
      * 获取书籍Id的章节总列表
+     *
      * @param bookId
-     * @param view 默认参数为:chapters
+     * @param view   默认参数为:chapters
      * @return
      */
     @GET("/mix-atoc/{bookId}")
@@ -91,12 +100,22 @@ public interface BookApi {
     /**
      * 章节的内容
      * 这里采用的是同步请求。
+     *
      * @param url
      * @return
      */
     @GET("http://chapter2.zhuishushenqi.com/chapter/{url}")
     Single<ChapterInfoPackage> getChapterInfoPackage(@Path("url") String url);
 
+    /*******************************更新*******************************************************/
+    /**
+     * 书籍最新章节
+     * http://api.zhuishushenqi.com/book?view=updated&id=531169b3173bfacb4904ca67,531169b3173bfacb4904ca67
+     *
+     * @return
+     */
+    @GET("/book")
+    Single<List<BookUpdateBean>> getBookUpdateList(@Query("view") String view,@Query("id") String id);
 
     /*******************************精选*******************************************************/
 
@@ -107,13 +126,13 @@ public interface BookApi {
     Single<PageNodePackage> getFeaturePackage();
 
     @GET("/recommendPage/books/{nodeId}")
-    Single<PageNodeBookPackage> getFeatureBookPackage(@Path("nodeId")String nodeId);
+    Single<PageNodeBookPackage> getFeatureBookPackage(@Path("nodeId") String nodeId);
 
     @GET("/recommendPage/node/books/all/{nodeId}")
-    Single<PageNodeDetailPackage> getFeatureDetailPackage(@Path("nodeId")String nodeId);
+    Single<PageNodeDetailPackage> getFeatureDetailPackage(@Path("nodeId") String nodeId);
 
 
-    /**********************************排行榜****************************************************/
+    /*******************************排行榜****************************************************/
 
     /**
      * 获取所有排行榜
@@ -163,7 +182,9 @@ public interface BookApi {
      * @return
      */
     @GET("/book/by-categories")
-    Single<SortBookPackage> getSortBookPackage(@Query("gender") String gender, @Query("type") String type, @Query("major") String major, @Query("minor") String minor, @Query("start") int start, @Query("limit") int limit);
+    Single<SortBookPackage> getSortBookPackage(@Query("gender") String gender, @Query("type") String type,
+                                               @Query("major") String major, @Query("minor") String minor,
+                                               @Query("start") int start, @Query("limit") int limit);
 
     /********************************主题书单**************************************8*/
 
@@ -172,8 +193,9 @@ public interface BookApi {
      * 本周最热：duration=last-seven-days&sort=collectorCount
      * 最新发布：duration=all&sort=created
      * 最多收藏：duration=all&sort=collectorCount
-     *
+     * <p>
      * 如:http://api.zhuishushenqi.com/book-list?duration=last-seven-days&sort=collectorCount&start=0&limit=20&tag=%E9%83%BD%E5%B8%82&gender=male
+     *
      * @param tag    都市、古代、架空、重生、玄幻、网游
      * @param gender male、female
      * @param limit  20

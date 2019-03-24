@@ -11,6 +11,8 @@ import retrofit2.Retrofit;
 
 /**
  * Created by zhouas666 on 17-4-20.
+ * <p>
+ * //https://blog.csdn.net/baidu_34012226/article/details/52438902?locationNum=5&fps=1
  */
 
 public class RemoteRepository {
@@ -37,7 +39,6 @@ public class RemoteRepository {
         }
         return sInstance;
     }
-
 
     /********************************书城推荐*************************************/
     /**
@@ -254,6 +255,7 @@ public class RemoteRepository {
 
     /**
      * 图书章节 by SourceId
+     *
      * @param sourceId
      * @return
      */
@@ -313,4 +315,17 @@ public class RemoteRepository {
         return mBookApi.getSearchBookPackage(query)
                 .map(bean -> bean.getBooks());
     }
+
+    /********************************书籍更新*************************************/
+
+    /**
+     * 书籍更新列表
+     *
+     * @param id
+     * @return
+     */
+    public Single<List<BookUpdateBean>> getBookUpdateList(String id) {
+        return mBookApi.getBookUpdateList("updated", id);
+    }
+
 }
