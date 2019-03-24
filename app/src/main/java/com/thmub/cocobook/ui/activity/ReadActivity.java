@@ -25,6 +25,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -217,11 +219,6 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     }
 
     @Override
-    protected ReadContract.Presenter bindPresenter() {
-        return new ReadPresenter();
-    }
-
-    @Override
     protected void initData(Bundle savedInstanceState) {
         super.initData(savedInstanceState);
         mCollBook = getIntent().getParcelableExtra(EXTRA_COLL_BOOK);
@@ -231,6 +228,12 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
 
         readAloudIntent = new Intent(this, SpeakService.class);
         readAloudIntent.setAction(ActionNewReadAloud);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_read, menu);
+        return true;
     }
 
     @Override
@@ -527,6 +530,11 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
 
     /*****************************Transaction********************************/
     @Override
+    protected ReadContract.Presenter bindPresenter() {
+        return new ReadPresenter();
+    }
+
+    @Override
     protected void processLogic() {
         super.processLogic();
         //如果是已经收藏的，那么就从数据库中获取目录
@@ -654,6 +662,19 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     }
 
     /*****************************Event********************************/
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_read_source:
+                break;
+            default:
+                break;
+        }
+        return true;
+    }
+
     @Override
     public void onBackPressed() {
         if (mAblTopMenu.getVisibility() == View.VISIBLE) {

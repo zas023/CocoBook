@@ -201,7 +201,7 @@ public class MainActivity extends BaseTabActivity implements NavigationView.OnNa
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_search, menu);
+        inflater.inflate(R.menu.menu_main_search, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

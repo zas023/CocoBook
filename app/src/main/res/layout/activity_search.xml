@@ -65,7 +65,6 @@
             android:layout_height="30dp"
             android:layout_marginLeft="@dimen/margin_normal"
             android:layout_marginRight="@dimen/margin_normal"
-            android:padding="6dp"
             android:scaleType="centerInside"
             android:src="@mipmap/ic_search_normal" />
     </LinearLayout>
