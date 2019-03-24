@@ -3,12 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorBackground"
-    android:padding="10dp">
+    android:paddingLeft="@dimen/margin_normal"
+    android:paddingRight="@dimen/margin_normal">
 
     <ImageView
         android:id="@+id/book_brief_iv_portrait"
-        android:layout_width="45dp"
-        android:layout_height="60dp"
+        android:layout_width="60dp"
+        android:layout_height="80dp"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:scaleType="centerCrop"
@@ -16,7 +17,7 @@
 
     <LinearLayout
         android:id="@+id/book_brief_ll"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"

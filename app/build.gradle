@@ -71,10 +71,6 @@ dependencies {
 
     //SwipeBackLayout
     implementation 'me.imid.swipebacklayout.lib:library:1.1.0'
-    //Searchview
-    implementation 'com.lapism:searchview:27.1.1.0.0'
-    //AndroidTagGroup
-    implementation 'me.gujun.android.taggroup:library:1.4@aar'
     //Banner
     implementation "com.youth.banner:banner:1.4.10"
     //Dialogs

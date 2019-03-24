@@ -25,6 +25,7 @@ import com.thmub.cocobook.model.local.BookRepository;
 import com.thmub.cocobook.presenter.BookDetailPresenter;
 import com.thmub.cocobook.presenter.contract.BookDetailContract;
 import com.thmub.cocobook.ui.adapter.BookListAdapter;
+import com.thmub.cocobook.ui.adapter.LabelAdapter;
 import com.thmub.cocobook.ui.adapter.RecommendBookAdapter;
 import com.thmub.cocobook.utils.Constant;
 import com.thmub.cocobook.utils.ToastUtils;
@@ -36,7 +37,6 @@ import com.thmub.cocobook.widget.itemdecoration.DividerItemDecoration;
 import java.util.List;
 
 import butterknife.BindView;
-import me.gujun.android.taggroup.TagGroup;
 
 /**
  * Created by zhouas666 on 18-1-23.
@@ -66,8 +66,8 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
     TextView mTvAddBook;
     @BindView(R.id.book_detail_tv_open)
     TextView mTvOpenBook;
-    @BindView(R.id.book_detail_tg)
-    TagGroup mTg;
+    @BindView(R.id.book_detail_rv_label)
+    RecyclerView mRvLabel;
     @BindView(R.id.book_detail_tv_brief)
     TextView mTvBrief;
     @BindView(R.id.book_list_tv_recommend_books)
@@ -79,6 +79,7 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
     @BindView(R.id.book_detail_rv_recommend_book_list)
     RecyclerView mRvRecommendBookList;
 
+    private LabelAdapter mLabelAdapter;
     private RecommendBookAdapter mBooksAdapter;
     private BookListAdapter mBookListAdapter;
     private CollBookBean mCollBookBean;
@@ -108,6 +109,11 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
     @Override
     protected void initWidget() {
         super.initWidget();
+
+        //标签
+        mLabelAdapter=new LabelAdapter();
+        mRvLabel.setLayoutManager(new GridLayoutManager(mContext,6));
+        mRvLabel.setAdapter(mLabelAdapter);
 
         //推荐如图书列表
         mBooksAdapter = new RecommendBookAdapter();
@@ -190,7 +196,7 @@ public class BookDetailActivity extends BaseMVPActivity<BookDetailContract.Prese
         //总字数
         mTvWordCount.setText(getResources().getString(R.string.book_word_count, bean.getWordCount() / 10000));
         //Tags
-        mTg.setTags(bean.getTags());
+        mLabelAdapter.addItems(bean.getTags());
         //简介
         mTvBrief.setText(bean.getLongIntro());
 

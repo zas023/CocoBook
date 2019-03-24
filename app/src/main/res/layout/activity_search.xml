@@ -118,9 +118,7 @@
                     android:id="@+id/search_rv_hot"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    app:atg_borderColor="@color/gray"
-                    app:atg_horizontalSpacing="8dp">
+                    android:layout_marginTop="8dp">
                 </androidx.recyclerview.widget.RecyclerView>
 
                 <RelativeLayout
@@ -152,9 +150,7 @@
                     android:id="@+id/search_rv_record"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    app:atg_borderColor="@color/gray"
-                    app:atg_horizontalSpacing="8dp">
+                    android:layout_marginTop="8dp">
                 </androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>
         </ScrollView>
