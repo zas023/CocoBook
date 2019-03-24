@@ -36,8 +36,9 @@ public class CollBookBeanDao extends AbstractDao<CollBookBean, String> {
         public final static Property LastRead = new Property(9, String.class, "lastRead", false, "LAST_READ");
         public final static Property ChaptersCount = new Property(10, int.class, "chaptersCount", false, "CHAPTERS_COUNT");
         public final static Property LastChapter = new Property(11, String.class, "lastChapter", false, "LAST_CHAPTER");
-        public final static Property IsUpdate = new Property(12, boolean.class, "isUpdate", false, "IS_UPDATE");
-        public final static Property IsLocal = new Property(13, boolean.class, "isLocal", false, "IS_LOCAL");
+        public final static Property SourceId = new Property(12, String.class, "sourceId", false, "SOURCE_ID");
+        public final static Property IsUpdate = new Property(13, boolean.class, "isUpdate", false, "IS_UPDATE");
+        public final static Property IsLocal = new Property(14, boolean.class, "isLocal", false, "IS_LOCAL");
     }
 
     private DaoSession daoSession;
@@ -68,8 +69,9 @@ public class CollBookBeanDao extends AbstractDao<CollBookBean, String> {
                 "\"LAST_READ\" TEXT," + // 9: lastRead
                 "\"CHAPTERS_COUNT\" INTEGER NOT NULL ," + // 10: chaptersCount
                 "\"LAST_CHAPTER\" TEXT," + // 11: lastChapter
-                "\"IS_UPDATE\" INTEGER NOT NULL ," + // 12: isUpdate
-                "\"IS_LOCAL\" INTEGER NOT NULL );"); // 13: isLocal
+                "\"SOURCE_ID\" TEXT," + // 12: sourceId
+                "\"IS_UPDATE\" INTEGER NOT NULL ," + // 13: isUpdate
+                "\"IS_LOCAL\" INTEGER NOT NULL );"); // 14: isLocal
     }
 
     /** Drops the underlying database table. */
@@ -125,8 +127,13 @@ public class CollBookBeanDao extends AbstractDao<CollBookBean, String> {
         if (lastChapter != null) {
             stmt.bindString(12, lastChapter);
         }
-        stmt.bindLong(13, entity.getIsUpdate() ? 1L: 0L);
-        stmt.bindLong(14, entity.getIsLocal() ? 1L: 0L);
+ 
+        String sourceId = entity.getSourceId();
+        if (sourceId != null) {
+            stmt.bindString(13, sourceId);
+        }
+        stmt.bindLong(14, entity.getIsUpdate() ? 1L: 0L);
+        stmt.bindLong(15, entity.getIsLocal() ? 1L: 0L);
     }
 
     @Override
@@ -176,8 +183,13 @@ public class CollBookBeanDao extends AbstractDao<CollBookBean, String> {
         if (lastChapter != null) {
             stmt.bindString(12, lastChapter);
         }
-        stmt.bindLong(13, entity.getIsUpdate() ? 1L: 0L);
-        stmt.bindLong(14, entity.getIsLocal() ? 1L: 0L);
+ 
+        String sourceId = entity.getSourceId();
+        if (sourceId != null) {
+            stmt.bindString(13, sourceId);
+        }
+        stmt.bindLong(14, entity.getIsUpdate() ? 1L: 0L);
+        stmt.bindLong(15, entity.getIsLocal() ? 1L: 0L);
     }
 
     @Override
@@ -206,8 +218,9 @@ public class CollBookBeanDao extends AbstractDao<CollBookBean, String> {
             cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // lastRead
             cursor.getInt(offset + 10), // chaptersCount
             cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // lastChapter
-            cursor.getShort(offset + 12) != 0, // isUpdate
-            cursor.getShort(offset + 13) != 0 // isLocal
+            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // sourceId
+            cursor.getShort(offset + 13) != 0, // isUpdate
+            cursor.getShort(offset + 14) != 0 // isLocal
         );
         return entity;
     }
@@ -226,8 +239,9 @@ public class CollBookBeanDao extends AbstractDao<CollBookBean, String> {
         entity.setLastRead(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
         entity.setChaptersCount(cursor.getInt(offset + 10));
         entity.setLastChapter(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
-        entity.setIsUpdate(cursor.getShort(offset + 12) != 0);
-        entity.setIsLocal(cursor.getShort(offset + 13) != 0);
+        entity.setSourceId(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
+        entity.setIsUpdate(cursor.getShort(offset + 13) != 0);
+        entity.setIsLocal(cursor.getShort(offset + 14) != 0);
      }
     
     @Override

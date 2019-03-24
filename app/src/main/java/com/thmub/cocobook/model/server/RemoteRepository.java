@@ -93,46 +93,6 @@ public class RemoteRepository {
                 .map(bean -> bean.getBooks());
     }
 
-    /**
-     * 同类图书
-     *
-     * @param bookId
-     * @return
-     */
-    public Single<List<RankBookBean>> getRecommendBooksByBookId(String bookId) {
-        return mBookApi.getRecommendBookPackageByBookId(bookId)
-                .map(bean -> bean.getBooks());
-    }
-
-    /**
-     * 图书章节
-     *
-     * @param bookId
-     * @return
-     */
-    public Single<List<BookChapterBean>> getBookChapters(String bookId) {
-        return mBookApi.getBookChapterPackage(bookId, "chapter")
-                .map(bean -> {
-                    if (bean.getMixToc() == null) {
-                        return new ArrayList<BookChapterBean>(1);
-                    } else {
-                        return bean.getMixToc().getChapters();
-                    }
-                });
-    }
-
-    /**
-     * 注意这里用的是同步请求
-     *
-     * @param url
-     * @return
-     */
-    public Single<ChapterInfoBean> getChapterInfo(String url) {
-        return mBookApi.getChapterInfoPackage(url)
-                .map(bean -> bean.getChapter());
-    }
-
-
     /**********************************书籍分类*******************************************/
     /**
      * 获取书籍的分类
@@ -252,6 +212,71 @@ public class RemoteRepository {
     public Single<List<BookListBean>> getRecommendBookList(String bookId, int limit) {
         return mBookApi.getRecommendBookListPackage(bookId, limit + "")
                 .map(bean -> bean.getBooklists());
+    }
+
+    /**
+     * 同类图书
+     *
+     * @param bookId
+     * @return
+     */
+    public Single<List<RankBookBean>> getRecommendBooksByBookId(String bookId) {
+        return mBookApi.getRecommendBookPackageByBookId(bookId)
+                .map(bean -> bean.getBooks());
+    }
+
+    /**
+     * 书源
+     *
+     * @param bookId
+     * @return
+     */
+    public Single<List<BookSourceBean>> getBookSourceByBookId(String bookId) {
+        return mBookApi.getBookSourceList("summary", bookId);
+    }
+
+    /**
+     * 图书章节 by BookId
+     *
+     * @param bookId
+     * @return
+     */
+    public Single<List<BookChapterBean>> getBookChapters(String bookId) {
+        return mBookApi.getBookChapterPackage(bookId, "chapters")
+                .map(bean -> {
+                    if (bean.getMixToc() == null) {
+                        return new ArrayList<>(1);
+                    } else {
+                        return bean.getMixToc().getChapters();
+                    }
+                });
+    }
+
+    /**
+     * 图书章节 by SourceId
+     * @param sourceId
+     * @return
+     */
+    public Single<List<BookChapterBean>> getBookChaptersBySourceId(String sourceId) {
+        return mBookApi.getBookAtocChapterPackage(sourceId, "chapters")
+                .map(bean -> {
+                    if (bean.get_id() == null) {
+                        return new ArrayList<>(1);
+                    } else {
+                        return bean.getChapters();
+                    }
+                });
+    }
+
+    /**
+     * 注意这里用的是同步请求
+     *
+     * @param url
+     * @return
+     */
+    public Single<ChapterInfoBean> getChapterInfo(String url) {
+        return mBookApi.getChapterInfoPackage(url)
+                .map(bean -> bean.getChapter());
     }
 
 

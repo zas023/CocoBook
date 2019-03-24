@@ -24,7 +24,6 @@ import java.util.List;
 
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -42,22 +41,35 @@ public class ReadPresenter extends RxPresenter<ReadContract.View> implements Rea
         RxBusManager.getInstance().post(new DownloadEvent(bean));
     }
 
+    @Override
+    public void loadBookSource(String bookId) {
+        addDisposable(RemoteRepository.getInstance()
+                .getBookSourceByBookId(bookId)
+                .compose(RxUtils::toSimpleSingle)
+//                .doOnSuccess(bookSourceBeans ->{
+//
+////                    //进行设定BookChapter所属的书的id。
+////                    for (BookChapterBean bookChapter : bookChapterBeen) {
+////                        bookChapter.setId(MD5Utils.strToMd5By16(bookChapter.getLink()));
+////                        bookChapter.setBookId(bookId);
+////                    }
+//                })
+                .subscribe(
+                        beans -> mView.finishSource(beans)
+                ));
+    }
+
     /**
      * 从网络中加载目录
-     * @param bookId
+     *
+     * @param sourceId
      */
     @Override
-    public void loadCategory(String bookId) {
+    public void loadCategory(String sourceId) {
+
         addDisposable(RemoteRepository.getInstance()
-                .getBookChapters(bookId)
+                .getBookChaptersBySourceId(sourceId)
                 .compose(RxUtils::toSimpleSingle)
-                .doOnSuccess(bookChapterBeen -> {
-                    //进行设定BookChapter所属的书的id。
-                    for (BookChapterBean bookChapter : bookChapterBeen) {
-                        bookChapter.setId(MD5Utils.strToMd5By16(bookChapter.getLink()));
-                        bookChapter.setBookId(bookId);
-                    }
-                })
                 .subscribe(
                         beans -> mView.showCategory(beans)
                 ));
@@ -65,6 +77,7 @@ public class ReadPresenter extends RxPresenter<ReadContract.View> implements Rea
 
     /**
      * 加载连续的5个章节（在目录中选择某一章节时）
+     *
      * @param bookId
      * @param bookChapters
      */
@@ -101,36 +114,36 @@ public class ReadPresenter extends RxPresenter<ReadContract.View> implements Rea
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<ChapterInfoBean>() {
-                            String title = titles.poll();
+                               String title = titles.poll();
 
-                            @Override
-                            public void onSubscribe(Subscription s) {
-                                s.request(Integer.MAX_VALUE);
-                                mChapterSub = s;
-                            }
+                               @Override
+                               public void onSubscribe(Subscription s) {
+                                   s.request(Integer.MAX_VALUE);
+                                   mChapterSub = s;
+                               }
 
-                            @Override
-                            public void onNext(ChapterInfoBean chapterInfoBean) {
-                                //存储数据
-                                BookRepository.getInstance().saveChapterInfo(bookId, title, chapterInfoBean.getBody());
-                                mView.finishChapter();
-                                //将获取到的数据进行存储
-                                title = titles.poll();
-                            }
+                               @Override
+                               public void onNext(ChapterInfoBean chapterInfoBean) {
+                                   //存储数据
+                                   BookRepository.getInstance().saveChapterInfo(bookId, title, chapterInfoBean.getBody());
+                                   mView.finishChapter();
+                                   //将获取到的数据进行存储
+                                   title = titles.poll();
+                               }
 
-                            @Override
-                            public void onError(Throwable t) {
-                                //只有第一个加载失败才会调用errorChapter
-                                if (bookChapters.get(0).getTitle().equals(title)) {
-                                    mView.errorChapter();
-                                }
-                                LogUtils.e(t);
-                            }
+                               @Override
+                               public void onError(Throwable t) {
+                                   //只有第一个加载失败才会调用errorChapter
+                                   if (bookChapters.get(0).getTitle().equals(title)) {
+                                       mView.errorChapter();
+                                   }
+                                   LogUtils.e(t);
+                               }
 
-                            @Override
-                            public void onComplete() {
-                            }
-                        }
+                               @Override
+                               public void onComplete() {
+                               }
+                           }
                 );
     }
 }

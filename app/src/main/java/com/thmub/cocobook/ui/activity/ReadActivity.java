@@ -14,12 +14,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.provider.Settings;
+
 import com.google.android.material.appbar.AppBarLayout;
+
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
+
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -32,11 +35,12 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import butterknife.OnClick;
+
 import com.thmub.cocobook.R;
 import com.thmub.cocobook.manager.RxBusManager;
 import com.thmub.cocobook.model.bean.BookChapterBean;
+import com.thmub.cocobook.model.bean.BookSourceBean;
 import com.thmub.cocobook.model.bean.CollBookBean;
-import com.thmub.cocobook.model.bean.DownloadTaskBean;
 import com.thmub.cocobook.model.event.DownloadEvent;
 import com.thmub.cocobook.model.event.SpeakEvent;
 import com.thmub.cocobook.model.local.BookRepository;
@@ -53,6 +57,7 @@ import com.thmub.cocobook.widget.page.PageLoader;
 import com.thmub.cocobook.widget.page.PageView;
 import com.thmub.cocobook.widget.page.TxtChapter;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -140,6 +145,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
     /*****************************Variable********************************/
     private CollBookBean mCollBook;
     private List<TxtChapter> mChapters;
+    private List<BookSourceBean> mBookSource;
     private boolean isRegistered = false;
     private boolean isReversed = false;
     private boolean isFullScreen = false;
@@ -505,10 +511,10 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(speakEvent -> {
                     Log.e(TAG, String.valueOf(speakEvent.status));
-                    switch (speakEvent.status){
+                    switch (speakEvent.status) {
                         case NEXT:
                             mPageLoader.autoNextPage();
-                            readAloudIntent.putExtra("content",mPageLoader.getPageContent());
+                            readAloudIntent.putExtra("content", mPageLoader.getPageContent());
                             startService(readAloudIntent);
                             break;
                         case PAUSE:
@@ -533,13 +539,18 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
                                 mPageLoader.openBook(mCollBook);
                                 //如果是网络小说并被标记更新的，则从网络下载目录
                                 if (!mCollBook.isLocal() && mCollBook.isUpdate()) {
-                                    mPresenter.loadCategory(mBookId);
+                                    //如果没有预设书源，则先获取书源
+                                    //解决首次进入应用推荐的十本书籍是没有设置书源的问题
+                                    if (mCollBook.getSourceId() == null)
+                                        mPresenter.loadBookSource(mBookId);
+                                    else
+                                        mPresenter.loadCategory(mCollBook.getSourceId());
                                 }
                             }
                     ));
         } else {
-            //从网络中获取目录
-            mPresenter.loadCategory(mBookId);
+            //获取书源
+            mPresenter.loadBookSource(mBookId);
         }
     }
 
@@ -555,6 +566,11 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
 
     @Override
     public void showCategory(List<BookChapterBean> bookChapters) {
+        //进行设定BookChapter所属的书的id。
+        for (BookChapterBean bookChapter : bookChapters) {
+            bookChapter.setId(MD5Utils.strToMd5By16(bookChapter.getLink()));
+            bookChapter.setBookId(mBookId);
+        }
         mCollBook.setBookChapters(bookChapters);
         //如果是更新加载，那么重置PageLoader的Chapter
         if (mCollBook.isUpdate() && isCollected) {
@@ -563,6 +579,23 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         } else {
             mPageLoader.openBook(mCollBook);
         }
+    }
+
+    @Override
+    public void finishSource(List<BookSourceBean> bookSourceList) {
+        if (mBookSource == null) mBookSource = new ArrayList<>();
+        //删除正版源
+        for (BookSourceBean bean : bookSourceList) {
+            if (!bean.isStarting())
+                mBookSource.add(bean);
+        }
+        //判断收藏书籍是否添加过书源
+        //更换书源时需要联网从新获取书源
+        if (mCollBook.getSourceId() == null) {
+            mPresenter.loadCategory(mBookSource.get(0).get_id());
+            mCollBook.setSourceId(mBookSource.get(0).get_id());
+        } else
+            mPresenter.loadCategory(mCollBook.getSourceId());
     }
 
     @Override
@@ -690,7 +723,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
 //                task.setBookId(mCollBook.get_id());
 //                task.setBookChapters(mCollBook.getBookChapters());
 //                task.setLastChapter(mCollBook.getBookChapters().size());
-                DownloadEvent event=new DownloadEvent(mCollBook);
+                DownloadEvent event = new DownloadEvent(mCollBook);
                 RxBusManager.getInstance().post(event);
                 break;
             case R.id.read_tv_setting:  //设置
@@ -784,6 +817,7 @@ public class ReadActivity extends BaseMVPActivity<ReadContract.Presenter>
         mBottomInAnim = AnimationUtils.loadAnimation(mContext, R.anim.slide_bottom_in);
         mBottomOutAnim = AnimationUtils.loadAnimation(mContext, R.anim.slide_bottom_out);
     }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         boolean isVolumeTurnPage = ReadSettingManager

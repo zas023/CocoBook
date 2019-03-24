@@ -1,7 +1,10 @@
 package com.thmub.cocobook.model.server;
 
 import com.thmub.cocobook.model.bean.BookDetailBean;
+import com.thmub.cocobook.model.bean.BookSourceBean;
 import com.thmub.cocobook.model.bean.packages.*;
+
+import java.util.List;
 
 import io.reactivex.Single;
 import retrofit2.http.GET;
@@ -31,9 +34,53 @@ public interface BookApi {
     @GET("/book/{bookId}/recommend")
     Single<RecommendBookPackage2> getRecommendBookPackageByBookId(@Path("bookId") String bookId);
 
+    /**
+     * 书籍推荐书单
+     * @param bookId
+     * @param limit
+     * @return
+     */
+    @GET("/book-list/{bookId}/recommend")
+    Single<RecommendBookListPackage> getRecommendBookListPackage(@Path("bookId") String bookId, @Query("limit") String limit);
 
     /**
-     * 获取书籍的章节总列表
+     * 书籍详情
+     * @param bookId
+     * @return
+     */
+    @GET("/book/{bookId}")
+    Single<BookDetailBean> getBookDetail(@Path("bookId") String bookId);
+
+    /**
+     * 根据书籍的 Tag 进行检索
+     * @param tags
+     * @param start
+     * @param limit
+     * @return
+     */
+    @GET("/book/by-tags")
+    Single<TagSearchPackage> getTagSearchPackage(@Query("tags") String tags, @Query("start") String start, @Query("limit") String limit);
+
+    /**
+     * 根据书籍Id获取书源
+     * @param view
+     * @param bookId
+     * @return
+     */
+    @GET("/atoc")
+    Single<List<BookSourceBean>> getBookSourceList(@Query("view") String view, @Query("book") String bookId);
+
+    /**
+     * 根据书源Id获取书籍章节列表
+     * @param sourceId
+     * @param view
+     * @return
+     */
+    @GET("/atoc/{sourceId}")
+    Single<BookAtocChapterPackage> getBookAtocChapterPackage(@Path("sourceId") String sourceId,@Query("view") String view);
+
+    /**
+     * 获取书籍Id的章节总列表
      * @param bookId
      * @param view 默认参数为:chapters
      * @return
@@ -152,36 +199,6 @@ public interface BookApi {
      */
     @GET("/book-list/{bookListId}")
     Single<BookListDetailPackage> getBookListDetailPackage(@Path("bookListId") String bookListId);
-
-
-    /*************************书籍详情**********************************/
-    /**
-     * 书籍推荐书单
-     * @param bookId
-     * @param limit
-     * @return
-     */
-    @GET("/book-list/{bookId}/recommend")
-    Single<RecommendBookListPackage> getRecommendBookListPackage(@Path("bookId") String bookId, @Query("limit") String limit);
-
-    /**
-     * 书籍详情
-     * @param bookId
-     * @return
-     */
-    @GET("/book/{bookId}")
-    Single<BookDetailBean> getBookDetail(@Path("bookId") String bookId);
-
-    /**
-     * 根据书籍的 Tag 进行检索
-     * @param tags
-     * @param start
-     * @param limit
-     * @return
-     */
-    @GET("/book/by-tags")
-    Single<TagSearchPackage> getTagSearchPackage(@Query("tags") String tags, @Query("start") String start, @Query("limit") String limit);
-
 
     /************************************搜索书籍******************************************************/
     @GET("/book/hot-word")
