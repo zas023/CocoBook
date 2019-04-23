@@ -3,7 +3,9 @@
 
 览阅致力于打造绿色健康、无广告的阅读平台，为广大读者提供优质健康的阅读服务。
 项目采用MVP架构，使用流行的RxJava和Retrofit 框架等等，追求每个功能的最佳代码实现。
-
+### 爬虫版
+https://github.com/zas023/NewBook
+支持XpathXpath语法和Json书籍格式
 ### 程序效果如下
 <p>
 <img width="32%" src="https://github.com/zas023/CocoBook/blob/master/image/Screenshot_2018-07-15-09-48-12-297_com.copasso.co.png" />
